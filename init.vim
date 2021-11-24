@@ -160,7 +160,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'mg979/vim-visual-multi'                               " Multiple cursors editing
     Plug 'apzelos/blamer.nvim'                                  " VS-code like blaming on lines"
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Better syntax highlighting"
-    Plug 'kien/ctrlp.vim'                                       " Fuzzy finding
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
 call plug#end()
 
 let g:NERDTreeStatusline =" "
@@ -202,4 +203,7 @@ let mapleader=" "
 " Better identing in visual mode
 :vnoremap < <gv
 :vnoremap > >gv
+" Find file or text
+:nnoremap <leader>ff :Files <CR>
+:nnoremap <leader>ft :Ag <CR>
 
