@@ -191,7 +191,7 @@ let mapleader=" "
 :vnoremap ; :call StonksReplace()<CR>
 :nnoremap <F1> :tabp<CR>
 :nnoremap <F2> :tabn<CR>
-:nnoremap <leader>T :sp<bar>term<CR><C-w>J:resize10<CR>
+:nnoremap <leader>T :sp<bar>term<CR><C-w>J :resize20<CR>
 :nnoremap <leader>t :NERDTreeToggle<CR>
 :nnoremap <leader>rw cw<C-r>0<C-c>
 :nnoremap <leader>w <C-s> :w<CR>
@@ -209,7 +209,3 @@ let mapleader=" "
 " Find file or text
 :nnoremap <leader>ff :Files <CR>
 :nnoremap <leader>ft :Ag <CR>
-" Commenting
-" :vnoremap <leader>c gc
-" :vnoremap <leader>b gb
-" :nnoremap <leader>c gcc
