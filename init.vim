@@ -34,6 +34,7 @@ colorscheme miguekai
 "
 " OVERALL APPEARANCE (status bar, etc)
 "
+
 set list
 set fillchars=fold:۰,diff:·
 set listchars=tab:»·,trail:·,eol:¬
@@ -147,7 +148,6 @@ augroup BRUNO_POWER
     autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
     " Close the tab if NERDTree is the only window remaining in it.
     autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-
 augroup END
 
 "
@@ -162,6 +162,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Better syntax highlighting"
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
+    Plug 'numToStr/Comment.nvim'
 call plug#end()
 
 let g:NERDTreeStatusline =" "
@@ -178,6 +179,7 @@ highlight = {
     disable = {},                  -- list of language that will be disabled
     },
 }
+require('Comment').setup()
 EOF
 
 "
@@ -185,14 +187,15 @@ EOF
 "
 nnoremap <SPACE> <Nop>
 let mapleader=" "
-:vnoremap ; :call StonksReplace()<cr>
+
+:vnoremap ; :call StonksReplace()<CR>
 :nnoremap <F1> :tabp<CR>
 :nnoremap <F2> :tabn<CR>
-:nnoremap <leader>T :sp<bar>term<cr><c-w>J:resize10<cr>
+:nnoremap <leader>T :sp<bar>term<CR><C-w>J:resize10<CR>
 :nnoremap <leader>t :NERDTreeToggle<CR>
 :nnoremap <leader>rw cw<C-r>0<C-c>
 :nnoremap <leader>w <C-s> :w<CR>
-" Resising windows
+" Resizing windows
 :nnoremap <leader>j :resize +2 <CR>
 :nnoremap <leader>k :resize -2 <CR>
 :nnoremap <leader>h :vertical resize +2 <CR>
@@ -201,9 +204,12 @@ let mapleader=" "
 :vnoremap J :m '>+1'<CR>gv=gv
 :vnoremap K :m '<-2'<CR>gv=gv
 " Better identing in visual mode
-:vnoremap < <gv
-:vnoremap > >gv
+:vnoremap <Tab> >gv
+:vnoremap <S-Tab> <gv
 " Find file or text
 :nnoremap <leader>ff :Files <CR>
 :nnoremap <leader>ft :Ag <CR>
-
+" Commenting
+" :vnoremap <leader>c gc
+" :vnoremap <leader>b gb
+" :nnoremap <leader>c gcc
