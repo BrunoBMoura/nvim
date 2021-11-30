@@ -47,16 +47,16 @@ hi PmenuThumb cterm=NONE ctermfg=233 ctermbg=NONE
 hi SpecialKey cterm=NONE ctermfg=233 ctermbg=NONE
 hi MatchParen cterm=NONE ctermfg=202 ctermbg=NONE
 
-hi CursorLineNr cterm=bold ctermbg=none ctermfg=202
-hi Cursorline   term=bold cterm=bold ctermbg=none
+hi CursorLineNr cterm=NONE ctermbg=NONE ctermfg=202
+hi Cursorline   cterm=NONE ctermbg=233
 hi TablineFill  ctermbg=233 ctermfg=233
-hi TablineSel   ctermbg=none ctermfg=202
-hi VertSplit    cterm=none ctermbg=none ctermfg=233
-hi Statusline   cterm=none ctermbg=none ctermfg=233
-hi StatusLinenc cterm=none ctermbg=none ctermfg=214
-hi SpecialKey   cterm=none ctermbg=none ctermfg=Yellow
-hi Visual       cterm=bold ctermbg=238 ctermfg=none
-hi LineNr       cterm=none ctermbg=none ctermfg=246
+hi TablineSel   ctermbg=NONE ctermfg=202
+hi VertSplit    cterm=NONE ctermbg=NONE ctermfg=233
+hi Statusline   cterm=NONE ctermbg=NONE ctermfg=233
+hi StatusLinenc cterm=NONE ctermbg=NONE ctermfg=214
+hi SpecialKey   cterm=NONE ctermbg=NONE ctermfg=Yellow
+hi Visual       cterm=NONE ctermbg=238 ctermfg=NONE
+hi LineNr       cterm=NONE ctermbg=NONE ctermfg=246
 
 highlight! link Boolean _PURPLE
 highlight! link Delimiter _WHITE

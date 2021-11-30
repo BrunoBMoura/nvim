@@ -42,11 +42,11 @@ set cursorline
 set tabline=%!CustomTabLine()
 set showtabline=2
 
-hi _GREEN_   term=bold cterm=bold ctermbg=233 ctermfg=82
-hi _ORANGE_  term=bold cterm=bold ctermbg=233 ctermfg=202
-hi _BLUE_    term=bold cterm=bold ctermbg=233 ctermfg=45
-hi _YELLOW_  term=bold cterm=bold ctermbg=233 ctermfg=214
-hi _GREY_    term=bold cterm=bold ctermbg=233 ctermfg=246
+hi _GREEN_  cterm=NONE ctermbg=233 ctermfg=82
+hi _ORANGE_ cterm=NONE ctermbg=233 ctermfg=202
+hi _BLUE_   cterm=NONE ctermbg=233 ctermfg=45
+hi _YELLOW_ cterm=NONE ctermbg=233 ctermfg=214
+hi _GREY_   cterm=NONE ctermbg=233 ctermfg=246
 
 set statusline=
 set statusline+=%#_ORANGE_#%{(mode()=='n')?\ '[NORMAL]\':''}
@@ -111,7 +111,7 @@ fun! CustomTabLine()
     return s
 endfun
 
-function! GitInfo()
+fun! GitInfo()
     let git = fugitive#head()
     if git != ''
         return ' '.fugitive#head()
