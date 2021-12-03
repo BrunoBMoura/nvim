@@ -160,9 +160,9 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'mg979/vim-visual-multi'                               " Multiple cursors editing
     Plug 'apzelos/blamer.nvim'                                  " VS-code like blaming on lines"
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Better syntax highlighting"
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }         " Fuzzy finder shenanigans
     Plug 'junegunn/fzf.vim'
-    Plug 'numToStr/Comment.nvim'
+    Plug 'numToStr/Comment.nvim'                                " Better commenting throughout code
 call plug#end()
 
 let g:NERDTreeStatusline =" "
@@ -191,10 +191,12 @@ let mapleader=" "
 :vnoremap ; :call StonksReplace()<CR>
 :nnoremap <F1> :tabp<CR>
 :nnoremap <F2> :tabn<CR>
-:nnoremap <leader>T :sp<bar>term<CR><C-w>J :resize20<CR>
+:nnoremap <leader>T :sp<bar>term<CR><C-w>J :resize20<CR>i
 :nnoremap <leader>t :NERDTreeToggle<CR>
 :nnoremap <leader>rw cw<C-r>0<C-c>
 :nnoremap <leader>w <C-s> :w<CR>
+:nnoremap <leader>q <C-s> :q<CR>
+:nnoremap <leader>Q <C-s> :q!<CR>
 " Resizing windows
 :nnoremap <leader>j :resize +2 <CR>
 :nnoremap <leader>k :resize -2 <CR>
@@ -209,3 +211,7 @@ let mapleader=" "
 " Find file or text
 :nnoremap <leader>ff :Files <CR>
 :nnoremap <leader>ft :Ag <CR>
+:nnoremap <leader>fg :GFiles <CR>
+" Git related
+:nnoremap <leader>gb :Git blame <CR>
+:nnoremap <leader>gs :Git status <CR>
