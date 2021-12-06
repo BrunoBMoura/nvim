@@ -35,9 +35,9 @@ hi Error      cterm=NONE ctermfg=197 ctermbg=NONE
 hi ErrorMsg   cterm=NONE ctermfg=160 ctermbg=NONE
 hi Search     cterm=NONE ctermfg=203 ctermbg=NONE
 hi IncSearch  cterm=reverse ctermfg=204 ctermbg=NONE
-hi DiffChange cterm=NONE ctermfg=197 ctermbg=NONE
+hi DiffChange cterm=NONE ctermfg=202 ctermbg=NONE
 hi DiffText   cterm=bold ctermfg=246 ctermbg=NONE
-hi SignColumn cterm=NONE ctermfg=197 ctermbg=NONE
+hi SignColumn cterm=NONE ctermfg=202 ctermbg=NONE
 hi SpellBad   cterm=undercurl ctermfg=White ctermbg=NONE
 hi SpellCap   cterm=NONE ctermfg=White ctermbg=NONE
 hi SpellRare  cterm=NONE ctermfg=Red ctermbg=NONE
@@ -88,8 +88,8 @@ highlight! link PreCondit Keyword
 highlight! link PreProc Keyword
 highlight! link Repeat _ORANGE
 highlight! link Special _ORANGE
-"highlight! link Special Keyword
 highlight! link SpecialChar Keyword
+highlight! link SpecialChar _ORANGE
 highlight! link StorageClass Keyword
 highlight! link SpecialComment String
 highlight! link Character Number
