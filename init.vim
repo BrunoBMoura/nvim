@@ -26,8 +26,8 @@ set wildmenu
 set wildmode=list:longest
 set autoread
 
-source appearance.vim
-source plugins.vim
+execute 'source $HOME/.config/nvim/appearance.vim'
+execute 'source $HOME/.config/nvim/plugins.vim'
 
 " Removes white spaces whenever saving files
 fun! TrimWhitespace()
