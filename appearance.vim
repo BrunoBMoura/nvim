@@ -1,6 +1,6 @@
 colorscheme miguekai
 
-hi _GREEN_  cterm=NONE ctermbg=233 ctermfg=82
+hi _PINK_  cterm=NONE ctermbg=233 ctermfg=168
 hi _ORANGE_ cterm=NONE ctermbg=233 ctermfg=202
 hi _BLUE_   cterm=NONE ctermbg=233 ctermfg=45
 hi _YELLOW_ cterm=NONE ctermbg=233 ctermfg=214
@@ -11,11 +11,11 @@ set statusline+=%#_ORANGE_#%{(mode()=='n')?\ '[NORMAL]\':''}
 set statusline+=%#_BLUE_#%{(mode()=='i')?\'[INSERT]\':''}
 set statusline+=%#_YELLOW_#%{(mode()=='v')?\'[VISUAL]\':''}
 set statusline+=%#_YELLOW_#%{(mode()=='V')?\'[VISUAL_LINE]\':''}
-set statusline+=%#_GREEN_#%{(mode()=='c')?\'[COMMAND]\':''}
+set statusline+=%#_PINK_#%{(mode()=='c')?\'[COMMAND]\':''}
 set statusline+=\%#_GREY_#[%f]
 
 set statusline+=%=
-set statusline+=\%#_GREEN_#[%{GitInfo()}]
+set statusline+=\%#_PINK_#[%{GitInfo()}]
 set statusline+=\%#_ORANGE_#\[%{&fileencoding?&fileencoding:&encoding}]
 set statusline+=\[%l\/%L,%c]
 set laststatus=2
