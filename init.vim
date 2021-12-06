@@ -1,21 +1,18 @@
-set path+=**
 filetype plugin on
 syntax on
-
+set path+=**
 set t_Co=256
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
 set autoindent
-
 set number
 set relativenumber
 set nohlsearch
 set hidden
 set noerrorbells
 set nowrap
-
 set nobackup
 set undodir=~/.config/nvim/undodir
 set undofile
@@ -26,6 +23,7 @@ set wildmenu
 set wildmode=list:longest
 set autoread
 
+" Sourcing auxiliar configuration files
 execute 'source $HOME/.config/nvim/appearance.vim'
 execute 'source $HOME/.config/nvim/plugins.vim'
 
@@ -57,13 +55,9 @@ fun! StonksSurround(s1, s2) range
   normal `b
   let lineB = line(".")
   let columnB = col(".")
-  " exchange marks
   if lineA > lineB || lineA <= lineB && columnA > columnB
-    " save b in c
     normal mc
-    " store a in b
     normal `amb
-    " set a to old b
     normal `cma
   endif
   exe "normal `ba" . a:s2 . "\<Esc>`ai" . a:s1 . "\<Esc>"
@@ -82,6 +76,7 @@ augroup BRUNO_POWER
 augroup END
 
 nnoremap <SPACE> <Nop>
+vnoremap <SPACE> <Nop>
 let mapleader=" "
 
 :vnoremap ; :call StonksReplace()<CR>
