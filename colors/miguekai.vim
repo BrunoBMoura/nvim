@@ -23,7 +23,7 @@ hi _YELLOW         cterm=NONE ctermfg=179 ctermbg=NONE
 hi _WHITE          cterm=NONE ctermfg=230 ctermbg=NONE
 hi _GREY           cterm=NONE ctermfg=250 ctermbg=NONE
 hi _BLACK          cterm=NONE ctermfg=233 ctermbg=NONE
-hi _LIGHT_BLUE     cterm=NONE ctermfg=123 ctermbg=NONE
+hi _LIGHT_BLUE     cterm=NONE ctermfg=45 ctermbg=NONE
 
 hi Normal     cterm=NONE ctermfg=230 ctermbg=NONE
 hi Keyword    cterm=NONE ctermfg=197 ctermbg=NONE
@@ -46,7 +46,6 @@ hi Pmenu      cterm=NONE ctermfg=230 ctermbg=NONE
 hi PmenuThumb cterm=NONE ctermfg=233 ctermbg=NONE
 hi SpecialKey cterm=NONE ctermfg=233 ctermbg=NONE
 hi MatchParen cterm=NONE ctermfg=202 ctermbg=NONE
-
 " Custom configurations
 hi CursorLineNr cterm=NONE ctermbg=NONE ctermfg=202
 hi Cursorline   cterm=NONE ctermbg=233
@@ -80,7 +79,7 @@ highlight! link Type _ORANGE
 highlight! link Typedef _ORANGE
 highlight! link Todo Keyword
 highlight! link Label _ORANGE
-highlight! link Define _ORANGE
+highlight! link Define Keyword
 highlight! link DiffAdd Keyword
 highlight! link diffAdded Keyword
 highlight! link diffCommon Keyword
@@ -90,7 +89,6 @@ highlight! link PreProc Keyword
 highlight! link Repeat _ORANGE
 highlight! link Special _ORANGE
 highlight! link SpecialChar Keyword
-highlight! link SpecialChar _ORANGE
 highlight! link StorageClass Keyword
 highlight! link SpecialComment String
 highlight! link Character Number
