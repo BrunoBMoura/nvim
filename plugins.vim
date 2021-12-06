@@ -1,6 +1,5 @@
 call plug#begin('~/.config/nvim/plugged')
     Plug 'preservim/nerdtree'                                   " File explorer
-    Plug 'chun-yang/auto-pairs'                                 " Create auto parenthesis an other symbols pairs
     Plug 'tpope/vim-fugitive'                                   " Git integration inside vim
     Plug 'mg979/vim-visual-multi'                               " Multiple cursors editing
     Plug 'apzelos/blamer.nvim'                                  " VS-code like blaming on lines"

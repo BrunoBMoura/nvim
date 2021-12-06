@@ -48,6 +48,27 @@ fun! StonksReplace()
     execute ":%s/".selection."/".change."/g"
 endfun
 
+" Surrounds text (from vim fandom)
+fun! StonksSurround(s1, s2) range
+  exe "normal vgvmboma\<Esc>"
+  normal `a
+  let lineA = line(".")
+  let columnA = col(".")
+  normal `b
+  let lineB = line(".")
+  let columnB = col(".")
+  " exchange marks
+  if lineA > lineB || lineA <= lineB && columnA > columnB
+    " save b in c
+    normal mc
+    " store a in b
+    normal `amb
+    " set a to old b
+    normal `cma
+  endif
+  exe "normal `ba" . a:s2 . "\<Esc>`ai" . a:s1 . "\<Esc>"
+endfun
+
 augroup BRUNO_POWER
     autocmd!
     " Always before saving the file remove unnecessary white spaces
@@ -71,15 +92,12 @@ let mapleader=" "
 :nnoremap <leader>rw cw<C-r>0<C-c>
 :nnoremap <leader>w <C-s> :w<CR>
 :nnoremap <leader>q <C-s> :q<CR>
-:nnoremap <leader>Q <C-s> :q!<CR>
-" Resizing windows
+:nnoremap <leader Q <C-s> :q!<CR>
+" Resizing window
 :nnoremap <leader>j :resize +2 <CR>
 :nnoremap <leader>k :resize -2 <CR>
 :nnoremap <leader>h :vertical resize +2 <CR>
 :nnoremap <leader>l :vertical resize -2 <CR>
-" Move selection during visual line mode
-:vnoremap J :m '>+1'<CR>gv=gv
-:vnoremap K :m '<-2'<CR>gv=gv
 " Better identing in visual mode
 :vnoremap <Tab> >gv
 :vnoremap <S-Tab> <gv
@@ -90,3 +108,10 @@ let mapleader=" "
 " Git related
 :nnoremap <leader>gb :Git blame <CR>
 :nnoremap <leader>gs :Git status <CR>
+" Move selection during visual line mode
+:vnoremap J :m '>+1'<CR>gv=gv
+:vnoremap K :m '<-2'<CR>gv=gv
+" Surrounding on visual mode
+vnoremap <leader>( :call StonksSurround('(', ')')<CR>
+vnoremap <leader>[ :call StonksSurround('[', ']')<CR>
+vnoremap <leader>{ :call StonksSurround('{', '}')<CR>
