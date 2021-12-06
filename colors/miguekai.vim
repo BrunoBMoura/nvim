@@ -47,10 +47,11 @@ hi PmenuThumb cterm=NONE ctermfg=233 ctermbg=NONE
 hi SpecialKey cterm=NONE ctermfg=233 ctermbg=NONE
 hi MatchParen cterm=NONE ctermfg=202 ctermbg=NONE
 
+" Custom configurations
 hi CursorLineNr cterm=NONE ctermbg=NONE ctermfg=202
 hi Cursorline   cterm=NONE ctermbg=233
-hi TablineFill  ctermbg=233 ctermfg=233
-hi TablineSel   ctermbg=NONE ctermfg=202
+hi TablineFill  cterm=NONE ctermbg=Black ctermfg=Black
+hi TablineSel   cterm=NONE ctermbg=NONE ctermfg=202
 hi VertSplit    cterm=NONE ctermbg=NONE ctermfg=233
 hi Statusline   cterm=NONE ctermbg=NONE ctermfg=233
 hi StatusLinenc cterm=NONE ctermbg=NONE ctermfg=214
