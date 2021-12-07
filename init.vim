@@ -63,12 +63,17 @@ fun! StonksSurround(s1, s2) range
   exe "normal `ba" . a:s2 . "\<Esc>`ai" . a:s1 . "\<Esc>"
 endfun
 
+" Shows current function name
+fun! StonksFuncName()
+  echohl ModeMsg
+  echo getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bWn'))
+  echohl None
+endfun
+
 augroup BRUNO_POWER
     autocmd!
     " Always before saving the file remove unnecessary white spaces
     autocmd BufWritePre * :call TrimWhitespace()
-    " Start NERDTree and leave the cursor in it.
-   " autocmd VimEnter * NERDTree
     " Open the existing NERDTree on each new tab
     autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
     " Close the tab if NERDTree is the only window remaining in it.
@@ -84,6 +89,7 @@ let mapleader=" "
 :nnoremap <F2> :tabn<CR>
 :nnoremap <leader>T :sp<bar>term<CR><C-w>J :resize20<CR>i
 :nnoremap <leader>t :NERDTreeToggle<CR>
+:nnoremap <leader>F :NERDTreeFind<CR>
 :nnoremap <leader>rw cw<C-r>0<C-c>
 :nnoremap <leader>w <C-s> :w<CR>
 :nnoremap <leader>q <C-s> :q<CR>
@@ -107,9 +113,11 @@ let mapleader=" "
 :vnoremap J :m '>+1'<CR>gv=gv
 :vnoremap K :m '<-2'<CR>gv=gv
 " Surrounding on visual mode
-vnoremap <leader>( :call StonksSurround('(', ')')<CR>
-vnoremap <leader>[ :call StonksSurround('[', ']')<CR>
-vnoremap <leader>{ :call StonksSurround('{', '}')<CR>
+:vnoremap <leader>( :call StonksSurround('(', ')')<CR>
+:vnoremap <leader>[ :call StonksSurround('[', ']')<CR>
+:vnoremap <leader>{ :call StonksSurround('{', '}')<CR>
+
+:nnoremap <F9> :call StonksFuncName() <CR>
 :nnoremap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
