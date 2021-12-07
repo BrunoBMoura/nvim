@@ -1,18 +1,5 @@
 let g:colors_name = "miguekai"
 
-" green = 82
-" red = 197
-" orange = 202
-" blue = 33
-" purple = 134
-" pink = 200
-" yellow = 230
-" white = 230
-" grey = 250
-" dark grey = 238
-" black = 233
-" skin = 120
-
 hi _GREEN          cterm=NONE ctermfg=82 ctermbg=NONE
 hi _RED            cterm=NONE ctermfg=197 ctermbg=NONE
 hi _ORANGE         cterm=NONE ctermfg=202 ctermbg=NONE
@@ -23,7 +10,7 @@ hi _YELLOW         cterm=NONE ctermfg=179 ctermbg=NONE
 hi _WHITE          cterm=NONE ctermfg=230 ctermbg=NONE
 hi _GREY           cterm=NONE ctermfg=250 ctermbg=NONE
 hi _BLACK          cterm=NONE ctermfg=233 ctermbg=NONE
-hi _LIGHT_BLUE     cterm=NONE ctermfg=45 ctermbg=NONE
+hi _LIGHT_BLUE     cterm=NONE ctermfg=116 ctermbg=NONE
 
 hi Normal     cterm=NONE ctermfg=230 ctermbg=NONE
 hi Keyword    cterm=NONE ctermfg=197 ctermbg=NONE
@@ -58,53 +45,53 @@ hi SpecialKey   cterm=NONE ctermbg=NONE ctermfg=Yellow
 hi Visual       cterm=NONE ctermbg=238 ctermfg=NONE
 hi LineNr       cterm=NONE ctermbg=NONE ctermfg=246
 
-highlight! link Boolean _PURPLE
-highlight! link Delimiter _WHITE
-highlight! link Identifier _WHITE
-highlight! link Title Normal
-highlight! link Debug Normal
-highlight! link Exception Normal
-highlight! link FoldColumn Normal
-highlight! link Macro  _PURPLE
-highlight! link ModeMsg Normal
-highlight! link MoreMsg Normal
-highlight! link Question _PURPLE
-highlight! link Conditional _ORANGE
-highlight! link Statement _ORANGE
-highlight! link Operator _ORANGE
-highlight! link Structure _ORANGE
-highlight! link Function _LIGHT_BLUE
-highlight! link Include _RED
-highlight! link Type _ORANGE
-highlight! link Typedef _ORANGE
-highlight! link Todo Keyword
-highlight! link Label _ORANGE
-highlight! link Define Keyword
-highlight! link DiffAdd Keyword
-highlight! link diffAdded Keyword
-highlight! link diffCommon Keyword
-highlight! link Directory Keyword
-highlight! link PreCondit Keyword
-highlight! link PreProc Keyword
-highlight! link Repeat _ORANGE
-highlight! link Special _ORANGE
-highlight! link SpecialChar Keyword
-highlight! link StorageClass Keyword
+highlight! link Boolean        _PURPLE
+highlight! link Delimiter      _WHITE
+highlight! link Identifier     _WHITE
+highlight! link Title          Normal
+highlight! link Debug          Normal
+highlight! link Exception      Normal
+highlight! link FoldColumn     Normal
+highlight! link Macro          _PURPLE
+highlight! link ModeMsg        Normal
+highlight! link MoreMsg        Normal
+highlight! link Question       _PURPLE
+highlight! link Conditional    _ORANGE
+highlight! link Statement      _ORANGE
+highlight! link Operator       _ORANGE
+highlight! link Structure      _ORANGE
+highlight! link Function       _LIGHT_BLUE
+highlight! link Include        _RED
+highlight! link Type           _ORANGE
+highlight! link Typedef        _ORANGE
+highlight! link Todo           Keyword
+highlight! link Label          _ORANGE
+highlight! link Define         Keyword
+highlight! link DiffAdd        _ORANGE
+highlight! link diffAdded      Keyword
+highlight! link diffCommon     Keyword
+highlight! link Directory      Keyword
+highlight! link PreCondit      Keyword
+highlight! link PreProc        Keyword
+highlight! link Repeat         _ORANGE
+highlight! link Special        _ORANGE
+highlight! link SpecialChar    _ORANGE
+highlight! link StorageClass   Keyword
 highlight! link SpecialComment String
-highlight! link Character Number
-highlight! link Float Number
-highlight! link Tag Number
-highlight! link Folded Number
-highlight! link WarningMsg Number
-highlight! link iCursor SpecialKey
-highlight! link SpellLocal SpellCap
-highlight! link NonText Comment
-highlight! link DiffDelete Comment
-highlight! link diffRemoved Comment
-highlight! link PmenuSbar _WHITE
-highlight! link PmenuSel Visual
-highlight! link VisualNOS Visual
-highlight! link Cursor StatusLine
-highlight! link Underlined SpellRare
-highlight! link rstEmphasis SpellRare
-highlight! link diffChanged DiffChange
+highlight! link Character      Number
+highlight! link Float          Number
+highlight! link Tag            Number
+highlight! link Folded         Number
+highlight! link WarningMsg     Number
+highlight! link iCursor        SpecialKey
+highlight! link SpellLocal     SpellCap
+highlight! link NonText        Comment
+highlight! link DiffDelete     Comment
+highlight! link diffRemoved    Comment
+highlight! link PmenuSbar      _WHITE
+highlight! link PmenuSel       Visual
+highlight! link VisualNOS      Visual
+highlight! link Cursor         StatusLine
+highlight! link Underlined     SpellRare
+highlight! link rstEmphasis    SpellRare
+highlight! link diffChanged    DiffChange

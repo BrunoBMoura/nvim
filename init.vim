@@ -68,7 +68,7 @@ augroup BRUNO_POWER
     " Always before saving the file remove unnecessary white spaces
     autocmd BufWritePre * :call TrimWhitespace()
     " Start NERDTree and leave the cursor in it.
-    autocmd VimEnter * NERDTree
+   " autocmd VimEnter * NERDTree
     " Open the existing NERDTree on each new tab
     autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
     " Close the tab if NERDTree is the only window remaining in it.
