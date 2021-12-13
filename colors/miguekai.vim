@@ -13,32 +13,19 @@ let s:pink =       {"ctermfg" : "168"}
 let s:yellow =     {"ctermfg" : "179"}
 let s:white =      {"ctermfg" : "230"}
 let s:grey =       {"ctermfg" : "250"}
-let s:black =      {"ctermfg" : "233"}
-let s:light_blue = {"ctermfg" : "116"}
+let s:black =      {"ctermfg" : "234"}
+
+let s:light_blue = {"ctermfg" : "159"}
 let s:black_bg =   {"ctermfg" : "NONE"}
+let s:visual_grey = {"ctermfg": "240"}
+let s:identifier = {"ctermfg": "181"}
 
 function! s:h(group, fg, bg, attr)
     exec "hi " . a:group . " ctermbg=" . a:bg . " ctermfg=" . a:fg.ctermfg . " cterm=" . a:attr
 endfun
 
-hi _GREEN          cterm=NONE ctermfg=82 ctermbg=NONE
-hi _RED            cterm=NONE ctermfg=197 ctermbg=NONE
-hi _ORANGE         cterm=NONE ctermfg=202 ctermbg=NONE
-hi _BLUE           cterm=NONE ctermfg=45 ctermbg=NONE
-hi _PURPLE         cterm=NONE ctermfg=99 ctermbg=NONE
-hi _PINK           cterm=NONE ctermfg=200 ctermbg=NONE
-hi _YELLOW         cterm=NONE ctermfg=179 ctermbg=NONE
-hi _WHITE          cterm=NONE ctermfg=230 ctermbg=NONE
-hi _GREY           cterm=NONE ctermfg=250 ctermbg=NONE
-hi _BLACK          cterm=NONE ctermfg=233 ctermbg=NONE
-hi _LIGHT_BLUE     cterm=NONE ctermfg=116 ctermbg=NONE
-
+" UI colors
 call s:h("Normal", s:white, "NONE", "NONE")
-call s:h("Keyword", s:orange, "NONE", "NONE")
-call s:h("Constant", s:pink, "NONE", "NONE")
-call s:h("String", s:yellow, "NONE", "NONE")
-call s:h("Comment", s:grey, "NONE", "italic")
-call s:h("Number", s:yellow, "NONE", "NONE")
 call s:h("Error", s:red, "NONE", "NONE")
 call s:h("ErrorMsg", s:red, "NONE", "NONE")
 call s:h("Search", s:pink, "NONE", "NONE")
@@ -65,67 +52,100 @@ call s:h("VertSplit", s:black, "NONE", "NONE")
 call s:h("StatusLine", s:black, "NONE", "NONE")
 call s:h("StatusLineNc", s:black, "NONE", "NONE")
 call s:h("SpecialKey", s:yellow, "NONE", "NONE")
-call s:h("Visual", s:black_bg, s:grey.ctermfg, "NONE")
+call s:h("Visual", s:black_bg, s:visual_grey.ctermfg, "NONE")
 call s:h("LineNr", s:grey, "NONE", "NONE")
-" hi CursorLineNr cterm=NONE ctermbg=NONE ctermfg=202
-" hi Cursorline   cterm=NONE ctermbg=233
-" hi TablineFill  cterm=NONE ctermbg=Black ctermfg=Black
-" hi TablineSel   cterm=NONE ctermbg=NONE ctermfg=202
-" hi VertSplit    cterm=NONE ctermbg=NONE ctermfg=233
-" hi Statusline   cterm=NONE ctermbg=NONE ctermfg=233
-" hi StatusLinenc cterm=NONE ctermbg=NONE ctermfg=214
-" hi SpecialKey   cterm=NONE ctermbg=NONE ctermfg=Yellow
-" hi Visual       cterm=NONE ctermbg=238 ctermfg=NONE
-" hi LineNr       cterm=NONE ctermbg=NONE ctermfg=246
 
-highlight! link Boolean        _PURPLE
-highlight! link Delimiter      _WHITE
-highlight! link Identifier     _WHITE
-highlight! link Title          Normal
-highlight! link Debug          Normal
-highlight! link Exception      Normal
-highlight! link FoldColumn     Normal
-highlight! link Macro          _PURPLE
-highlight! link ModeMsg        Normal
-highlight! link MoreMsg        Normal
-highlight! link Question       _PURPLE
-highlight! link Conditional    _ORANGE
-highlight! link Statement      _ORANGE
-highlight! link Operator       _ORANGE
-highlight! link Structure      _ORANGE
-highlight! link Function       _LIGHT_BLUE
-highlight! link Include        _RED
-highlight! link Type           _ORANGE
-highlight! link Typedef        _ORANGE
-highlight! link Todo           Keyword
-highlight! link Label          _ORANGE
-highlight! link Define         Keyword
-highlight! link DiffAdd        _ORANGE
-highlight! link diffAdded      Keyword
-highlight! link diffCommon     Keyword
-highlight! link Directory      Keyword
-highlight! link PreCondit      Keyword
-highlight! link PreProc        Keyword
-highlight! link Repeat         _ORANGE
-highlight! link Special        _ORANGE
-highlight! link SpecialChar    _ORANGE
-highlight! link StorageClass   Keyword
-highlight! link SpecialComment String
-highlight! link Character      Number
-highlight! link Float          Number
-highlight! link Tag            Number
-highlight! link Folded         Number
-highlight! link WarningMsg     Number
-highlight! link iCursor        SpecialKey
-highlight! link SpellLocal     SpellCap
-highlight! link NonText        Comment
-highlight! link DiffDelete     Comment
-highlight! link diffRemoved    Comment
-highlight! link PmenuSbar      _WHITE
-highlight! link PmenuSel       Visual
-highlight! link VisualNOS      Visual
-highlight! link Cursor         StatusLine
-highlight! link Underlined     SpellRare
-highlight! link rstEmphasis    SpellRare
-highlight! link diffChanged    DiffChange
+" Syntax colors
+call s:h("Keyword", s:orange, "NONE", "NONE")
+call s:h("Comment", s:grey, "NONE", "italic")
+call s:h("Constant", s:pink, "NONE", "NONE")
+call s:h("String", s:yellow, "NONE", "NONE")
+call s:h("Number", s:yellow, "NONE", "NONE")
+call s:h("Float", s:yellow, "NONE", "NONE")
+call s:h("Character", s:yellow, "NONE", "NONE")
+call s:h("Boolean", s:purple, "NONE", "NONE")
+
+call s:h("Identifier", s:identifier, "NONE", "NONE")
+call s:h("Function", s:light_blue, "NONE", "NONE")
+call s:h("Statement", s:orange, "NONE", "NONE")
+call s:h("Conditional", s:orange, "NONE", "NONE")
+call s:h("Repeat", s:orange, "NONE", "NONE")
+call s:h("Label", s:identifier, "NONE", "NONE")
+call s:h("Operator", s:orange, "NONE", "NONE")
+call s:h("Keyword", s:orange, "NONE", "NONE")
+call s:h("Exception", s:pink, "NONE", "NONE")
+
+call s:h("PreProc", s:red, "NONE", "NONE")
+call s:h("Include", s:red, "NONE", "NONE")
+call s:h("Define", s:red, "NONE", "NONE")
+call s:h("PreCondit", s:red, "NONE", "NONE")
+call s:h("Macro", s:pink, "NONE", "NONE")
+
+call s:h("Type", s:orange, "NONE", "NONE")
+call s:h("StorageClass", s:orange, "NONE", "NONE")
+call s:h("Structure", s:orange, "NONE", "NONE")
+call s:h("Typedef", s:red, "NONE", "NONE")
+
+call s:h("Special", s:white, "NONE", "NONE")
+call s:h("SpecialChar", s:white, "NONE", "NONE")
+call s:h("Tag", s:yellow, "NONE", "NONE")
+call s:h("Delimiter", s:identifier, "NONE", "NONE")
+call s:h("SpecialComment", s:red, "NONE", "NONE")
+call s:h("Debug", s:red, "NONE", "NONE")
+call s:h("Underlined", s:red, "NONE", "NONE")
+call s:h("Ignore", s:green, "NONE", "NONE")
+call s:h("Error", s:red, "NONE", "NONE")
+call s:h("Todo", s:red, "NONE", "NONE")
+
+
+" highlight! link Boolean        _PURPLE
+" highlight! link Delimiter      _WHITE
+" highlight! link Identifier     _WHITE
+" highlight! link Title          Normal
+" highlight! link Debug          Normal
+" highlight! link Exception      Normal
+" highlight! link FoldColumn     Normal
+" highlight! link Macro          _PURPLE
+" highlight! link ModeMsg        Normal
+" highlight! link MoreMsg        Normal
+" highlight! link Question       _PURPLE
+" highlight! link Conditional    _ORANGE
+" highlight! link Statement      _ORANGE
+" highlight! link Operator       _ORANGE
+" highlight! link Structure      _ORANGE
+" highlight! link Function       _LIGHT_BLUE
+" highlight! link Include        _RED
+" highlight! link Type           _ORANGE
+" highlight! link Typedef        _ORANGE
+" highlight! link Todo           Keyword
+" highlight! link Label          _ORANGE
+" highlight! link Define         Keyword
+" highlight! link DiffAdd        _ORANGE
+" highlight! link diffAdded      Keyword
+" highlight! link diffCommon     Keyword
+" highlight! link Directory      Keyword
+" highlight! link PreCondit      Keyword
+" highlight! link PreProc        Keyword
+" highlight! link Repeat         _ORANGE
+" highlight! link Special        _ORANGE
+" highlight! link SpecialChar    _ORANGE
+" highlight! link StorageClass   Keyword
+" highlight! link SpecialComment String
+" highlight! link Character      Number
+" highlight! link Float          Number
+" highlight! link Tag            Number
+" highlight! link Folded         Number
+" highlight! link WarningMsg     Number
+" highlight! link iCursor        SpecialKey
+" highlight! link SpellLocal     SpellCap
+" highlight! link NonText        Comment
+" highlight! link DiffDelete     Comment
+" highlight! link diffRemoved    Comment
+" highlight! link PmenuSbar      _WHITE
+" highlight! link PmenuSel       Visual
+" highlight! link VisualNOS      Visual
+" highlight! link Cursor         StatusLine
+" highlight! link Underlined     SpellRare
+" highlight! link rstEmphasis    SpellRare
+" highlight! link diffChanged    DiffChange
 
