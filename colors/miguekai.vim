@@ -1,4 +1,25 @@
+set background=dark
+highlight clear
+syntax reset
+
 let g:colors_name = "miguekai"
+
+let s:green =      {"ctermfg" : "82"}
+let s:red =        {"ctermfg" : "197"}
+let s:orange =     {"ctermfg" : "203"}
+let s:blue =       {"ctermfg" : "45"}
+let s:purple =     {"ctermfg" : "99"}
+let s:pink =       {"ctermfg" : "168"}
+let s:yellow =     {"ctermfg" : "179"}
+let s:white =      {"ctermfg" : "230"}
+let s:grey =       {"ctermfg" : "250"}
+let s:black =      {"ctermfg" : "233"}
+let s:light_blue = {"ctermfg" : "116"}
+let s:black_bg =   {"ctermfg" : "NONE"}
+
+function! s:h(group, fg, bg, attr)
+    exec "hi " . a:group . " ctermbg=" . a:bg . " ctermfg=" . a:fg.ctermfg . " cterm=" . a:attr
+endfun
 
 hi _GREEN          cterm=NONE ctermfg=82 ctermbg=NONE
 hi _RED            cterm=NONE ctermfg=197 ctermbg=NONE
@@ -12,38 +33,50 @@ hi _GREY           cterm=NONE ctermfg=250 ctermbg=NONE
 hi _BLACK          cterm=NONE ctermfg=233 ctermbg=NONE
 hi _LIGHT_BLUE     cterm=NONE ctermfg=116 ctermbg=NONE
 
-hi Normal     cterm=NONE ctermfg=230 ctermbg=NONE
-hi Keyword    cterm=NONE ctermfg=197 ctermbg=NONE
-hi Constant   cterm=NONE ctermfg=168 ctermbg=NONE
-hi String     cterm=NONE ctermfg=179 ctermbg=NONE
-hi Comment    cterm=NONE ctermfg=246 ctermbg=NONE
-hi Number     cterm=NONE ctermfg=214 ctermbg=NONE
-hi Error      cterm=NONE ctermfg=197 ctermbg=NONE
-hi ErrorMsg   cterm=NONE ctermfg=160 ctermbg=NONE
-hi Search     cterm=NONE ctermfg=203 ctermbg=NONE
-hi IncSearch  cterm=reverse ctermfg=204 ctermbg=NONE
-hi DiffChange cterm=NONE ctermfg=202 ctermbg=NONE
-hi DiffText   cterm=bold ctermfg=246 ctermbg=NONE
-hi SignColumn cterm=NONE ctermfg=202 ctermbg=NONE
-hi SpellBad   cterm=undercurl ctermfg=White ctermbg=NONE
-hi SpellCap   cterm=NONE ctermfg=White ctermbg=NONE
-hi SpellRare  cterm=NONE ctermfg=Red ctermbg=NONE
-hi WildMenu   cterm=NONE ctermfg=246 ctermbg=NONE
-hi Pmenu      cterm=NONE ctermfg=230 ctermbg=NONE
-hi PmenuThumb cterm=NONE ctermfg=233 ctermbg=NONE
-hi SpecialKey cterm=NONE ctermfg=233 ctermbg=NONE
-hi MatchParen cterm=NONE ctermfg=202 ctermbg=NONE
+call s:h("Normal", s:white, "NONE", "NONE")
+call s:h("Keyword", s:orange, "NONE", "NONE")
+call s:h("Constant", s:pink, "NONE", "NONE")
+call s:h("String", s:yellow, "NONE", "NONE")
+call s:h("Comment", s:grey, "NONE", "italic")
+call s:h("Number", s:yellow, "NONE", "NONE")
+call s:h("Error", s:red, "NONE", "NONE")
+call s:h("ErrorMsg", s:red, "NONE", "NONE")
+call s:h("Search", s:pink, "NONE", "NONE")
+call s:h("IncSearch", s:pink, "NONE", "reverse")
+call s:h("DiffChange", s:orange, "NONE", "reverse")
+call s:h("DiffText", s:orange, "NONE", "bold")
+call s:h("SignColumn", s:orange, "NONE", "NONE")
+call s:h("SpellBad", s:white, "NONE", "undercurl")
+call s:h("SpellCap", s:white, "NONE", "NONE")
+call s:h("SpellRare", s:red, "NONE", "NONE")
+call s:h("WildMenu", s:grey, "NONE", "NONE")
+call s:h("Pmenu", s:white, "NONE", "NONE")
+call s:h("PmenuThumb", s:black, "NONE", "NONE")
+call s:h("SpecialKey", s:black, "NONE", "NONE")
+call s:h("MatchParen", s:orange, "NONE", "NONE")
+call s:h("TabLineSel", s:orange, "NONE", "NONE")
+call s:h("StatusLine", s:black, "NONE", "NONE")
+
 " Custom configurations
-hi CursorLineNr cterm=NONE ctermbg=NONE ctermfg=202
-hi Cursorline   cterm=NONE ctermbg=233
-hi TablineFill  cterm=NONE ctermbg=Black ctermfg=Black
-hi TablineSel   cterm=NONE ctermbg=NONE ctermfg=202
-hi VertSplit    cterm=NONE ctermbg=NONE ctermfg=233
-hi Statusline   cterm=NONE ctermbg=NONE ctermfg=233
-hi StatusLinenc cterm=NONE ctermbg=NONE ctermfg=214
-hi SpecialKey   cterm=NONE ctermbg=NONE ctermfg=Yellow
-hi Visual       cterm=NONE ctermbg=238 ctermfg=NONE
-hi LineNr       cterm=NONE ctermbg=NONE ctermfg=246
+call s:h("CursorLineNr", s:orange, "NONE", "NONE")
+call s:h("CursorLine", s:black_bg, s:black.ctermfg, "NONE")
+call s:h("TabLineFill", s:black_bg, "NONE", "NONE")
+call s:h("VertSplit", s:black, "NONE", "NONE")
+call s:h("StatusLine", s:black, "NONE", "NONE")
+call s:h("StatusLineNc", s:black, "NONE", "NONE")
+call s:h("SpecialKey", s:yellow, "NONE", "NONE")
+call s:h("Visual", s:black_bg, s:grey.ctermfg, "NONE")
+call s:h("LineNr", s:grey, "NONE", "NONE")
+" hi CursorLineNr cterm=NONE ctermbg=NONE ctermfg=202
+" hi Cursorline   cterm=NONE ctermbg=233
+" hi TablineFill  cterm=NONE ctermbg=Black ctermfg=Black
+" hi TablineSel   cterm=NONE ctermbg=NONE ctermfg=202
+" hi VertSplit    cterm=NONE ctermbg=NONE ctermfg=233
+" hi Statusline   cterm=NONE ctermbg=NONE ctermfg=233
+" hi StatusLinenc cterm=NONE ctermbg=NONE ctermfg=214
+" hi SpecialKey   cterm=NONE ctermbg=NONE ctermfg=Yellow
+" hi Visual       cterm=NONE ctermbg=238 ctermfg=NONE
+" hi LineNr       cterm=NONE ctermbg=NONE ctermfg=246
 
 highlight! link Boolean        _PURPLE
 highlight! link Delimiter      _WHITE
@@ -95,3 +128,4 @@ highlight! link Cursor         StatusLine
 highlight! link Underlined     SpellRare
 highlight! link rstEmphasis    SpellRare
 highlight! link diffChanged    DiffChange
+

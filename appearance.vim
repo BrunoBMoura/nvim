@@ -1,5 +1,5 @@
 colorscheme miguekai
-
+" colorscheme onehalfdark
 hi _PINK_  cterm=NONE ctermbg=233 ctermfg=168
 hi _ORANGE_ cterm=NONE ctermbg=233 ctermfg=202
 hi _BLUE_   cterm=NONE ctermbg=233 ctermfg=45

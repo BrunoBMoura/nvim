@@ -7,6 +7,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }         " Fuzzy finder shenanigans
     Plug 'junegunn/fzf.vim'
     Plug 'numToStr/Comment.nvim'                                " Better commenting throughout code
+    Plug 'sonph/onehalf', { 'rtp': 'vim' }
 call plug#end()
 
 let g:NERDTreeStatusline =" "
