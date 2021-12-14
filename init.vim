@@ -48,26 +48,26 @@ endfun
 
 " Surrounds text (from vim fandom)
 fun! StonksSurround(s1, s2) range
-  exe "normal vgvmboma\<Esc>"
-  normal `a
-  let lineA = line(".")
-  let columnA = col(".")
-  normal `b
-  let lineB = line(".")
-  let columnB = col(".")
-  if lineA > lineB || lineA <= lineB && columnA > columnB
-    normal mc
-    normal `amb
-    normal `cma
-  endif
-  exe "normal `ba" . a:s2 . "\<Esc>`ai" . a:s1 . "\<Esc>"
+    exe "normal vgvmboma\<Esc>"
+    normal `a
+    let lineA = line(".")
+    let columnA = col(".")
+    normal `b
+    let lineB = line(".")
+    let columnB = col(".")
+    if lineA > lineB || lineA <= lineB && columnA > columnB
+        normal mc
+        normal `amb
+        normal `cma
+    endif
+    exe "normal `ba" . a:s2 . "\<Esc>`ai" . a:s1 . "\<Esc>"
 endfun
 
 " Shows current function name
 fun! StonksFuncName()
-  echohl ModeMsg
-  echo getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bWn'))
-  echohl None
+    echohl ModeMsg
+    echo getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bWn'))
+    echohl None
 endfun
 
 function! SynStack()
@@ -121,8 +121,10 @@ let mapleader=" "
 :vnoremap <leader>( :call StonksSurround('(', ')')<CR>
 :vnoremap <leader>[ :call StonksSurround('[', ']')<CR>
 :vnoremap <leader>{ :call StonksSurround('{', '}')<CR>
+:vnoremap <leader>' :call StonksSurround(''', ''')<CR>
+:vnoremap <leader>" :call StonksSurround('"', '"')<CR>
+" Random
 :nnoremap <F9> :call StonksFuncName() <CR>
-
 :nmap <leader>W :call <SID>SynStack()<CR>
 function! <SID>SynStack()
   if !exists("*synstack")
