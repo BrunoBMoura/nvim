@@ -8,9 +8,9 @@ let s:green =  "122"
 let s:red =    "197"
 let s:orange = "203"
 let s:blue =   "45"
-let s:purple = "99"
+let s:purple = "105"
 let s:pink =   "168"
-let s:yellow = "179"
+let s:yellow = "215"
 let s:white =  "230"
 let s:grey =   "250"
 let s:black =  "234"
@@ -67,7 +67,8 @@ call s:term_highlight("Character", s:yellow, "NONE", "NONE")
 call s:term_highlight("Boolean", s:purple, "NONE", "NONE")
 
 call s:term_highlight("Identifier", s:identifier, "NONE", "NONE")
-call s:term_highlight("Function", s:light_blue, "NONE", "NONE")
+" call s:term_highlight("Function", s:light_blue, "NONE", "NONE")
+call s:term_highlight("Function", s:white, "NONE", "NONE")
 call s:term_highlight("Statement", s:orange, "NONE", "NONE")
 call s:term_highlight("Conditional", s:orange, "NONE", "NONE")
 call s:term_highlight("Repeat", s:orange, "NONE", "NONE")

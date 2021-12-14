@@ -1,10 +1,10 @@
 colorscheme miguekai
 
 hi _PINK_  cterm=NONE ctermbg=234 ctermfg=168
-hi _ORANGE_ cterm=NONE ctermbg=234 ctermfg=202
-hi _BLUE_   cterm=NONE ctermbg=234 ctermfg=45
-hi _YELLOW_ cterm=NONE ctermbg=234 ctermfg=214
-hi _GREY_   cterm=NONE ctermbg=234 ctermfg=246
+hi _ORANGE_ cterm=NONE ctermbg=234 ctermfg=203
+hi _BLUE_   cterm=NONE ctermbg=234 ctermfg=159
+hi _YELLOW_ cterm=NONE ctermbg=234 ctermfg=215
+hi _GREY_   cterm=NONE ctermbg=234 ctermfg=250
 
 set statusline=
 set statusline+=%#_ORANGE_#%{(mode()=='n')?\ '[NORMAL]\':''}
