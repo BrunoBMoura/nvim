@@ -2,22 +2,31 @@ set background=dark
 highlight clear
 syntax reset
 
-let g:colors_name = "miguekai"
+let g:colors_name = "caramel"
+let g:caramel_statusline = 1
 
-let s:green =  "122"
-let s:red =    "197"
-let s:orange = "203"
-let s:blue =   "45"
-let s:purple = "105"
-let s:pink =   "168"
-let s:yellow = "215"
-let s:white =  "230"
-let s:grey =   "250"
-let s:black =  "234"
-
-let s:light_blue = "159"
+let s:green       = "122"
+let s:red         = "197"
+let s:orange      = "203"
+let s:blue        = "45"
+let s:purple      = "105"
+let s:pink        = "168"
+let s:yellow      = "215"
+let s:white       = "230"
+let s:grey        = "250"
+let s:black       = "234"
+let s:light_blue  = "195"
 let s:visual_grey = "240"
-let s:identifier = "181"
+let s:identifier  = "181"
+
+if g:caramel_statusline == 1
+    let g:orange      = "203"
+    let g:pink        = "168"
+    let g:yellow      = "215"
+    let g:grey        = "250"
+    let g:black       = "234"
+    let g:light_blue  = "195"
+endif
 
 function! s:term_highlight(group, fg, bg, attr)
     exec "hi " . a:group . " ctermbg=" . a:bg . " ctermfg=" . a:fg. " cterm=" . a:attr
@@ -38,7 +47,6 @@ call s:term_highlight("SpellRare", s:red, "NONE", "NONE")
 call s:term_highlight("WildMenu", s:grey, "NONE", "NONE")
 call s:term_highlight("Pmenu", s:white, "NONE", "NONE")
 call s:term_highlight("PmenuThumb", s:black, "NONE", "NONE")
-call s:term_highlight("SpecialKey", s:black, "NONE", "NONE")
 call s:term_highlight("MatchParen", s:orange, "NONE", "NONE")
 call s:term_highlight("NonText", s:grey, "NONE", "NONE")
 
@@ -67,8 +75,7 @@ call s:term_highlight("Character", s:yellow, "NONE", "NONE")
 call s:term_highlight("Boolean", s:purple, "NONE", "NONE")
 
 call s:term_highlight("Identifier", s:identifier, "NONE", "NONE")
-" call s:term_highlight("Function", s:light_blue, "NONE", "NONE")
-call s:term_highlight("Function", s:white, "NONE", "NONE")
+call s:term_highlight("Function", s:light_blue, "NONE", "NONE")
 call s:term_highlight("Statement", s:orange, "NONE", "NONE")
 call s:term_highlight("Conditional", s:orange, "NONE", "NONE")
 call s:term_highlight("Repeat", s:orange, "NONE", "NONE")
@@ -91,7 +98,7 @@ call s:term_highlight("Typedef", s:red, "NONE", "NONE")
 call s:term_highlight("Special", s:white, "NONE", "NONE")
 call s:term_highlight("SpecialChar", s:white, "NONE", "NONE")
 call s:term_highlight("Tag", s:yellow, "NONE", "NONE")
-call s:term_highlight("Delimiter", s:identifier, "NONE", "NONE")
+call s:term_highlight("Delimiter", s:white, "NONE", "NONE")
 call s:term_highlight("SpecialComment", s:red, "NONE", "NONE")
 call s:term_highlight("Debug", s:red, "NONE", "NONE")
 call s:term_highlight("Underlined", s:red, "NONE", "NONE")
@@ -99,55 +106,25 @@ call s:term_highlight("Ignore", s:green, "NONE", "NONE")
 call s:term_highlight("Error", s:red, "NONE", "NONE")
 call s:term_highlight("Todo", s:red, "NONE", "NONE")
 
+call s:term_highlight("Directory", s:light_blue, "NONE", "NONE")
+call s:term_highlight("FoldColumn", s:yellow, "NONE", "NONE")
+call s:term_highlight("ModeMsg", s:yellow, "NONE", "NONE")
+call s:term_highlight("MoreMsg", s:white, "NONE", "NONE")
+call s:term_highlight("Question", s:pink, "NONE", "NONE")
+call s:term_highlight("DiffAdd", s:pink, "NONE", "NONE")
+call s:term_highlight("diffAdded", s:red, "NONE", "NONE")
+call s:term_highlight("diffCommon", s:green, "NONE", "NONE")
+call s:term_highlight("Folded", s:green, "NONE", "NONE")
+call s:term_highlight("WarningMsg", s:green, "NONE", "NONE")
 
-" highlight! link Boolean        _PURPLE
-" highlight! link Delimiter      _WHITE
-" highlight! link Identifier     _WHITE
-" highlight! link Title          Normal
-" highlight! link Debug          Normal
-" highlight! link Exception      Normal
-" highlight! link FoldColumn     Normal
-" highlight! link Macro          _PURPLE
-" highlight! link ModeMsg        Normal
-" highlight! link MoreMsg        Normal
-" highlight! link Question       _PURPLE
-" highlight! link Conditional    _ORANGE
-" highlight! link Statement      _ORANGE
-" highlight! link Operator       _ORANGE
-" highlight! link Structure      _ORANGE
-" highlight! link Function       _LIGHT_BLUE
-" highlight! link Include        _RED
-" highlight! link Type           _ORANGE
-" highlight! link Typedef        _ORANGE
-" highlight! link Todo           Keyword
-" highlight! link Label          _ORANGE
-" highlight! link Define         Keyword
-" highlight! link DiffAdd        _ORANGE
-" highlight! link diffAdded      Keyword
-" highlight! link diffCommon     Keyword
-" highlight! link Directory      Keyword
-" highlight! link PreCondit      Keyword
-" highlight! link PreProc        Keyword
-" highlight! link Repeat         _ORANGE
-" highlight! link Special        _ORANGE
-" highlight! link SpecialChar    _ORANGE
-" highlight! link StorageClass   Keyword
-" highlight! link SpecialComment String
-" highlight! link Character      Number
-" highlight! link Float          Number
-" highlight! link Tag            Number
-" highlight! link Folded         Number
-" highlight! link WarningMsg     Number
 " highlight! link iCursor        SpecialKey
 " highlight! link SpellLocal     SpellCap
-" highlight! link NonText        Comment
 " highlight! link DiffDelete     Comment
 " highlight! link diffRemoved    Comment
 " highlight! link PmenuSbar      _WHITE
 " highlight! link PmenuSel       Visual
 " highlight! link VisualNOS      Visual
 " highlight! link Cursor         StatusLine
-" highlight! link Underlined     SpellRare
 " highlight! link rstEmphasis    SpellRare
 " highlight! link diffChanged    DiffChange
 

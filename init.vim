@@ -123,12 +123,7 @@ let mapleader=" "
 :vnoremap <leader>{ :call StonksSurround('{', '}')<CR>
 :vnoremap <leader>' :call StonksSurround(''', ''')<CR>
 :vnoremap <leader>" :call StonksSurround('"', '"')<CR>
+" Searching on visual mode
+:vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 " Random
 :nnoremap <F9> :call StonksFuncName() <CR>
-:nmap <leader>W :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc

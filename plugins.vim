@@ -14,6 +14,7 @@ let g:NERDTreeStatusline =" "
 let g:NERDTreeWinSize = 38      " Configure the size of the NERDTree tab
 let g:blamer_enabled = 1
 let g:blamer_prefix = ' >> '
+let g:caramel_statusline = 0
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {

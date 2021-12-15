@@ -1,24 +1,31 @@
-colorscheme miguekai
+colorscheme caramel
 
-hi _PINK_  cterm=NONE ctermbg=234 ctermfg=168
-hi _ORANGE_ cterm=NONE ctermbg=234 ctermfg=203
-hi _BLUE_   cterm=NONE ctermbg=234 ctermfg=159
-hi _YELLOW_ cterm=NONE ctermbg=234 ctermfg=215
-hi _GREY_   cterm=NONE ctermbg=234 ctermfg=250
+if g:caramel_statusline == 1
+    " Helper function to create highlight group colors
+    function! s:define_highlight(group_name, fg, bg, attr)
+        exec "hi " . a:group_name . " ctermbg=" . a:bg . " ctermfg=" . a:fg. " cterm=" . a:attr
+    endfun
 
-set statusline=
-set statusline+=%#_ORANGE_#%{(mode()=='n')?\ '[NORMAL]\':''}
-set statusline+=%#_BLUE_#%{(mode()=='i')?\'[INSERT]\':''}
-set statusline+=%#_YELLOW_#%{(mode()=='v')?\'[VISUAL]\':''}
-set statusline+=%#_YELLOW_#%{(mode()=='V')?\'[VISUAL_LINE]\':''}
-set statusline+=%#_PINK_#%{(mode()=='c')?\'[COMMAND]\':''}
-set statusline+=\%#_GREY_#[%f]
+    call s:define_highlight("_ORANGE_", g:orange, g:black, "NONE")
+    call s:define_highlight("_PINK_", g:pink, g:black, "NONE")
+    call s:define_highlight("_YELLOW_", g:yellow, g:black, "NONE")
+    call s:define_highlight("_GREY_", g:grey, g:black, "NONE")
+    call s:define_highlight("_BLUE_", g:light_blue, g:black, "NONE")
 
-set statusline+=%=
-set statusline+=\%#_PINK_#[%{GitInfo()}]
-set statusline+=\%#_ORANGE_#\[%{&fileencoding?&fileencoding:&encoding}]
-set statusline+=\[%l\/%L,%c]
-set laststatus=2
+    set statusline=
+    set statusline+=%#_ORANGE_#%{(mode()=='n')?\'[NORMAL]\':''}
+    set statusline+=%#_BLUE_#%{(mode()=='i')?\'[INSERT]\':''}
+    set statusline+=%#_YELLOW_#%{(mode()=='v')?\'[VISUAL]\':''}
+    set statusline+=%#_YELLOW_#%{(mode()=='V')?\'[VISUAL_LINE]\':''}
+    set statusline+=%#_PINK_#%{(mode()=='c')?\'[COMMAND]\':''}
+    set statusline+=\%#_GREY_#[%f]
+
+    set statusline+=%=
+    set statusline+=\%#_PINK_#[%{GitInfo()}]
+    set statusline+=\%#_ORANGE_#\[%{&fileencoding?&fileencoding:&encoding}]
+    set statusline+=\[%l\/%L,%c]
+    set laststatus=2
+endif
 
 set list
 set fillchars=fold:۰,diff:·
