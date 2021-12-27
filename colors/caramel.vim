@@ -3,7 +3,10 @@ highlight clear
 syntax reset
 
 let g:colors_name = "caramel"
-let g:caramel_statusline = 1
+
+if !exists('g:caramel_statusline ')
+    let g:caramel_statusline = 0
+endif
 
 let s:green       = "122"
 let s:red         = "197"
@@ -19,18 +22,36 @@ let s:light_blue  = "195"
 let s:visual_grey = "240"
 let s:identifier  = "181"
 
-if g:caramel_statusline == 1
-    let g:orange      = "203"
-    let g:pink        = "168"
-    let g:yellow      = "215"
-    let g:grey        = "250"
-    let g:black       = "234"
-    let g:light_blue  = "195"
-endif
+function! s:define_highlight(group_name, fg, bg, attr)
+    exec "hi " . a:group_name . " ctermbg=" . a:bg . " ctermfg=" . a:fg. " cterm=" . a:attr
+endfun
 
 function! s:term_highlight(group, fg, bg, attr)
-    exec "hi " . a:group . " ctermbg=" . a:bg . " ctermfg=" . a:fg. " cterm=" . a:attr
+    exec "hi! " . a:group . " ctermbg=" . a:bg . " ctermfg=" . a:fg. " cterm=" . a:attr
 endfun
+
+if g:caramel_statusline == 1
+
+    call s:define_highlight("_ORANGE_", s:orange, s:black, "NONE")
+    call s:define_highlight("_PINK_", s:pink, s:black, "NONE")
+    call s:define_highlight("_YELLOW_", s:yellow, s:black, "NONE")
+    call s:define_highlight("_GREY_", s:grey, s:black, "NONE")
+    call s:define_highlight("_BLUE_", s:light_blue, s:black, "NONE")
+
+    set statusline=
+    set statusline+=%#_ORANGE_#%{(mode()=='n')?\'[NORMAL]\':''}
+    set statusline+=%#_BLUE_#%{(mode()=='i')?\'[INSERT]\':''}
+    set statusline+=%#_YELLOW_#%{(mode()=='v')?\'[VISUAL]\':''}
+    set statusline+=%#_YELLOW_#%{(mode()=='V')?\'[VISUAL_LINE]\':''}
+    set statusline+=%#_PINK_#%{(mode()=='c')?\'[COMMAND]\':''}
+    set statusline+=\%#_GREY_#[%f]
+
+    set statusline+=%=
+    set statusline+=\%#_PINK_#[%{GitInfo()}]
+    set statusline+=\%#_ORANGE_#\[%{&fileencoding?&fileencoding:&encoding}]
+    set statusline+=\[%l\/%L,%c]
+    set laststatus=2
+endif
 
 " UI colors
 call s:term_highlight("Normal", s:white, "NONE", "NONE")
@@ -65,7 +86,8 @@ call s:term_highlight("Visual", "NONE", s:visual_grey, "NONE")
 call s:term_highlight("LineNr", s:grey, "NONE", "NONE")
 
 " Syntax colors
-call s:term_highlight("Keyword", s:orange, "NONE", "NONE")
+call s:term_highlight("StorageClass", s:green, "NONE", "NONE")
+call s:term_highlight("Keyword", s:pink, "NONE", "NONE")
 call s:term_highlight("Comment", s:grey, "NONE", "italic")
 call s:term_highlight("Constant", s:identifier, "NONE", "NONE")
 call s:term_highlight("String", s:yellow, "NONE", "NONE")
@@ -81,19 +103,17 @@ call s:term_highlight("Conditional", s:orange, "NONE", "NONE")
 call s:term_highlight("Repeat", s:orange, "NONE", "NONE")
 call s:term_highlight("Label", s:identifier, "NONE", "NONE")
 call s:term_highlight("Operator", s:orange, "NONE", "NONE")
-call s:term_highlight("Keyword", s:orange, "NONE", "NONE")
-call s:term_highlight("Exception", s:pink, "NONE", "NONE")
+call s:term_highlight("Exception", s:orange, "NONE", "NONE")
+
+call s:term_highlight("Type", s:orange, "NONE", "NONE")
+call s:term_highlight("Structure", s:red, "NONE", "NONE")
+call s:term_highlight("Typedef", s:red, "NONE", "NONE")
 
 call s:term_highlight("PreProc", s:red, "NONE", "NONE")
 call s:term_highlight("Include", s:red, "NONE", "NONE")
 call s:term_highlight("Define", s:red, "NONE", "NONE")
 call s:term_highlight("PreCondit", s:red, "NONE", "NONE")
 call s:term_highlight("Macro", s:pink, "NONE", "NONE")
-
-call s:term_highlight("Type", s:orange, "NONE", "NONE")
-call s:term_highlight("StorageClass", s:green, "NONE", "NONE")
-call s:term_highlight("Structure", s:red, "NONE", "NONE")
-call s:term_highlight("Typedef", s:red, "NONE", "NONE")
 
 call s:term_highlight("Special", s:white, "NONE", "NONE")
 call s:term_highlight("SpecialChar", s:white, "NONE", "NONE")
@@ -105,6 +125,7 @@ call s:term_highlight("Underlined", s:red, "NONE", "NONE")
 call s:term_highlight("Ignore", s:green, "NONE", "NONE")
 call s:term_highlight("Error", s:red, "NONE", "NONE")
 call s:term_highlight("Todo", s:red, "NONE", "NONE")
+call s:term_highlight("Conceal", s:red, "NONE", "NONE")
 
 call s:term_highlight("Directory", s:light_blue, "NONE", "NONE")
 call s:term_highlight("FoldColumn", s:yellow, "NONE", "NONE")
@@ -117,14 +138,12 @@ call s:term_highlight("diffCommon", s:green, "NONE", "NONE")
 call s:term_highlight("Folded", s:green, "NONE", "NONE")
 call s:term_highlight("WarningMsg", s:green, "NONE", "NONE")
 
-" highlight! link iCursor        SpecialKey
 " highlight! link SpellLocal     SpellCap
 " highlight! link DiffDelete     Comment
 " highlight! link diffRemoved    Comment
 " highlight! link PmenuSbar      _WHITE
 " highlight! link PmenuSel       Visual
 " highlight! link VisualNOS      Visual
-" highlight! link Cursor         StatusLine
 " highlight! link rstEmphasis    SpellRare
 " highlight! link diffChanged    DiffChange
 
