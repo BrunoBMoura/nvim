@@ -39,6 +39,7 @@ if g:caramel_statusline == 1
     call s:define_highlight("_YELLOW_", s:yellow, s:black, "NONE")
     call s:define_highlight("_GREY_", s:grey, s:black, "NONE")
     call s:define_highlight("_BLUE_", s:light_blue, s:black, "NONE")
+    call s:define_highlight("_GREEN_", s:green, s:black, "NONE")
 
     set statusline=
     set statusline+=%#_ORANGE_#%{(mode()=='n')?\'[NORMAL]\':''}
@@ -49,7 +50,7 @@ if g:caramel_statusline == 1
     set statusline+=\%#_GREY_#[%f]
 
     set statusline+=%=
-    set statusline+=\%#_PINK_#[%{GitInfo()}]
+    set statusline+=\%#_GREEN_#[%{GitInfo()}]
     set statusline+=\%#_ORANGE_#\[%{&fileencoding?&fileencoding:&encoding}]
     set statusline+=\[%l\/%L,%c]
     set laststatus=2
@@ -90,7 +91,7 @@ call s:term_highlight("LineNr", s:grey, "NONE", "NONE")
 " Syntax colors
 call s:term_highlight("StorageClass", s:green, "NONE", "NONE")
 call s:term_highlight("Keyword", s:pink, "NONE", "NONE")
-call s:term_highlight("Comment", s:grey, "NONE", "italic")
+call s:term_highlight("Comment", s:grey, "NONE", "NONE")
 call s:term_highlight("Constant", s:identifier, "NONE", "NONE")
 call s:term_highlight("String", s:yellow, "NONE", "NONE")
 call s:term_highlight("Number", s:yellow, "NONE", "NONE")
@@ -99,7 +100,7 @@ call s:term_highlight("Character", s:yellow, "NONE", "NONE")
 call s:term_highlight("Boolean", s:purple, "NONE", "NONE")
 
 call s:term_highlight("Identifier", s:identifier, "NONE", "NONE")
-call s:term_highlight("Function", s:light_blue, "NONE", "NONE")
+call s:term_highlight("Function", s:light_blue, "NONE", "bold")
 call s:term_highlight("Statement", s:orange, "NONE", "NONE")
 call s:term_highlight("Conditional", s:orange, "NONE", "NONE")
 call s:term_highlight("Repeat", s:orange, "NONE", "NONE")
@@ -118,7 +119,7 @@ call s:term_highlight("PreCondit", s:red, "NONE", "NONE")
 call s:term_highlight("Macro", s:pink, "NONE", "NONE")
 
 call s:term_highlight("Special", s:green, "NONE", "NONE")
-call s:term_highlight("SpecialChar", s:red, "NONE", "NONE")
+call s:term_highlight("SpecialChar", s:purple, "NONE", "NONE")
 call s:term_highlight("Tag", s:yellow, "NONE", "NONE")
 call s:term_highlight("Delimiter", s:orange, "NONE", "NONE")
 call s:term_highlight("SpecialComment", s:red, "NONE", "NONE")
@@ -142,7 +143,7 @@ call s:term_highlight("WarningMsg", s:green, "NONE", "NONE")
 
 " Python: {{{
 " call s:define_highlight("_GREEN_", s:red, "NONE", "NONE")
-hi! link pythonBuiltin DiffAdd
+" hi! link pythonBuiltin DiffAdd
 " hi! link pythonBuiltinObj GruvboxOrange
 " hi! link pythonBuiltinFunc GruvboxOrange
 " hi! link pythonFunction GruvboxAqua
