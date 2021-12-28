@@ -7,13 +7,14 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }         " Fuzzy finder shenanigans (needs the_silver_searcher)
     Plug 'junegunn/fzf.vim'
     Plug 'numToStr/Comment.nvim'                                " Better commenting throughout code
+    " Plug 'morhetz/gruvbox'
 call plug#end()
 
 let g:NERDTreeStatusline =" "
 let g:NERDTreeWinSize = 38      " Configure the size of the NERDTree tab
 let g:blamer_enabled = 1
 let g:blamer_prefix = ' >> '
-let g:caramel_statusline = 0
+let g:caramel_statusline = 1
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {

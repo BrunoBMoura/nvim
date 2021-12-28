@@ -1,6 +1,8 @@
 set background=dark
-highlight clear
-syntax reset
+hi clear
+if exists("syntax_on")
+    syntax reset
+endif
 
 let g:colors_name = "caramel"
 
@@ -115,10 +117,10 @@ call s:term_highlight("Define", s:red, "NONE", "NONE")
 call s:term_highlight("PreCondit", s:red, "NONE", "NONE")
 call s:term_highlight("Macro", s:pink, "NONE", "NONE")
 
-call s:term_highlight("Special", s:white, "NONE", "NONE")
-call s:term_highlight("SpecialChar", s:white, "NONE", "NONE")
+call s:term_highlight("Special", s:green, "NONE", "NONE")
+call s:term_highlight("SpecialChar", s:red, "NONE", "NONE")
 call s:term_highlight("Tag", s:yellow, "NONE", "NONE")
-call s:term_highlight("Delimiter", s:white, "NONE", "NONE")
+call s:term_highlight("Delimiter", s:orange, "NONE", "NONE")
 call s:term_highlight("SpecialComment", s:red, "NONE", "NONE")
 call s:term_highlight("Debug", s:red, "NONE", "NONE")
 call s:term_highlight("Underlined", s:red, "NONE", "NONE")
@@ -137,6 +139,28 @@ call s:term_highlight("diffAdded", s:red, "NONE", "NONE")
 call s:term_highlight("diffCommon", s:green, "NONE", "NONE")
 call s:term_highlight("Folded", s:green, "NONE", "NONE")
 call s:term_highlight("WarningMsg", s:green, "NONE", "NONE")
+
+" Python: {{{
+" call s:define_highlight("_GREEN_", s:red, "NONE", "NONE")
+hi! link pythonBuiltin DiffAdd
+" hi! link pythonBuiltinObj GruvboxOrange
+" hi! link pythonBuiltinFunc GruvboxOrange
+" hi! link pythonFunction GruvboxAqua
+" hi! link pythonDecorator GruvboxRed
+" hi! link pythonInclude GruvboxBlue
+" hi! link pythonImport GruvboxBlue
+" hi! link pythonRun GruvboxBlue
+" hi! link pythonCoding GruvboxBlue
+" hi! link pythonOperator GruvboxRed
+" hi! link pythonException GruvboxRed
+" hi! link pythonExceptions GruvboxPurple
+" hi! link pythonBoolean GruvboxPurple
+" hi! link pythonDot GruvboxFg3
+" hi! link pythonConditional GruvboxRed
+" hi! link pythonRepeat GruvboxRed
+" hi! link pythonDottedName GruvboxGreenBold
+
+" }}}
 
 " highlight! link SpellLocal     SpellCap
 " highlight! link DiffDelete     Comment

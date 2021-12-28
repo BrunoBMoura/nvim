@@ -1,5 +1,4 @@
 colorscheme caramel
-let g:caramel_statusline = 1
 
 set list
 set fillchars=fold:۰,diff:·

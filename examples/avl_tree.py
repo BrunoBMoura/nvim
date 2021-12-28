@@ -67,7 +67,7 @@ class AVLTree:
             self._insert(self.root, node)
 
         self.num_nodes += 1
-        self.num_nodes = int(self.num_nodes)
+        self.num_nodes = int()
 
     def remove_node(self, key):
 

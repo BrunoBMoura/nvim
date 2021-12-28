@@ -24,8 +24,8 @@ set wildmode=list:longest
 set autoread
 
 " Sourcing auxiliar configuration files
-execute 'source $HOME/.config/nvim/appearance.vim'
 execute 'source $HOME/.config/nvim/plugins.vim'
+execute 'source $HOME/.config/nvim/appearance.vim'
 
 " Removes white spaces whenever saving files
 fun! TrimWhitespace()
@@ -128,3 +128,4 @@ let mapleader=" "
 :vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 " Random
 :nnoremap <F9> :call StonksFuncName() <CR>
+:nnoremap <F10> :call SynStack() <CR>
