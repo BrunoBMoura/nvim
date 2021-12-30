@@ -13,6 +13,7 @@ endif
 let s:green       = "122"
 let s:red         = "197"
 let s:orange      = "203"
+let s:sand = "216"
 let s:blue        = "45"
 let s:purple      = "105"
 let s:pink        = "168"
@@ -100,12 +101,12 @@ call s:term_highlight("Character", s:yellow, "NONE", "NONE")
 call s:term_highlight("Boolean", s:purple, "NONE", "NONE")
 
 call s:term_highlight("Identifier", s:identifier, "NONE", "NONE")
-call s:term_highlight("Function", s:light_blue, "NONE", "bold")
+call s:term_highlight("Function", s:light_blue, "NONE", "NONE")
 call s:term_highlight("Statement", s:orange, "NONE", "NONE")
 call s:term_highlight("Conditional", s:orange, "NONE", "NONE")
 call s:term_highlight("Repeat", s:orange, "NONE", "NONE")
 call s:term_highlight("Label", s:identifier, "NONE", "NONE")
-call s:term_highlight("Operator", s:orange, "NONE", "NONE")
+call s:term_highlight("Operator", s:sand, "NONE", "NONE")
 call s:term_highlight("Exception", s:orange, "NONE", "NONE")
 
 call s:term_highlight("Type", s:orange, "NONE", "NONE")
@@ -121,7 +122,7 @@ call s:term_highlight("Macro", s:pink, "NONE", "NONE")
 call s:term_highlight("Special", s:green, "NONE", "NONE")
 call s:term_highlight("SpecialChar", s:purple, "NONE", "NONE")
 call s:term_highlight("Tag", s:yellow, "NONE", "NONE")
-call s:term_highlight("Delimiter", s:orange, "NONE", "NONE")
+call s:term_highlight("Delimiter", s:sand, "NONE", "NONE")
 call s:term_highlight("SpecialComment", s:red, "NONE", "NONE")
 call s:term_highlight("Debug", s:red, "NONE", "NONE")
 call s:term_highlight("Underlined", s:red, "NONE", "NONE")
