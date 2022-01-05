@@ -13,15 +13,15 @@ endif
 let s:green       = "122"
 let s:red         = "197"
 let s:orange      = "203"
-let s:sand = "216"
-let s:blue        = "45"
+let s:orange2     = "173"
+let s:sand        = "216"
 let s:purple      = "105"
 let s:pink        = "168"
 let s:yellow      = "215"
 let s:white       = "230"
 let s:grey        = "250"
 let s:black       = "234"
-let s:light_blue  = "195"
+let s:blue        = "195"
 let s:visual_grey = "240"
 let s:identifier  = "181"
 
@@ -39,7 +39,7 @@ if g:caramel_statusline == 1
     call s:define_highlight("_PINK_", s:pink, s:black, "NONE")
     call s:define_highlight("_YELLOW_", s:yellow, s:black, "NONE")
     call s:define_highlight("_GREY_", s:grey, s:black, "NONE")
-    call s:define_highlight("_BLUE_", s:light_blue, s:black, "NONE")
+    call s:define_highlight("_BLUE_", s:blue, s:black, "NONE")
     call s:define_highlight("_GREEN_", s:green, s:black, "NONE")
 
     set statusline=
@@ -92,7 +92,7 @@ call s:term_highlight("LineNr", s:grey, "NONE", "NONE")
 " Syntax colors
 call s:term_highlight("StorageClass", s:green, "NONE", "NONE")
 call s:term_highlight("Keyword", s:pink, "NONE", "NONE")
-call s:term_highlight("Comment", s:grey, "NONE", "NONE")
+call s:term_highlight("Comment", s:grey, "NONE", "italic")
 call s:term_highlight("Constant", s:identifier, "NONE", "NONE")
 call s:term_highlight("String", s:yellow, "NONE", "NONE")
 call s:term_highlight("Number", s:yellow, "NONE", "NONE")
@@ -101,7 +101,7 @@ call s:term_highlight("Character", s:yellow, "NONE", "NONE")
 call s:term_highlight("Boolean", s:purple, "NONE", "NONE")
 
 call s:term_highlight("Identifier", s:identifier, "NONE", "NONE")
-call s:term_highlight("Function", s:light_blue, "NONE", "NONE")
+call s:term_highlight("Function", s:orange2, "NONE", "NONE")
 call s:term_highlight("Statement", s:orange, "NONE", "NONE")
 call s:term_highlight("Conditional", s:orange, "NONE", "NONE")
 call s:term_highlight("Repeat", s:orange, "NONE", "NONE")
@@ -122,7 +122,7 @@ call s:term_highlight("Macro", s:pink, "NONE", "NONE")
 call s:term_highlight("Special", s:green, "NONE", "NONE")
 call s:term_highlight("SpecialChar", s:purple, "NONE", "NONE")
 call s:term_highlight("Tag", s:yellow, "NONE", "NONE")
-call s:term_highlight("Delimiter", s:sand, "NONE", "NONE")
+call s:term_highlight("Delimiter", s:white, "NONE", "NONE")
 call s:term_highlight("SpecialComment", s:red, "NONE", "NONE")
 call s:term_highlight("Debug", s:red, "NONE", "NONE")
 call s:term_highlight("Underlined", s:red, "NONE", "NONE")
@@ -131,7 +131,7 @@ call s:term_highlight("Error", s:red, "NONE", "NONE")
 call s:term_highlight("Todo", s:red, "NONE", "NONE")
 call s:term_highlight("Conceal", s:red, "NONE", "NONE")
 
-call s:term_highlight("Directory", s:light_blue, "NONE", "NONE")
+call s:term_highlight("Directory", s:blue, "NONE", "NONE")
 call s:term_highlight("FoldColumn", s:yellow, "NONE", "NONE")
 call s:term_highlight("ModeMsg", s:yellow, "NONE", "NONE")
 call s:term_highlight("MoreMsg", s:white, "NONE", "NONE")
