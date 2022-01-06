@@ -20,7 +20,7 @@ let s:pink        = "168"
 let s:yellow      = "215"
 let s:white       = "230"
 let s:grey        = "250"
-let s:black       = "234"
+let s:black       = "233"
 let s:blue        = "195"
 let s:visual_grey = "240"
 let s:identifier  = "181"
@@ -94,14 +94,14 @@ call s:term_highlight("StorageClass", s:green, "NONE", "NONE")
 call s:term_highlight("Keyword", s:pink, "NONE", "NONE")
 call s:term_highlight("Comment", s:grey, "NONE", "italic")
 call s:term_highlight("Constant", s:identifier, "NONE", "NONE")
-call s:term_highlight("String", s:yellow, "NONE", "NONE")
+call s:term_highlight("String", s:orange2, "NONE", "NONE")
 call s:term_highlight("Number", s:yellow, "NONE", "NONE")
 call s:term_highlight("Float", s:yellow, "NONE", "NONE")
 call s:term_highlight("Character", s:yellow, "NONE", "NONE")
 call s:term_highlight("Boolean", s:purple, "NONE", "NONE")
 
 call s:term_highlight("Identifier", s:identifier, "NONE", "NONE")
-call s:term_highlight("Function", s:orange2, "NONE", "NONE")
+call s:term_highlight("Function", s:blue, "NONE", "NONE")
 call s:term_highlight("Statement", s:orange, "NONE", "NONE")
 call s:term_highlight("Conditional", s:orange, "NONE", "NONE")
 call s:term_highlight("Repeat", s:orange, "NONE", "NONE")
