@@ -22,7 +22,7 @@ let s:yellow      = "215"
 let s:white       = "230"
 let s:grey        = "250"
 let s:black       = "233"
-let s:blue        = "195"
+let s:blue        = "110"
 let s:dark_blue   = "87"
 let s:visual_grey = "240"
 let s:identifier  = "181"
@@ -144,9 +144,9 @@ call s:term_highlight("diffCommon", s:green, "NONE", "NONE")
 call s:term_highlight("Folded", s:green, "NONE", "NONE")
 call s:term_highlight("WarningMsg", s:green, "NONE", "NONE")
 
+
 " Python: {{{
-" call s:define_highlight("_GREEN_", s:red, "NONE", "NONE")
-hi! link pythonBuiltin Function
+" hi! link pythonBuiltin Function
 " hi! link pythonBuiltinObj GruvboxOrange
 " hi! link pythonBuiltinFunc GruvboxOrange
 " hi! link pythonFunction GruvboxAqua
