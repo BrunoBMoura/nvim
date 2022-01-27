@@ -1,4 +1,5 @@
 colorscheme napolitan
+
 set list
 set fillchars=fold:۰,diff:·
 set listchars=tab:»·,trail:·,eol:¬

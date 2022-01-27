@@ -12,7 +12,7 @@ endif
 
 let s:green       = "101"
 let s:dark_green  = "065"
-let s:blue        = "087"
+let s:blue        = "111"
 let s:dark_blue   = "110"
 let s:red         = "197"
 let s:orange      = "203"
