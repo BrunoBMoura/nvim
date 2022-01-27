@@ -4,10 +4,10 @@ if exists("syntax_on")
     syntax reset
 endif
 
-let g:colors_name = "caramel"
+let g:colors_name = "napolitan"
 
-if !exists('g:caramel_statusline ')
-    let g:caramel_statusline = 0
+if !exists('g:napolitan_statusline ')
+    let g:napolitan_statusline = 0
 endif
 
 let s:green       = "101"
@@ -35,7 +35,7 @@ function! s:term_highlight(group, fg, bg, attr)
     exec "hi! " . a:group . " ctermbg=" . a:bg . " ctermfg=" . a:fg. " cterm=" . a:attr
 endfun
 
-if g:caramel_statusline == 1
+if g:napolitan_statusline == 1
 
     call s:define_highlight("_ORANGE_", s:orange, s:black, "NONE")
     call s:define_highlight("_PINK_", s:pink, s:black, "NONE")
