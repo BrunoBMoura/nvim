@@ -54,7 +54,6 @@ class Node:
 class AVLTree:
 
     def __init__(self):
-
         self.root = None
         self.num_nodes = 0
 

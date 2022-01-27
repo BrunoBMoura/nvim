@@ -10,15 +10,16 @@ if !exists('g:caramel_statusline ')
     let g:caramel_statusline = 0
 endif
 
-let s:green       = "065"
-let s:dark_green  = "101"
-let s:blue        = "110"
-let s:dark_blue   = "087"
+let s:green       = "101"
+let s:dark_green  = "065"
+let s:blue        = "087"
+let s:dark_blue   = "110"
 let s:red         = "197"
 let s:orange      = "203"
 let s:sand        = "216"
 let s:purple      = "103"
-let s:pink        = "168"
+let s:pink        = "167"
+let s:dark_pink   = "168"
 let s:yellow      = "215"
 let s:black       = "233"
 let s:white       = "230"
@@ -91,14 +92,14 @@ call s:term_highlight("Visual", "NONE", s:visual_grey, "NONE")
 call s:term_highlight("LineNr", s:grey, "NONE", "NONE")
 
 " Syntax colors
-call s:term_highlight("StorageClass", s:green, "NONE", "NONE")
+call s:term_highlight("StorageClass", s:dark_green, "NONE", "NONE")
 call s:term_highlight("Keyword", s:pink, "NONE", "NONE")
 call s:term_highlight("Comment", s:grey, "NONE", "italic")
 call s:term_highlight("Constant", s:dark_grey, "NONE", "NONE")
-call s:term_highlight("String", s:dark_green, "NONE", "NONE")
+call s:term_highlight("String", s:green, "NONE", "NONE")
 call s:term_highlight("Number", s:white, "NONE", "NONE")
 call s:term_highlight("Float", s:white, "NONE", "NONE")
-call s:term_highlight("Character", s:dark_green, "NONE", "NONE")
+call s:term_highlight("Character", s:green, "NONE", "NONE")
 call s:term_highlight("Boolean", s:purple, "NONE", "NONE")
 
 call s:term_highlight("Identifier", s:dark_grey, "NONE", "NONE")
@@ -114,9 +115,9 @@ call s:term_highlight("Type", s:orange, "NONE", "NONE")
 call s:term_highlight("Structure", s:red, "NONE", "NONE")
 call s:term_highlight("Typedef", s:red, "NONE", "NONE")
 
-call s:term_highlight("PreProc", s:sand, "NONE", "NONE")
+call s:term_highlight("PreProc", s:dark_blue, "NONE", "NONE")
 call s:term_highlight("Include", s:sand, "NONE", "NONE")
-call s:term_highlight("Define", s:sand, "NONE", "NONE")
+call s:term_highlight("Define", s:dark_blue, "NONE", "NONE")
 call s:term_highlight("PreCondit", s:sand, "NONE", "NONE")
 call s:term_highlight("Macro", s:sand, "NONE", "NONE")
 
@@ -127,21 +128,21 @@ call s:term_highlight("Delimiter", s:white, "NONE", "NONE")
 call s:term_highlight("SpecialComment", s:red, "NONE", "NONE")
 call s:term_highlight("Debug", s:red, "NONE", "NONE")
 call s:term_highlight("Underlined", s:red, "NONE", "NONE")
-call s:term_highlight("Ignore", s:green, "NONE", "NONE")
+call s:term_highlight("Ignore", s:dark_green, "NONE", "NONE")
 call s:term_highlight("Error", s:red, "NONE", "NONE")
 call s:term_highlight("Todo", s:red, "NONE", "NONE")
 call s:term_highlight("Conceal", s:red, "NONE", "NONE")
 
-call s:term_highlight("Directory", s:green, "NONE", "NONE")
+call s:term_highlight("Directory", s:dark_green, "NONE", "NONE")
 call s:term_highlight("FoldColumn", s:yellow, "NONE", "NONE")
 call s:term_highlight("ModeMsg", s:yellow, "NONE", "NONE")
 call s:term_highlight("MoreMsg", s:white, "NONE", "NONE")
 call s:term_highlight("Question", s:pink, "NONE", "NONE")
 call s:term_highlight("DiffAdd", s:pink, "NONE", "NONE")
 call s:term_highlight("diffAdded", s:red, "NONE", "NONE")
-call s:term_highlight("diffCommon", s:green, "NONE", "NONE")
-call s:term_highlight("Folded", s:green, "NONE", "NONE")
-call s:term_highlight("WarningMsg", s:green, "NONE", "NONE")
+call s:term_highlight("diffCommon", s:dark_green, "NONE", "NONE")
+call s:term_highlight("Folded", s:dark_green, "NONE", "NONE")
+call s:term_highlight("WarningMsg", s:dark_green, "NONE", "NONE")
 
 
 " Python: {{{
@@ -162,6 +163,5 @@ call s:term_highlight("WarningMsg", s:green, "NONE", "NONE")
 " hi! link pythonConditional GruvboxRed
 " hi! link pythonRepeat GruvboxRed
 " hi! link pythonDottedName GruvboxGreenBold
-
 " }}}
 

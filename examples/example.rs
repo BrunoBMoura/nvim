@@ -9,6 +9,7 @@ fn first_word(word : &str) -> &str {
     &word[..]
 }
 
+#derive[debug]
 fn main() {
     let word = "Hello, world!";
     println!(" word is {}", word);
