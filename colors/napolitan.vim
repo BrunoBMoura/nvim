@@ -26,6 +26,8 @@ let s:white       = "230"
 let s:grey        = "250"
 let s:dark_grey   = "181"
 let s:visual_grey = "240"
+let s:cyan        = "152"
+let s:dark_cyan   = "189"
 
 function! s:define_highlight(group_name, fg, bg, attr)
     exec "hi " . a:group_name . " ctermbg=" . a:bg . " ctermfg=" . a:fg. " cterm=" . a:attr
@@ -121,7 +123,7 @@ call s:term_highlight("Define", s:dark_blue, "NONE", "NONE")
 call s:term_highlight("PreCondit", s:sand, "NONE", "NONE")
 call s:term_highlight("Macro", s:sand, "NONE", "NONE")
 
-call s:term_highlight("Special", s:yellow, "NONE", "NONE")
+call s:term_highlight("Special", s:cyan, "NONE", "NONE")
 call s:term_highlight("SpecialChar", s:purple, "NONE", "NONE")
 call s:term_highlight("Tag", s:yellow, "NONE", "NONE")
 call s:term_highlight("Delimiter", s:white, "NONE", "NONE")
