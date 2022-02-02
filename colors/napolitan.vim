@@ -110,7 +110,7 @@ call s:term_highlight("Statement", s:orange, "NONE", "NONE")
 call s:term_highlight("Conditional", s:orange, "NONE", "NONE")
 call s:term_highlight("Repeat", s:orange, "NONE", "NONE")
 call s:term_highlight("Label", s:dark_grey, "NONE", "NONE")
-call s:term_highlight("Operator", s:white, "NONE", "NONE")
+call s:term_highlight("Operator", s:yellow, "NONE", "NONE")
 call s:term_highlight("Exception", s:orange, "NONE", "NONE")
 
 call s:term_highlight("Type", s:orange, "NONE", "NONE")
