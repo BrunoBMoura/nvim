@@ -3,19 +3,11 @@
 import random
 import datetime
 
-class Dummy:
-
-    def __init__(self, qualquer):
-        self.qualquer = qualquer
-        self.data = [ele for ele in range(1000)]
-
-
 class DataGenerator:
 
     def __init__(self, file_name):
 
         self.file_name = file_name
-
 
     def generate_random_data(self, data_size, randomize = True):
 

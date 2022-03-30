@@ -7,8 +7,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }         " Fuzzy finder shenanigans (needs the_silver_searcher)
     Plug 'junegunn/fzf.vim'
     Plug 'numToStr/Comment.nvim'                                " Better commenting throughout code
-    "
     Plug 'airblade/vim-gitgutter'
+    Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 let g:NERDTreeStatusline =" "

@@ -95,11 +95,12 @@ let mapleader=" "
 :nnoremap <leader>T :sp<bar>term<CR><C-w>J :resize20<CR>i
 :nnoremap <leader>t :NERDTreeToggle<CR>
 :nnoremap <leader>F :NERDTreeFind<CR>
-:nnoremap <leader>m :MinimapToggle<CR>
 :nnoremap <leader>rw cw<C-r>0<C-c>
 :nnoremap <leader>w <C-s> :w<CR>
 :nnoremap <leader>q <C-s> :q<CR>
 :nnoremap <leader Q <C-s> :q!<CR>
+" Opening tag on new tab
+:nnoremap <Leader><C-]> :execute 'tab tag '.expand('<cword>')<CR>
 " Resizing window
 :nnoremap <leader>j :resize +2 <CR>
 :nnoremap <leader>k :resize -2 <CR>
