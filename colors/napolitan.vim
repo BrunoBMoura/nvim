@@ -118,7 +118,7 @@ call s:term_highlight("Structure", s:red, "NONE", "NONE")
 call s:term_highlight("Typedef", s:red, "NONE", "NONE")
 
 call s:term_highlight("PreProc", s:dark_blue, "NONE", "NONE")
-call s:term_highlight("Include", s:sand, "NONE", "NONE")
+call s:term_highlight("Include", s:dark_blue, "NONE", "NONE")
 call s:term_highlight("Define", s:dark_blue, "NONE", "NONE")
 call s:term_highlight("PreCondit", s:sand, "NONE", "NONE")
 call s:term_highlight("Macro", s:sand, "NONE", "NONE")
