@@ -135,7 +135,7 @@ call s:term_highlight("Error", s:red, "NONE", "NONE")
 call s:term_highlight("Todo", s:red, "NONE", "NONE")
 call s:term_highlight("Conceal", s:red, "NONE", "NONE")
 
-call s:term_highlight("Directory", s:dark_green, "NONE", "NONE")
+call s:term_highlight("Directory", s:green, "NONE", "NONE")
 call s:term_highlight("FoldColumn", s:yellow, "NONE", "NONE")
 call s:term_highlight("ModeMsg", s:yellow, "NONE", "NONE")
 call s:term_highlight("MoreMsg", s:white, "NONE", "NONE")
