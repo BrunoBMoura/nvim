@@ -28,6 +28,7 @@ let s:dark_grey   = "181"
 let s:visual_grey = "240"
 let s:cyan        = "152"
 let s:dark_cyan   = "189"
+let s:delimiter   = "173"
 
 function! s:define_highlight(group_name, fg, bg, attr)
     exec "hi " . a:group_name . " ctermbg=" . a:bg . " ctermfg=" . a:fg. " cterm=" . a:attr
@@ -126,7 +127,7 @@ call s:term_highlight("Macro", s:sand, "NONE", "NONE")
 call s:term_highlight("Special", s:cyan, "NONE", "NONE")
 call s:term_highlight("SpecialChar", s:purple, "NONE", "NONE")
 call s:term_highlight("Tag", s:yellow, "NONE", "NONE")
-call s:term_highlight("Delimiter", s:white, "NONE", "NONE")
+call s:term_highlight("Delimiter", s:delimiter, "NONE", "NONE")
 call s:term_highlight("SpecialComment", s:red, "NONE", "NONE")
 call s:term_highlight("Debug", s:red, "NONE", "NONE")
 call s:term_highlight("Underlined", s:red, "NONE", "NONE")
