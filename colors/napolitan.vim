@@ -29,6 +29,7 @@ let s:visual_grey = "240"
 let s:cyan        = "152"
 let s:dark_cyan   = "189"
 let s:delimiter   = "173"
+let s:comment     = "61"
 
 function! s:define_highlight(group_name, fg, bg, attr)
     exec "hi " . a:group_name . " ctermbg=" . a:bg . " ctermfg=" . a:fg. " cterm=" . a:attr
@@ -97,7 +98,7 @@ call s:term_highlight("LineNr", s:grey, "NONE", "NONE")
 " Syntax colors
 call s:term_highlight("StorageClass", s:dark_green, "NONE", "NONE")
 call s:term_highlight("Keyword", s:pink, "NONE", "NONE")
-call s:term_highlight("Comment", s:grey, "NONE", "italic")
+call s:term_highlight("Comment", s:comment, "NONE", "italic")
 call s:term_highlight("Constant", s:dark_grey, "NONE", "NONE")
 call s:term_highlight("String", s:green, "NONE", "NONE")
 call s:term_highlight("Number", s:white, "NONE", "NONE")
