@@ -16,10 +16,12 @@ let g:NERDTreeWinSize = 38
 let g:blamer_enabled = 1
 let g:blamer_prefix = ' >> '
 let g:napolitan_statusline = 1
+let g:fzf_layout = { 'window': { 'width': 1.0, 'height': 0.9 } }
+let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:50%' --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+ensure_installed = "maintained",   -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 ignore_install = { "javascript" }, -- List of parsers to ignore installing
 highlight = {
     enable = true,                 -- false will disable the whole extension
