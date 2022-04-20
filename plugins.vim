@@ -4,11 +4,11 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'mg979/vim-visual-multi'                               " Multiple cursors editing
     Plug 'apzelos/blamer.nvim'                                  " VS-code like blaming on lines"
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Better syntax highlighting"
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }         " Fuzzy finder shenanigans (needs the_silver_searcher)
-    Plug 'junegunn/fzf.vim'
     Plug 'numToStr/Comment.nvim'                                " Better commenting throughout code
     Plug 'airblade/vim-gitgutter'
     Plug 'ryanoasis/vim-devicons'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 let g:NERDTreeStatusline =" "
@@ -16,8 +16,6 @@ let g:NERDTreeWinSize = 38
 let g:blamer_enabled = 1
 let g:blamer_prefix = ' >> '
 let g:napolitan_statusline = 1
-let g:fzf_layout = { 'window': { 'width': 1.0, 'height': 0.9 } }
-let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:50%' --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {

@@ -19,8 +19,6 @@ set undofile
 set incsearch
 set scrolloff=12
 set encoding=utf-8
-set wildmenu
-set wildmode=list:longest
 set autoread
 
 " Sourcing auxiliar configuration files
@@ -99,8 +97,6 @@ let mapleader=" "
 :nnoremap <leader>w <C-s> :w<CR>
 :nnoremap <leader>q <C-s> :q<CR>
 :nnoremap <leader Q <C-s> :q!<CR>
-" Opening tag on new tab
-:nnoremap <Leader><C-]> :execute 'tab tag '.expand('<cword>')<CR>
 " Resizing window
 :nnoremap <leader>j :resize +2 <CR>
 :nnoremap <leader>k :resize -2 <CR>
@@ -110,9 +106,12 @@ let mapleader=" "
 :vnoremap <Tab> >gv
 :vnoremap <S-Tab> <gv
 " Find file or text
-:nnoremap <leader>ff :Files <CR>
-:nnoremap <leader>ft :Ag <CR>
-:nnoremap <leader>fg :GFiles <CR>
+:nnoremap <leader>ff :Telescope find_files <CR>
+:nnoremap <leader>ft :Telescope live_grep <CR>
+:nnoremap <leader>/ :Telescope current_buffer_fuzzy_find <CR>
+:nnoremap <Leader><C-]> :Telescope grep_string <CR>
+:nnoremap <leader>ht :Telescope help_tags <CR>
+:nnoremap <leader>hl :Telescope highlights <CR>
 " Git related
 :nnoremap <leader>gb :Git blame <CR>
 :nnoremap <leader>gs :Git status <CR>
