@@ -59,7 +59,7 @@ if g:napolitan_statusline == 1
     set statusline+=\%#_GREEN_#[%{GitInfo()}]
     set statusline+=\%#_ORANGE_#\[%{&fileencoding?&fileencoding:&encoding}]
     set statusline+=\[%l\/%L,%c]
-    set laststatus=2
+    set laststatus=3
 endif
 
 " UI colors
