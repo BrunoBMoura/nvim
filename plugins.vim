@@ -9,8 +9,11 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'ryanoasis/vim-devicons'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
+    Plug 'Yggdroot/indentLine'
 call plug#end()
 
+"let g:identline_defaultGroup = 'Comment'
+let g:indentLine_char = '|'
 let g:NERDTreeStatusline =" "
 let g:NERDTreeWinSize = 38
 let g:blamer_enabled = 1

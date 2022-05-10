@@ -1,7 +1,7 @@
 fn first_word(word : &str) -> &str {
     let bytes = word.as_bytes();
     for (idx, &item) in bytes.iter().enumerate() {
-        if item == b' ' {
+        if item == b" " {
             return &word[..idx];
 
         }
@@ -10,11 +10,11 @@ fn first_word(word : &str) -> &str {
 }
 
 pub fn run(&mut self) -> Result<()> {
-    let scene = self.scenes.get_mut(0).ok_or_else(|| anyhow!("No scene loaded"))
+    let scene = self.scenes.get_mut(0)
+        .ok_or_else(|| anyhow!("No scene loaded"))
 }
 
-// whenever
-#derive[debug]
+// whenever this is just a comment
 fn main() {
 
     let word = "Hello, world!";

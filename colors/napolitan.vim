@@ -5,7 +5,7 @@ endif
 
 let g:colors_name = "napolitan"
 
-if !exists('g:napolitan_statusline ')
+if !exists('g:napolitan_statusline')
     let g:napolitan_statusline = 0
 endif
 
@@ -15,7 +15,7 @@ let s:blue        = "111"
 let s:dark_blue   = "110"
 let s:red         = "161"
 let s:dark_red    = "089"
-let s:orange      = "167"
+let s:orange      = "203"
 let s:dark_orange = "131"
 let s:purple      = "103"
 let s:dark_purple = "098"
@@ -29,8 +29,7 @@ let s:cyan        = "152"
 let s:dark_cyan   = "189"
 let s:black       = "233"
 let s:white       = "230"
-let s:visual_grey = "240"
-
+let s:visual_grey = "236"
 
 function! s:define_highlight(group_name, fg, bg, attr)
     exec "hi " . a:group_name . " ctermbg=" . a:bg . " ctermfg=" . a:fg. " cterm=" . a:attr
@@ -43,7 +42,8 @@ endfun
 if g:napolitan_statusline == 1
 
     call s:define_highlight("_ORANGE_", s:orange, s:black, "NONE")
-    call s:define_highlight("_PINK_", s:pink, s:black, "NONE")
+    call s:define_highlight("_CYAN_", s:cyan, s:black, "NONE")
+    call s:define_highlight("_PURPLE_", s:purple, s:black, "NONE")
     call s:define_highlight("_YELLOW_", s:yellow, s:black, "NONE")
     call s:define_highlight("_GREY_", s:grey, s:black, "NONE")
     call s:define_highlight("_BLUE_", s:blue, s:black, "NONE")
@@ -52,10 +52,10 @@ if g:napolitan_statusline == 1
     set statusline=
     set statusline+=%#_ORANGE_#%{(mode()=='n')?\'[NORMAL]\':''}
     set statusline+=%#_BLUE_#%{(mode()=='i')?\'[INSERT]\':''}
-    set statusline+=%#_YELLOW_#%{(mode()=='v')?\'[VISUAL]\':''}
-    set statusline+=%#_YELLOW_#%{(mode()=='V')?\'[VISUAL_LINE]\':''}
-    set statusline+=%#_PINK_#%{(mode()=='c')?\'[COMMAND]\':''}
-    set statusline+=\%#_GREY_#[%f]
+    set statusline+=%#_PURPLE_#%{(mode()=='v')?\'[VISUAL]\':''}
+    set statusline+=%#_PURPLE_#%{(mode()=='V')?\'[VISUAL_LINE]\':''}
+    set statusline+=%#_CYAN_#%{(mode()=='c')?\'[COMMAND]\':''}
+    set statusline+=\%#_YELLOW_#[%f]
 
     set statusline+=%=
     set statusline+=\%#_GREEN_#[%{GitInfo()}]
@@ -95,6 +95,7 @@ call s:term_highlight("StatusLineNc", s:black, "NONE", "NONE")
 call s:term_highlight("SpecialKey", s:yellow, "NONE", "NONE")
 call s:term_highlight("Visual", "NONE", s:visual_grey, "NONE")
 call s:term_highlight("LineNr", s:grey, "NONE", "NONE")
+call s:term_highlight("MsgArea", s:orange, "NONE", "NONE")
 
 " Syntax colors
 call s:term_highlight("StorageClass", s:dark_green, "NONE", "NONE")
@@ -113,12 +114,12 @@ call s:term_highlight("Statement", s:orange, "NONE", "NONE")
 call s:term_highlight("Conditional", s:orange, "NONE", "NONE")
 call s:term_highlight("Repeat", s:orange, "NONE", "NONE")
 call s:term_highlight("Label", s:dark_grey, "NONE", "NONE")
-call s:term_highlight("Operator", s:dark_yellow, "NONE", "NONE")
+call s:term_highlight("Operator", s:yellow, "NONE", "NONE")
 call s:term_highlight("Exception", s:orange, "NONE", "NONE")
 
 call s:term_highlight("Type", s:orange, "NONE", "NONE")
-call s:term_highlight("Structure", s:red, "NONE", "NONE")
-call s:term_highlight("Typedef", s:red, "NONE", "NONE")
+call s:term_highlight("Structure", s:pink, "NONE", "NONE")
+call s:term_highlight("Typedef", s:pink, "NONE", "NONE")
 
 call s:term_highlight("PreProc", s:blue, "NONE", "NONE")
 call s:term_highlight("Include", s:blue, "NONE", "NONE")
@@ -151,7 +152,7 @@ call s:term_highlight("WarningMsg", s:dark_green, "NONE", "NONE")
 
 
 " Python: {{{
-" hi! link pythonBuiltin Function
+"hi! link pythonBuiltin Function
 " hi! link pythonBuiltinObj GruvboxOrange
 " hi! link pythonBuiltinFunc GruvboxOrange
 " hi! link pythonFunction GruvboxAqua
