@@ -1,14 +1,13 @@
 call plug#begin('~/.config/nvim/plugged')
-    Plug 'preservim/nerdtree'                                   " File explorer
-    Plug 'tpope/vim-fugitive'                                   " Git integration inside vim
-    Plug 'mg979/vim-visual-multi'                               " Multiple cursors editing
-    Plug 'apzelos/blamer.nvim'                                  " VS-code like blaming on lines"
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Better syntax highlighting"
-    Plug 'numToStr/Comment.nvim'                                " Better commenting throughout code
+    Plug 'preservim/nerdtree'
+    Plug 'tpope/vim-fugitive'
+    Plug 'mg979/vim-visual-multi'
+    Plug 'apzelos/blamer.nvim'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'numToStr/Comment.nvim'
     Plug 'airblade/vim-gitgutter'
     Plug 'ryanoasis/vim-devicons'
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 let g:NERDTreeStatusline =" "
@@ -18,13 +17,17 @@ let g:blamer_prefix = ' >> '
 let g:napolitan_statusline = 1
 
 lua <<EOF
-require'nvim-treesitter.configs'.setup {
-ensure_installed = "maintained",   -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-ignore_install = { "javascript" }, -- List of parsers to ignore installing
-highlight = {
-    enable = true,                 -- false will disable the whole extension
-    disable = {},                  -- list of language that will be disabled
-    },
+local ts_configs = require'nvim-treesitter.configs'
+ts_configs.setup {
+  ensure_installed =  {"c", "lua", "rust", "python", "ruby"},
+  highlight = {
+    enable = true,
+  },
+  indent = {
+    enable = false,
+  }
 }
-require('Comment').setup()
+
+cmnt_configs = require'Comment'
+cmnt_configs.setup()
 EOF

@@ -61,5 +61,6 @@ int main() {
     scanf("%s", key);
 
     RS4_cypher(input, strlen(input), key, strlen(key));
+
     return 0;
 }

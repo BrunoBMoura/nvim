@@ -9,9 +9,17 @@ fn first_word(word : &str) -> &str {
     &word[..]
 }
 
+pub fn run(&mut self) -> Result<()> {
+    let scene = self.scenes.get_mut(0).ok_or_else(|| anyhow!("No scene loaded"))
+}
+
+// whenever
 #derive[debug]
 fn main() {
+
     let word = "Hello, world!";
     println!(" word is {}", word);
     println!(" first word is {}", first_word(word))
+
+    return;
 }
