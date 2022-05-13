@@ -12,18 +12,17 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'Yggdroot/indentLine'
 call plug#end()
 
-"let g:identline_defaultGroup = 'Comment'
 let g:indentLine_char = '|'
 let g:NERDTreeStatusline =" "
 let g:NERDTreeWinSize = 38
 let g:blamer_enabled = 1
 let g:blamer_prefix = ' >> '
-let g:napolitan_statusline = 1
+let g:napolitan_ui = 1
 
 lua <<EOF
 local ts_configs = require'nvim-treesitter.configs'
 ts_configs.setup {
-  ensure_installed =  {"c", "lua", "rust", "python", "ruby"},
+  ensure_installed =  {"c", "cpp", "lua", "rust", "python", "ruby", "vim"},
   highlight = {
     enable = true,
   },

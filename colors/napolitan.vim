@@ -5,8 +5,8 @@ endif
 
 let g:colors_name = "napolitan"
 
-if !exists('g:napolitan_statusline')
-    let g:napolitan_statusline = 0
+if !exists('g:napolitan_ui')
+    let g:napolitan_ui = 0
 endif
 
 let s:green       = "156"
@@ -31,15 +31,68 @@ let s:black       = "233"
 let s:white       = "230"
 let s:visual_grey = "236"
 
-function! s:define_highlight(group_name, fg, bg, attr)
+fun! s:define_highlight(group_name, fg, bg, attr)
     exec "hi " . a:group_name . " ctermbg=" . a:bg . " ctermfg=" . a:fg. " cterm=" . a:attr
 endfun
 
-function! s:term_highlight(group, fg, bg, attr)
+fun! s:term_highlight(group, fg, bg, attr)
     exec "hi! " . a:group . " ctermbg=" . a:bg . " ctermfg=" . a:fg. " cterm=" . a:attr
 endfun
 
-if g:napolitan_statusline == 1
+fun! GitInfo()
+    let git = fugitive#head()
+    if git != ''
+        return ' '.fugitive#head()
+    else
+        return ''
+endfun
+
+fun! CustomTabLine()
+    let s = ''
+    for i in range(tabpagenr('$'))
+        if i + 1 == tabpagenr()
+            let s .= '%#TabLineSel#'
+        else
+            let s .= '%#TabLine#'
+        endif
+        if i + 1 == tabpagenr()
+            let s .= '%#TabLineSel#' " WildMenu
+        else
+            let s .= '%#Title#'
+        endif
+        let s .= '['
+        let s .=  i + 1 . ''
+        let s .= ']'
+        let n = ''  " temp str for buf names
+        let m = 0   " &modified counter
+        let buflist = tabpagebuflist(i + 1)
+        for b in buflist
+            if getbufvar(b, "&buftype") == 'help'
+            elseif getbufvar(b, "&buftype") == 'quickfix'
+            elseif getbufvar(b, "&modifiable")
+                let n .= fnamemodify(bufname(b), ':t') . ', '
+            endif
+            if getbufvar(b, "&modified")
+                let m += 1
+            endif
+        endfor
+        let n = substitute(n, ', $', '', '')
+        if m > 0
+            let s .= '+'
+        endif
+        let s .=" "
+        if n == ''
+            let s.= '[New]'
+        else
+            let s .= n
+        endif
+        let s .= ' '
+    endfor
+    let s .= '%#TabLineFill#%T'
+    return s
+endfun
+
+if g:napolitan_ui == 1
 
     call s:define_highlight("_ORANGE_", s:orange, s:black, "NONE")
     call s:define_highlight("_CYAN_", s:cyan, s:black, "NONE")
@@ -62,6 +115,9 @@ if g:napolitan_statusline == 1
     set statusline+=\%#_ORANGE_#\[%{&fileencoding?&fileencoding:&encoding}]
     set statusline+=\[%l\/%L,%c]
     set laststatus=3
+
+    set tabline=%!CustomTabLine()
+    set showtabline=2
 endif
 
 " UI colors
