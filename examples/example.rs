@@ -10,11 +10,9 @@ fn first_word(word : &str) -> &str {
 }
 
 pub fn run(&mut self) -> Result<()> {
-    let scene = self.scenes.get_mut(0)
-        .ok_or_else(|| anyhow!("No scene loaded"))
+    let scene = self.scenes.get_mut(0).ok_or_else(|| anyhow!("No scene loaded"));
 }
 
-// whenever this is just a comment
 fn main() {
 
     let word = "Hello, world!";

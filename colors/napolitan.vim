@@ -95,6 +95,7 @@ endfun
 if g:napolitan_ui == 1
 
     call s:define_highlight("_ORANGE_", s:orange, s:black, "NONE")
+    call s:define_highlight("_PINK_", s:dark_pink, s:black, "NONE")
     call s:define_highlight("_CYAN_", s:cyan, s:black, "NONE")
     call s:define_highlight("_PURPLE_", s:purple, s:black, "NONE")
     call s:define_highlight("_YELLOW_", s:yellow, s:black, "NONE")
@@ -108,12 +109,13 @@ if g:napolitan_ui == 1
     set statusline+=%#_PURPLE_#%{(mode()=='v')?\'[VISUAL]\':''}
     set statusline+=%#_PURPLE_#%{(mode()=='V')?\'[VISUAL_LINE]\':''}
     set statusline+=%#_CYAN_#%{(mode()=='c')?\'[COMMAND]\':''}
-    set statusline+=\%#_YELLOW_#[%f]
+    set statusline+=\%#_CYAN_#[%f]
 
     set statusline+=%=
     set statusline+=\%#_GREEN_#[%{GitInfo()}]
-    set statusline+=\%#_ORANGE_#\[%{&fileencoding?&fileencoding:&encoding}]
-    set statusline+=\[%l\/%L,%c]
+
+    set statusline+=\%#_PINK_#\[%{&fileencoding?&fileencoding:&encoding}]
+    set statusline+=\%#_CYAN_#\[%l\/%L,%c]
     set laststatus=3
 
     set tabline=%!CustomTabLine()
@@ -205,25 +207,4 @@ call s:term_highlight("diffAdded", s:red, "NONE", "NONE")
 call s:term_highlight("diffCommon", s:dark_green, "NONE", "NONE")
 call s:term_highlight("Folded", s:dark_green, "NONE", "NONE")
 call s:term_highlight("WarningMsg", s:dark_green, "NONE", "NONE")
-
-
-" Python: {{{
-"hi! link pythonBuiltin Function
-" hi! link pythonBuiltinObj GruvboxOrange
-" hi! link pythonBuiltinFunc GruvboxOrange
-" hi! link pythonFunction GruvboxAqua
-" hi! link pythonDecorator GruvboxRed
-" hi! link pythonInclude GruvboxBlue
-" hi! link pythonImport GruvboxBlue
-" hi! link pythonRun GruvboxBlue
-" hi! link pythonCoding GruvboxBlue
-" hi! link pythonOperator GruvboxRed
-" hi! link pythonException GruvboxRed
-" hi! link pythonExceptions GruvboxPurple
-" hi! link pythonBoolean GruvboxPurple
-" hi! link pythonDot GruvboxFg3
-" hi! link pythonConditional GruvboxRed
-" hi! link pythonRepeat GruvboxRed
-" hi! link pythonDottedName GruvboxGreenBold
-" }}}
 
