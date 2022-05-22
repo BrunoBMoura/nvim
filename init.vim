@@ -68,11 +68,6 @@ fun! StonksFuncName()
     echohl None
 endfun
 
-function! SynStack()
-    let l:s = synID(line('.'), col('.'), 1)
-    echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
-endfun
-
 augroup BRUNO_POWER
     autocmd!
     " Always before saving the file remove unnecessary white spaces
@@ -124,8 +119,5 @@ let mapleader=" "
 :vnoremap <leader>{ :call StonksSurround('{', '}')<CR>
 :vnoremap <leader>' :call StonksSurround(''', ''')<CR>
 :vnoremap <leader>" :call StonksSurround('"', '"')<CR>
-" Searching on visual mode
-:vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 " Random
 :nnoremap <F9> :call StonksFuncName() <CR>
-:nnoremap <F10> :call SynStack() <CR>

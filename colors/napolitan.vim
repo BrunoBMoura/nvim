@@ -10,25 +10,26 @@ if !exists('g:napolitan_ui')
 endif
 
 let s:green       = "156"
-let s:dark_green  = "071"
+let s:dark_green  = "084"
 let s:blue        = "111"
 let s:dark_blue   = "110"
 let s:red         = "161"
 let s:dark_red    = "089"
-let s:orange      = "203"
-let s:dark_orange = "131"
+let s:orange      = "209"
+let s:dark_orange = "202"
 let s:purple      = "103"
 let s:dark_purple = "098"
 let s:pink        = "167"
 let s:dark_pink   = "168"
 let s:grey        = "240"
 let s:dark_grey   = "181"
-let s:yellow      = "216"
-let s:dark_yellow = "179"
+let s:yellow      = "228"
+let s:dark_yellow = "221"
 let s:cyan        = "152"
-let s:dark_cyan   = "189"
+let s:dark_cyan   = "116"
 let s:black       = "233"
 let s:white       = "230"
+let s:delimiter_white = "229"
 let s:visual_grey = "236"
 
 fun! s:define_highlight(group_name, fg, bg, attr)
@@ -120,6 +121,7 @@ if g:napolitan_ui == 1
 
     set tabline=%!CustomTabLine()
     set showtabline=2
+    "set winbar=%f
 endif
 
 " UI colors
@@ -142,7 +144,7 @@ call s:term_highlight("NonText", s:grey, "NONE", "NONE")
 
 " Custom configurations
 call s:term_highlight("StatusLine", s:black, "NONE", "NONE")
-call s:term_highlight("CursorLineNr", s:orange, "NONE", "NONE")
+call s:term_highlight("CursorLineNr", s:orange, "NONE", "bold")
 call s:term_highlight("CursorLine", "NONE", s:black, "NONE")
 call s:term_highlight("TabLineSel", s:orange, "NONE", "NONE")
 call s:term_highlight("TabLineFill", "NONE", "NONE", "NONE")
@@ -158,7 +160,7 @@ call s:term_highlight("MsgArea", s:orange, "NONE", "NONE")
 " Syntax colors
 call s:term_highlight("StorageClass", s:dark_green, "NONE", "NONE")
 call s:term_highlight("Keyword", s:dark_pink, "NONE", "NONE")
-call s:term_highlight("Comment", s:grey, "NONE", "italic")
+call s:term_highlight("Comment", s:grey, "NONE", "NONE")
 call s:term_highlight("Constant", s:dark_grey, "NONE", "NONE")
 call s:term_highlight("String", s:cyan, "NONE", "NONE")
 call s:term_highlight("Number", s:white, "NONE", "NONE")
@@ -168,12 +170,12 @@ call s:term_highlight("Boolean", s:purple, "NONE", "NONE")
 
 call s:term_highlight("Identifier", s:dark_grey, "NONE", "NONE")
 call s:term_highlight("Function", s:green, "NONE", "NONE")
-call s:term_highlight("Statement", s:orange, "NONE", "NONE")
-call s:term_highlight("Conditional", s:orange, "NONE", "NONE")
-call s:term_highlight("Repeat", s:orange, "NONE", "NONE")
+call s:term_highlight("Statement", s:dark_pink, "NONE", "NONE")
+call s:term_highlight("Conditional", s:dark_pink, "NONE", "NONE")
+call s:term_highlight("Repeat", s:dark_pink, "NONE", "NONE")
 call s:term_highlight("Label", s:dark_grey, "NONE", "NONE")
-call s:term_highlight("Operator", s:yellow, "NONE", "NONE")
-call s:term_highlight("Exception", s:orange, "NONE", "NONE")
+call s:term_highlight("Operator", s:dark_cyan, "NONE", "NONE")
+call s:term_highlight("Exception", s:dark_pink, "NONE", "NONE")
 
 call s:term_highlight("Type", s:orange, "NONE", "NONE")
 call s:term_highlight("Structure", s:pink, "NONE", "NONE")
@@ -183,13 +185,13 @@ call s:term_highlight("PreProc", s:blue, "NONE", "NONE")
 call s:term_highlight("Include", s:blue, "NONE", "NONE")
 call s:term_highlight("Define", s:blue, "NONE", "NONE")
 call s:term_highlight("PreCondit", s:yellow, "NONE", "NONE")
-call s:term_highlight("Macro", s:yellow, "NONE", "NONE")
+call s:term_highlight("Macro", s:dark_green, "NONE", "NONE")
 
 call s:term_highlight("Special", s:dark_cyan, "NONE", "NONE")
 call s:term_highlight("SpecialChar", s:purple, "NONE", "NONE")
 call s:term_highlight("Tag", s:yellow, "NONE", "NONE")
-call s:term_highlight("Delimiter", s:yellow, "NONE", "NONE")
-call s:term_highlight("SpecialComment", s:red, "NONE", "italic")
+call s:term_highlight("Delimiter", s:white, "NONE", "NONE")
+call s:term_highlight("SpecialComment", s:red, "NONE", "NONE")
 call s:term_highlight("Debug", s:red, "NONE", "NONE")
 call s:term_highlight("Underlined", s:red, "NONE", "NONE")
 call s:term_highlight("Ignore", s:dark_green, "NONE", "NONE")
