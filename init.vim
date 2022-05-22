@@ -104,12 +104,12 @@ let mapleader=" "
 :nnoremap <leader>ff :Telescope find_files <CR>
 :nnoremap <leader>ft :Telescope live_grep <CR>
 :nnoremap <leader>/ :Telescope current_buffer_fuzzy_find <CR>
-:nnoremap <Leader><C-]> :Telescope grep_string <CR>
 :nnoremap <leader>ht :Telescope help_tags <CR>
 :nnoremap <leader>hl :Telescope highlights <CR>
+:nnoremap <leader>fb :Telescope buffers <CR>
 " Git related
+:nnoremap <leader>gs :Telescope git_status <CR>
 :nnoremap <leader>gb :Git blame <CR>
-:nnoremap <leader>gs :Git status <CR>
 " Move selection during visual line mode
 :vnoremap J :m '>+1'<CR>gv=gv
 :vnoremap K :m '<-2'<CR>gv=gv
