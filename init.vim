@@ -91,12 +91,19 @@ let mapleader=" "
 :nnoremap <leader>rw cw<C-r>0<C-c>
 :nnoremap <leader>w <C-s> :w<CR>
 :nnoremap <leader>q <C-s> :q<CR>
-:nnoremap <leader Q <C-s> :q!<CR>
+:nnoremap <leader> Q <C-s> :q!<CR>
+:inoremap kj <ESC>
 " Resizing window
-:nnoremap <leader>j :resize +2 <CR>
-:nnoremap <leader>k :resize -2 <CR>
-:nnoremap <leader>h :vertical resize +2 <CR>
-:nnoremap <leader>l :vertical resize -2 <CR>
+:nnoremap <C-Down> :resize -2 <CR>
+:nnoremap <C-Up> :resize +2 <CR>
+:nnoremap <C-Left> :vertical resize -2 <CR>
+:nnoremap <C-Right> :vertical resize +2 <CR>
+" Better window navigation
+:nnoremap <C-h> <C-w>h
+:nnoremap <C-j> <C-w>j
+:nnoremap <C-k> <C-w>k
+:nnoremap <C-l> <C-w>l
+:nnoremap <C-q> <C-w>q
 " Better identing in visual mode
 :vnoremap <Tab> >gv
 :vnoremap <S-Tab> <gv
