@@ -46,6 +46,7 @@ fun! GitInfo()
         return ' '.fugitive#head()
     else
         return ''
+    endif
 endfun
 
 fun! CustomTabLine()
@@ -147,8 +148,9 @@ call s:term_highlight("StatusLine", s:black, "NONE", "NONE")
 call s:term_highlight("CursorLineNr", s:orange, "NONE", "bold")
 call s:term_highlight("CursorLine", "NONE", s:black, "NONE")
 call s:term_highlight("TabLineSel", s:orange, "NONE", "NONE")
-call s:term_highlight("TabLineFill", "NONE", "NONE", "NONE")
-call s:term_highlight("Title", s:white, "NONE", "NONE")
+call s:term_highlight("TabLineFill", "NONE", s:black, "NONE")
+"call s:term_highlight("TabLine", s:black, "NONE", "NONE")
+call s:term_highlight("Title", s:white, s:black, "NONE")
 call s:term_highlight("VertSplit", s:black, "NONE", "NONE")
 call s:term_highlight("StatusLine", s:black, "NONE", "NONE")
 call s:term_highlight("StatusLineNc", s:black, "NONE", "NONE")
