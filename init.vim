@@ -76,6 +76,8 @@ augroup BRUNO_POWER
     autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
     " Close the tab if NERDTree is the only window remaining in it.
     autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+    " Lua file type spacing
+    autocmd BRUNO_POWER FileType lua setlocal shiftwidth=2 tabstop=2
 augroup END
 
 nnoremap <SPACE> <Nop>
