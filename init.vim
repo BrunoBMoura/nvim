@@ -92,7 +92,6 @@ let mapleader=" "
 :nnoremap <leader>w <C-s> :w<CR>
 :nnoremap <leader>q <C-s> :q<CR>
 :nnoremap <leader> Q <C-s> :q!<CR>
-:inoremap kj <ESC>
 " Resizing window
 :nnoremap <C-Down> :resize -2 <CR>
 :nnoremap <C-Up> :resize +2 <CR>

@@ -212,3 +212,7 @@ call s:term_highlight("diffCommon", s:dark_green, "NONE", "NONE")
 call s:term_highlight("Folded", s:dark_green, "NONE", "NONE")
 call s:term_highlight("WarningMsg", s:dark_green, "NONE", "NONE")
 
+" Custom highlighting
+call s:term_highlight("pythonTSConstBuiltin", s:purple, "NONE", "NONE")
+call s:term_highlight("pythonTSFuncBuiltin", s:green, "NONE", "NONE")
+call s:term_highlight("pythonTSKeywordOperator", s:dark_pink, "NONE", "NONE")
