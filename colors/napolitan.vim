@@ -165,9 +165,9 @@ call s:term_highlight("Keyword", s:dark_pink, "NONE", "NONE")
 call s:term_highlight("Comment", s:grey, "NONE", "NONE")
 call s:term_highlight("Constant", s:dark_grey, "NONE", "NONE")
 call s:term_highlight("String", s:cyan, "NONE", "NONE")
-call s:term_highlight("Number", s:white, "NONE", "NONE")
-call s:term_highlight("Float", s:white, "NONE", "NONE")
-call s:term_highlight("Character", s:green, "NONE", "NONE")
+call s:term_highlight("Number", s:purple, "NONE", "NONE")
+call s:term_highlight("Float", s:purple, "NONE", "NONE")
+call s:term_highlight("Character", s:cyan, "NONE", "NONE")
 call s:term_highlight("Boolean", s:purple, "NONE", "NONE")
 
 call s:term_highlight("Identifier", s:dark_grey, "NONE", "NONE")
@@ -193,7 +193,7 @@ call s:term_highlight("Special", s:dark_cyan, "NONE", "NONE")
 call s:term_highlight("SpecialChar", s:purple, "NONE", "NONE")
 call s:term_highlight("Tag", s:yellow, "NONE", "NONE")
 call s:term_highlight("Delimiter", s:white, "NONE", "NONE")
-call s:term_highlight("SpecialComment", s:red, "NONE", "NONE")
+call s:term_highlight("SpecialComment", s:dark_purple, "NONE", "NONE")
 call s:term_highlight("Debug", s:red, "NONE", "NONE")
 call s:term_highlight("Underlined", s:red, "NONE", "NONE")
 call s:term_highlight("Ignore", s:dark_green, "NONE", "NONE")
@@ -213,6 +213,10 @@ call s:term_highlight("Folded", s:dark_green, "NONE", "NONE")
 call s:term_highlight("WarningMsg", s:dark_green, "NONE", "NONE")
 
 " Custom highlighting
+" Python
 call s:term_highlight("pythonTSConstBuiltin", s:purple, "NONE", "NONE")
 call s:term_highlight("pythonTSFuncBuiltin", s:green, "NONE", "NONE")
 call s:term_highlight("pythonTSKeywordOperator", s:dark_pink, "NONE", "NONE")
+
+"call s:term_highlight("rubyFunction", s:dark_red, "NONE", "NONE")
+
