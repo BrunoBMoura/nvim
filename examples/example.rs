@@ -3,7 +3,6 @@ fn first_word(word : &str) -> &str {
     for (idx, &item) in bytes.iter().enumerate() {
         if item == b" " {
             return &word[..idx];
-
         }
     }
     &word[..]

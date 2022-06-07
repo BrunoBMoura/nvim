@@ -187,7 +187,7 @@ call s:term_highlight("PreProc", s:blue, "NONE", "NONE")
 call s:term_highlight("Include", s:blue, "NONE", "NONE")
 call s:term_highlight("Define", s:blue, "NONE", "NONE")
 call s:term_highlight("PreCondit", s:yellow, "NONE", "NONE")
-call s:term_highlight("Macro", s:dark_green, "NONE", "NONE")
+call s:term_highlight("Macro", s:dark_blue, "NONE", "NONE")
 
 call s:term_highlight("Special", s:dark_cyan, "NONE", "NONE")
 call s:term_highlight("SpecialChar", s:purple, "NONE", "NONE")
