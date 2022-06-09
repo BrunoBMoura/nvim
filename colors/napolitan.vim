@@ -42,7 +42,7 @@ endfun
 fun! GitInfo()
     let git = fugitive#head()
     if git != ''
-        return ' '.fugitive#head()
+        return fugitive#head()
     else
         return ''
     endif
@@ -102,7 +102,7 @@ if g:napolitan_ui == 1
     call s:define_highlight("_YELLOW_", s:yellow, s:black, "NONE")
     call s:define_highlight("_GREY_", s:grey, s:black, "NONE")
     call s:define_highlight("_BLUE_", s:blue, s:black, "NONE")
-    call s:define_highlight("_GREEN_", s:green, s:black, "NONE")
+    call s:define_highlight("_GREEN_", s:dark_green, s:black, "NONE")
 
     set statusline=
     set statusline+=%#_ORANGE_#%{(mode()=='n')?\'[NORMAL]\':''}
@@ -202,7 +202,7 @@ call s:term_highlight("Conceal", s:red, "NONE", "NONE")
 
 call s:term_highlight("Directory", s:dark_green, "NONE", "NONE")
 call s:term_highlight("FoldColumn", s:yellow, "NONE", "NONE")
-call s:term_highlight("ModeMsg", s:dark_yellow, "NONE", "NONE")
+call s:term_highlight("ModeMsg", s:orange, "NONE", "NONE")
 call s:term_highlight("MoreMsg", s:white, "NONE", "NONE")
 call s:term_highlight("Question", s:pink, "NONE", "NONE")
 call s:term_highlight("DiffAdd", s:pink, "NONE", "NONE")
