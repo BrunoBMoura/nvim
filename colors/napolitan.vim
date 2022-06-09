@@ -9,10 +9,11 @@ if !exists('g:napolitan_ui')
     let g:napolitan_ui = 0
 endif
 
-let s:green       = "156"
+let s:green       = "072"
 let s:dark_green  = "144"
 let s:blue        = "111"
-let s:dark_blue   = "110"
+"let s:dark_blue   = "111"
+let s:dark_blue   = "067"
 let s:red         = "161"
 let s:dark_red    = "203"
 let s:orange      = "173"
@@ -23,8 +24,8 @@ let s:pink        = "204"
 let s:dark_pink   = "168"
 let s:grey        = "240"
 let s:dark_grey   = "181"
-let s:yellow      = "228"
-let s:dark_yellow = "221"
+let s:yellow      = "179"
+let s:dark_yellow = "137"
 let s:cyan        = "152"
 let s:dark_cyan   = "116"
 let s:black       = "233"
@@ -163,22 +164,22 @@ call s:term_highlight("StorageClass", s:dark_green, "NONE", "NONE")
 call s:term_highlight("Keyword", s:dark_pink, "NONE", "NONE")
 call s:term_highlight("Comment", s:grey, "NONE", "NONE")
 call s:term_highlight("Constant", s:dark_grey, "NONE", "NONE")
-call s:term_highlight("String", s:dark_green, "NONE", "NONE")
+call s:term_highlight("String", s:cyan, "NONE", "NONE")
 call s:term_highlight("Number", s:purple, "NONE", "NONE")
 call s:term_highlight("Float", s:purple, "NONE", "NONE")
-call s:term_highlight("Character", s:dark_green, "NONE", "NONE")
+call s:term_highlight("Character", s:cyan, "NONE", "NONE")
 call s:term_highlight("Boolean", s:purple, "NONE", "NONE")
 
 call s:term_highlight("Identifier", s:dark_grey, "NONE", "NONE")
-call s:term_highlight("Function", s:orange, "NONE", "NONE")
+call s:term_highlight("Function", s:dark_green, "NONE", "NONE")
 call s:term_highlight("Statement", s:dark_pink, "NONE", "NONE")
 call s:term_highlight("Conditional", s:dark_pink, "NONE", "NONE")
 call s:term_highlight("Repeat", s:dark_pink, "NONE", "NONE")
 call s:term_highlight("Label", s:dark_grey, "NONE", "NONE")
-call s:term_highlight("Operator", s:dark_pink, "NONE", "NONE")
+call s:term_highlight("Operator", s:dark_blue, "NONE", "NONE")
 call s:term_highlight("Exception", s:dark_pink, "NONE", "NONE")
 
-call s:term_highlight("Type", s:dark_green, "NONE", "NONE")
+call s:term_highlight("Type", s:orange, "NONE", "NONE")
 call s:term_highlight("Structure", s:pink, "NONE", "NONE")
 call s:term_highlight("Typedef", s:pink, "NONE", "NONE")
 
@@ -186,9 +187,9 @@ call s:term_highlight("PreProc", s:dark_blue, "NONE", "NONE")
 call s:term_highlight("Include", s:dark_blue, "NONE", "NONE")
 call s:term_highlight("Define", s:dark_blue, "NONE", "NONE")
 call s:term_highlight("PreCondit", s:yellow, "NONE", "NONE")
-call s:term_highlight("Macro", s:dark_cyan, "NONE", "NONE")
+call s:term_highlight("Macro", s:cyan, "NONE", "NONE")
 
-call s:term_highlight("Special", s:dark_cyan, "NONE", "NONE")
+call s:term_highlight("Special", s:cyan, "NONE", "NONE")
 call s:term_highlight("SpecialChar", s:purple, "NONE", "NONE")
 call s:term_highlight("Tag", s:yellow, "NONE", "NONE")
 call s:term_highlight("Delimiter", s:white, "NONE", "NONE")
@@ -214,7 +215,7 @@ call s:term_highlight("WarningMsg", s:dark_green, "NONE", "NONE")
 " Custom highlighting
 " Python
 call s:term_highlight("pythonTSConstBuiltin", s:purple, "NONE", "NONE")
-call s:term_highlight("pythonTSFuncBuiltin", s:green, "NONE", "NONE")
+call s:term_highlight("pythonTSFuncBuiltin", s:dark_green, "NONE", "NONE")
 call s:term_highlight("pythonTSKeywordOperator", s:dark_pink, "NONE", "NONE")
 
 "call s:term_highlight("rubyFunction", s:dark_red, "NONE", "NONE")
