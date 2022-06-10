@@ -171,7 +171,7 @@ call s:term_highlight("Character", s:cyan, "NONE", "NONE")
 call s:term_highlight("Boolean", s:purple, "NONE", "NONE")
 
 call s:term_highlight("Identifier", s:dark_grey, "NONE", "NONE")
-call s:term_highlight("Function", s:dark_green, "NONE", "NONE")
+call s:term_highlight("Function", s:dark_green, "NONE", "bold")
 call s:term_highlight("Statement", s:dark_pink, "NONE", "NONE")
 call s:term_highlight("Conditional", s:dark_pink, "NONE", "NONE")
 call s:term_highlight("Repeat", s:dark_pink, "NONE", "NONE")
