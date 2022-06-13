@@ -114,7 +114,7 @@ if g:napolitan_ui == 1
     set statusline+=\%#_CYAN_#[%f]
 
     set statusline+=%=
-    set statusline+=\%#_GREEN_#[%{GitInfo()}]
+    "set statusline+=\%#_GREEN_#[%{GitInfo()}]
 
     set statusline+=\%#_PINK_#\[%{&fileencoding?&fileencoding:&encoding}]
     set statusline+=\%#_CYAN_#\[%l\/%L,%c]
@@ -171,7 +171,7 @@ call s:term_highlight("Character", s:cyan, "NONE", "NONE")
 call s:term_highlight("Boolean", s:purple, "NONE", "NONE")
 
 call s:term_highlight("Identifier", s:dark_grey, "NONE", "NONE")
-call s:term_highlight("Function", s:dark_green, "NONE", "bold")
+call s:term_highlight("Function", s:dark_green, "NONE", "NONE")
 call s:term_highlight("Statement", s:dark_pink, "NONE", "NONE")
 call s:term_highlight("Conditional", s:dark_pink, "NONE", "NONE")
 call s:term_highlight("Repeat", s:dark_pink, "NONE", "NONE")

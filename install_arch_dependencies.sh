@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-sudo pacman -S the_silver_searcher fzf bat ctags
+sudo pacman -S ctags ttf-jetbrains-mono nerd-fonts
