@@ -9,28 +9,22 @@ if !exists('g:napolitan_ui')
     let g:napolitan_ui = 0
 endif
 
-let s:green       = "072"
-let s:dark_green  = "144"
-let s:blue        = "111"
-"let s:dark_blue   = "111"
-let s:dark_blue   = "067"
-let s:red         = "161"
-let s:dark_red    = "203"
-let s:orange      = "173"
-let s:dark_orange = "202"
-let s:purple      = "103"
-let s:dark_purple = "098"
-let s:pink        = "204"
-let s:dark_pink   = "168"
+let s:divisor     = "235"
 let s:grey        = "240"
 let s:dark_grey   = "181"
-let s:yellow      = "179"
-let s:dark_yellow = "137"
+let s:visual      = "236"
+
+let s:aqua        = "079"
+let s:green       = "144"
+let s:blue        = "067"
+let s:red         = "088"
+let s:orange      = "173"
+let s:purple      = "103"
+let s:pink        = "168"
+let s:yellow      = "215"
 let s:cyan        = "152"
-let s:dark_cyan   = "116"
 let s:black       = "233"
 let s:white       = "230"
-let s:visual_grey = "236"
 
 fun! s:define_highlight(group_name, fg, bg, attr)
     exec "hi " . a:group_name . " ctermbg=" . a:bg . " ctermfg=" . a:fg. " cterm=" . a:attr
@@ -96,14 +90,14 @@ endfun
 
 if g:napolitan_ui == 1
 
-    call s:define_highlight("_ORANGE_", s:orange, s:black, "NONE")
-    call s:define_highlight("_PINK_", s:dark_pink, s:black, "NONE")
-    call s:define_highlight("_CYAN_", s:cyan, s:black, "NONE")
-    call s:define_highlight("_PURPLE_", s:purple, s:black, "NONE")
-    call s:define_highlight("_YELLOW_", s:yellow, s:black, "NONE")
-    call s:define_highlight("_GREY_", s:grey, s:black, "NONE")
-    call s:define_highlight("_BLUE_", s:blue, s:black, "NONE")
-    call s:define_highlight("_GREEN_", s:dark_green, s:black, "NONE")
+    call s:define_highlight("_ORANGE_", s:orange, s:divisor, "NONE")
+    call s:define_highlight("_PINK_", s:pink, s:divisor, "NONE")
+    call s:define_highlight("_CYAN_", s:cyan, s:divisor, "NONE")
+    call s:define_highlight("_PURPLE_", s:purple, s:divisor, "NONE")
+    call s:define_highlight("_YELLOW_", s:yellow, s:divisor, "NONE")
+    call s:define_highlight("_GREY_", s:grey, s:divisor, "NONE")
+    call s:define_highlight("_BLUE_", s:blue, s:divisor, "NONE")
+    call s:define_highlight("_GREEN_", s:aqua, s:divisor, "NONE")
 
     set statusline=
     set statusline+=%#_ORANGE_#%{(mode()=='n')?\'[NORMAL]\':''}
@@ -114,10 +108,10 @@ if g:napolitan_ui == 1
     set statusline+=\%#_CYAN_#[%f]
 
     set statusline+=%=
-    "set statusline+=\%#_GREEN_#[%{GitInfo()}]
+    set statusline+=\%#_GREEN_#[%{GitInfo()}]
 
     set statusline+=\%#_PINK_#\[%{&fileencoding?&fileencoding:&encoding}]
-    set statusline+=\%#_CYAN_#\[%l\/%L,%c]
+    set statusline+=\%#_BLUE_#\[%l\/%L,%c]
     set laststatus=3
 
     set tabline=%!CustomTabLine()
@@ -126,97 +120,92 @@ if g:napolitan_ui == 1
 endif
 
 " UI colors
-call s:term_highlight("Normal", s:white, "NONE", "NONE")
-call s:term_highlight("Error", s:red, "NONE", "NONE")
-call s:term_highlight("ErrorMsg", s:red, "NONE", "NONE")
-call s:term_highlight("Search", s:pink, "NONE", "NONE")
-call s:term_highlight("IncSearch", s:pink, "NONE", "reverse")
-call s:term_highlight("DiffChange", s:orange, "NONE", "reverse")
-call s:term_highlight("DiffText", s:orange, "NONE", "NONE")
-call s:term_highlight("SignColumn", s:orange, "NONE", "NONE")
-call s:term_highlight("SpellBad", s:white, "NONE", "undercurl")
-call s:term_highlight("SpellCap", s:white, "NONE", "NONE")
-call s:term_highlight("SpellRare", s:red, "NONE", "NONE")
-call s:term_highlight("WildMenu", s:grey, "NONE", "NONE")
-call s:term_highlight("Pmenu", s:white, "NONE", "NONE")
-call s:term_highlight("PmenuThumb", s:black, "NONE", "NONE")
-call s:term_highlight("MatchParen", s:orange, "NONE", "NONE")
-call s:term_highlight("NonText", s:grey, "NONE", "NONE")
+call s:term_highlight("Normal",     s:white,   "NONE", "NONE")
+call s:term_highlight("Error",      s:red,     "NONE", "NONE")
+call s:term_highlight("ErrorMsg",   s:red,     "NONE", "NONE")
+call s:term_highlight("Search",     s:pink,    "NONE", "NONE")
+call s:term_highlight("IncSearch",  s:pink,    "NONE", "reverse")
+call s:term_highlight("DiffChange", s:orange,  "NONE", "reverse")
+call s:term_highlight("DiffText",   s:orange,  "NONE", "NONE")
+call s:term_highlight("SignColumn", s:orange,  "NONE", "NONE")
+call s:term_highlight("SpellBad",   s:white,   "NONE", "undercurl")
+call s:term_highlight("SpellCap",   s:white,   "NONE", "NONE")
+call s:term_highlight("SpellRare",  s:red,     "NONE", "NONE")
+call s:term_highlight("WildMenu",   s:black,   "NONE", "NONE")
+call s:term_highlight("Pmenu",      s:white,   "NONE", "NONE")
+call s:term_highlight("PmenuThumb", s:divisor, "NONE", "NONE")
+call s:term_highlight("MatchParen", s:orange,  "NONE", "NONE")
+call s:term_highlight("NonText",    s:grey,    "NONE", "NONE")
 
 " Custom configurations
-call s:term_highlight("StatusLine", s:black, "NONE", "NONE")
-call s:term_highlight("CursorLineNr", s:orange, "NONE", "bold")
-call s:term_highlight("CursorLine", "NONE", s:black, "NONE")
-call s:term_highlight("TabLineSel", s:orange, "NONE", "NONE")
-call s:term_highlight("TabLineFill", "NONE", s:black, "NONE")
-"call s:term_highlight("TabLine", s:black, "NONE", "NONE")
-call s:term_highlight("Title", s:white, s:black, "NONE")
-call s:term_highlight("VertSplit", s:black, "NONE", "NONE")
-call s:term_highlight("StatusLine", s:black, "NONE", "NONE")
-call s:term_highlight("StatusLineNc", s:black, "NONE", "NONE")
-call s:term_highlight("SpecialKey", s:yellow, "NONE", "NONE")
-call s:term_highlight("Visual", "NONE", s:visual_grey, "NONE")
-call s:term_highlight("LineNr", s:grey, "NONE", "NONE")
-call s:term_highlight("MsgArea", s:orange, "NONE", "NONE")
+call s:term_highlight("StatusLine",   s:divisor, "NONE",    "NONE")
+call s:term_highlight("CursorLineNr", s:orange,  "NONE",    "bold")
+call s:term_highlight("CursorLine",   "NONE",    s:divisor, "NONE")
+call s:term_highlight("TabLineSel",   s:orange,  "NONE",    "NONE")
+call s:term_highlight("TabLineFill",  "NONE",    s:divisor, "NONE")
+call s:term_highlight("Title",        s:white,   s:divisor, "NONE")
+call s:term_highlight("VertSplit",    s:divisor, "NONE",    "NONE")
+call s:term_highlight("StatusLine",   s:divisor, "NONE",    "NONE")
+call s:term_highlight("StatusLineNc", s:divisor, "NONE",    "NONE")
+call s:term_highlight("SpecialKey",   s:yellow,  "NONE",    "NONE")
+call s:term_highlight("Visual",       "NONE",    s:visual,  "NONE")
+call s:term_highlight("LineNr",       s:grey,    "NONE",    "NONE")
+call s:term_highlight("MsgArea",      s:orange,  "NONE",    "NONE")
 
 " Syntax colors
-call s:term_highlight("StorageClass", s:dark_green, "NONE", "NONE")
-call s:term_highlight("Keyword", s:orange, "NONE", "NONE")
-call s:term_highlight("Comment", s:grey, "NONE", "NONE")
-call s:term_highlight("Constant", s:dark_grey, "NONE", "NONE")
-call s:term_highlight("String", s:cyan, "NONE", "NONE")
-call s:term_highlight("Number", s:purple, "NONE", "NONE")
-call s:term_highlight("Float", s:purple, "NONE", "NONE")
-call s:term_highlight("Character", s:cyan, "NONE", "NONE")
-call s:term_highlight("Boolean", s:purple, "NONE", "NONE")
+call s:term_highlight("StorageClass", s:green,     "NONE", "NONE")
+call s:term_highlight("Keyword",      s:orange,    "NONE", "NONE")
+call s:term_highlight("Comment",      s:grey,      "NONE", "NONE")
+call s:term_highlight("Constant",     s:dark_grey, "NONE", "NONE")
+call s:term_highlight("String",       s:cyan,      "NONE", "NONE")
+call s:term_highlight("Number",       s:purple,    "NONE", "NONE")
+call s:term_highlight("Float",        s:purple,    "NONE", "NONE")
+call s:term_highlight("Character",    s:cyan,      "NONE", "NONE")
+call s:term_highlight("Boolean",      s:purple,    "NONE", "NONE")
+call s:term_highlight("Identifier",   s:dark_grey, "NONE", "NONE")
+call s:term_highlight("Function",     s:green,     "NONE", "NONE")
+call s:term_highlight("Statement",    s:pink,      "NONE", "NONE")
+call s:term_highlight("Conditional",  s:pink,      "NONE", "NONE")
+call s:term_highlight("Repeat",       s:pink,      "NONE", "NONE")
+call s:term_highlight("Label",        s:dark_grey, "NONE", "NONE")
+call s:term_highlight("Operator",     s:aqua,      "NONE", "NONE")
+call s:term_highlight("Exception",    s:pink,      "NONE", "NONE")
+call s:term_highlight("Type",         s:yellow,    "NONE", "NONE")
+call s:term_highlight("Structure",    s:pink,      "NONE", "NONE")
+call s:term_highlight("Typedef",      s:pink,      "NONE", "NONE")
+call s:term_highlight("PreProc",      s:blue,      "NONE", "NONE")
+call s:term_highlight("Include",      s:blue,      "NONE", "NONE")
+call s:term_highlight("Define",       s:blue,      "NONE", "NONE")
+call s:term_highlight("PreCondit",    s:yellow,    "NONE", "NONE")
+call s:term_highlight("Macro",        s:purple,    "NONE", "NONE")
 
-call s:term_highlight("Identifier", s:dark_grey, "NONE", "NONE")
-call s:term_highlight("Function", s:dark_green, "NONE", "NONE")
-call s:term_highlight("Statement", s:dark_pink, "NONE", "NONE")
-call s:term_highlight("Conditional", s:dark_pink, "NONE", "NONE")
-call s:term_highlight("Repeat", s:dark_pink, "NONE", "NONE")
-call s:term_highlight("Label", s:dark_grey, "NONE", "NONE")
-call s:term_highlight("Operator", s:dark_blue, "NONE", "NONE")
-call s:term_highlight("Exception", s:dark_pink, "NONE", "NONE")
-
-call s:term_highlight("Type", s:dark_yellow, "NONE", "NONE")
-call s:term_highlight("Structure", s:pink, "NONE", "NONE")
-call s:term_highlight("Typedef", s:pink, "NONE", "NONE")
-
-call s:term_highlight("PreProc", s:dark_blue, "NONE", "NONE")
-call s:term_highlight("Include", s:dark_blue, "NONE", "NONE")
-call s:term_highlight("Define", s:dark_blue, "NONE", "NONE")
-call s:term_highlight("PreCondit", s:yellow, "NONE", "NONE")
-call s:term_highlight("Macro", s:purple, "NONE", "NONE")
-
-call s:term_highlight("Special", s:cyan, "NONE", "NONE")
-call s:term_highlight("SpecialChar", s:purple, "NONE", "NONE")
-call s:term_highlight("Tag", s:yellow, "NONE", "NONE")
-call s:term_highlight("Delimiter", s:white, "NONE", "NONE")
-call s:term_highlight("SpecialComment", s:dark_purple, "NONE", "NONE")
-call s:term_highlight("Debug", s:red, "NONE", "NONE")
-call s:term_highlight("Underlined", s:red, "NONE", "NONE")
-call s:term_highlight("Ignore", s:dark_green, "NONE", "NONE")
-call s:term_highlight("Error", s:red, "NONE", "NONE")
-call s:term_highlight("Todo", s:red, "NONE", "NONE")
-call s:term_highlight("Conceal", s:red, "NONE", "NONE")
-
-call s:term_highlight("Directory", s:dark_green, "NONE", "NONE")
-call s:term_highlight("FoldColumn", s:yellow, "NONE", "NONE")
-call s:term_highlight("ModeMsg", s:orange, "NONE", "NONE")
-call s:term_highlight("MoreMsg", s:white, "NONE", "NONE")
-call s:term_highlight("Question", s:pink, "NONE", "NONE")
-call s:term_highlight("DiffAdd", s:pink, "NONE", "NONE")
-call s:term_highlight("diffAdded", s:red, "NONE", "NONE")
-call s:term_highlight("diffCommon", s:dark_green, "NONE", "NONE")
-call s:term_highlight("Folded", s:dark_green, "NONE", "NONE")
-call s:term_highlight("WarningMsg", s:dark_green, "NONE", "NONE")
+" Display related
+call s:term_highlight("Special",        s:cyan,   "NONE", "NONE")
+call s:term_highlight("SpecialChar",    s:purple, "NONE", "NONE")
+call s:term_highlight("Tag",            s:yellow, "NONE", "NONE")
+call s:term_highlight("Delimiter",      s:white,  "NONE", "NONE")
+call s:term_highlight("SpecialComment", s:purple, "NONE", "NONE")
+call s:term_highlight("Debug",          s:red,    "NONE", "NONE")
+call s:term_highlight("Underlined",     s:red,    "NONE", "NONE")
+call s:term_highlight("Ignore",         s:green,  "NONE", "NONE")
+call s:term_highlight("Error",          s:red,    "NONE", "NONE")
+call s:term_highlight("Todo",           s:red,    "NONE", "NONE")
+call s:term_highlight("Conceal",        s:red,    "NONE", "NONE")
+call s:term_highlight("Directory",      s:green,  "NONE", "NONE")
+call s:term_highlight("FoldColumn",     s:yellow, "NONE", "NONE")
+call s:term_highlight("ModeMsg",        s:orange, "NONE", "NONE")
+call s:term_highlight("MoreMsg",        s:white,  "NONE", "NONE")
+call s:term_highlight("Question",       s:pink,   "NONE", "NONE")
+call s:term_highlight("DiffAdd",        s:pink,   "NONE", "NONE")
+call s:term_highlight("diffAdded",      s:red,    "NONE", "NONE")
+call s:term_highlight("diffCommon",     s:green,  "NONE", "NONE")
+call s:term_highlight("Folded",         s:green,  "NONE", "NONE")
+call s:term_highlight("WarningMsg",     s:green,  "NONE", "NONE")
 
 " Custom highlighting
 " Python
-call s:term_highlight("pythonTSConstBuiltin", s:purple, "NONE", "NONE")
-call s:term_highlight("pythonTSFuncBuiltin", s:dark_green, "NONE", "NONE")
-call s:term_highlight("pythonTSKeywordOperator", s:dark_pink, "NONE", "NONE")
+call s:term_highlight("pythonTSConstBuiltin",    s:purple, "NONE", "NONE")
+call s:term_highlight("pythonTSFuncBuiltin",     s:green,  "NONE", "NONE")
+call s:term_highlight("pythonTSKeywordOperator", s:pink,   "NONE", "NONE")
 
-"call s:term_highlight("rubyFunction", s:dark_red, "NONE", "NONE")
 
