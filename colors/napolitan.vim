@@ -161,7 +161,7 @@ call s:term_highlight("MsgArea", s:orange, "NONE", "NONE")
 
 " Syntax colors
 call s:term_highlight("StorageClass", s:dark_green, "NONE", "NONE")
-call s:term_highlight("Keyword", s:dark_pink, "NONE", "NONE")
+call s:term_highlight("Keyword", s:orange, "NONE", "NONE")
 call s:term_highlight("Comment", s:grey, "NONE", "NONE")
 call s:term_highlight("Constant", s:dark_grey, "NONE", "NONE")
 call s:term_highlight("String", s:cyan, "NONE", "NONE")
@@ -179,7 +179,7 @@ call s:term_highlight("Label", s:dark_grey, "NONE", "NONE")
 call s:term_highlight("Operator", s:dark_blue, "NONE", "NONE")
 call s:term_highlight("Exception", s:dark_pink, "NONE", "NONE")
 
-call s:term_highlight("Type", s:orange, "NONE", "NONE")
+call s:term_highlight("Type", s:dark_yellow, "NONE", "NONE")
 call s:term_highlight("Structure", s:pink, "NONE", "NONE")
 call s:term_highlight("Typedef", s:pink, "NONE", "NONE")
 
@@ -187,7 +187,7 @@ call s:term_highlight("PreProc", s:dark_blue, "NONE", "NONE")
 call s:term_highlight("Include", s:dark_blue, "NONE", "NONE")
 call s:term_highlight("Define", s:dark_blue, "NONE", "NONE")
 call s:term_highlight("PreCondit", s:yellow, "NONE", "NONE")
-call s:term_highlight("Macro", s:cyan, "NONE", "NONE")
+call s:term_highlight("Macro", s:purple, "NONE", "NONE")
 
 call s:term_highlight("Special", s:cyan, "NONE", "NONE")
 call s:term_highlight("SpecialChar", s:purple, "NONE", "NONE")

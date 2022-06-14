@@ -15,5 +15,6 @@ class Dummy
   def my_raise
 
     raise "Dumb raise!"
+
   end
 end
