@@ -91,7 +91,7 @@ let mapleader=" "
 :nnoremap <leader>T :sp<bar>term<CR><C-w>J :resize20<CR>i
 :nnoremap <leader>t :NERDTreeToggle<CR>
 :nnoremap <leader>F :NERDTreeFind<CR>
-:nnoremap <leader>F :NERDTreeFind<CR>
+:nnoremap <leader>R :NERDTreeRefresRoot<CR>
 :nnoremap <leader>rw cw<C-r>0<C-c>
 :nnoremap <leader>w <C-s> :w<CR>
 :nnoremap <leader>q <C-s> :q<CR>

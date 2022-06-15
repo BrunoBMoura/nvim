@@ -56,9 +56,9 @@ fun! CustomTabLine()
         else
             let s .= '%#Title#'
         endif
-        let s .= '['
+        let s .= '[('
         let s .=  i + 1 . ''
-        let s .= ']'
+        let s .= ')'
         let n = ''  " temp str for buf names
         let m = 0   " &modified counter
         let buflist = tabpagebuflist(i + 1)
@@ -82,7 +82,7 @@ fun! CustomTabLine()
         else
             let s .= n
         endif
-        let s .= ' '
+        let s .= ' ]'
     endfor
     let s .= '%#TabLineFill#%T'
     return s
@@ -194,7 +194,7 @@ call s:term_highlight("Todo",           s:red,    "NONE", "NONE")
 call s:term_highlight("Conceal",        s:red,    "NONE", "NONE")
 call s:term_highlight("Directory",      s:green,  "NONE", "NONE")
 call s:term_highlight("FoldColumn",     s:yellow, "NONE", "NONE")
-call s:term_highlight("ModeMsg",        s:orange, "NONE", "NONE")
+call s:term_highlight("ModeMsg",        s:white, "NONE", "NONE")
 call s:term_highlight("MoreMsg",        s:white,  "NONE", "NONE")
 call s:term_highlight("Question",       s:pink,   "NONE", "NONE")
 call s:term_highlight("DiffAdd",        s:pink,   "NONE", "NONE")
