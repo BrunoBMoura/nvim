@@ -20,6 +20,7 @@ set incsearch
 set scrolloff=12
 set encoding=utf-8
 set autoread
+set cmdheight=1
 
 " Sourcing auxiliar configuration files
 execute 'source $HOME/.config/nvim/plugins.vim'
@@ -33,13 +34,19 @@ fun! TrimWhitespace()
 endfun
 
 " Replaces selected lines on visual mode
-fun! StonksReplace()
+fun! StonksReplaceFull()
     let [lnum1, col1] = getpos("'<")[1:2]
     let [lnum2, col2] = getpos("'>")[1:2]
     let lines = getline(lnum1, lnum2)
     let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
     let lines[0] = lines[0][col1 - 1:]
     let selection = join(lines, '\n')
+    let change = input("Text to replace the selection with:")
+    execute ":%s/".selection."/".change."/g"
+endfun
+
+fun! StonksReplaceSimple()
+    let selection = expand("<cword>")
     let change = input("Text to replace the selection with:")
     execute ":%s/".selection."/".change."/g"
 endfun
@@ -61,13 +68,6 @@ fun! StonksSurround(s1, s2) range
     exe "normal `ba" . a:s2 . "\<Esc>`ai" . a:s1 . "\<Esc>"
 endfun
 
-" Shows current function name
-fun! StonksFuncName()
-    echohl ModeMsg
-    echo getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bWn'))
-    echohl None
-endfun
-
 augroup BRUNO_POWER
     autocmd!
     " Always before saving the file remove unnecessary white spaces
@@ -84,11 +84,13 @@ nnoremap <SPACE> <Nop>
 vnoremap <SPACE> <Nop>
 let mapleader=" "
 
-:vnoremap ; :call StonksReplace()<CR>
+:vnoremap ; :call StonksReplaceFull()<CR>
+:nnoremap <leader>; :call StonksReplaceSimple()<CR>
 :nnoremap <F1> :tabp<CR>
 :nnoremap <F2> :tabn<CR>
 :nnoremap <leader>T :sp<bar>term<CR><C-w>J :resize20<CR>i
 :nnoremap <leader>t :NERDTreeToggle<CR>
+:nnoremap <leader>F :NERDTreeFind<CR>
 :nnoremap <leader>F :NERDTreeFind<CR>
 :nnoremap <leader>rw cw<C-r>0<C-c>
 :nnoremap <leader>w <C-s> :w<CR>
@@ -127,5 +129,3 @@ let mapleader=" "
 :vnoremap <leader>{ :call StonksSurround('{', '}')<CR>
 :vnoremap <leader>' :call StonksSurround(''', ''')<CR>
 :vnoremap <leader>" :call StonksSurround('"', '"')<CR>
-" Random
-:nnoremap <F9> :call StonksFuncName() <CR>

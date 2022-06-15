@@ -9,11 +9,11 @@ if !exists('g:napolitan_ui')
     let g:napolitan_ui = 0
 endif
 
+let s:background  = "234"
 let s:divisor     = "235"
 let s:grey        = "240"
 let s:dark_grey   = "181"
 let s:visual      = "236"
-
 let s:aqua        = "079"
 let s:green       = "144"
 let s:blue        = "067"
@@ -90,14 +90,14 @@ endfun
 
 if g:napolitan_ui == 1
 
-    call s:define_highlight("_ORANGE_", s:orange, s:divisor, "NONE")
-    call s:define_highlight("_PINK_", s:pink, s:divisor, "NONE")
-    call s:define_highlight("_CYAN_", s:cyan, s:divisor, "NONE")
-    call s:define_highlight("_PURPLE_", s:purple, s:divisor, "NONE")
-    call s:define_highlight("_YELLOW_", s:yellow, s:divisor, "NONE")
-    call s:define_highlight("_GREY_", s:grey, s:divisor, "NONE")
-    call s:define_highlight("_BLUE_", s:blue, s:divisor, "NONE")
-    call s:define_highlight("_GREEN_", s:aqua, s:divisor, "NONE")
+    call s:define_highlight("_ORANGE_", s:orange, s:background, "NONE")
+    call s:define_highlight("_PINK_", s:pink, s:background, "NONE")
+    call s:define_highlight("_CYAN_", s:cyan, s:background, "NONE")
+    call s:define_highlight("_PURPLE_", s:purple, s:background, "NONE")
+    call s:define_highlight("_YELLOW_", s:yellow, s:background, "NONE")
+    call s:define_highlight("_GREY_", s:divisor, s:background, "NONE")
+    call s:define_highlight("_BLUE_", s:blue, s:background, "NONE")
+    call s:define_highlight("_GREEN_", s:aqua, s:background, "NONE")
 
     set statusline=
     set statusline+=%#_ORANGE_#%{(mode()=='n')?\'[NORMAL]\':''}
@@ -107,6 +107,7 @@ if g:napolitan_ui == 1
     set statusline+=%#_CYAN_#%{(mode()=='c')?\'[COMMAND]\':''}
     set statusline+=\%#_CYAN_#[%f]
 
+    set statusline+=\%#_GREY_#
     set statusline+=%=
     set statusline+=\%#_GREEN_#[%{GitInfo()}]
 

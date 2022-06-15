@@ -23,14 +23,10 @@ lua <<EOF
 local ts_configs = require'nvim-treesitter.configs'
 ts_configs.setup {
   ensure_installed =  {"c", "cpp", "lua", "rust", "python", "ruby", "vim"},
-  highlight = {
-    enable = true,
-  },
-  indent = {
-    enable = false,
-  }
+  highlight = {enable = true,},
+  indent = {enable = false,}
 }
-
 cmnt_configs = require'Comment'
 cmnt_configs.setup()
+
 EOF
