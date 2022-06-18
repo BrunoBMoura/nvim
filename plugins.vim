@@ -41,6 +41,7 @@ ts_context.setup {
             'class',
             'function',
             'method',
+            'module',
         },
     },
     zindex = 20,

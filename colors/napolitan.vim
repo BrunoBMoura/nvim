@@ -116,7 +116,8 @@ if g:napolitan_ui == 1
     set laststatus=3
 
     set tabline=%!CustomTabLine()
-    set showtabline=2
+    set showtabline=0
+    "set showtabline=3
     "set winbar=%f
 endif
 
