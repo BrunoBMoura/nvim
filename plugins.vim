@@ -4,6 +4,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'mg979/vim-visual-multi'
     Plug 'apzelos/blamer.nvim'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'nvim-treesitter/nvim-treesitter-context',
     Plug 'numToStr/Comment.nvim'
     Plug 'airblade/vim-gitgutter'
     Plug 'ryanoasis/vim-devicons'
@@ -28,5 +29,22 @@ ts_configs.setup {
 }
 cmnt_configs = require'Comment'
 cmnt_configs.setup()
+
+local ts_context = require'treesitter-context'
+
+ts_context.setup {
+    enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+    max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+    trim_scope = 'outer', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+    patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
+        default = {
+            'class',
+            'function',
+            'method',
+        },
+    },
+    zindex = 20,
+    mode = 'cursor',
+}
 
 EOF

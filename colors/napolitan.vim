@@ -203,6 +203,10 @@ call s:term_highlight("diffCommon",     s:green,  "NONE", "NONE")
 call s:term_highlight("Folded",         s:green,  "NONE", "NONE")
 call s:term_highlight("WarningMsg",     s:green,  "NONE", "NONE")
 
+" Plugin related
+call s:term_highlight("TreesitterContext",           s:white,  s:background, "NONE")
+call s:term_highlight("TreesitterContextLineNumber", s:orange,  "NONE", "NONE")
+
 " Custom highlighting
 " Python
 call s:term_highlight("pythonTSConstBuiltin",    s:purple, "NONE", "NONE")
