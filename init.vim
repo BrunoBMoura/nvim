@@ -117,6 +117,7 @@ let mapleader=" "
 :nnoremap <leader>ht :Telescope help_tags <CR>
 :nnoremap <leader>hl :Telescope highlights <CR>
 :nnoremap <leader>fb :Telescope buffers <CR>
+:nnoremap <leader>fm :Telescope marks <CR>
 " Git related
 :nnoremap <leader>gs :Telescope git_status <CR>
 :nnoremap <leader>gb :Git blame <CR>

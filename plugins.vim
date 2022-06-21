@@ -18,20 +18,19 @@ let g:NERDTreeStatusline =" "
 let g:NERDTreeWinSize = 38
 let g:blamer_enabled = 1
 let g:blamer_prefix = ' >> '
-let g:napolitan_ui = 1
 
 lua <<EOF
-local ts_configs = require'nvim-treesitter.configs'
+local ts_configs = require('nvim-treesitter.configs')
 ts_configs.setup {
   ensure_installed =  {"c", "cpp", "lua", "rust", "python", "ruby", "vim"},
   highlight = {enable = true,},
   indent = {enable = false,}
 }
-cmnt_configs = require'Comment'
+
+cmnt_configs = require('Comment')
 cmnt_configs.setup()
 
-local ts_context = require'treesitter-context'
-
+local ts_context = require('treesitter-context')
 ts_context.setup {
     enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
     max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
