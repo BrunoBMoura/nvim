@@ -41,7 +41,7 @@ call s:term_highlight("SpellRare",  g:napolitan_red,     "NONE", "NONE")
 call s:term_highlight("WildMenu",   g:napolitan_black,   "NONE", "NONE")
 call s:term_highlight("Pmenu",      g:napolitan_white,   "NONE", "NONE")
 call s:term_highlight("PmenuThumb", g:napolitan_divisor, "NONE", "NONE")
-call s:term_highlight("MatchParen", g:napolitan_orange,  "NONE", "NONE")
+call s:term_highlight("MatchParen", g:napolitan_aqua,  "NONE", "NONE")
 call s:term_highlight("NonText",    g:napolitan_grey,    "NONE", "NONE")
 
 " Custom configurations
