@@ -61,6 +61,7 @@ int main() {
     scanf("%s", key);
 
     RS4_cypher(input, strlen(input), key, strlen(key));
+    printf("Inside [%s]!\n", __func__);
 
     return 0;
 }

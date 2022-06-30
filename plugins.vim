@@ -11,6 +11,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'Yggdroot/indentLine'
+    "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 let g:indentLine_char = '|'
