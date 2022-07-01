@@ -16,6 +16,8 @@ set nowrap
 set nobackup
 set undodir=~/.config/nvim/undodir
 set undofile
+set ignorecase
+set smartcase
 set incsearch
 set scrolloff=12
 set encoding=utf-8
@@ -86,8 +88,8 @@ let mapleader=" "
 
 :vnoremap ; :call StonksReplaceFull()<CR>
 :nnoremap <leader>; :call StonksReplaceSimple()<CR>
-:nnoremap <F1> :tabp<CR>
-:nnoremap <F2> :tabn<CR>
+:nnoremap < :tabp<CR>
+:nnoremap > :tabn<CR>
 :nnoremap <leader>T :sp<bar>term<CR><C-w>J :resize20<CR>i
 :nnoremap <leader>t :NERDTreeToggle<CR>
 :nnoremap <leader>F :NERDTreeFind<CR>
@@ -130,6 +132,10 @@ let mapleader=" "
 :vnoremap <leader>{ :call StonksSurround('{', '}')<CR>
 :vnoremap <leader>' :call StonksSurround(''', ''')<CR>
 :vnoremap <leader>" :call StonksSurround('"', '"')<CR>
+
+:nnoremap <leader>y "*y
+:nnoremap <leader>y "*y
+:nnoremap <leader>y "*y
 " Coc related
 "nmap <silent> gd <Plug>(coc-definition)
 "nmap <silent> gy <Plug>(coc-type-definition)
