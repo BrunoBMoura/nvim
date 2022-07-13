@@ -33,7 +33,7 @@ set statusline=
 set statusline+=%#_ORANGE_#%{(mode()=='n')?\'[Normal]\':''}
 set statusline+=%#_GREEN_#%{(mode()=='i')?\'[Insert]\':''}
 set statusline+=%#_PINK_#%{(mode()=='v')?\'[Visual]\':''}
-set statusline+=%#_PINK_#%{(mode()=='V')?\'[Visual_Line]\':''}
+"set statusline+=%#_PINK_#%{(mode()=='V')?\'[Visual_Line]\':''}
 set statusline+=%#_AQUA_#%{(mode()=='c')?\'[Command]\':''}
 set statusline+=\%#_CYAN_#[%{WebDevIconsGetFileTypeSymbol()}\ %f]
 set statusline+=\%#_GREY_#

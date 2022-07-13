@@ -21,6 +21,7 @@ let g:napolitan_yellow      = "215"
 let g:napolitan_cyan        = "152"
 let g:napolitan_black       = "233"
 let g:napolitan_white       = "230"
+let g:napolitan_string      = "087"
 
 fun! s:term_highlight(group, fg, bg, attr)
     exec "hi! " . a:group . " ctermbg=" . a:bg . " ctermfg=" . a:fg. " cterm=" . a:attr
@@ -41,7 +42,7 @@ call s:term_highlight("SpellRare",  g:napolitan_red,     "NONE", "NONE")
 call s:term_highlight("WildMenu",   g:napolitan_black,   "NONE", "NONE")
 call s:term_highlight("Pmenu",      g:napolitan_white,   "NONE", "NONE")
 call s:term_highlight("PmenuThumb", g:napolitan_divisor, "NONE", "NONE")
-call s:term_highlight("MatchParen", g:napolitan_aqua,  "NONE", "NONE")
+call s:term_highlight("MatchParen", g:napolitan_orange,  "NONE", "NONE")
 call s:term_highlight("NonText",    g:napolitan_grey,    "NONE", "NONE")
 
 " Custom configurations
@@ -65,7 +66,7 @@ call s:term_highlight("StorageClass", g:napolitan_green,     "NONE", "NONE")
 call s:term_highlight("Keyword",      g:napolitan_orange,    "NONE", "NONE")
 call s:term_highlight("Comment",      g:napolitan_grey,      "NONE", "NONE")
 call s:term_highlight("Constant",     g:dark_napolitan_grey, "NONE", "NONE")
-call s:term_highlight("String",       g:napolitan_cyan,      "NONE", "NONE")
+call s:term_highlight("String",       g:napolitan_purple,      "NONE", "NONE")
 call s:term_highlight("Number",       g:napolitan_purple,    "NONE", "NONE")
 call s:term_highlight("Float",        g:napolitan_purple,    "NONE", "NONE")
 call s:term_highlight("Character",    g:napolitan_cyan,      "NONE", "NONE")
@@ -85,13 +86,13 @@ call s:term_highlight("PreProc",      g:napolitan_blue,      "NONE", "NONE")
 call s:term_highlight("Include",      g:napolitan_blue,      "NONE", "NONE")
 call s:term_highlight("Define",       g:napolitan_blue,      "NONE", "NONE")
 call s:term_highlight("PreCondit",    g:napolitan_yellow,    "NONE", "NONE")
-call s:term_highlight("Macro",        g:napolitan_purple,    "NONE", "NONE")
+call s:term_highlight("Macro",        g:napolitan_aqua,    "NONE", "NONE")
 
 " Display related
 call s:term_highlight("Special",        g:napolitan_aqua,   "NONE", "NONE")
 call s:term_highlight("SpecialChar",    g:napolitan_purple, "NONE", "NONE")
 call s:term_highlight("Tag",            g:napolitan_yellow, "NONE", "NONE")
-call s:term_highlight("Delimiter",      g:napolitan_orange,  "NONE", "NONE")
+call s:term_highlight("Delimiter",      g:napolitan_white,  "NONE", "NONE")
 call s:term_highlight("SpecialComment", g:napolitan_purple, "NONE", "NONE")
 call s:term_highlight("Debug",          g:napolitan_red,    "NONE", "NONE")
 call s:term_highlight("Underlined",     g:napolitan_red,    "NONE", "NONE")
@@ -119,4 +120,7 @@ call s:term_highlight("TreesitterContextLineNumber", g:napolitan_orange,  "NONE"
 call s:term_highlight("pythonTSConstBuiltin",    g:napolitan_purple, "NONE", "NONE")
 call s:term_highlight("pythonTSFuncBuiltin",     g:napolitan_green,  "NONE", "NONE")
 call s:term_highlight("pythonTSKeywordOperator", g:napolitan_pink,   "NONE", "NONE")
-
+" Lua
+call s:term_highlight("luaTSOperator",        g:napolitan_aqua, "NONE", "NONE")
+call s:term_highlight("luaTSKeywordOperator", g:napolitan_pink, "NONE", "NONE")
+call s:term_highlight("luaTSFuncBuiltin",     g:napolitan_green, "NONE", "NONE")
