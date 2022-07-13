@@ -21,7 +21,6 @@ let g:napolitan_yellow      = "215"
 let g:napolitan_cyan        = "152"
 let g:napolitan_black       = "233"
 let g:napolitan_white       = "230"
-let g:napolitan_string      = "087"
 
 fun! s:term_highlight(group, fg, bg, attr)
     exec "hi! " . a:group . " ctermbg=" . a:bg . " ctermfg=" . a:fg. " cterm=" . a:attr
@@ -66,7 +65,7 @@ call s:term_highlight("StorageClass", g:napolitan_green,     "NONE", "NONE")
 call s:term_highlight("Keyword",      g:napolitan_orange,    "NONE", "NONE")
 call s:term_highlight("Comment",      g:napolitan_grey,      "NONE", "NONE")
 call s:term_highlight("Constant",     g:dark_napolitan_grey, "NONE", "NONE")
-call s:term_highlight("String",       g:napolitan_purple,      "NONE", "NONE")
+call s:term_highlight("String",       g:napolitan_cyan,      "NONE", "NONE")
 call s:term_highlight("Number",       g:napolitan_purple,    "NONE", "NONE")
 call s:term_highlight("Float",        g:napolitan_purple,    "NONE", "NONE")
 call s:term_highlight("Character",    g:napolitan_cyan,      "NONE", "NONE")
@@ -83,10 +82,10 @@ call s:term_highlight("Type",         g:napolitan_yellow,    "NONE", "NONE")
 call s:term_highlight("Structure",    g:napolitan_pink,      "NONE", "NONE")
 call s:term_highlight("Typedef",      g:napolitan_pink,      "NONE", "NONE")
 call s:term_highlight("PreProc",      g:napolitan_blue,      "NONE", "NONE")
-call s:term_highlight("Include",      g:napolitan_blue,      "NONE", "NONE")
+call s:term_highlight("Include",      g:napolitan_purple,    "NONE", "NONE")
 call s:term_highlight("Define",       g:napolitan_blue,      "NONE", "NONE")
 call s:term_highlight("PreCondit",    g:napolitan_yellow,    "NONE", "NONE")
-call s:term_highlight("Macro",        g:napolitan_aqua,    "NONE", "NONE")
+call s:term_highlight("Macro",        g:napolitan_aqua,      "NONE", "NONE")
 
 " Display related
 call s:term_highlight("Special",        g:napolitan_aqua,   "NONE", "NONE")
