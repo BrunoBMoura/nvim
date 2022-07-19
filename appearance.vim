@@ -25,7 +25,7 @@ call s:define_highlight("_ORANGE_", g:napolitan_orange,  g:napolitan_background,
 call s:define_highlight("_PINK_",   g:napolitan_pink,    g:napolitan_background, "NONE")
 call s:define_highlight("_CYAN_",   g:napolitan_cyan,    g:napolitan_background, "NONE")
 call s:define_highlight("_GREY_",   g:napolitan_divisor, g:napolitan_background, "NONE")
-call s:define_highlight("_BLUE_",   g:napolitan_blue,    g:napolitan_background, "NONE")
+call s:define_highlight("_PURPLE_", g:napolitan_purple,  g:napolitan_background, "NONE")
 call s:define_highlight("_GREEN_",  g:napolitan_green,   g:napolitan_background, "NONE")
 call s:define_highlight("_AQUA_",   g:napolitan_aqua,    g:napolitan_background, "NONE")
 
@@ -40,5 +40,5 @@ set statusline+=\%#_GREY_#
 set statusline+=%=
 set statusline+=\%#_AQUA_#[%{GitInfo()}]
 set statusline+=\%#_PINK_#\[%{&fileencoding?&fileencoding:&encoding}]
-set statusline+=\%#_BLUE_#\[%l\/%L,%c]
+set statusline+=\%#_PURPLE_#\[%l\/%L,%c]
 
