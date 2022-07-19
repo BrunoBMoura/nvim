@@ -317,4 +317,4 @@ def main():
         print(f"Total time to find element (50000) was ({total_time}), but it wasn't found")
 
 if __name__ == "__main__":
-	main()
+    main()

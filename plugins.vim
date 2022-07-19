@@ -13,6 +13,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'Yggdroot/indentLine'
     "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
+
 let g:indentLine_char = '|'
 let g:NERDTreeStatusline =" "
 let g:NERDTreeWinSize = 38
