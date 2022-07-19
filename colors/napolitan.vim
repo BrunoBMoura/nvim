@@ -123,3 +123,7 @@ call s:term_highlight("pythonTSKeywordOperator", g:napolitan_pink,   "NONE", "NO
 call s:term_highlight("luaTSOperator",        g:napolitan_aqua, "NONE", "NONE")
 call s:term_highlight("luaTSKeywordOperator", g:napolitan_pink, "NONE", "NONE")
 call s:term_highlight("luaTSFuncBuiltin",     g:napolitan_green, "NONE", "NONE")
+
+" Rust
+call s:term_highlight("rustTSConstBuiltin", g:napolitan_orange, "NONE", "NONE")
+call s:term_highlight("rustTSFuncMacro", g:napolitan_pink, "NONE", "NONE")
