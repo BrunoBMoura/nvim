@@ -133,9 +133,8 @@ let mapleader=" "
 :vnoremap <leader>' :call StonksSurround(''', ''')<CR>
 :vnoremap <leader>" :call StonksSurround('"', '"')<CR>
 
-:nnoremap <leader>y "*y
-:nnoremap <leader>y "*y
-:nnoremap <leader>y "*y
+" Language related
+:nnoremap <leader><leader>j :!rustfmt % <CR>
 " Coc related
 "nmap <silent> gd <Plug>(coc-definition)
 "nmap <silent> gy <Plug>(coc-type-definition)
