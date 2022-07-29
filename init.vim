@@ -90,7 +90,8 @@ let mapleader=" "
 :nnoremap <leader>; :call StonksReplaceSimple()<CR>
 :nnoremap < :tabp<CR>
 :nnoremap > :tabn<CR>
-:nnoremap <leader>T :sp<bar>term<CR><C-w>J :resize20<CR>i
+":nnoremap <leader>T :sp<bar>term<CR><C-w>J :resize20<CR>i
+:nnoremap <leader>T :vsplit term:// bash <CR>i
 :nnoremap <leader>t :NERDTreeToggle<CR>
 :nnoremap <leader>F :NERDTreeFind<CR>
 :nnoremap <leader>R :NERDTreeRefresRoot<CR>
@@ -132,7 +133,6 @@ let mapleader=" "
 :vnoremap <leader>{ :call StonksSurround('{', '}')<CR>
 :vnoremap <leader>' :call StonksSurround(''', ''')<CR>
 :vnoremap <leader>" :call StonksSurround('"', '"')<CR>
-
 " Language related
 :nnoremap <leader><leader>j :!rustfmt % <CR>
 " Coc related
