@@ -127,9 +127,10 @@ call s:term_highlight("pythonTSConstructor",     g:napolitan_yellow, "NONE", "NO
 
 " Lua
 call s:term_highlight("luaTSOperator",        g:napolitan_aqua, "NONE", "NONE")
+call s:term_highlight("luaTSConstructor",     g:napolitan_delimiter, "NONE", "NONE")
 call s:term_highlight("luaTSKeywordOperator", g:napolitan_pink, "NONE", "NONE")
 call s:term_highlight("luaTSKeyword",         g:napolitan_pink, "NONE", "NONE")
-call s:term_highlight("luaTSFuncBuiltin",     g:napolitan_green, "NONE", "NONE")
+call s:term_highlight("luaTSFuncBuiltin",     g:napolitan_pink, "NONE", "NONE")
 
 " Rust
 call s:term_highlight("rustTSConstBuiltin", g:napolitan_orange, "NONE", "NONE")
