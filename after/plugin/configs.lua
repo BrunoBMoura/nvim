@@ -20,8 +20,30 @@ require("treesitter-context").setup {
     },
   },
   zindex = 20,
-  mode = 'cursor',
+  mode = "cursor",
 }
+
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  view = {
+    adaptive_size = true,
+    mappings = {
+      list = {
+        { key = "u", action = "dir_up" },
+      },
+    },
+  },
+  renderer = {
+    add_trailing = true,
+    group_empty = true,
+    indent_markers = {
+      enable = true,
+    }
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
 
 local luasnip = require("luasnip")
 local cmp = require("cmp")

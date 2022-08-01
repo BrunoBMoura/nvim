@@ -136,6 +136,10 @@ local napolitan_colorscheme = {
   TreesitterContext = {fg = napolitan_colors.white, bg = napolitan_colors.background},
   TreesitterContextLineNumber = {fg = napolitan_colors.orange, bg = napolitan_colors.none},
 
+  -- NvimTree
+  NvimTreeStatusLine = {fg = napolitan_colors.background, bg = napolitan_colors.background},
+  NvimTreeStatusLineNc = {fg = napolitan_colors.background, bg = napolitan_colors.background},
+
   -- Python syntax
   pythonTSConstBuiltin = {fg = napolitan_colors.purple, bg = napolitan_colors.none},
   pythonTSFuncBuiltin = {fg = napolitan_colors.green, bg = napolitan_colors.none},
