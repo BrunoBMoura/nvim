@@ -7,7 +7,6 @@ end
 
 return require("packer").startup(function()
   use "wbthomason/packer.nvim"
-  use "folke/tokyonight.nvim"
   use "morhetz/gruvbox"
   use "nvim-treesitter/nvim-treesitter"
   use "nvim-treesitter/nvim-treesitter-context"
