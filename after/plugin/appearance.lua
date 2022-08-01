@@ -4,17 +4,8 @@ vim.opt.laststatus = 3
 vim.opt.showtabline = 3
 vim.opt.background = "dark"
 vim.opt.list = true
-vim.opt.fillchars = {
-  stl = "―",
-  fold = "۰",
-  diff = "·"
-}
-
-vim.opt.listchars = {
-  tab = "»·",
-  trail = "·",
-  eol = "¬"
-}
+vim.opt.fillchars = {stl = "―", fold = "۰", diff = "·"}
+vim.opt.listchars = {tab = "»·", trail = "·", eol = "¬"}
 
 local napolitan_colors = {
   snip_background = "#121212", -- 233
@@ -163,3 +154,109 @@ for group, opts in pairs(napolitan_colorscheme) do
   vim.api.nvim_set_hl(0, group, opts)
 end
 
+-- Status Line
+
+local mode_group_colors = {
+  StatusLineNormalColor = {fg = napolitan_colors.orange, bg = napolitan_colors.none},
+  StatusLineVisualColor = {fg = napolitan_colors.pink, bg = napolitan_colors.none},
+  StatusLineInsertColor = {fg = napolitan_colors.green, bg = napolitan_colors.none},
+  StatusLineSelectColor = {fg = napolitan_colors.cyan, bg = napolitan_colors.none},
+  StatusLineReplaceColor = {fg = napolitan_colors.yellow, bg = napolitan_colors.none},
+  StatusLineShellColor = {fg = napolitan_colors.aqua, bg = napolitan_colors.none},
+  StatusLineTerminalColor = {fg = napolitan_colors.blue, bg = napolitan_colors.none},
+}
+
+for group, opts in pairs(mode_group_colors) do
+  vim.api.nvim_set_hl(0, group, opts)
+end
+
+local modes = {
+  ["n"]  = {text = "Normal", color = "%#StatusLineNormalColor"},
+  ["no"] = {text = "Normal", color = "%#StatusLineNormalColor"},
+  ["v"]  = {text = "Visual", color = "%#StatusLineVisualColor"},
+  ["V"]  = {text = "Visual_line", color = "%#StatusLineVisualColor"},
+  [""] = {text = "Visual_block", color = "%#StatusLineVisualColor"},
+  ["s"]  = {text = "Select", color = "%#StatusLineSelectColor"},
+  ["S"]  = {text = "Select_line", color = "%#StatusLineSelectColor"},
+  [""] = {text = "Select_block", color = "%#StatusLineSelectColor"},
+  ["i"]  = {text = "Insert", color = "%#StatusLineInsertColor"},
+  ["ic"] = {text = "Insert", color = "%#StatusLineInsertColor"},
+  ["R"]  = {text = "Replace", color = "%#StatusLineReplaceColor"},
+  ["Rv"] = {text = "Visual_replace", color = "%#StatusLineReplaceColor"},
+  ["c"]  = {text = "Command", color = "%#StatusLineShellColor"},
+  ["cv"] = {text = "Vim_ex", color = "%#StatusLineShellColor"},
+  ["ce"] = {text = "Ex", color = "%#StatusLineShellColor"},
+  ["r"]  = {text = "Prompt", color = "%#StatusLineShellColor"},
+  ["rm"] = {text = "Moar", color = "%#StatusLineShellColor"},
+  ["r?"] = {text = "Confirm", color = "%#StatusLineShellColor"},
+  ["!"]  = {text = "Shell", color = "%#StatusLineShellColor"},
+  ["t"]  = {text = "Terminal", color = "%#StatusLineTerminalColor"},
+}
+
+local function mode()
+  local current_mode = vim.api.nvim_get_mode().mode
+  return string.format(" [%s] ", modes[current_mode].text)
+end
+
+local function update_mode_colors()
+  local current_mode = vim.api.nvim_get_mode().mode
+  return modes[current_mode].color
+end
+
+local function filepath()
+  local fpath = vim.fn.fnamemodify(vim.fn.expand "%", ":~:.:h")
+  if fpath == "" or fpath == "." then
+    return " "
+  end
+  return string.format(" %s/", fpath)
+end
+
+local function filename()
+  local fname = vim.fn.expand "%:t"
+  if fname == "" then
+    return ""
+  end
+
+  return fname .. " "
+end
+
+local function filetype()
+  return string.format(" %s ", vim.bo.filetype)
+end
+
+local function lineinfo()
+  if vim.bo.filetype == "alpha" then
+    return ""
+  end
+  return " %l/%L:%c"
+end
+
+Statusline = {}
+Statusline.active = function()
+  return table.concat {
+    "%#Statusline#",
+    update_mode_colors(),
+    mode(),
+    "%#Normal# ",
+    filepath(),
+    filename(),
+    "%#Normal#",
+    "%=%#StatusLineExtra#",
+    filetype(),
+    lineinfo(),
+  }
+end
+
+print(mode())
+print(update_mode_colors())
+print(filepath())
+print(filename())
+print(filetype())
+print(lineinfo())
+
+vim.api.nvim_exec([[
+  augroup Statusline
+  au!
+  au WinEnter, BufEnter * setlocal statusline=%!v:lua.Statusline.active()
+  augroup END
+]], false)
