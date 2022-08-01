@@ -2,9 +2,9 @@ require("Comment").setup()
 require("nvim-autopairs").setup()
 
 require("nvim-treesitter.configs").setup {
-  ensure_installed =  {"c", "cpp", "lua", "rust", "python", "ruby", "vim"},
-  highlight = {enable = true,},
-  indent = {enable = false,}
+  ensure_installed =  { "c", "cpp", "lua", "rust", "python", "ruby", "vim" },
+  highlight = { enable = true, },
+  indent = { enable = false, }
 }
 
 require("treesitter-context").setup {
@@ -91,3 +91,4 @@ require("nvim-lsp-installer").on_server_ready(function(server)
   end
   server:setup(opts)
 end)
+

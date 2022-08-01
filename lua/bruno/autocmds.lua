@@ -18,10 +18,10 @@ local lang_meta_op = {
 
 for lang, data in pairs(lang_meta_op) do
   if data.format ~= nil then
-      autocmd(
-        "FileType",
-        {command = "nnoremap <leader><leader>f :!" .. data.format .. " % <CR>", pattern = lang}
-      )
+    autocmd(
+      "FileType",
+      {command = "nnoremap <leader><leader>f :!" .. data.format .. " % <CR>", pattern = lang}
+    )
   end
   if data.small_indent ~= nil then
     autocmd(
@@ -30,6 +30,3 @@ for lang, data in pairs(lang_meta_op) do
     )
   end
 end
-
-
-

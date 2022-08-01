@@ -9,8 +9,8 @@ nnoremap("<C-k>", "<C-w>k")
 nnoremap("<C-l>", "<C-w>l")
 nnoremap("<C-q>", "<C-w>q")
 -- Tab movement
-nnoremap("<", "tabp<CR>")
-nnoremap(">", "tabn<CR>")
+nnoremap("<", ":tabp<CR>")
+nnoremap(">", ":tabn<CR>")
 -- Lazy saving/quitting
 nnoremap("<leader>w", ":w<CR>")
 nnoremap("<leader>q", ":q<CR>")

@@ -19,6 +19,7 @@ return require("packer").startup(function()
   use "airblade/vim-gitgutter"
   use "ryanoasis/vim-devicons"
   use "windwp/nvim-autopairs"
+  use "lunarvim/horizon.nvim"
     --
   use "neovim/nvim-lspconfig"
   use "williamboman/nvim-lsp-installer"

@@ -89,6 +89,11 @@ _G.packer_plugins = {
     path = "/home/bruno/.local/share/nvim/site/pack/packer/start/gruvbox",
     url = "https://github.com/morhetz/gruvbox"
   },
+  ["horizon.nvim"] = {
+    loaded = true,
+    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/horizon.nvim",
+    url = "https://github.com/lunarvim/horizon.nvim"
+  },
   indentLine = {
     loaded = true,
     path = "/home/bruno/.local/share/nvim/site/pack/packer/start/indentLine",
@@ -143,16 +148,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/bruno/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
-  },
-  ["tokyonight.nvim"] = {
-    loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
-    url = "https://github.com/folke/tokyonight.nvim"
-  },
-  vim = {
-    loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/vim",
-    url = "https://github.com/dracula/vim"
   },
   ["vim-devicons"] = {
     loaded = true,
