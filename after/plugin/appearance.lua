@@ -139,6 +139,7 @@ local napolitan_colorscheme = {
   -- NvimTree
   NvimTreeStatusLine = {fg = napolitan_colors.background, bg = napolitan_colors.background},
   NvimTreeStatusLineNc = {fg = napolitan_colors.background, bg = napolitan_colors.background},
+  NvimTreeIndentMarker = {fg = napolitan_colors.visual, bg = napolitan_colors.none},
 
   -- Python syntax
   pythonTSConstBuiltin = {fg = napolitan_colors.purple, bg = napolitan_colors.none},
