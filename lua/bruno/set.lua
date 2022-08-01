@@ -1,4 +1,4 @@
-vim.opt.tabstop = 4 
+vim.opt.tabstop = 4
 vim.optsofttabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
@@ -20,5 +20,4 @@ vim.opt.scrolloff = 12
 vim.opt.encoding = "utf-8"
 vim.opt.autoread = true
 vim.opt.cmdheight = 1
-
 vim.g.mapleader = " "
