@@ -1,31 +1,30 @@
-require('Comment').setup()
+require("Comment").setup()
+require("nvim-autopairs").setup()
 
-local ts_configs = require('nvim-treesitter.configs')
-ts_configs.setup {
+require("nvim-treesitter.configs").setup {
   ensure_installed =  {"c", "cpp", "lua", "rust", "python", "ruby", "vim"},
   highlight = {enable = true,},
   indent = {enable = false,}
 }
 
-local ts_context = require('treesitter-context')
-ts_context.setup {
+require("treesitter-context").setup {
   enable = true,
   max_lines = 0,
-  trim_scope = 'outer',
+  trim_scope = "outer",
   patterns = {
     default = {
-      'class',
-      'function',
-      'method',
-      'module',
+      "class",
+      "function",
+      "method",
+      "module",
     },
   },
   zindex = 20,
   mode = 'cursor',
 }
 
-local luasnip = require "luasnip"
-local cmp = require "cmp"
+local luasnip = require("luasnip")
+local cmp = require("cmp")
 
 cmp.setup {
   snippet = {
@@ -53,6 +52,7 @@ cmp.setup {
   },
   sources = { { name = "nvim_lsp" }, { name = "luasnip" } },
 }
+
 local lang_servers = {
   "bashls",
   "pyright",
@@ -60,8 +60,9 @@ local lang_servers = {
   "sumneko_lua",
 }
 
+local installer = require("nvim-lsp-installer")
 for _, name in pairs(lang_servers) do
-  local found, server = require("nvim-lsp-installer").get_server(name)
+  local found, server = installer.get_server(name)
   if found and not server:is_installed() then
     print("Installing [" .. name .. "]")
     server:install()
@@ -76,21 +77,12 @@ local setup_server = {
 
 require("nvim-lsp-installer").on_server_ready(function(server)
   local opts = {
-    on_attach = function(client, bufnr)
+    on_attach = function(_, bufnr)
       vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
       local opts = { buffer = bufnr }
       vim.keymap.set("n", "<Leader>h", vim.lsp.buf.hover, opts)
       vim.keymap.set("n", "<Leader>i", vim.lsp.buf.definition, opts)
       vim.keymap.set("n", "<Leader>r", vim.lsp.buf.rename, opts)
-    --   local should_format = true
-    --   for _, value in pairs(has_formatter) do
-    --     if client.name == value then
-    --       should_format = false
-    --     end
-    --   end
-    --   if not should_format then
-    --     client.resolved_capabilities.document_formatting = false
-    --   end
     end,
     capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
   }

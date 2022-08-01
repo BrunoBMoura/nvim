@@ -1,5 +1,8 @@
 vim.cmd("colorscheme gruvbox")
 
+vim.opt.cursorline = true
+vim.opt.laststatus = 3
+vim.opt.showtabline = 3
 vim.opt.background = "dark"
 vim.opt.list = true
 vim.opt.fillchars = {
@@ -13,10 +16,6 @@ vim.opt.listchars = {
     trail = "·",
     eol = "¬"
 }
-
-vim.opt.cursorline = true
-vim.opt.laststatus = 3
-vim.opt.showtabline = 3
 
 --[[
 local napolitan_colors = {
@@ -44,22 +43,4 @@ local napolitan_colors = {
 local function hl(group, opts)
     vim.api.nvim_set_hl(0, group, opts)
 end
-
-hl("Normal",    {fg = napolitan_colors.white})
-hl("Error",     {fg = napolitan_colors.red})
-hl("ErrorMsg",  {fg = napolitan_colors.red})
-hl("Search",    {fg = napolitan_colors.pink})
-hl("IncSearch", {fg = napolitan_colors.pink})
-hl("DiffChange", g:napolitan_orange,  "NONE", "reverse")
-hl("DiffText",   g:napolitan_orange,  "NONE", "NONE")
-hl("SignColumn", g:napolitan_orange,  "NONE", "NONE")
-hl("SpellBad",   g:napolitan_white,   "NONE", "undercurl")
-hl("SpellCap",   g:napolitan_white,   "NONE", "NONE")
-hl("SpellRare",  g:napolitan_red,     "NONE", "NONE")
-hl("WildMenu",   g:napolitan_black,   "NONE", "NONE")
-hl("Pmenu",      g:napolitan_white,   "NONE", "NONE")
-hl("PmenuThumb", g:napolitan_divisor, "NONE", "NONE")
-hl("MatchParen", g:napolitan_pink,    "NONE", "NONE")
-hl("NonText",    g:napolitan_grey,    "NONE", "NONE")
-
 --]]
