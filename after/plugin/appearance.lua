@@ -16,17 +16,13 @@ vim.opt.listchars = {
   eol = "¬"
 }
 
-local function hl(group, opts)
-  vim.api.nvim_set_hl(0, group, opts)
-end
-
 local napolitan_colors = {
   snip_background = "#121212", -- 233
   background      = "#1C1C1C", -- 234
   divisor         = "#262626", -- 235
   delimiter       = "#d7af87", -- 180
   grey            = "#585858", -- 240
-  dark_grey       = "#D7AF87", -- 181
+  dark_grey       = "#D7AFAF", -- 181
   visual          = "#303030", -- 236
   string          = "#AFD7AF", -- 151
   aqua            = "#5FD7AF", -- 079
@@ -43,114 +39,122 @@ local napolitan_colors = {
   none            = "NONE",
 }
 
--- Default UI
-hl("Normal", {fg = napolitan_colors.white, bg = napolitan_colors.none})
-hl("Error", {fg = napolitan_colors.red, bg = napolitan_colors.none})
-hl("ErrorMsg", {fg = napolitan_colors.red, bg = napolitan_colors.none})
-hl("Search", {fg = napolitan_colors.pink, bg = napolitan_colors.none})
-hl("IncSearch", {fg = napolitan_colors.pink, bg = napolitan_colors.none, reverse = true})
-hl("DiffChange", {fg = napolitan_colors.orange, bg = napolitan_colors.none, reverse = true})
-hl("DiffText", {fg = napolitan_colors.orange, bg = napolitan_colors.none})
-hl("SignColumn", {fg = napolitan_colors.orange, bg = napolitan_colors.none})
-hl("SpellBad", {fg = napolitan_colors.white, bg = napolitan_colors.none, undercurl = true})
-hl("SpellCap", {fg = napolitan_colors.white, bg = napolitan_colors.none})
-hl("SpellRare", {fg = napolitan_colors.red, bg = napolitan_colors.none})
-hl("WildMenu", {fg = napolitan_colors.black, bg = napolitan_colors.none})
-hl("Pmenu", {fg = napolitan_colors.orange, bg = napolitan_colors.snip_background})
-hl("PmenuThumb", {fg = napolitan_colors.divisor, bg = napolitan_colors.none})
-hl("MatchParen", {fg = napolitan_colors.pink, bg = napolitan_colors.none, bold = true})
-hl("NonText", {fg = napolitan_colors.grey, bg = napolitan_colors.none})
-hl("StatusLine", {fg = napolitan_colors.divisor, bg = napolitan_colors.none})
-hl("CursorLineNr", {fg = napolitan_colors.orange, bg = napolitan_colors.none})
-hl("CursorLine", {fg = napolitan_colors.none, bg = napolitan_colors.divisor})
-hl("TabLineSel", {fg = napolitan_colors.orange, bg = napolitan_colors.none})
-hl("TabLineFill", {fg = napolitan_colors.none, bg = napolitan_colors.divisor})
-hl("TabLine", {fg = napolitan_colors.none, bg = napolitan_colors.divisor})
-hl("Title", {fg = napolitan_colors.white, bg = napolitan_colors.divisor})
-hl("VertSplit", {fg = napolitan_colors.divisor, bg = napolitan_colors.none})
-hl("StatusLine", {fg = napolitan_colors.divisor, bg = napolitan_colors.none})
-hl("StatusLineNc", {fg = napolitan_colors.divisor, bg = napolitan_colors.none})
-hl("SpecialKey", {fg = napolitan_colors.yellow, bg = napolitan_colors.none})
-hl("Visual", {fg = napolitan_colors.none, bg = napolitan_colors.visual})
-hl("LineNr", {fg = napolitan_colors.grey, bg = napolitan_colors.none})
-hl("MsgArea", {fg = napolitan_colors.white, bg = napolitan_colors.none})
--- Syntax
-hl("StorageClass", {fg = napolitan_colors.green, bg = napolitan_colors.none})
-hl("Keyword", {fg = napolitan_colors.orange, bg = napolitan_colors.none})
-hl("Comment", {fg = napolitan_colors.grey, bg = napolitan_colors.none})
-hl("Constant", {fg = napolitan_colors.dark_grey, bg = napolitan_colors.none})
-hl("String", {fg = napolitan_colors.string, bg = napolitan_colors.none})
-hl("Number", {fg = napolitan_colors.purple, bg = napolitan_colors.none})
-hl("Float", {fg = napolitan_colors.purple, bg = napolitan_colors.none})
-hl("Character", {fg = napolitan_colors.cyan, bg = napolitan_colors.none})
-hl("Boolean", {fg = napolitan_colors.purple, bg = napolitan_colors.none})
-hl("Identifier", {fg = napolitan_colors.dark_grey, bg = napolitan_colors.none})
-hl("Function", {fg = napolitan_colors.green, bg = napolitan_colors.none})
-hl("Statement", {fg = napolitan_colors.pink, bg = napolitan_colors.none})
-hl("Conditional", {fg = napolitan_colors.pink, bg = napolitan_colors.none})
-hl("Repeat", {fg = napolitan_colors.pink, bg = napolitan_colors.none})
-hl("Label", {fg = napolitan_colors.dark_grey, bg = napolitan_colors.none})
-hl("Operator", {fg = napolitan_colors.aqua, bg = napolitan_colors.none})
-hl("Exception", {fg = napolitan_colors.pink, bg = napolitan_colors.none})
-hl("Type", {fg = napolitan_colors.yellow, bg = napolitan_colors.none})
-hl("Structure", {fg = napolitan_colors.pink, bg = napolitan_colors.none})
-hl("Typedef", {fg = napolitan_colors.pink, bg = napolitan_colors.none})
-hl("PreProc", {fg = napolitan_colors.purple, bg = napolitan_colors.none})
-hl("Include", {fg = napolitan_colors.pink, bg = napolitan_colors.none})
-hl("Define", {fg = napolitan_colors.pink, bg = napolitan_colors.none})
-hl("PreCondit", {fg = napolitan_colors.blue, bg = napolitan_colors.none})
-hl("Macro", {fg = napolitan_colors.aqua, bg = napolitan_colors.none})
-hl("Special", {fg = napolitan_colors.aqua, bg = napolitan_colors.none})
-hl("SpecialChar", {fg = napolitan_colors.purple, bg = napolitan_colors.none})
-hl("Tag", {fg = napolitan_colors.yellow, bg = napolitan_colors.none})
-hl("Delimiter", {fg = napolitan_colors.delimiter, bg = napolitan_colors.none})
-hl("SpecialComment", {fg = napolitan_colors.purple, bg = napolitan_colors.none})
-hl("Debug", {fg = napolitan_colors.red, bg = napolitan_colors.none})
-hl("Underlined", {fg = napolitan_colors.red, bg = napolitan_colors.none})
-hl("Ignore", {fg = napolitan_colors.green, bg = napolitan_colors.none})
-hl("Error", {fg = napolitan_colors.red, bg = napolitan_colors.none})
-hl("Todo", {fg = napolitan_colors.red, bg = napolitan_colors.none})
-hl("Conceal", {fg = napolitan_colors.red, bg = napolitan_colors.none})
-hl("Directory", {fg = napolitan_colors.green, bg = napolitan_colors.none})
-hl("FoldColumn", {fg = napolitan_colors.yellow, bg = napolitan_colors.none})
-hl("ModeMsg", {fg = napolitan_colors.white, bg = napolitan_colors.none})
-hl("MoreMsg", {fg = napolitan_colors.white, bg = napolitan_colors.none})
-hl("Question", {fg = napolitan_colors.pink, bg = napolitan_colors.none})
-hl("DiffAdd", {fg = napolitan_colors.pink, bg = napolitan_colors.none})
-hl("diffAdded", {fg = napolitan_colors.red, bg = napolitan_colors.none})
-hl("diffCommon", {fg = napolitan_colors.green, bg = napolitan_colors.none})
-hl("Folded", {fg = napolitan_colors.purple, bg = napolitan_colors.none})
-hl("WarningMsg", {fg = napolitan_colors.green, bg = napolitan_colors.none})
+local napolitan_colorscheme = {
+  -- Default UI
+  Normal = {fg = napolitan_colors.white, bg = napolitan_colors.none},
+  Error = {fg = napolitan_colors.red, bg = napolitan_colors.none},
+  ErrorMsg = {fg = napolitan_colors.red, bg = napolitan_colors.none},
+  Search = {fg = napolitan_colors.pink, bg = napolitan_colors.none},
+  IncSearch = {fg = napolitan_colors.pink, bg = napolitan_colors.none, reverse = true},
+  DiffChange = {fg = napolitan_colors.orange, bg = napolitan_colors.none, reverse = true},
+  DiffText = {fg = napolitan_colors.orange, bg = napolitan_colors.none},
+  SignColumn = {fg = napolitan_colors.orange, bg = napolitan_colors.none},
+  SpellBad = {fg = napolitan_colors.white, bg = napolitan_colors.none, undercurl = true},
+  SpellCap = {fg = napolitan_colors.white, bg = napolitan_colors.none},
+  SpellRare = {fg = napolitan_colors.red, bg = napolitan_colors.none},
+  WildMenu = {fg = napolitan_colors.black, bg = napolitan_colors.none},
+  Pmenu = {fg = napolitan_colors.orange, bg = napolitan_colors.snip_background},
+  PmenuThumb = {fg = napolitan_colors.divisor, bg = napolitan_colors.none},
+  MatchParen = {fg = napolitan_colors.pink, bg = napolitan_colors.none, bold = true},
+  NonText = {fg = napolitan_colors.grey, bg = napolitan_colors.none},
+  StatusLine = {fg = napolitan_colors.divisor, bg = napolitan_colors.none},
+  CursorLineNr = {fg = napolitan_colors.orange, bg = napolitan_colors.none},
+  CursorLine = {fg = napolitan_colors.none, bg = napolitan_colors.divisor},
+  TabLineSel = {fg = napolitan_colors.orange, bg = napolitan_colors.none},
+  TabLineFill = {fg = napolitan_colors.none, bg = napolitan_colors.divisor},
+  TabLine = {fg = napolitan_colors.none, bg = napolitan_colors.divisor},
+  Title = {fg = napolitan_colors.white, bg = napolitan_colors.divisor},
+  VertSplit = {fg = napolitan_colors.divisor, bg = napolitan_colors.none},
+  StatusLineNc = {fg = napolitan_colors.divisor, bg = napolitan_colors.none},
+  SpecialKey = {fg = napolitan_colors.yellow, bg = napolitan_colors.none},
+  Visual = {fg = napolitan_colors.none, bg = napolitan_colors.visual},
+  LineNr = {fg = napolitan_colors.grey, bg = napolitan_colors.none},
+  MsgArea = {fg = napolitan_colors.white, bg = napolitan_colors.none},
 
--- Cmp
-hl("CmpItemMenuDefault", {fg = napolitan_colors.orange, bg = napolitan_colors.snip_background})
-hl("CmpItemAbbrDefault", {fg = napolitan_colors.white, bg = napolitan_colors.snip_background})
-hl("CmpItemAbbrMatch", {fg = napolitan_colors.white, bg = napolitan_colors.snip_background, bold = true})
-hl("CmpItemKindDefault", {fg = napolitan_colors.pink, bg = napolitan_colors.snip_background})
+  -- Syntax
+  StorageClass = {fg = napolitan_colors.green, bg = napolitan_colors.none},
+  Keyword = {fg = napolitan_colors.orange, bg = napolitan_colors.none},
+  Comment = {fg = napolitan_colors.grey, bg = napolitan_colors.none},
+  Constant = {fg = napolitan_colors.dark_grey, bg = napolitan_colors.none},
+  String = {fg = napolitan_colors.string, bg = napolitan_colors.none},
+  Number = {fg = napolitan_colors.purple, bg = napolitan_colors.none},
+  Float = {fg = napolitan_colors.purple, bg = napolitan_colors.none},
+  Character = {fg = napolitan_colors.cyan, bg = napolitan_colors.none},
+  Boolean = {fg = napolitan_colors.purple, bg = napolitan_colors.none},
+  Identifier = {fg = napolitan_colors.dark_grey, bg = napolitan_colors.none},
+  Function = {fg = napolitan_colors.green, bg = napolitan_colors.none},
+  Statement = {fg = napolitan_colors.pink, bg = napolitan_colors.none},
+  Conditional = {fg = napolitan_colors.pink, bg = napolitan_colors.none},
+  Repeat = {fg = napolitan_colors.pink, bg = napolitan_colors.none},
+  Label = {fg = napolitan_colors.dark_grey, bg = napolitan_colors.none},
+  Operator = {fg = napolitan_colors.aqua, bg = napolitan_colors.none},
+  Exception = {fg = napolitan_colors.pink, bg = napolitan_colors.none},
+  Type = {fg = napolitan_colors.yellow, bg = napolitan_colors.none},
+  Structure = {fg = napolitan_colors.pink, bg = napolitan_colors.none},
+  Typedef = {fg = napolitan_colors.pink, bg = napolitan_colors.none},
+  PreProc = {fg = napolitan_colors.purple, bg = napolitan_colors.none},
+  Include = {fg = napolitan_colors.pink, bg = napolitan_colors.none},
+  Define = {fg = napolitan_colors.pink, bg = napolitan_colors.none},
+  PreCondit = {fg = napolitan_colors.blue, bg = napolitan_colors.none},
+  Macro = {fg = napolitan_colors.aqua, bg = napolitan_colors.none},
+  Special = {fg = napolitan_colors.aqua, bg = napolitan_colors.none},
+  SpecialChar = {fg = napolitan_colors.purple, bg = napolitan_colors.none},
+  Tag = {fg = napolitan_colors.yellow, bg = napolitan_colors.none},
+  Delimiter = {fg = napolitan_colors.delimiter, bg = napolitan_colors.none},
+  SpecialComment = {fg = napolitan_colors.purple, bg = napolitan_colors.none},
+  Debug = {fg = napolitan_colors.red, bg = napolitan_colors.none},
+  Underlined = {fg = napolitan_colors.red, bg = napolitan_colors.none},
+  Ignore = {fg = napolitan_colors.green, bg = napolitan_colors.none},
+  Todo = {fg = napolitan_colors.red, bg = napolitan_colors.none},
+  Conceal = {fg = napolitan_colors.red, bg = napolitan_colors.none},
+  Directory = {fg = napolitan_colors.green, bg = napolitan_colors.none},
+  FoldColumn = {fg = napolitan_colors.yellow, bg = napolitan_colors.none},
+  ModeMsg = {fg = napolitan_colors.white, bg = napolitan_colors.none},
+  MoreMsg = {fg = napolitan_colors.white, bg = napolitan_colors.none},
+  Question = {fg = napolitan_colors.pink, bg = napolitan_colors.none},
+  DiffAdd = {fg = napolitan_colors.pink, bg = napolitan_colors.none},
+  diffAdded = {fg = napolitan_colors.red, bg = napolitan_colors.none},
+  diffCommon = {fg = napolitan_colors.green, bg = napolitan_colors.none},
+  Folded = {fg = napolitan_colors.purple, bg = napolitan_colors.none},
+  WarningMsg = {fg = napolitan_colors.green, bg = napolitan_colors.none},
 
--- Gitgutter
-hl("GitGutterDelete", {fg = napolitan_colors.pink, bg = napolitan_colors.background})
-hl("GitGutterAdd", {fg = napolitan_colors.green, bg = napolitan_colors.background})
-hl("GitGutterChange", {fg = napolitan_colors.yellow, bg = napolitan_colors.background})
+  -- Cmp
+  CmpItemMenuDefault = {fg = napolitan_colors.orange, bg = napolitan_colors.snip_background},
+  CmpItemAbbrDefault = {fg = napolitan_colors.white, bg = napolitan_colors.snip_background},
+  CmpItemAbbrMatch = {fg = napolitan_colors.white, bg = napolitan_colors.snip_background, bold = true},
+  CmpItemKindDefault = {fg = napolitan_colors.pink, bg = napolitan_colors.snip_background},
 
--- TreeSitter
-hl("TreesitterContext", {fg = napolitan_colors.white, bg = napolitan_colors.background})
-hl("TreesitterContextLineNumber", {fg = napolitan_colors.orange, bg = napolitan_colors.none})
+  -- LSP diagnostics
+  DiagnosticError = {fg = napolitan_colors.red, bg = napolitan_colors.background},
+  DiagnosticInfo = {fg = napolitan_colors.blue, bg = napolitan_colors.background},
+  DiagnosticWarn = {fg = napolitan_colors.yellow, bg = napolitan_colors.background},
+  GitGutterDelete = {fg = napolitan_colors.pink, bg = napolitan_colors.background},
+  GitGutterAdd = {fg = napolitan_colors.green, bg = napolitan_colors.background},
+  GitGutterChange = {fg = napolitan_colors.yellow, bg = napolitan_colors.background},
 
--- Python
-hl("pythonTSConstBuiltin", {fg = napolitan_colors.purple, bg = napolitan_colors.none})
-hl("pythonTSFuncBuiltin", {fg = napolitan_colors.green, bg = napolitan_colors.none})
-hl("pythonTSKeywordOperator", {fg = napolitan_colors.pink, bg = napolitan_colors.none})
-hl("pythonTSConstructor", {fg = napolitan_colors.yellow, bg = napolitan_colors.none})
+  -- TreeSitter Context
+  TreesitterContext = {fg = napolitan_colors.white, bg = napolitan_colors.background},
+  TreesitterContextLineNumber = {fg = napolitan_colors.orange, bg = napolitan_colors.none},
 
--- Lua
-hl("luaTSOperator", {fg = napolitan_colors.aqua, bg = napolitan_colors.none})
-hl("luaTSConstructor", {fg = napolitan_colors.delimiter, bg = napolitan_colors.none})
-hl("luaTSKeywordOperator", {fg = napolitan_colors.pink, bg = napolitan_colors.none})
-hl("luaTSKeyword", {fg = napolitan_colors.pink, bg = napolitan_colors.none})
-hl("luaTSFuncBuiltin", {fg = napolitan_colors.pink, bg = napolitan_colors.none})
+  -- Python syntax
+  pythonTSConstBuiltin = {fg = napolitan_colors.purple, bg = napolitan_colors.none},
+  pythonTSFuncBuiltin = {fg = napolitan_colors.green, bg = napolitan_colors.none},
+  pythonTSKeywordOperator = {fg = napolitan_colors.pink, bg = napolitan_colors.none},
+  pythonTSConstructor = {fg = napolitan_colors.yellow, bg = napolitan_colors.none},
 
--- Rust
-hl("rustTSConstBuiltin", {fg = napolitan_colors.orange, bg = napolitan_colors.none})
-hl("rustTSFuncMacro", {fg = napolitan_colors.pink, bg = napolitan_colors.none})
-hl("rustTSNamespace", {fg = napolitan_colors.white, bg = napolitan_colors.none})
+  -- Lua syntax
+  luaTSOperator = {fg = napolitan_colors.aqua, bg = napolitan_colors.none},
+  luaTSConstructor = {fg = napolitan_colors.delimiter, bg = napolitan_colors.none},
+  luaTSKeywordOperator = {fg = napolitan_colors.pink, bg = napolitan_colors.none},
+  luaTSKeyword = {fg = napolitan_colors.pink, bg = napolitan_colors.none},
+  luaTSFuncBuiltin = {fg = napolitan_colors.pink, bg = napolitan_colors.none},
+
+  -- Rust syntax
+  rustTSFuncMacro = {fg = napolitan_colors.pink, bg = napolitan_colors.none},
+  rustTSNamespace = {fg = napolitan_colors.white, bg = napolitan_colors.none},
+}
+
+for group, opts in pairs(napolitan_colorscheme) do
+  vim.api.nvim_set_hl(0, group, opts)
+end
+
