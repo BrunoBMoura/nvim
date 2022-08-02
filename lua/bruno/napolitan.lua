@@ -145,6 +145,7 @@ function M.setup()
     -- Rust syntax
     rustTSFuncMacro = {fg = theme.colors.pink, bg = theme.colors.none},
     rustTSNamespace = {fg = theme.colors.white, bg = theme.colors.none},
+    rustTSConstBuiltin = {fg = theme.colors.pink, bg = theme.colors.none}
   }
 
   return theme
