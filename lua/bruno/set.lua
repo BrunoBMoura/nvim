@@ -20,4 +20,11 @@ vim.opt.scrolloff = 12
 vim.opt.encoding = "utf-8"
 vim.opt.autoread = true
 vim.opt.cmdheight = 1
+vim.opt.termguicolors = true
+vim.opt.cursorline = true
+vim.opt.laststatus = 3
+vim.opt.showtabline = 3
+vim.opt.list = true
+vim.opt.fillchars = {stl = "―", fold = "۰", diff = "·"}
+vim.opt.listchars = {tab = "»·", trail = "·", eol = "¬"}
 vim.g.mapleader = " "
