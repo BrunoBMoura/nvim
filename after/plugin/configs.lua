@@ -114,3 +114,20 @@ require("nvim-lsp-installer").on_server_ready(function(server)
   server:setup(opts)
 end)
 
+-- require("gitsigns").setup {
+--   watch_gitdir = {
+--     interval = 1000,
+--     follow_files = true
+--   },
+--   preview_config = {
+--     border = 'single',
+--     style = 'minimal',
+--     relative = 'cursor',
+--     row = 0,
+--     col = 1
+--   },
+--   yadm = {
+--     enable = false
+--   },
+-- }
+require("gitsigns").setup()

@@ -7,7 +7,6 @@ end
 
 return require("packer").startup(function()
   use "wbthomason/packer.nvim"
-  use "morhetz/gruvbox"
   use "nvim-treesitter/nvim-treesitter"
   use "nvim-treesitter/nvim-treesitter-context"
   use "nvim-lua/plenary.nvim"
@@ -16,11 +15,12 @@ return require("packer").startup(function()
   use "tpope/vim-fugitive"
   use "numToStr/Comment.nvim"
   use "Yggdroot/indentLine"
-  use "airblade/vim-gitgutter"
   use "ryanoasis/vim-devicons"
   use "windwp/nvim-autopairs"
   use "lunarvim/horizon.nvim"
   use "kyazdani42/nvim-tree.lua"
+  use "ojroques/nvim-hardline"
+  use "lewis6991/gitsigns.nvim"
     --
   use "neovim/nvim-lspconfig"
   use "williamboman/nvim-lsp-installer"
