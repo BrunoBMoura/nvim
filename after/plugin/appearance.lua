@@ -101,7 +101,7 @@ end
 
 local autocmd = vim.api.nvim_create_autocmd
 
-autocmd({"WinEnter,BufEnter,WinLeave,BufLeave"}, {
+autocmd({"BufWritePre,WinEnter,BufEnter,WinLeave,BufLeave"}, {
   command = "setlocal statusline=%!v:lua.Statusline.refresh()",
 })
 
