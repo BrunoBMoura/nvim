@@ -47,6 +47,7 @@ local modes = {
   ["r?"] = {text = "Confirm", color = "%#StatusLineShellColor#"},
   ["!"]  = {text = "Shell", color = "%#StatusLineShellColor#"},
   ["t"]  = {text = "Terminal", color = "%#StatusLineTerminalColor#"},
+  ["T"]  = {text = "Terminal", color = "%#StatusLineTerminalColor#"},
 }
 
 iterate_and_hl(napolitan.colorscheme)
@@ -60,13 +61,13 @@ end
 local function file_path()
   local path = vim.fn.fnamemodify(vim.fn.expand "%", ":~:.:h")
   if path == "" or path == "." then
-    return path
+    return ""
   end
   local fname = vim.fn.expand "%:f"
   if fname == "" then
     path = path .. "/" .. "None"
   end
-  return "["..vim.fn.WebDevIconsGetFileTypeSymbol() .. " " .. path .. "/" .. fname .. "]"
+  return "[" .. path .. "/" .. fname .. "]"
 end
 
 local function file_metadata()
@@ -74,15 +75,16 @@ local function file_metadata()
   if branch == "" then
     branch = "No_git"
   end
-  local filetype = string.format("%s", vim.bo.filetype)
+  local fileencoding = string.format("%s", vim.bo.fileencoding)
+  local filetype = string.format("%s%s ", vim.bo.filetype, vim.fn.WebDevIconsGetFileTypeSymbol())
   local lineinfo = ""
   if vim.bo.filetype ~= "alpha" then
     lineinfo = "%l/%L:%c"
   end
   return string.format(
-    "%s[%s]%s[%s]%s[%s]",
+    "%s[%s]%s[%s:%s]%s[%s]",
     modes["c"].color, branch,
-    modes["v"].color, filetype,
+    modes["v"].color, fileencoding, filetype,
     modes["t"].color, lineinfo
   )
 end
@@ -100,8 +102,7 @@ Statusline.refresh = function()
 end
 
 local autocmd = vim.api.nvim_create_autocmd
-
-autocmd({"BufWritePre,WinEnter,BufEnter,WinLeave,BufLeave"}, {
+autocmd({"ModeChanged"}, {
   command = "setlocal statusline=%!v:lua.Statusline.refresh()",
 })
 
