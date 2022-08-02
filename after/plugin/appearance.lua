@@ -156,7 +156,6 @@ for group, opts in pairs(napolitan_colorscheme) do
 end
 
 -- StatusLine
-
 local mode_group_colors = {
   StatusLineNormalColor = {fg = napolitan_colors.orange, bg = napolitan_colors.none},
   StatusLineVisualColor = {fg = napolitan_colors.pink, bg = napolitan_colors.none},

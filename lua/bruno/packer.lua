@@ -17,11 +17,9 @@ return require("packer").startup(function()
   use "Yggdroot/indentLine"
   use "ryanoasis/vim-devicons"
   use "windwp/nvim-autopairs"
-  use "lunarvim/horizon.nvim"
   use "kyazdani42/nvim-tree.lua"
   use "ojroques/nvim-hardline"
   use "lewis6991/gitsigns.nvim"
-    --
   use "neovim/nvim-lspconfig"
   use "williamboman/nvim-lsp-installer"
   use "hrsh7th/cmp-nvim-lsp"
