@@ -45,7 +45,6 @@ function M.setup()
     PmenuThumb = {fg = theme.colors.divisor, bg = theme.colors.none},
     MatchParen = {fg = theme.colors.pink, bg = theme.colors.none, bold = true},
     NonText = {fg = theme.colors.grey, bg = theme.colors.none},
-    -- StatusLine = {fg = theme.colors.divisor, bg = theme.colors.none},
     CursorLineNr = {fg = theme.colors.orange, bg = theme.colors.none},
     CursorLine = {fg = theme.colors.none, bg = theme.colors.divisor},
     TabLineSel = {fg = theme.colors.orange, bg = theme.colors.none},
@@ -147,6 +146,8 @@ function M.setup()
     rustTSFuncMacro = {fg = theme.colors.pink, bg = theme.colors.none},
     rustTSNamespace = {fg = theme.colors.white, bg = theme.colors.none},
   }
+
+  return theme
 end
 
 return M
