@@ -1,8 +1,6 @@
+require("bruno.statusline").setup()
+-- require("bruno.tabline").setup()
 local napolitan = require("bruno.napolitan").setup()
-
-for group, opts in pairs(napolitan.colorscheme) do
-  vim.api.nvim_set_hl(0, group, opts)
-end
 
 -- Definition required by statusline
 local mode_group_colors = {
@@ -15,16 +13,15 @@ local mode_group_colors = {
   StatusLineTerminalColor = {fg = napolitan.colors.blue, bg = napolitan.colors.none},
 }
 
-for group, opts in pairs(mode_group_colors) do
+local function set_hl(group, opts)
   vim.api.nvim_set_hl(0, group, opts)
 end
 
-Statusline = require("bruno.statusline").setup()
-vim.api.nvim_create_autocmd({"ModeChanged"}, {
-  command = "setlocal statusline=%!v:lua.Statusline.refresh()",
-})
+for group, opts in pairs(napolitan.colorscheme) do
+  set_hl(group, opts)
+end
 
-vim.api.nvim_create_autocmd({"BufEnter"}, {
-  command = "setlocal statusline=%!v:lua.Statusline.refresh()",
-})
+for group, opts in pairs(mode_group_colors) do
+  set_hl(group, opts)
+end
 

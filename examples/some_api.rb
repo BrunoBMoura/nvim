@@ -10,6 +10,7 @@ module BigDummy
     end
 
     def to_hash
+
       self_hash = {}
       @elements.each_with_index do |obj, obj_idx|
         if obj.is_a?(Dummy)

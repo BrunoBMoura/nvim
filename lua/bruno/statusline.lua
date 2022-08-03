@@ -59,21 +59,17 @@ function M.file_metadata()
   )
 end
 
+function M.refresh()
+  return M.mode() ..
+    "%#String#"   ..
+    M.file_path() ..
+    "%#LineNR#"   ..
+    "%="          ..
+    M.file_metadata()
+end
+
 function M.setup()
-
-  local statusline = {}
-  statusline.refresh = function()
-    return table.concat({
-      M.mode(),
-      "%#String#",
-      M.file_path(),
-      "%#LineNR#",
-      "%=",
-      M.file_metadata(),
-    }, "")
-  end
-
-  return statusline
+  vim.opt.statusline = "%!v:lua.require(\"bruno.statusline\").refresh()"
 end
 
 return M
