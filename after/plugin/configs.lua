@@ -1,7 +1,6 @@
 require("Comment").setup()
 require("nvim-autopairs").setup()
 require("gitsigns").setup()
-require("luatab").setup()
 
 require("nvim-treesitter.configs").setup {
   ensure_installed = {

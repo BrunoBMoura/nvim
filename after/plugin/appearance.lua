@@ -1,5 +1,5 @@
 require("bruno.statusline").setup()
--- require("bruno.tabline").setup()
+require("bruno.tabline").setup()
 local napolitan = require("bruno.napolitan").setup()
 
 -- Definition required by statusline
