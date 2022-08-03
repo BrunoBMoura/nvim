@@ -64,6 +64,6 @@ require("nvim-lsp-installer").on_server_ready(function(server)
   if setup_server[server.name] then
     setup_server[server.name](opts)
   end
+
   server:setup(opts)
 end)
-
