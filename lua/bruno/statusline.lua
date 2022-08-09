@@ -29,15 +29,15 @@ function M.mode()
 end
 
 function M.file_path()
-  local path = vim.fn.fnamemodify(vim.fn.expand "%", ":~:.:h")
-  if path == "" or path == "." then
-    return ""
-  end
-  local file_name = vim.fn.expand "%:f"
+  -- local path = vim.fn.fnamemodify(vim.fn.expand "%", ":~:H")
+  -- if path == "" or path == "." then
+  --   return ""
+  -- end
+  local file_name = vim.fn.expand("%:f")
   if file_name == "" then
-    path = path .. "/" .. "None"
+    file_name = "No_file"
   end
-  return "[" .. path .. "/" .. file_name .. "]"
+  return "[" .. file_name .. "]"
 end
 
 function M.file_metadata()

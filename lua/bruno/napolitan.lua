@@ -128,6 +128,7 @@ function M.setup()
     NvimTreeStatusLine = {fg = theme.colors.background, bg = theme.colors.background},
     NvimTreeStatusLineNc = {fg = theme.colors.background, bg = theme.colors.background},
     NvimTreeIndentMarker = {fg = theme.colors.visual, bg = theme.colors.none},
+    NvimTreeNormal = {bg = theme.colors.black},
 
     -- Python syntax
     pythonTSConstBuiltin = {fg = theme.colors.purple, bg = theme.colors.none},
