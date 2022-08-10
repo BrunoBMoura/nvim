@@ -53,8 +53,6 @@ fn main() {
     };
 
     println!("{:?}", out_of_the_map);
-
-    map.entry(6).or_insert(String::from("Sexto"));
     println!("{:?}", map);
 
     println!("Counting words from now on! ");

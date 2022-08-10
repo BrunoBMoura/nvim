@@ -4,7 +4,7 @@ require("gitsigns").setup()
 
 require("nvim-treesitter.configs").setup {
   ensure_installed = {
-    "c", "cpp", "lua", "rust", "python", "ruby", "vim"
+    "c", "cpp", "lua", "rust", "python", "ruby", "vim", "comment"
   },
   highlight = {enable = true,},
   indent = {enable = false,}

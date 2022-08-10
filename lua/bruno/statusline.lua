@@ -29,10 +29,6 @@ function M.mode()
 end
 
 function M.file_path()
-  -- local path = vim.fn.fnamemodify(vim.fn.expand "%", ":~:H")
-  -- if path == "" or path == "." then
-  --   return ""
-  -- end
   local file_name = vim.fn.expand("%:f")
   if file_name == "" then
     file_name = "No_file"
