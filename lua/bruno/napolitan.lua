@@ -42,7 +42,9 @@ function M.setup()
     SpellRare = {fg = theme.colors.red, bg = theme.colors.none},
     WildMenu = {fg = theme.colors.black, bg = theme.colors.none},
     Pmenu = {fg = theme.colors.orange, bg = theme.colors.snip_background},
-    PmenuThumb = {fg = theme.colors.divisor, bg = theme.colors.none},
+    PmenuSel = {fg = theme.colors.aqua, bg = theme.colors.none},
+    PmenuThumb = {fg = theme.colors.aqua, bg = theme.colors.none},
+    PmenuSbar = {fg = theme.colors.aqua, bg = theme.colors.none},
     MatchParen = {fg = theme.colors.pink, bg = theme.colors.none, bold = true},
     NonText = {fg = theme.colors.grey, bg = theme.colors.none},
     CursorLineNr = {fg = theme.colors.orange, bg = theme.colors.none},
@@ -116,6 +118,7 @@ function M.setup()
     DiagnosticInfo = {fg = theme.colors.blue, bg = theme.colors.background},
     DiagnosticWarn = {fg = theme.colors.yellow, bg = theme.colors.background},
 
+    -- Git gutter
     GitGutterDelete = {fg = theme.colors.pink, bg = theme.colors.background},
     GitGutterAdd = {fg = theme.colors.green, bg = theme.colors.background},
     GitGutterChange = {fg = theme.colors.yellow, bg = theme.colors.background},

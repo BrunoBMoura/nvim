@@ -16,6 +16,7 @@ return require("packer").startup(function()
   use "numToStr/Comment.nvim"
   use "Yggdroot/indentLine"
   use "lewis6991/gitsigns.nvim"
+  use "norcalli/nvim-colorizer.lua"
   -- use "ryanoasis/vim-devicons"
   use "windwp/nvim-autopairs"
   use "kyazdani42/nvim-tree.lua"

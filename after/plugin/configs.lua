@@ -1,16 +1,18 @@
 require("Comment").setup()
 require("nvim-autopairs").setup()
 require("gitsigns").setup()
+require("colorizer").setup()
+vim.api.nvim_set_var('indentLine_char', '⎸')
 
-require("nvim-treesitter.configs").setup {
+require("nvim-treesitter.configs").setup({
   ensure_installed = {
     "c", "cpp", "lua", "rust", "python", "ruby", "vim", "comment"
   },
   highlight = {enable = true,},
   indent = {enable = false,}
-}
+})
 
-require("treesitter-context").setup {
+require("treesitter-context").setup({
   enable = true,
   max_lines = 0,
   trim_scope = "outer",
@@ -24,7 +26,7 @@ require("treesitter-context").setup {
   },
   zindex = 20,
   mode = "cursor",
-}
+})
 
 require("nvim-tree").setup({
   sort_by = "case_sensitive",

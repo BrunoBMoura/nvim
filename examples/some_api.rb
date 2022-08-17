@@ -2,15 +2,15 @@ module BigDummy
 
   class Dummy
 
-    def initialize
+    @elements = Arr.new
 
-      @elements.times do
-        raise
+    def initialize
+      @elements.times do |element|
+        raise "something" unless element != nil
       end
     end
 
     def to_hash
-
       self_hash = {}
       @elements.each_with_index do |obj, obj_idx|
         if obj.is_a?(Dummy)

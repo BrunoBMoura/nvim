@@ -1,7 +1,7 @@
 local luasnip = require("luasnip")
 local cmp = require("cmp")
 
-cmp.setup {
+cmp.setup({
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -26,7 +26,7 @@ cmp.setup {
     end, { "i", "s" }),
   },
   sources = { { name = "nvim_lsp" }, { name = "luasnip" } },
-}
+})
 
 local lang_servers = {
   "bashls",
