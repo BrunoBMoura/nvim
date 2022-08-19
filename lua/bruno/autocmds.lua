@@ -12,7 +12,8 @@ local lang_meta_op = {
   c = {format = "clang-format"},
   rust = {format = "rustfmt"},
   ruby = {small_indent = true},
-  lua = {small_indent = true}
+  lua = {small_indent = true},
+  python = {exec = "python %"}
 }
 
 for lang, data in pairs(lang_meta_op) do
@@ -26,6 +27,12 @@ for lang, data in pairs(lang_meta_op) do
     autocmd(
       "FileType",
       {command = "setlocal shiftwidth=2 tabstop=2", pattern = lang}
+    )
+  end
+  if data.exec then
+    autocmd(
+      "FileType",
+      {command = "nnoremap <leader><leader>e :vsplit <CR>:ter " .. data.exec .. " % <CR>", pattern = lang}
     )
   end
 end
