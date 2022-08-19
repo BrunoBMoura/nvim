@@ -1,5 +1,6 @@
 local nnoremap = require("bruno.keymap").nnoremap
 local vnoremap = require("bruno.keymap").vnoremap
+local tnoremap = require("bruno.keymap").tnoremap
 
 -- Split movement
 nnoremap("<C-h>", "<C-w>h")
@@ -21,7 +22,8 @@ nnoremap("<leader>Q", ":q!<CR>")
 nnoremap("<leader>rw", "cw<C-r>0<C-c>")
 
 -- Terminal split
-nnoremap("<leader>T", ":vsplit term:// bash <CR>i")
+nnoremap("<leader>T", ":120vsplit term:// bash <CR>i")
+tnoremap("<leader><Esc>", "<C-\\><C-n>")
 
 -- Visual mode identation
 vnoremap("<Tab>",   ">gv")

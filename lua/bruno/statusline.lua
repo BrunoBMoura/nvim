@@ -21,6 +21,7 @@ local modes = {
   ["r?"] = {text = "Confirm", color = "%#StatusLineShellColor#"},
   ["!"]  = {text = "Shell", color = "%#StatusLineShellColor#"},
   ["t"]  = {text = "Terminal", color = "%#StatusLineTerminalColor#"},
+  ["nt"]  = {text = "Terminal", color = "%#StatusLineTerminalColor#"}
 }
 
 function M.mode()

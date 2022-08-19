@@ -2,18 +2,17 @@ local augroup = vim.api.nvim_create_augroup
 local bruno_group = augroup("Bruno", {})
 local autocmd = vim.api.nvim_create_autocmd
 
-autocmd({"BufWritePre"}, {
-  group = bruno_group,
-  pattern = "*",
-  command = "%s/\\s\\+$//e",
-})
+autocmd(
+  "BufWritePre",
+  {group = bruno_group, pattern = "*", command = "%s/\\s\\+$//e"}
+)
 
 local lang_meta_op = {
   c = {format = "clang-format"},
-  rust = {format = "rustfmt"},
+  rust = {format = "rustfmt", build = "cargo build", exec = "cargo run"},
   ruby = {small_indent = true},
   lua = {small_indent = true},
-  python = {exec = "python %"}
+  python = {exec = "python"}
 }
 
 for lang, data in pairs(lang_meta_op) do
