@@ -5,7 +5,6 @@ function M.setup()
   local theme = {}
 
   theme.colors = {
-    snip_background = "#121212", -- 233
     background      = "#1C1C1C", -- 234
     divisor         = "#262626", -- 235
     delimiter       = "#d7af87", -- 180
@@ -41,7 +40,7 @@ function M.setup()
     SpellCap = {fg = theme.colors.white, bg = theme.colors.none},
     SpellRare = {fg = theme.colors.red, bg = theme.colors.none},
     WildMenu = {fg = theme.colors.black, bg = theme.colors.none},
-    Pmenu = {fg = theme.colors.orange, bg = theme.colors.snip_background},
+    Pmenu = {fg = theme.colors.orange, bg = theme.colors.black},
     PmenuSel = {fg = theme.colors.aqua, bg = theme.colors.none},
     PmenuThumb = {fg = theme.colors.aqua, bg = theme.colors.none},
     PmenuSbar = {fg = theme.colors.aqua, bg = theme.colors.none},
@@ -108,10 +107,10 @@ function M.setup()
     WarningMsg = {fg = theme.colors.green, bg = theme.colors.none},
 
     -- Cmp
-    CmpItemMenuDefault = {fg = theme.colors.orange, bg = theme.colors.snip_background},
-    CmpItemAbbrDefault = {fg = theme.colors.white, bg = theme.colors.snip_background},
-    CmpItemAbbrMatch = {fg = theme.colors.white, bg = theme.colors.snip_background, bold = true},
-    CmpItemKindDefault = {fg = theme.colors.pink, bg = theme.colors.snip_background},
+    CmpItemMenuDefault = {fg = theme.colors.orange, bg = theme.colors.black},
+    CmpItemAbbrDefault = {fg = theme.colors.white, bg = theme.colors.black},
+    CmpItemAbbrMatch = {fg = theme.colors.white, bg = theme.colors.black, bold = true},
+    CmpItemKindDefault = {fg = theme.colors.pink, bg = theme.colors.black},
 
     -- LSP diagnostics
     DiagnosticError = {fg = theme.colors.red, bg = theme.colors.background},
