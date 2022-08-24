@@ -34,7 +34,7 @@ function M.file_path()
   if file_name == "" then
     file_name = "No_file"
   end
-  return "[" .. file_name .. "]"
+  return string.format("[%s %s ]", file_name, vim.fn.WebDevIconsGetFileTypeSymbol())
 end
 
 function M.file_metadata()
@@ -43,7 +43,7 @@ function M.file_metadata()
     branch = "No_git"
   end
   local encoding = string.format("%s", vim.bo.fileencoding)
-  local type = string.format("%s%s ", vim.bo.filetype, vim.fn.WebDevIconsGetFileTypeSymbol())
+  local type = string.format("%s", vim.bo.filetype)
   local lineinfo = ""
   if vim.bo.filetype ~= "alpha" then
     lineinfo = "%l/%L:%c"
