@@ -9,7 +9,7 @@ cmp.setup({
   },
   mapping = cmp.mapping.preset.insert {
     ["<C-Space>"] = cmp.mapping.complete(),
-    ["<CR>"] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true },
+    ["<CR>"] = cmp.mapping.confirm({behavior = cmp.ConfirmBehavior.Replace, select = true}),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -25,7 +25,10 @@ cmp.setup({
       end
     end, { "i", "s" }),
   },
-  sources = { { name = "nvim_lsp" }, { name = "luasnip" } },
+  sources = {
+    {name = "nvim_lsp"},
+    {name = "luasnip"}
+  },
 })
 
 local lang_servers = {
@@ -46,7 +49,15 @@ end
 
 local setup_server = {
   sumneko_lua = function(opts)
-    opts.settings = { Lua = { diagnostics = { globals = { "vim", "use" } } } }
+    opts.settings = {
+      Lua = {
+        diagnostics = {
+          globals = {
+            "vim", "use"
+          }
+        }
+      }
+    }
   end,
 }
 
@@ -54,7 +65,7 @@ require("nvim-lsp-installer").on_server_ready(function(server)
   local opts = {
     on_attach = function(_, bufnr)
       vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-      local opts = { buffer = bufnr }
+      local opts = {buffer = bufnr}
       vim.keymap.set("n", "<Leader>h", vim.lsp.buf.hover, opts)
       vim.keymap.set("n", "<Leader>i", vim.lsp.buf.definition, opts)
       vim.keymap.set("n", "<Leader>r", vim.lsp.buf.rename, opts)

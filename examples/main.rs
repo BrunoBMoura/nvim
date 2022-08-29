@@ -1,5 +1,6 @@
 use std::collections::HashMap;
-use std::io; use std::str::FromStr;
+use std::io;
+use std::str::FromStr;
 
 fn _read_values<T: FromStr>() -> Result<Vec<T>, T::Err> {
     let mut str = String::new();

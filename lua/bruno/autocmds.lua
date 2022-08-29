@@ -1,6 +1,6 @@
 local augroup = vim.api.nvim_create_augroup
-local bruno_group = augroup("Bruno", {})
 local autocmd = vim.api.nvim_create_autocmd
+local bruno_group = augroup("Bruno", {})
 
 autocmd(
   "BufWritePre",
