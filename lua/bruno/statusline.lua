@@ -34,7 +34,18 @@ function M.file_path()
   if file_name == "" then
     file_name = "No_file"
   end
-  return string.format("[%s %s ]", file_name, vim.fn.WebDevIconsGetFileTypeSymbol())
+
+  local bufnr = vim.fn.bufnr()
+  local devicons = require("nvim-web-devicons")
+  local icon, _ = devicons .get_icon(
+      vim.fn.bufname(bufnr), vim.fn.expand('#'..bufnr..':e')
+  )
+
+  if icon == nil then
+    icon = devicons.get_icon("txt")
+  end
+
+  return string.format("[%s %s ]", file_name, icon)
 end
 
 function M.file_metadata()

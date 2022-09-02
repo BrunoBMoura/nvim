@@ -27,7 +27,13 @@ function M.title(bufnr)
     title =  vim.fn.pathshorten(vim.fn.fnamemodify(file, ":p:~:t"))
   end
 
-  return string.format("%s %s", title, vim.fn.WebDevIconsGetFileTypeSymbol())
+  local devicons = require("nvim-web-devicons")
+  local icon, _ = devicons.get_icon(file, vim.fn.expand('#'..bufnr..':e'))
+  if icon == nil then
+    icon = devicons.get_icon("txt")
+  end
+
+  return string.format("%s %s", title, icon)
 end
 
 function M.modified(bufnr)
