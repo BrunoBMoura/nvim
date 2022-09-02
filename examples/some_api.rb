@@ -8,6 +8,10 @@ module BigDummy
       @elements.times do |element|
         raise "something" unless element != nil
       end
+
+      if @elements.pop in [0, 1, 2, 3, 4]
+        p "random"
+      end
     end
 
     def to_hash

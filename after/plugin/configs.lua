@@ -1,7 +1,6 @@
 require("Comment").setup()
 require("nvim-autopairs").setup()
 require("gitsigns").setup()
-require("colorizer").setup()
 vim.api.nvim_set_var('indentLine_char', '⎸')
 
 require("nvim-treesitter.configs").setup({
