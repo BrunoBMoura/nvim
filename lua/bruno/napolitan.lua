@@ -7,7 +7,7 @@ function M.setup()
   theme.colors = {
     background      = "#1C1C1C", -- 234
     divisor         = "#262626", -- 235
-    delimiter       = "#d7af87", -- 180
+    delimiter       = "#D7AF87", -- 180
     grey            = "#585858", -- 240
     dark_grey       = "#D7AFAF", -- 181
     visual          = "#303030", -- 236
