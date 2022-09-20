@@ -11,8 +11,7 @@ function M.setup()
     grey            = "#585858", -- 240
     dark_grey       = "#D7AFAF", -- 181
     visual          = "#303030", -- 236
-    string          = "#AFD7AF", -- 151
-    aqua            = "#5FD7AF", -- 079
+    aqua            = "#87D7AF", -- 115, honorable mention to 79
     green           = "#AFAF87", -- 144
     blue            = "#5F87AF", -- 067
     red             = "#870000", -- 088
@@ -20,7 +19,7 @@ function M.setup()
     purple          = "#8787AF", -- 103
     pink            = "#D75F5F", -- 167
     yellow          = "#FFAF5F", -- 215
-    cyan            = "#AFD7D7", -- 152
+    cyan            = "#AFD7D7", -- 152, honorable mention to 151
     black           = "#121212", -- 233
     white           = "#FFFFD7", -- 230
     none            = "NONE",
@@ -64,7 +63,7 @@ function M.setup()
     Keyword = {fg = theme.colors.orange, bg = theme.colors.none},
     Comment = {fg = theme.colors.grey, bg = theme.colors.none},
     Constant = {fg = theme.colors.dark_grey, bg = theme.colors.none},
-    String = {fg = theme.colors.string, bg = theme.colors.none},
+    String = {fg = theme.colors.cyan, bg = theme.colors.none},
     Number = {fg = theme.colors.purple, bg = theme.colors.none},
     Float = {fg = theme.colors.purple, bg = theme.colors.none},
     Character = {fg = theme.colors.cyan, bg = theme.colors.none},

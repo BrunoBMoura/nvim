@@ -20,7 +20,6 @@ return require("packer").startup(function()
   use "kyazdani42/nvim-tree.lua"
   use "kyazdani42/nvim-web-devicons"
   use "ryanoasis/vim-devicons"
-  use "alvarosevilla95/luatab.nvim"
   use "neovim/nvim-lspconfig"
   use "williamboman/nvim-lsp-installer"
   use "hrsh7th/cmp-nvim-lsp"
