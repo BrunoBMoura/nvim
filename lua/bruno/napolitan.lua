@@ -106,7 +106,7 @@ function M.setup()
     WarningMsg = {fg = theme.colors.green, bg = theme.colors.none},
 
     -- Cmp
-    CmpItemMenuDefault = {fg = theme.colors.orange, bg = theme.colors.black},
+    CmpItemMenuDefault = {fg = theme.colors.pink, bg = theme.colors.black},
     CmpItemAbbrDefault = {fg = theme.colors.white, bg = theme.colors.black},
     CmpItemAbbrMatch = {fg = theme.colors.white, bg = theme.colors.black, bold = true},
     CmpItemKindDefault = {fg = theme.colors.pink, bg = theme.colors.black},
@@ -129,7 +129,7 @@ function M.setup()
     NvimTreeStatusLine = {fg = theme.colors.background, bg = theme.colors.background},
     NvimTreeStatusLineNc = {fg = theme.colors.background, bg = theme.colors.background},
     NvimTreeIndentMarker = {fg = theme.colors.visual, bg = theme.colors.none},
-    NvimTreeNormal = {bg = theme.colors.black},
+    -- NvimTreeNormal = {bg = theme.colors.black},
 
     -- Python syntax
     pythonTSConstBuiltin = {fg = theme.colors.purple, bg = theme.colors.none},

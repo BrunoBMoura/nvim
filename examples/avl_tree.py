@@ -27,6 +27,7 @@ class DataGenerator:
 
         return [int(line.split()[0]) for line in open(self.file_name, "r")]
 
+""" Any string """
 class Node:
 
     def __init__(self, key, parent = None):

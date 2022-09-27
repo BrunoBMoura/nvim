@@ -24,7 +24,7 @@ function M.title(bufnr)
   elseif file == "" then
     title = "No_name"
   else
-    title =  vim.fn.pathshorten(vim.fn.fnamemodify(file, ":p:~:t"))
+    title = vim.fn.pathshorten(vim.fn.fnamemodify(file, ":p:~:t"))
   end
 
   local devicons = require("nvim-web-devicons")
@@ -56,6 +56,13 @@ function M.cell(index)
   local buflist = vim.fn.tabpagebuflist(index)
   local winnr = vim.fn.tabpagewinnr(index)
   local bufnr = buflist[winnr]
+
+  -- FIXME: maybe one day try to solve this file explorer width bug
+  -- local is_explorer = vim.fn.getbufvar(bufnr, "&filetype") == "NvimTree"
+  -- if is_explorer then
+  --   local width = vim.fn.winwidth(winnr)
+  --   print("explorer window has" .. " " .. width .. "" .. "characters")
+  -- end
 
   -- Concatenate all the data
   local cell =  "%" .. index .. "T" .. " " ..
