@@ -2,6 +2,9 @@ local nnoremap = require("bruno.keymap").nnoremap
 local vnoremap = require("bruno.keymap").vnoremap
 local tnoremap = require("bruno.keymap").tnoremap
 
+-- Refresh ctags
+nnoremap("<leader>c", ":! ctags -R . <CR>")
+
 -- Split movement
 nnoremap("<C-h>", "<C-w>h")
 nnoremap("<C-j>", "<C-w>j")

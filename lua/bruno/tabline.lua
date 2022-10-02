@@ -2,7 +2,7 @@
 
 local M = {}
 
-function M.title(bufnr)
+function M.title(bufnr, is_selected)
   local file = vim.fn.bufname(bufnr)
   local buftype = vim.fn.getbufvar(bufnr, "&buftype")
   local filetype = vim.fn.getbufvar(bufnr, "&filetype")
@@ -33,6 +33,9 @@ function M.title(bufnr)
     icon = devicons.get_icon("txt")
   end
 
+  if is_selected then
+    return string.format("%s %s %s %s", title, "%#String#", icon, "%#TabLineSel#")
+  end
   return string.format("%s %s", title, icon)
 end
 
@@ -66,7 +69,7 @@ function M.cell(index)
 
   -- Concatenate all the data
   local cell =  "%" .. index .. "T" .. " " ..
-    M.window_count(index) .. M.title(bufnr) .. " " ..
+    M.window_count(index) .. M.title(bufnr, is_selected) .. " " ..
     M.modified(bufnr) .. "%T"
 
   local hl = (is_selected and "%#TabLineSel#" or "%#TabLine#")

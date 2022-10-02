@@ -19,8 +19,8 @@ module BigDummy
       @elements.each_with_index do |obj, obj_idx|
         if obj.is_a?(Dummy)
           obj.to_hash.each do |key, val|
-            new_key = key.to_s + "_slot_" + obj_idx.to_s
-            self_hash[new_key.to_sym] = val
+            new_key = "#{key.to_s}_dummy_#{obj_idx.to_s}".to_sym
+            self_hash[new_key] = val
           end
         end
       end

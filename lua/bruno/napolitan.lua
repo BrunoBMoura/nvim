@@ -39,7 +39,7 @@ function M.setup()
     SpellCap = {fg = theme.colors.white, bg = theme.colors.none},
     SpellRare = {fg = theme.colors.red, bg = theme.colors.none},
     WildMenu = {fg = theme.colors.black, bg = theme.colors.none},
-    Pmenu = {fg = theme.colors.orange, bg = theme.colors.black},
+    Pmenu = {fg = theme.colors.white, bg = theme.colors.black},
     PmenuSel = {fg = theme.colors.aqua, bg = theme.colors.none},
     PmenuThumb = {fg = theme.colors.aqua, bg = theme.colors.none},
     PmenuSbar = {fg = theme.colors.aqua, bg = theme.colors.none},
