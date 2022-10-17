@@ -68,11 +68,11 @@ function M.file_metadata()
 end
 
 function M.refresh()
-  return M.mode() ..
-    "%#String#"   ..
-    M.file_path() ..
-    "%#LineNR#"   ..
-    "%="          ..
+  return M.mode()           ..
+    "%#StatusLineFileName#" ..
+    M.file_path()           ..
+    "%#StatusLineFiller#"   ..
+    "%="                    ..
     M.file_metadata()
 end
 

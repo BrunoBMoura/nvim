@@ -132,6 +132,7 @@ function M.setup()
     -- NvimTreeNormal = {bg = theme.colors.grey},
 
     -- Python syntax
+    -- pythonTSConstBuiltin = {fg = theme.colors.purple, bg = theme.colors.none},
     pythonTSConstBuiltin = {fg = theme.colors.purple, bg = theme.colors.none},
     pythonTSFuncBuiltin = {fg = theme.colors.green, bg = theme.colors.none},
     pythonTSKeywordOperator = {fg = theme.colors.pink, bg = theme.colors.none},
