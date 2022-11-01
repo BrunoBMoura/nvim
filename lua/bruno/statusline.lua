@@ -21,12 +21,18 @@ local modes = {
   ["r?"] = {text = "Confirm", color = "%#StatusLineShellColor#"},
   ["!"]  = {text = "Shell", color = "%#StatusLineShellColor#"},
   ["t"]  = {text = "Terminal", color = "%#StatusLineTerminalColor#"},
-  ["nt"]  = {text = "Terminal", color = "%#StatusLineTerminalColor#"}
+  ["nt"]  = {text = "Terminal", color = "%#StatusLineTerminalColor#"},
+  ["qf"] = {text = "Quickfix_list", color = "%#StatusLineQfColor#"}
 }
 
 function M.mode()
   local current_mode = vim.api.nvim_get_mode().mode
-  return string.format("%s[%s]", modes[current_mode].color, modes[current_mode].text)
+  -- local buftype = vim.fn.getbufvar(vim.api.nvim_get_current_buf(), "&buftype")
+  -- if buftype == "quickfix" then
+  --   current_mode = "qf"
+  -- end
+  local entry = modes[current_mode]
+  return string.format("%s[%s]", entry.color, entry.text)
 end
 
 function M.file_path()
@@ -37,7 +43,7 @@ function M.file_path()
 
   local bufnr = vim.fn.bufnr()
   local devicons = require("nvim-web-devicons")
-  local icon, _ = devicons .get_icon(
+  local icon, _ = devicons.get_icon(
       vim.fn.bufname(bufnr), vim.fn.expand('#'..bufnr..':e')
   )
 

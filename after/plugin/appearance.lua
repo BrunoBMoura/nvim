@@ -9,6 +9,7 @@ local mode_group_colors = {
   StatusLineInsertColor = {fg = napolitan.colors.green, bg = napolitan.colors.none, bold = true},
   StatusLineSelectColor = {fg = napolitan.colors.cyan, bg = napolitan.colors.none, bold = true},
   StatusLineReplaceColor = {fg = napolitan.colors.yellow, bg = napolitan.colors.none, bold = true},
+  StatusLineQfColor =  {fg = napolitan.colors.yellow, bg = napolitan.colors.none, bold = true},
   StatusLineShellColor = {fg = napolitan.colors.aqua, bg = napolitan.colors.none, bold = true},
   StatusLineTerminalColor = {fg = napolitan.colors.blue, bg = napolitan.colors.none, bold = true},
   StatusLineFileName = {fg = napolitan.colors.cyan, bg = napolitan.colors.none, bold = true},
