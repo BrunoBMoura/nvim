@@ -84,7 +84,7 @@ function M.setup()
     Define = {fg = theme.colors.pink, bg = theme.colors.none},
     PreCondit = {fg = theme.colors.blue, bg = theme.colors.none},
     Macro = {fg = theme.colors.aqua, bg = theme.colors.none},
-    Special = {fg = theme.colors.aqua, bg = theme.colors.none},
+    Special = {fg = theme.colors.purple, bg = theme.colors.none},
     SpecialChar = {fg = theme.colors.purple, bg = theme.colors.none},
     Tag = {fg = theme.colors.yellow, bg = theme.colors.none},
     Delimiter = {fg = theme.colors.delimiter, bg = theme.colors.none},

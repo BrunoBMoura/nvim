@@ -3,6 +3,7 @@
 local M = {}
 
 function M.title(bufnr, is_selected)
+
   local file = vim.fn.bufname(bufnr)
   local buftype = vim.fn.getbufvar(bufnr, "&buftype")
   local filetype = vim.fn.getbufvar(bufnr, "&filetype")
