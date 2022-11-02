@@ -70,7 +70,7 @@ require("nvim-lsp-installer").on_server_ready(function(server)
       vim.keymap.set("n", "<Leader>i", vim.lsp.buf.definition, opts)
       vim.keymap.set("n", "<Leader>r", vim.lsp.buf.rename, opts)
     end,
-    capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
   }
   if setup_server[server.name] then
     setup_server[server.name](opts)
