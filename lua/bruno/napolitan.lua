@@ -111,7 +111,7 @@ function M.setup()
     DiffChange = {fg = theme.colors.yellow, bg = theme.colors.none, bold = true},
     diffAdded = {fg = theme.colors.black, bg = theme.colors.none},
     diffCommon = {fg = theme.colors.green, bg = theme.colors.none},
-    Folded = {fg = theme.colors.purple, bg = theme.colors.none},
+    Folded = {fg = theme.colors.grey, bg = theme.colors.none},
     WarningMsg = {fg = theme.colors.green, bg = theme.colors.none},
 
     -- Cmp
