@@ -89,6 +89,11 @@ _G.packer_plugins = {
     path = "/home/bruno/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["diffview.nvim"] = {
+    loaded = true,
+    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/diffview.nvim",
+    url = "https://github.com/sindrets/diffview.nvim"
+  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/home/bruno/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
@@ -98,11 +103,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/bruno/.local/share/nvim/site/pack/packer/start/indentLine",
     url = "https://github.com/Yggdroot/indentLine"
-  },
-  nerdtree = {
-    loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/nerdtree",
-    url = "https://github.com/preservim/nerdtree"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -159,20 +159,10 @@ _G.packer_plugins = {
     path = "/home/bruno/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ["vim-devicons"] = {
-    loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/vim-devicons",
-    url = "https://github.com/ryanoasis/vim-devicons"
-  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/bruno/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
-  },
-  ["vim-illuminate"] = {
-    loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/vim-illuminate",
-    url = "https://github.com/RRethy/vim-illuminate"
   }
 }
 

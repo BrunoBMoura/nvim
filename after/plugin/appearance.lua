@@ -27,4 +27,3 @@ end
 for group, opts in pairs(mode_group_colors) do
   set_hl(group, opts)
 end
-

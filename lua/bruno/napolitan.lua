@@ -26,13 +26,20 @@ function M.setup()
   }
 
   theme.colorscheme = {
+    -- Adding initial port to new TS highlight groups.
+    ["@function.builtin"] = {fg = theme.colors.pink, bg = theme.colors.none},
+    ["@constructor"] = {fg = theme.colors.delimiter, bg = theme.colors.none},
+    ["@keyword"] = {fg = theme.colors.orange, bg = theme.colors.none},
+    ["@keyword.function"] = {fg = theme.colors.orange, bg = theme.colors.none},
+    ["@field"] = {fg = theme.colors.dark_grey, bg = theme.colors.none},
+    ["@operator"] = {fg = theme.colors.aqua, bg = theme.colors.none},
+    ["@property"] = {fg = theme.colors.aqua, bg = theme.colors.none},
     -- Default UI
     Normal = {fg = theme.colors.white, bg = theme.colors.none},
     Error = {fg = theme.colors.red, bg = theme.colors.none},
     ErrorMsg = {fg = theme.colors.red, bg = theme.colors.none},
     Search = {fg = theme.colors.pink, bg = theme.colors.none},
     IncSearch = {fg = theme.colors.pink, bg = theme.colors.none, reverse = true},
-    DiffChange = {fg = theme.colors.orange, bg = theme.colors.none, reverse = true},
     DiffText = {fg = theme.colors.orange, bg = theme.colors.none},
     SignColumn = {fg = theme.colors.orange, bg = theme.colors.none},
     SpellBad = {fg = theme.colors.white, bg = theme.colors.none, undercurl = true},
@@ -83,9 +90,9 @@ function M.setup()
     Include = {fg = theme.colors.pink, bg = theme.colors.none},
     Define = {fg = theme.colors.pink, bg = theme.colors.none},
     PreCondit = {fg = theme.colors.blue, bg = theme.colors.none},
-    Macro = {fg = theme.colors.aqua, bg = theme.colors.none},
+    Macro = {fg = theme.colors.blue, bg = theme.colors.none},
     Special = {fg = theme.colors.purple, bg = theme.colors.none},
-    SpecialChar = {fg = theme.colors.purple, bg = theme.colors.none},
+    SpecialChar = {fg = theme.colors.blue, bg = theme.colors.none},
     Tag = {fg = theme.colors.yellow, bg = theme.colors.none},
     Delimiter = {fg = theme.colors.delimiter, bg = theme.colors.none},
     SpecialComment = {fg = theme.colors.purple, bg = theme.colors.none},
@@ -99,8 +106,10 @@ function M.setup()
     ModeMsg = {fg = theme.colors.white, bg = theme.colors.none},
     MoreMsg = {fg = theme.colors.white, bg = theme.colors.none},
     Question = {fg = theme.colors.pink, bg = theme.colors.none},
-    DiffAdd = {fg = theme.colors.pink, bg = theme.colors.none},
-    diffAdded = {fg = theme.colors.red, bg = theme.colors.none},
+    DiffAdd = {fg = theme.colors.green, bg = theme.colors.none, bold = true},
+    DiffDelete = {fg = theme.colors.pink, bg = theme.colors.none, bold = true},
+    DiffChange = {fg = theme.colors.yellow, bg = theme.colors.none, bold = true},
+    diffAdded = {fg = theme.colors.black, bg = theme.colors.none},
     diffCommon = {fg = theme.colors.green, bg = theme.colors.none},
     Folded = {fg = theme.colors.purple, bg = theme.colors.none},
     WarningMsg = {fg = theme.colors.green, bg = theme.colors.none},
@@ -145,6 +154,7 @@ function M.setup()
     luaTSFuncBuiltin = {fg = theme.colors.pink, bg = theme.colors.none},
 
     -- Rust syntax
+    rustMacro = {fg = theme.colors.pink, bg = theme.colors.none},
     rustTSFuncMacro = {fg = theme.colors.pink, bg = theme.colors.none},
     rustTSNamespace = {fg = theme.colors.white, bg = theme.colors.none},
     rustTSConstBuiltin = {fg = theme.colors.pink, bg = theme.colors.none},

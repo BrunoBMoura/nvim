@@ -11,23 +11,24 @@ return require("packer").startup(function()
   use "wbthomason/packer.nvim"
   use "nvim-treesitter/nvim-treesitter"
   use "nvim-treesitter/nvim-treesitter-context"
+
   use "nvim-lua/plenary.nvim"
   use "nvim-telescope/telescope.nvim"
-  use "preservim/nerdtree"
   use "tpope/vim-fugitive"
   use "numToStr/Comment.nvim"
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+
   use "Yggdroot/indentLine"
   use "lewis6991/gitsigns.nvim"
   use "windwp/nvim-autopairs"
   use "kyazdani42/nvim-tree.lua"
   use "kyazdani42/nvim-web-devicons"
-  use "ryanoasis/vim-devicons"
+
   use "neovim/nvim-lspconfig"
   use "williamboman/nvim-lsp-installer"
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/nvim-cmp"
   use "L3MON4D3/LuaSnip"
-  use "RRethy/vim-illuminate"
 
   if packer_bootstrap then
     require("packer").sync()
