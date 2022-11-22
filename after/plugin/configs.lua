@@ -3,7 +3,6 @@ require("nvim-autopairs").setup()
 require("gitsigns").setup()
 
 vim.api.nvim_set_var('indentLine_char', '⎸')
-vim.api.nvim_set_var('view.x.layout', "diff3_horizontal")
 
 require("nvim-treesitter.configs").setup({
   ensure_installed = {

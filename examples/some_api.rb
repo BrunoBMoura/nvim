@@ -10,7 +10,7 @@ module BigDummy
       end
 
       if @elements.pop in [0, 1, 2, 3, 4]
-        p "random"
+        p "random" + __method__
       end
     end
 
