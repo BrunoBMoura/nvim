@@ -8,10 +8,10 @@ autocmd(
 )
 
 local lang_meta_op = {
-  c = {format = "clang-format"},
-  rust = {format = "rustfmt", build = "cargo build", exec = "cargo run"},
-  ruby = {small_indent = true},
-  lua = {small_indent = true},
+  c      = {format = "clang-format"},
+  rust   = {format = "rustfmt", build = "cargo build", exec = "cargo run"},
+  ruby   = {small_indent = true},
+  lua    = {small_indent = true},
   python = {exec = "python"}
 }
 

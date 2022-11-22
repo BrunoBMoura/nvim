@@ -1,30 +1,41 @@
-vim.opt.tabstop = 4
-vim.optsofttabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-vim.opt.smartindent = true
-vim.opt.autoindent = true
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.hlsearch = false
-vim.opt.hidden = true
-vim.opt.errorbells = false
-vim.opt.wrap = false
-vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME").. "/.config/nvim/undodir"
-vim.opt.undofile = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.incsearch = true
-vim.opt.scrolloff = 12
-vim.opt.encoding = "utf-8"
-vim.opt.autoread = true
-vim.opt.cmdheight = 1
-vim.opt.termguicolors = true
-vim.opt.cursorline = true
-vim.opt.laststatus = 3
-vim.opt.showtabline = 3
-vim.opt.list = true
-vim.opt.fillchars = {stl = "―", fold = "۰", diff = "·"}
-vim.opt.listchars = {tab = "»·", trail = "·", eol = "¬"}
 vim.g.mapleader = " "
+
+local configs = {
+  tabstop        = 4,
+  softtabstop    = 4,
+  shiftwidth     = 4,
+  expandtab      = true,
+  smartindent    = true,
+  autoindent     = true,
+  number         = true,
+  relativenumber = true,
+  hlsearch       = false,
+  hidden         = true,
+  errorbells     = false,
+  wrap           = false,
+  backup         = false,
+  undodir        = os.getenv("HOME").. "/.config/nvim/undodir",
+  undofile       = true,
+  ignorecase     = true,
+  smartcase      = true,
+  incsearch      = true,
+  scrolloff      = 12,
+  encoding       = "utf-8",
+  autoread       = true,
+  cmdheight      = 1,
+  termguicolors  = true,
+  cursorline     = true,
+  laststatus     = 3,
+  showtabline    = 3,
+  list           = true,
+  fillchars      = {
+    stl = "―", fold = "۰", diff = "·"
+  },
+  listchars      = {
+    tab = "»·", trail = "·", eol = "¬"
+  }
+}
+
+for key, val in pairs(configs) do
+  vim.opt[key] = val
+end

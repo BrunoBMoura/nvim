@@ -4,8 +4,6 @@ local tnoremap = require("bruno.keymap").tnoremap
 
 -- Refresh ctags
 nnoremap("<leader>c", ":! ctags -R . <CR>")
--- Source
-nnoremap("<leader>s", ":so % <CR>")
 
 -- Split movement
 nnoremap("<C-h>", "<C-w>h")

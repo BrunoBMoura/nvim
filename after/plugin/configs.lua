@@ -29,12 +29,6 @@ require("treesitter-context").setup({
   mode = "cursor",
 })
 
--- Used for floating mode
--- local width = 50
--- local height = 30
--- local gwidth = vim.api.nvim_list_uis()[1].width
--- local gheight = vim.api.nvim_list_uis()[1].height
-
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
   view = {
@@ -44,16 +38,6 @@ require("nvim-tree").setup({
         {key = "u", action = "dir_up"},
       },
     },
-    -- float = {
-    --   enable = true,
-    --   open_win_config = {
-    --     relative = "editor",
-    --     width = width,
-    --     height = height
-    --     row = (gheight - height) * 0.4,
-    --     col = (gwidth - width) * 0.5
-    --   }
-    -- }
   },
   renderer = {
     add_trailing = true,
