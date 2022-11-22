@@ -16,6 +16,7 @@ return require("packer").startup(function()
   use "nvim-telescope/telescope.nvim"
   use "tpope/vim-fugitive"
   use "numToStr/Comment.nvim"
+  use "tpope/vim-surround"
   use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
   use "Yggdroot/indentLine"

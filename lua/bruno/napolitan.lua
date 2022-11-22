@@ -33,7 +33,7 @@ function M.setup()
     ["@keyword.function"] = {fg = theme.colors.orange, bg = theme.colors.none},
     ["@field"] = {fg = theme.colors.dark_grey, bg = theme.colors.none},
     ["@operator"] = {fg = theme.colors.aqua, bg = theme.colors.none},
-    ["@property"] = {fg = theme.colors.aqua, bg = theme.colors.none},
+    ["@property"] = {fg = theme.colors.dark_grey, bg = theme.colors.none},
     -- Default UI
     Normal = {fg = theme.colors.white, bg = theme.colors.none},
     Error = {fg = theme.colors.red, bg = theme.colors.none},
