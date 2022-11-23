@@ -1,4 +1,3 @@
-require("Comment").setup()
 require("nvim-autopairs").setup()
 require("gitsigns").setup()
 
@@ -34,7 +33,10 @@ require("nvim-tree").setup({
     adaptive_size = true,
     mappings = {
       list = {
-        {key = "u", action = "dir_up"},
+        {
+          key = "u",
+          action = "dir_up"
+        },
       },
     },
   },

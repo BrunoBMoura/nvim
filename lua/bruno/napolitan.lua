@@ -42,7 +42,6 @@ function M.setup()
     ["@macro"]            = {fg = theme.colors.purple, bg = theme.colors.none},
     ["@preproc"]          = {fg = theme.colors.orange, bg = theme.colors.none},
 
-
     -- Default UI
     Normal       = {fg = theme.colors.white, bg = theme.colors.none},
     Error        = {fg = theme.colors.red, bg = theme.colors.none},
@@ -115,7 +114,6 @@ function M.setup()
     ModeMsg        = {fg = theme.colors.white, bg = theme.colors.none},
     MoreMsg        = {fg = theme.colors.white, bg = theme.colors.none},
     Question       = {fg = theme.colors.pink, bg = theme.colors.none},
-    --DiffAdd        = {fg = theme.colors.green, bg = theme.colors.none, bold = true},
     DiffAdd        = {fg = theme.colors.green, bg = theme.colors.dark_green, bold = true},
     DiffDelete     = {fg = theme.colors.pink, bg = theme.colors.dark_pink, bold = true},
     DiffChange     = {fg = theme.colors.yellow, bg = theme.colors.dark_orange, bold = true},

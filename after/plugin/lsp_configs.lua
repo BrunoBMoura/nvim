@@ -1,10 +1,9 @@
-local luasnip = require("luasnip")
 local cmp = require("cmp")
 
 cmp.setup({
   snippet = {
     expand = function(args)
-      luasnip.lsp_expand(args.body)
+      require("luasnip").lsp_expand(args.body)
     end,
   },
   mapping = cmp.mapping.preset.insert({
@@ -38,9 +37,8 @@ local lang_servers = {
   "sumneko_lua",
 }
 
-local installer = require("nvim-lsp-installer")
 for _, name in pairs(lang_servers) do
-  local found, server = installer.get_server(name)
+  local found, server = require("nvim-lsp-installer").get_server(name)
   if found and not server:is_installed() then
     print("Installing [" .. name .. "]")
     server:install()

@@ -2,9 +2,9 @@ module BigDummy
 
   class Dummy
 
-    @elements = Arr.new
 
     def initialize
+      @elements = Arr.new
       @elements.times do |element|
         raise "something" unless element != nil
       end
