@@ -51,3 +51,12 @@ require("nvim-tree").setup({
     dotfiles = true,
   },
 })
+
+require("diffview").setup({
+  view = {
+    merge_tool = {
+      layout = "diff3_vertical",
+      disable_diagnostics = true,
+    }
+  }
+})

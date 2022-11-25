@@ -36,7 +36,7 @@ function M.mode()
 end
 
 function M.file_path()
-  local file_name = vim.fn.expand("%:f")
+  local file_name = vim.fn.expand("%:F")
   if file_name == "" then
     file_name = "No_file"
   end
@@ -52,6 +52,10 @@ function M.file_path()
   end
 
   return string.format("[%s %s ]", file_name, icon)
+end
+
+function M.env_info()
+  return string.format("%s[%s]", modes["qf"].color, vim.fn.bufnr())
 end
 
 function M.file_metadata()
@@ -79,6 +83,8 @@ function M.refresh()
     M.file_path()           ..
     "%#StatusLineFiller#"   ..
     "%="                    ..
+    M.env_info()            ..
+    "%#Number#"             ..
     M.file_metadata()
 end
 

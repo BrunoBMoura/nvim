@@ -24,6 +24,7 @@ nnoremap("<leader>Q", ":q!<CR>")
 
 -- Overide shenanigans
 nnoremap("<leader>rw", "cw<C-r>0<C-c>")
+vnoremap("p", '"_dP')
 
 -- Terminal split
 nnoremap("<leader>T", ":120vsplit term:// bash <CR>i")
