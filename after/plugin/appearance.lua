@@ -2,6 +2,12 @@ require("bruno.statusline").setup()
 require("bruno.tabline").setup()
 local napolitan = require("bruno.napolitan").setup()
 
+local function set_hl_table(tbl)
+  for group, opts in pairs(tbl) do
+    vim.api.nvim_set_hl(0, group, opts)
+  end
+end
+
 -- Definition required by statusline
 local mode_group_colors = {
   StatusLineNormalColor   = {fg = napolitan.colors.orange, bg = napolitan.colors.none, bold = true},
@@ -16,14 +22,5 @@ local mode_group_colors = {
   StatusLineFiller        = {fg = napolitan.colors.visual, bg = napolitan.colors.none},
 }
 
-local function set_hl(group, opts)
-  vim.api.nvim_set_hl(0, group, opts)
-end
-
-for group, opts in pairs(napolitan.colorscheme) do
-  set_hl(group, opts)
-end
-
-for group, opts in pairs(mode_group_colors) do
-  set_hl(group, opts)
-end
+set_hl_table(napolitan.colorscheme)
+set_hl_table(mode_group_colors)

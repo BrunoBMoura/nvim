@@ -11,7 +11,7 @@ function M.setup()
     grey            = "#585858", -- 240
     dark_grey       = "#D7AFAF", -- 181
     visual          = "#303030", -- 236
-    aqua            = "#87D7AF", -- 115, honorable mention to 79
+    aqua            = "#87D7AF", -- 115,
     green           = "#AFAF87", -- 144
     blue            = "#5F87AF", -- 067
     red             = "#870000", -- 088
@@ -19,7 +19,7 @@ function M.setup()
     purple          = "#8787AF", -- 103
     pink            = "#D75F5F", -- 167
     yellow          = "#FFAF5F", -- 215
-    cyan            = "#AFD7D7", -- 152, honorable mention to 151
+    cyan            = "#AFD7D7", -- 152,
     black           = "#121212", -- 233
     white           = "#FFFFD7", -- 230
     none            = "NONE",
@@ -31,6 +31,7 @@ function M.setup()
   theme.colorscheme = {
     -- Adding initial port to new TS highlight groups.
     ["@function.builtin"] = {fg = theme.colors.pink, bg = theme.colors.none},
+    ["@function.purple"]   = {fg = theme.colors.pink, bg = theme.colors.none},
     ["@constructor"]      = {fg = theme.colors.delimiter, bg = theme.colors.none},
     ["@keyword"]          = {fg = theme.colors.orange, bg = theme.colors.none},
     ["@keyword.function"] = {fg = theme.colors.orange, bg = theme.colors.none},
