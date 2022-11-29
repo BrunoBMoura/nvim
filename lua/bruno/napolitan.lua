@@ -54,10 +54,10 @@ function M.setup()
     SpellBad     = {fg = theme.colors.white, bg = theme.colors.none, undercurl = true},
     SpellCap     = {fg = theme.colors.white, bg = theme.colors.none},
     SpellRare    = {fg = theme.colors.red, bg = theme.colors.none},
-    WildMenu     = {fg = theme.colors.black, bg = theme.colors.none},
+    WildMenu     = {fg = theme.colors.grey, bg = theme.colors.none},
     Pmenu        = {fg = theme.colors.white, bg = theme.colors.black},
-    PmenuSel     = {fg = theme.colors.aqua, bg = theme.colors.none},
-    PmenuThumb   = {fg = theme.colors.aqua, bg = theme.colors.none},
+    PmenuSel     = {fg = theme.colors.orange, bg = theme.colors.none},
+    PmenuThumb   = {fg = theme.colors.pink, bg = theme.colors.none},
     PmenuSbar    = {fg = theme.colors.aqua, bg = theme.colors.none},
     MatchParen   = {fg = theme.colors.pink, bg = theme.colors.none, bold = true},
     NonText      = {fg = theme.colors.grey, bg = theme.colors.none},
@@ -147,7 +147,6 @@ function M.setup()
     NvimTreeStatusLine   = {fg = theme.colors.background, bg = theme.colors.background},
     NvimTreeStatusLineNc = {fg = theme.colors.background, bg = theme.colors.background},
     NvimTreeIndentMarker = {fg = theme.colors.visual, bg = theme.colors.none},
-    -- NvimTreeNormal = {bg = theme.colors.grey},
 
     -- Python syntax
     pythonTSConstBuiltin    = {fg = theme.colors.purple, bg = theme.colors.none},
