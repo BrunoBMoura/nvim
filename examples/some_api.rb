@@ -2,7 +2,6 @@ module BigDummy
 
   class Dummy
 
-
     def initialize
       @elements = Arr.new
       @elements.times do |element|

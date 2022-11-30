@@ -11,7 +11,7 @@ end
 -- Definition required by statusline
 local mode_group_colors = {
   StatusLineNormalColor   = {fg = napolitan.colors.orange, bg = napolitan.colors.none, bold = true},
-  StatusLineVisualColor   = {fg = napolitan.colors.pink, bg = napolitan.colors.none, bold = true},
+  StatusLineVisualColor   = {fg = napolitan.colors.magenta, bg = napolitan.colors.none, bold = true},
   StatusLineInsertColor   = {fg = napolitan.colors.green, bg = napolitan.colors.none, bold = true},
   StatusLineSelectColor   = {fg = napolitan.colors.cyan, bg = napolitan.colors.none, bold = true},
   StatusLineReplaceColor  = {fg = napolitan.colors.yellow, bg = napolitan.colors.none, bold = true},
