@@ -14,7 +14,11 @@ module BigDummy
     end
 
     def to_hash
-      self_hash = {}
+      self_hash = {
+        :example1 => "example",
+        :example2 => "example",
+        :example3 => "example",
+      }
       @elements.each_with_index do |obj, obj_idx|
         if obj.is_a?(Dummy)
           obj.to_hash.each do |key, val|

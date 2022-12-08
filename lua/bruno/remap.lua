@@ -55,3 +55,5 @@ nnoremap("<leader>R", ":NvimTreeRefresh<CR>")
 nnoremap("<leader>gb", ":Git blame <CR>")
 nnoremap("<leader>do", ":DiffviewOpen <CR>")
 nnoremap("<leader>dh", ":DiffviewFileHistory <CR>")
+nnoremap("<leader>dt", ":diffthis <CR>")
+

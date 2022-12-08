@@ -2,6 +2,14 @@ use std::collections::HashMap;
 use std::io;
 use std::str::FromStr;
 
+static MAX_NUMBER: i32 = 4000000;
+
+#[derive(Debug)]
+struct Test {
+    data: f32,
+    another_data: u32,
+}
+
 fn _read_values<T: FromStr>() -> Result<Vec<T>, T::Err> {
     let mut str = String::new();
     io::stdin()

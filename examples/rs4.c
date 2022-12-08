@@ -13,11 +13,13 @@
 #define _256_zeros _128_zeros, _128_zeros
 
 #define _SWAP(_arr, _idx_1, _idx_2) \
-do {                                \
-    byte temp = _arr[_idx_1];       \
-    _arr[_idx_1] = _arr[_idx_2];    \
-    _arr[_idx_2] = temp;            \
-} while(0);
+    do {                                \
+        byte temp = _arr[_idx_1];       \
+        _arr[_idx_1] = _arr[_idx_2];    \
+        _arr[_idx_2] = temp;            \
+    } while(0);
+
+#define FOR_EACH(_arr) for (int _idx = 0; idx < sizeof(_arr)/sizeof(_arr[0]); _idx++)
 
 #define MAX 256
 

@@ -17,7 +17,7 @@ return require("packer").startup(function()
   use "kylechui/nvim-surround"
   use 'b3nj5m1n/kommentary'
   use "Yggdroot/indentLine"
-  use 'sindrets/diffview.nvim'
+  use "sindrets/diffview.nvim"
   use "lewis6991/gitsigns.nvim"
   use "windwp/nvim-autopairs"
   use "kyazdani42/nvim-tree.lua"

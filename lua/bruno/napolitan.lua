@@ -18,7 +18,7 @@ function M.setup()
     orange          = "#D7875F",
     purple          = "#8787AF",
     magenta         = "#D75F5F",
-    yellow          = "#FFAF5F",
+    yellow          = "#FFFF99",
     pink            = "#DF7C7C",
     cyan            = "#AFD7D7",
     black           = "#121212",
@@ -30,21 +30,58 @@ function M.setup()
   }
 
   theme.colorscheme = {
-    -- Adding initial port to new TS highlight groups.
-    ["@function.builtin"] = {fg = theme.colors.orange, bg = theme.colors.none},
-    ["@function.macro"]   = {fg = theme.colors.pink, bg = theme.colors.none},
-    ["@function.purple"]  = {fg = theme.colors.magenta, bg = theme.colors.none},
+    ["@symbol"]           = {fg = theme.colors.pastel, bg = theme.colors.none},
+    ["@variable"]         = {fg = theme.colors.white, bg = theme.colors.none},
+    ["@variable.builtin"] = {fg = theme.colors.aqua, bg = theme.colors.none},
+
+    ["@function"]         = {fg = theme.colors.green, bg = theme.colors.none},
+    ["@function.call"]    = {fg = theme.colors.green, bg = theme.colors.none},
+    ["@function.builtin"] = {fg = theme.colors.green, bg = theme.colors.none},
+    ["@function.macro"]   = {fg = theme.colors.pastel, bg = theme.colors.none},
+
+    ["@method"]           = {fg = theme.colors.green, bg = theme.colors.none},
+    ["@method.call"]      = {fg = theme.colors.green, bg = theme.colors.none},
+
     ["@keyword"]          = {fg = theme.colors.magenta, bg = theme.colors.none},
-    ["@keyword.function"] = {fg = theme.colors.orange, bg = theme.colors.none},
+    ["@keyword.function"] = {fg = theme.colors.magenta, bg = theme.colors.none},
+    ["@keyword.operator"] = {fg = theme.colors.aqua, bg = theme.colors.none},
+    ["@keyword.return"]   = {fg = theme.colors.magenta, bg = theme.colors.none},
+
+    ["@constant"]         = {fg = theme.colors.pastel, bg = theme.colors.none},
     ["@constant.macro"]   = {fg = theme.colors.magenta, bg = theme.colors.none},
     ["@constant.builtin"] = {fg = theme.colors.purple, bg = theme.colors.none},
-    ["@constructor"]      = {fg = theme.colors.pink, bg = theme.colors.none},
+
+    ["@string"]           = {fg = theme.colors.cyan, bg = theme.colors.none},
+    ["@string.regex"]     = {fg = theme.colors.purple, bg = theme.colors.none},
+    ["@string.escape"]    = {fg = theme.colors.purple, bg = theme.colors.none},
+    ["@string.special"]   = {fg = theme.colors.purple, bg = theme.colors.none},
+
+    ["@constructor"]      = {fg = theme.colors.yellow, bg = theme.colors.none},
+    ["@parameter"]        = {fg = theme.colors.pastel, bg = theme.colors.none},
     ["@field"]            = {fg = theme.colors.pastel, bg = theme.colors.none},
+
     ["@operator"]         = {fg = theme.colors.aqua, bg = theme.colors.none},
     ["@property"]         = {fg = theme.colors.pastel, bg = theme.colors.none},
-    ["@macro"]            = {fg = theme.colors.pink, bg = theme.colors.none},
-    ["@preproc"]          = {fg = theme.colors.orange, bg = theme.colors.none},
-    ["@type.definition"]  = {fg = theme.colors.yellow, bg = theme.colors.none},
+
+    ["@macro"]            = {fg = theme.colors.orange, bg = theme.colors.none},
+    ["@preproc"]          = {fg = theme.colors.magenta, bg = theme.colors.none},
+    ["@define"]           = {fg = theme.colors.aqua, bg = theme.colors.none},
+    ["@include"]          = {fg = theme.colors.magenta, bg = theme.colors.none},
+    ["@debug"]            = {fg = theme.colors.aqua, bg = theme.colors.none},
+    ["@namespace"]        = {fg = theme.colors.orange, bg = theme.colors.none},
+
+    ["@tag"]              = {fg = theme.colors.aqua, bg = theme.colors.none},
+    ["@tag.delimiter"]    = {fg = theme.colors.aqua, bg = theme.colors.none},
+    ["@tag.attribute"]    = {fg = theme.colors.aqua, bg = theme.colors.none},
+
+    ["@punctuation.delimiter"] = {fg = theme.colors.delimiter, bg = theme.colors.none},
+    ["@punctuation.bracket"]   = {fg = theme.colors.delimiter, bg = theme.colors.none},
+    ["@punctuation.special"]   = {fg = theme.colors.purple, bg = theme.colors.none},
+
+    ["@type"]             = {fg = theme.colors.yellow, bg = theme.colors.none},
+    ["@type.builtin"]     = {fg = theme.colors.orange, bg = theme.colors.none},
+    ["@type.definition"]  = {fg = theme.colors.orange, bg = theme.colors.none},
+    ["@type.qualifier"]   = {fg = theme.colors.pink, bg = theme.colors.none},
 
     -- Default UI
     Normal       = {fg = theme.colors.white, bg = theme.colors.none},
@@ -78,7 +115,7 @@ function M.setup()
     MsgArea      = {fg = theme.colors.white, bg = theme.colors.none},
 
     -- Syntax
-    StorageClass = {fg = theme.colors.green, bg = theme.colors.none},
+    StorageClass = {fg = theme.colors.pink, bg = theme.colors.none},
     Keyword      = {fg = theme.colors.orange, bg = theme.colors.none},
     Comment      = {fg = theme.colors.grey, bg = theme.colors.none},
     Constant     = {fg = theme.colors.pastel, bg = theme.colors.none},
@@ -150,30 +187,6 @@ function M.setup()
     NvimTreeStatusLine   = {fg = theme.colors.background, bg = theme.colors.background},
     NvimTreeStatusLineNc = {fg = theme.colors.background, bg = theme.colors.background},
     NvimTreeIndentMarker = {fg = theme.colors.visual, bg = theme.colors.none},
-
-    -- Python syntax
-    --[[ pythonTSConstBuiltin    = {fg = theme.colors.purple, bg = theme.colors.none},
-    pythonTSFuncBuiltin     = {fg = theme.colors.green, bg = theme.colors.none},
-    pythonTSKeywordOperator = {fg = theme.colors.magenta, bg = theme.colors.none},
-    pythonTSConstructor     = {fg = theme.colors.yellow, bg = theme.colors.none}, ]]
-
-    -- Lua syntax
-    --[[ luaTSOperator        = {fg = theme.colors.aqua, bg = theme.colors.none},
-    luaTSConstructor     = {fg = theme.colors.delimiter, bg = theme.colors.none},
-    luaTSKeywordOperator = {fg = theme.colors.magenta, bg = theme.colors.none},
-    luaTSKeyword         = {fg = theme.colors.magenta, bg = theme.colors.none},
-    luaTSFuncBuiltin     = {fg = theme.colors.magenta, bg = theme.colors.none}, ]]
-
-    -- Rust syntax
-    --[[ rustMacro          = {fg = theme.colors.magenta, bg = theme.colors.none},
-    rustTSFuncMacro    = {fg = theme.colors.magenta, bg = theme.colors.none},
-    rustTSNamespace    = {fg = theme.colors.white, bg = theme.colors.none},
-    rustTSConstBuiltin = {fg = theme.colors.magenta, bg = theme.colors.none},
-    rustGenericRegion  = {fg = theme.colors.magenta, bg = theme.colors.none}, ]]
-
-    -- Ruby syntax
-    --[[ rubyModuleName = {fg = theme.colors.magenta, bg = theme.colors.none},
-    rubyModule     = {fg = theme.colors.magenta, bg = theme.colors.none} ]]
   }
 
   return theme
