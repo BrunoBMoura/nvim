@@ -74,7 +74,8 @@ function M.cell(index)
     M.modified(bufnr) .. "%T"
 
   local hl = (is_selected and "%#TabLineSel#" or "%#TabLine#")
-  return string.format("%s[%s]", hl, cell)
+  -- return string.format("%s[%s]", hl, cell)
+  return string.format("%s%s", hl, cell)
 end
 
 function M.tabline()

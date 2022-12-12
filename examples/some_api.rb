@@ -3,6 +3,7 @@ module BigDummy
   class Dummy
 
     def initialize
+
       @elements = Arr.new
       @elements.times do |element|
         raise "something" unless element != nil
@@ -14,6 +15,7 @@ module BigDummy
     end
 
     def to_hash
+
       self_hash = {
         :example1 => "example",
         :example2 => "example",

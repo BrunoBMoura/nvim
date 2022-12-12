@@ -58,6 +58,8 @@ void RS4_cypher(byte *input, int input_len, byte *key, int key_len) {
 
 int main() {
 
+    const byte *val = NULL;
+
     byte input[MAX] = {_256_zeros};
     byte key[MAX] = {_256_zeros};
 

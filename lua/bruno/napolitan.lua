@@ -5,7 +5,7 @@ function M.setup()
   local theme = {}
 
   theme.colors = {
-    background      = "#1C1C1C",
+    background      = "#1c1c1c",
     divisor         = "#262626",
     delimiter       = "#D7AF87",
     grey            = "#585858",
@@ -15,18 +15,21 @@ function M.setup()
     green           = "#AFAF87",
     blue            = "#5F87AF",
     red             = "#870000",
-    orange          = "#D7875F",
+    --orange          = "#D7875F",
+    orange          = "#F19456",
     purple          = "#8787AF",
     magenta         = "#D75F5F",
-    yellow          = "#FFFF99",
+    --yellow          = "#EBEB95",
+    yellow          = "#F3E295",
     pink            = "#DF7C7C",
-    cyan            = "#AFD7D7",
+    cyan            = "#BCDCC9",
+    -- cyan            = "#AFD7D7",
     black           = "#121212",
     white           = "#FFFFD7",
     dark_green      = "#1A1900",
     dark_magenta    = "#420000",
     dark_orange     = "#461100",
-    none            = "NONE",
+    none            = "none" ,
   }
 
   theme.colorscheme = {
@@ -42,14 +45,14 @@ function M.setup()
     ["@method"]           = {fg = theme.colors.green, bg = theme.colors.none},
     ["@method.call"]      = {fg = theme.colors.green, bg = theme.colors.none},
 
-    ["@keyword"]          = {fg = theme.colors.magenta, bg = theme.colors.none},
-    ["@keyword.function"] = {fg = theme.colors.magenta, bg = theme.colors.none},
+    ["@keyword"]          = {fg = theme.colors.pink, bg = theme.colors.none},
+    ["@keyword.function"] = {fg = theme.colors.pink, bg = theme.colors.none},
     ["@keyword.operator"] = {fg = theme.colors.aqua, bg = theme.colors.none},
     ["@keyword.return"]   = {fg = theme.colors.magenta, bg = theme.colors.none},
 
     ["@constant"]         = {fg = theme.colors.pastel, bg = theme.colors.none},
     ["@constant.macro"]   = {fg = theme.colors.magenta, bg = theme.colors.none},
-    ["@constant.builtin"] = {fg = theme.colors.purple, bg = theme.colors.none},
+    ["@constant.builtin"] = {fg = theme.colors.yellow, bg = theme.colors.none},
 
     ["@string"]           = {fg = theme.colors.cyan, bg = theme.colors.none},
     ["@string.regex"]     = {fg = theme.colors.purple, bg = theme.colors.none},
@@ -65,10 +68,10 @@ function M.setup()
 
     ["@macro"]            = {fg = theme.colors.orange, bg = theme.colors.none},
     ["@preproc"]          = {fg = theme.colors.magenta, bg = theme.colors.none},
-    ["@define"]           = {fg = theme.colors.aqua, bg = theme.colors.none},
+    ["@define"]           = {fg = theme.colors.magenta, bg = theme.colors.none},
     ["@include"]          = {fg = theme.colors.magenta, bg = theme.colors.none},
     ["@debug"]            = {fg = theme.colors.aqua, bg = theme.colors.none},
-    ["@namespace"]        = {fg = theme.colors.orange, bg = theme.colors.none},
+    ["@namespace"]        = {fg = theme.colors.pastel, bg = theme.colors.none},
 
     ["@tag"]              = {fg = theme.colors.aqua, bg = theme.colors.none},
     ["@tag.delimiter"]    = {fg = theme.colors.aqua, bg = theme.colors.none},
@@ -79,9 +82,9 @@ function M.setup()
     ["@punctuation.special"]   = {fg = theme.colors.purple, bg = theme.colors.none},
 
     ["@type"]             = {fg = theme.colors.yellow, bg = theme.colors.none},
-    ["@type.builtin"]     = {fg = theme.colors.orange, bg = theme.colors.none},
-    ["@type.definition"]  = {fg = theme.colors.orange, bg = theme.colors.none},
-    ["@type.qualifier"]   = {fg = theme.colors.pink, bg = theme.colors.none},
+    ["@type.builtin"]     = {fg = theme.colors.yellow, bg = theme.colors.none},
+    ["@type.definition"]  = {fg = theme.colors.pink, bg = theme.colors.none},
+    ["@type.qualifier"]   = {fg = theme.colors.magenta, bg = theme.colors.none},
 
     -- Default UI
     Normal       = {fg = theme.colors.white, bg = theme.colors.none},
@@ -101,9 +104,9 @@ function M.setup()
     PmenuSbar    = {fg = theme.colors.aqua, bg = theme.colors.none},
     MatchParen   = {fg = theme.colors.magenta, bg = theme.colors.none, bold = true},
     NonText      = {fg = theme.colors.grey, bg = theme.colors.none},
-    CursorLineNr = {fg = theme.colors.orange, bg = theme.colors.none},
+    CursorLineNr = {fg = theme.colors.pink, bg = theme.colors.none},
     CursorLine   = {fg = theme.colors.none, bg = theme.colors.divisor},
-    TabLineSel   = {fg = theme.colors.orange, bg = theme.colors.none},
+    TabLineSel   = {fg = theme.colors.pink, bg = theme.colors.none},
     TabLineFill  = {fg = theme.colors.none, bg = theme.colors.divisor},
     TabLine      = {fg = theme.colors.none, bg = theme.colors.divisor},
     Title        = {fg = theme.colors.white, bg = theme.colors.divisor},
@@ -116,7 +119,7 @@ function M.setup()
 
     -- Syntax
     StorageClass = {fg = theme.colors.pink, bg = theme.colors.none},
-    Keyword      = {fg = theme.colors.orange, bg = theme.colors.none},
+    Keyword      = {fg = theme.colors.pink, bg = theme.colors.none},
     Comment      = {fg = theme.colors.grey, bg = theme.colors.none},
     Constant     = {fg = theme.colors.pastel, bg = theme.colors.none},
     String       = {fg = theme.colors.cyan, bg = theme.colors.none},
@@ -140,7 +143,7 @@ function M.setup()
     Define       = {fg = theme.colors.magenta, bg = theme.colors.none},
     PreCondit    = {fg = theme.colors.blue, bg = theme.colors.none},
     Macro        = {fg = theme.colors.blue, bg = theme.colors.none},
-    Special      = {fg = theme.colors.purple, bg = theme.colors.none},
+    Special      = {fg = theme.colors.magenta, bg = theme.colors.none},
     SpecialChar  = {fg = theme.colors.purple, bg = theme.colors.none},
     Tag          = {fg = theme.colors.yellow, bg = theme.colors.none},
     Delimiter    = {fg = theme.colors.delimiter, bg = theme.colors.none},
@@ -181,7 +184,7 @@ function M.setup()
 
     -- TreeSitter Context
     TreesitterContext           = {fg = theme.colors.white, bg = theme.colors.background},
-    TreesitterContextLineNumber = {fg = theme.colors.orange, bg = theme.colors.none},
+    TreesitterContextLineNumber = {fg = theme.colors.pink, bg = theme.colors.none},
 
     -- NvimTree
     NvimTreeStatusLine   = {fg = theme.colors.background, bg = theme.colors.background},
