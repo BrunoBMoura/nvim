@@ -2,7 +2,7 @@
 
 namespace Simple {
 
-    template<typename T>
+    template <typename T>
     T comparison(T val1, T val2) {
         return val1 > val2 ? 0 : 1;
     }

@@ -15,21 +15,18 @@ function M.setup()
     green           = "#AFAF87",
     blue            = "#5F87AF",
     red             = "#870000",
-    --orange          = "#D7875F",
     orange          = "#F19456",
     purple          = "#8787AF",
     magenta         = "#D75F5F",
-    --yellow          = "#EBEB95",
     yellow          = "#F3E295",
     pink            = "#DF7C7C",
     cyan            = "#BCDCC9",
-    -- cyan            = "#AFD7D7",
     black           = "#121212",
     white           = "#FFFFD7",
     dark_green      = "#1A1900",
     dark_magenta    = "#420000",
     dark_orange     = "#461100",
-    none            = "none" ,
+    none            = "none"
   }
 
   theme.colorscheme = {
@@ -102,7 +99,7 @@ function M.setup()
     PmenuSel     = {fg = theme.colors.orange, bg = theme.colors.none},
     PmenuThumb   = {fg = theme.colors.magenta, bg = theme.colors.none},
     PmenuSbar    = {fg = theme.colors.aqua, bg = theme.colors.none},
-    MatchParen   = {fg = theme.colors.magenta, bg = theme.colors.none, bold = true},
+    MatchParen   = {fg = theme.colors.magenta, bg = theme.colors.none},
     NonText      = {fg = theme.colors.grey, bg = theme.colors.none},
     CursorLineNr = {fg = theme.colors.pink, bg = theme.colors.none},
     CursorLine   = {fg = theme.colors.none, bg = theme.colors.divisor},

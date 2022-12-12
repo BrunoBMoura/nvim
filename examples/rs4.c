@@ -19,7 +19,7 @@
         _arr[_idx_2] = temp;            \
     } while(0);
 
-#define FOR_EACH(_arr) for (int _idx = 0; idx < sizeof(_arr)/sizeof(_arr[0]); _idx++)
+#define FOR_EACH(_var, _arr) for (int _var = 0; _var < sizeof(_arr)/sizeof(_arr[0]); _var++)
 
 #define MAX 256
 
@@ -68,6 +68,10 @@ int main() {
 
     RS4_cypher(input, strlen(input), key, strlen(key));
     printf("Inside [%s]!\n", __func__);
+
+    FOR_EACH(idx, input) {
+        printf("Test\n");
+    }
 
     return 0;
 }

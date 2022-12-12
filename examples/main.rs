@@ -10,7 +10,7 @@ struct Test {
     another_data: u32,
 }
 
-fn _read_values<T: FromStr>() -> Result<Vec<T>, T::Err> {
+fn read_values<T: FromStr>() -> Result<Vec<T>, T::Err> {
     let mut str = String::new();
     io::stdin()
         .read_line(&mut str)
