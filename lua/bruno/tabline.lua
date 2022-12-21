@@ -61,21 +61,13 @@ function M.cell(index)
   local winnr = vim.fn.tabpagewinnr(index)
   local bufnr = buflist[winnr]
 
-  -- FIXME: maybe one day try to solve this file explorer width bug
-  -- local is_explorer = vim.fn.getbufvar(bufnr, "&filetype") == "NvimTree"
-  -- if is_explorer then
-  --   local width = vim.fn.winwidth(winnr)
-  --   print("explorer window has" .. " " .. width .. "" .. "characters")
-  -- end
-
   -- Concatenate all the data
   local cell =  "%" .. index .. "T" .. " " ..
     M.window_count(index) .. M.title(bufnr, is_selected) .. " " ..
     M.modified(bufnr) .. "%T"
 
   local hl = (is_selected and "%#TabLineSel#" or "%#TabLine#")
-  -- return string.format("%s[%s]", hl, cell)
-  return string.format("%s%s", hl, cell)
+  return string.format("%s[%s]", hl, cell)
 end
 
 function M.tabline()

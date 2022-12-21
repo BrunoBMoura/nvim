@@ -8,8 +8,8 @@ require("nvim-treesitter.configs").setup({
   ensure_installed = {
     "c", "cpp", "lua", "rust", "python", "ruby", "vim", "comment"
   },
-  highlight = {enable = true,},
-  indent = {enable = false,}
+  highlight = { enable = true },
+  indent = { enable = false }
 })
 
 require("treesitter-context").setup({
@@ -25,22 +25,12 @@ require("treesitter-context").setup({
     },
   },
   zindex = 20,
-  mode = "cursor",
+  mode = "cursor"
 })
 
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
-  view = {
-    adaptive_size = true,
-    mappings = {
-      list = {
-        {
-          key = "u",
-          action = "dir_up"
-        },
-      },
-    },
-  },
+  view = { adaptive_size = true },
   renderer = {
     add_trailing = true,
     group_empty = true,
@@ -48,9 +38,7 @@ require("nvim-tree").setup({
       enable = true,
     }
   },
-  filters = {
-    dotfiles = true,
-  },
+  filters = { dotfiles = true }
 })
 
 require("diffview").setup({

@@ -30,6 +30,6 @@ local mode_group_colors = {
   StatusLineFiller        = {fg = napolitan.colors.visual, bg = napolitan.colors.none},
 }
 
-invert_bg_fg(mode_group_colors)
+-- invert_bg_fg(mode_group_colors)
 set_hl_table(napolitan.colorscheme)
 set_hl_table(mode_group_colors)

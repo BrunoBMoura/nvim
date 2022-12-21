@@ -50,6 +50,7 @@ nnoremap("<leader>fb", ":Telescope buffers <CR>")
 nnoremap("<leader>fw", function ()
   require("telescope.builtin").grep_string({ search = vim.fn.input("Grep >")});
 end)
+
 nnoremap("<leader>lg", ":Telescope live_grep <CR>")
 nnoremap("<leader>hl", ":Telescope highlights <CR>")
 nnoremap("<leader>t", ":NvimTreeToggle<CR>")

@@ -5,7 +5,7 @@ function M.setup()
   local theme = {}
 
   theme.colors = {
-    background      = "#1c1c1c",
+    background      = "#1a1a1a",
     divisor         = "#262626",
     delimiter       = "#D7AF87",
     grey            = "#585858",
@@ -15,7 +15,7 @@ function M.setup()
     green           = "#AFAF87",
     blue            = "#5F87AF",
     red             = "#870000",
-    orange          = "#F19456",
+    orange          = "#E8946A",
     purple          = "#8787AF",
     magenta         = "#D75F5F",
     yellow          = "#F3E295",
@@ -45,12 +45,13 @@ function M.setup()
     ["@keyword"]          = {fg = theme.colors.pink, bg = theme.colors.none},
     ["@keyword.function"] = {fg = theme.colors.pink, bg = theme.colors.none},
     ["@keyword.operator"] = {fg = theme.colors.aqua, bg = theme.colors.none},
-    ["@keyword.return"]   = {fg = theme.colors.magenta, bg = theme.colors.none},
+    ["@keyword.return"]   = {fg = theme.colors.orange, bg = theme.colors.none},
 
     ["@constant"]         = {fg = theme.colors.pastel, bg = theme.colors.none},
     ["@constant.macro"]   = {fg = theme.colors.magenta, bg = theme.colors.none},
     ["@constant.builtin"] = {fg = theme.colors.yellow, bg = theme.colors.none},
 
+    ["@comment"]          = {fg = theme.colors.grey, bg = theme.colors.none},
     ["@string"]           = {fg = theme.colors.cyan, bg = theme.colors.none},
     ["@string.regex"]     = {fg = theme.colors.purple, bg = theme.colors.none},
     ["@string.escape"]    = {fg = theme.colors.purple, bg = theme.colors.none},
@@ -76,7 +77,7 @@ function M.setup()
 
     ["@punctuation.delimiter"] = {fg = theme.colors.delimiter, bg = theme.colors.none},
     ["@punctuation.bracket"]   = {fg = theme.colors.delimiter, bg = theme.colors.none},
-    ["@punctuation.special"]   = {fg = theme.colors.purple, bg = theme.colors.none},
+    ["@punctuation.special"]   = {fg = theme.colors.delimiter, bg = theme.colors.none},
 
     ["@type"]             = {fg = theme.colors.yellow, bg = theme.colors.none},
     ["@type.builtin"]     = {fg = theme.colors.yellow, bg = theme.colors.none},
