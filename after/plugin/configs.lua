@@ -1,6 +1,6 @@
 require("nvim-autopairs").setup()
-require("gitsigns").setup()
 require("nvim-surround").setup()
+require("gitsigns").setup()
 
 vim.api.nvim_set_var('indentLine_char', '⎸')
 
