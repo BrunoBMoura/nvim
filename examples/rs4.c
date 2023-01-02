@@ -25,6 +25,12 @@
 
 typedef unsigned char byte;
 
+typedef struct {
+    byte[MAX] stream;
+    int valid_bytes;
+    void * mem;
+} Compose_t;
+
 void RS4_cypher(byte *input, int input_len, byte *key, int key_len) {
 
     byte S[MAX] = {_256_zeros};

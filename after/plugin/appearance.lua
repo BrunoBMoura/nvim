@@ -9,18 +9,9 @@ local function set_hl_table(tbl)
   end
 end
 
---[[ local function invert_bg_fg(tbl)
-  for _, info in pairs(tbl) do
-    info.bg = info.fg
-    info.fg = colors.visual
-  end
-  tbl.StatusLineFiller.fg = colors.visual
-end
- ]]
-
 -- Definition required by statusline
 local mode_group_colors = {
-  StatusLineNormalColor   = {fg = colors.pink, bg = colors.none, bold = true},
+  StatusLineNormalColor   = {fg = colors.orange, bg = colors.none, bold = true},
   StatusLineVisualColor   = {fg = colors.magenta, bg = colors.none, bold = true},
   StatusLineInsertColor   = {fg = colors.green, bg = colors.none, bold = true},
   StatusLineSelectColor   = {fg = colors.cyan, bg = colors.none, bold = true},
@@ -32,5 +23,4 @@ local mode_group_colors = {
   StatusLineFiller        = {fg = colors.visual, bg = colors.none},
 }
 
--- invert_bg_fg(mode_group_colors)
 set_hl_table(mode_group_colors)

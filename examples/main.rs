@@ -63,7 +63,6 @@ fn main() {
 
     println!("{:?}", out_of_the_map);
     println!("{:?}", map);
-
     println!("Counting words from now on! ");
 
     let mut map = HashMap::new();
