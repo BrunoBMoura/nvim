@@ -27,10 +27,6 @@ local modes = {
 
 function M.mode()
   local current_mode = vim.api.nvim_get_mode().mode
-  -- local buftype = vim.fn.getbufvar(vim.api.nvim_get_current_buf(), "&buftype")
-  -- if buftype == "quickfix" then
-  --   current_mode = "qf"
-  -- end
   local entry = modes[current_mode]
   return string.format("%s[%s]", entry.color, entry.text)
 end

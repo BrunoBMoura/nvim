@@ -8,25 +8,23 @@ local colors = {
   background      = "#1A1A1A",
   divisor         = "#262626",
   delimiter       = "#D7AF87",
+  visual          = "#303030",
   grey            = "#585858",
   pastel          = "#D7AFAF",
-  visual          = "#303030",
   aqua            = "#87D7AF",
   green           = "#AFAF87",
   blue            = "#4B878E",
-  red             = "#870000",
+  red             = "#D75F5F",
   orange          = "#E8946A",
   purple          = "#8787AF",
-  magenta         = "#D75F5F",
   yellow          = "#F3E295",
   pink            = "#DF7C7C",
   cyan            = "#BCDCC9",
   black           = "#121212",
   white           = "#FFFFD7",
   dark_green      = "#1A1900",
-  dark_magenta    = "#420000",
+  dark_red        = "#420000",
   dark_orange     = "#461100",
-  none            = "none"
 }
 
 local code_syntax = {
@@ -47,20 +45,20 @@ local code_syntax = {
   Repeat       = {fg = colors.orange},
   Label        = {fg = colors.pastel},
   Operator     = {fg = colors.aqua},
-  Exception    = {fg = colors.magenta},
+  Exception    = {fg = colors.red},
 
   PreProc      = {fg = colors.purple},
   Include      = {fg = colors.blue},
   Define       = {fg = colors.blue},
-  PreCondit    = {fg = colors.magenta},
+  PreCondit    = {fg = colors.red},
   Macro        = {fg = colors.orange},
 
   StorageClass = {fg = colors.pink},
   Type         = {fg = colors.yellow},
-  Structure    = {fg = colors.magenta},
+  Structure    = {fg = colors.red},
   Typedef      = {fg = colors.orange},
 
-  Special      = {fg = colors.magenta},
+  Special      = {fg = colors.red},
   SpecialChar  = {fg = colors.purple},
   Tag          = {fg = colors.yellow},
   SpecialComment = {fg = colors.purple},
@@ -76,8 +74,8 @@ local code_syntax = {
 local editor_syntax = {
   Normal       = {fg = colors.white},
   ErrorMsg     = {fg = colors.red},
-  Search       = {fg = colors.magenta},
-  IncSearch    = {fg = colors.magenta, reverse = true},
+  Search       = {fg = colors.red},
+  IncSearch    = {fg = colors.red, reverse = true},
   DiffText     = {fg = colors.yellow, bg = colors.dark_orange, bold = true},
   SignColumn   = {fg = colors.orange},
   SpellBad     = {fg = colors.white, undercurl = true},
@@ -85,9 +83,9 @@ local editor_syntax = {
   SpellRare    = {fg = colors.red},
   Pmenu        = {fg = colors.white, bg = colors.black},
   PmenuSel     = {fg = colors.orange},
-  PmenuThumb   = {fg = colors.magenta},
+  PmenuThumb   = {fg = colors.red},
   PmenuSbar    = {fg = colors.aqua},
-  MatchParen   = {fg = colors.magenta},
+  MatchParen   = {fg = colors.red},
   CursorLineNr = {fg = colors.orange},
   CursorLine   = {bg = colors.divisor},
   TabLineSel   = {fg = colors.orange},
@@ -101,7 +99,7 @@ local editor_syntax = {
   Directory    = {fg = colors.green},
   FoldColumn   = {fg = colors.yellow},
   DiffAdd      = {fg = colors.green, bg = colors.dark_green, bold = true},
-  DiffDelete   = {fg = colors.magenta, bg = colors.dark_magenta, bold = true},
+  DiffDelete   = {fg = colors.red, bg = colors.dark_red, bold = true},
   DiffChange   = {fg = colors.yellow, bg = colors.dark_orange, bold = true},
   Folded       = {fg = colors.grey},
   WarningMsg   = {fg = colors.green},
@@ -109,7 +107,7 @@ local editor_syntax = {
 
 local meta_syntax = {
   NonText      = {fg = colors.grey},
-  Question     = {fg = colors.magenta},
+  Question     = {fg = colors.red},
   StatusLineNc = {fg = colors.divisor},
   WildMenu     = {fg = colors.grey},
   diffAdded      = {fg = colors.delimiter},
@@ -117,7 +115,6 @@ local meta_syntax = {
 }
 
 local plugin_syntax = {
-
   -- TreeSitter
   ["@symbol"]           = {fg = colors.pastel},
   ["@variable"]         = {fg = colors.white},
@@ -131,7 +128,7 @@ local plugin_syntax = {
   ["@keyword"]          = {fg = colors.orange},
   ["@keyword.function"] = {fg = colors.orange},
   ["@keyword.operator"] = {fg = colors.aqua},
-  ["@keyword.return"]   = {fg = colors.magenta},
+  ["@keyword.return"]   = {fg = colors.red},
   ["@constant"]         = {fg = colors.pastel},
   ["@constant.macro"]   = {fg = colors.orange},
   ["@constant.builtin"] = {fg = colors.blue},
@@ -146,7 +143,7 @@ local plugin_syntax = {
   ["@operator"]         = {fg = colors.aqua},
   ["@property"]         = {fg = colors.pastel},
   ["@macro"]            = {fg = colors.orange},
-  ["@preproc"]          = {fg = colors.magenta},
+  ["@preproc"]          = {fg = colors.red},
   ["@define"]           = {fg = colors.blue},
   ["@include"]          = {fg = colors.blue},
   ["@debug"]            = {fg = colors.aqua},
@@ -156,17 +153,17 @@ local plugin_syntax = {
   ["@tag.attribute"]    = {fg = colors.aqua},
   ["@punctuation.delimiter"] = {fg = colors.delimiter},
   ["@punctuation.bracket"]   = {fg = colors.delimiter},
-  ["@punctuation.special"]   = {fg = colors.magenta},
+  ["@punctuation.special"]   = {fg = colors.red},
   ["@type"]             = {fg = colors.yellow},
   ["@type.builtin"]     = {fg = colors.yellow},
   ["@type.definition"]  = {fg = colors.blue},
-  ["@type.qualifier"]   = {fg = colors.magenta},
+  ["@type.qualifier"]   = {fg = colors.red},
 
   -- Cmp
-  CmpItemMenuDefault = {fg = colors.magenta, bg = colors.black},
+  CmpItemMenuDefault = {fg = colors.red, bg = colors.black},
   CmpItemAbbrDefault = {fg = colors.white, bg = colors.black},
   CmpItemAbbrMatch   = {fg = colors.white, bg = colors.black, bold = true},
-  CmpItemKindDefault = {fg = colors.magenta, bg = colors.black},
+  CmpItemKindDefault = {fg = colors.red, bg = colors.black},
 
   -- LSP diagnostics
   DiagnosticError = {fg = colors.red, bg = colors.background},
@@ -174,7 +171,7 @@ local plugin_syntax = {
   DiagnosticWarn  = {fg = colors.yellow, bg = colors.background},
 
   -- Git gutter
-  GitGutterDelete = {fg = colors.magenta, bg = colors.background},
+  GitGutterDelete = {fg = colors.red, bg = colors.background},
   GitGutterAdd    = {fg = colors.green, bg = colors.background},
   GitGutterChange = {fg = colors.yellow, bg = colors.background},
 
@@ -205,6 +202,25 @@ function M.setup()
   for group, opts in pairs(meta_syntax) do
     highlight(group, opts)
   end
+
+  vim.api.nvim_set_var("terminal_color_0",          colors.background)
+  vim.api.nvim_set_var("terminal_color_1",          colors.red)
+  vim.api.nvim_set_var("terminal_color_2",          colors.green)
+  vim.api.nvim_set_var("terminal_color_3",          colors.yellow)
+  vim.api.nvim_set_var("terminal_color_4",          colors.blue)
+  vim.api.nvim_set_var("terminal_color_5",          colors.purple)
+  vim.api.nvim_set_var("terminal_color_6",          colors.cyan)
+  vim.api.nvim_set_var("terminal_color_7",          colors.fg)
+  vim.api.nvim_set_var("terminal_color_8",          colors.grey)
+  vim.api.nvim_set_var("terminal_color_9",          colors.red)
+  vim.api.nvim_set_var("terminal_color_10",         colors.green)
+  vim.api.nvim_set_var("terminal_color_11",         colors.orange)
+  vim.api.nvim_set_var("terminal_color_12",         colors.blue)
+  vim.api.nvim_set_var("terminal_color_13",         colors.purple)
+  vim.api.nvim_set_var("terminal_color_14",         colors.cyan)
+  vim.api.nvim_set_var("terminal_color_15",         colors.white)
+  vim.api.nvim_set_var("terminal_color_background", colors.background)
+  vim.api.nvim_set_var("terminal_color_foreground", colors.white)
 
 end
 

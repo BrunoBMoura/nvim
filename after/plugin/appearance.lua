@@ -12,7 +12,7 @@ end
 -- Definition required by statusline
 local mode_group_colors = {
   StatusLineNormalColor   = {fg = colors.orange, bg = colors.none, bold = true},
-  StatusLineVisualColor   = {fg = colors.magenta, bg = colors.none, bold = true},
+  StatusLineVisualColor   = {fg = colors.red, bg = colors.none, bold = true},
   StatusLineInsertColor   = {fg = colors.green, bg = colors.none, bold = true},
   StatusLineSelectColor   = {fg = colors.cyan, bg = colors.none, bold = true},
   StatusLineReplaceColor  = {fg = colors.yellow, bg = colors.none, bold = true},
