@@ -66,7 +66,7 @@ function M.cell(index)
     M.window_count(index) .. M.title(bufnr, is_selected) .. " " ..
     M.modified(bufnr) .. "%T"
 
-  local hl = (is_selected and "%#TabLineSel#" or "%#TabLine#")
+  local hl = is_selected and "%#TabLineSel#" or "%#TabLine#"
   return string.format("%s[%s]", hl, cell)
 end
 

@@ -110,8 +110,8 @@ local meta_syntax = {
   Question     = {fg = colors.red},
   StatusLineNc = {fg = colors.divisor},
   WildMenu     = {fg = colors.grey},
-  diffAdded      = {fg = colors.delimiter},
-  diffCommon     = {fg = colors.green},
+  diffAdded    = {fg = colors.delimiter},
+  diffCommon   = {fg = colors.green},
 }
 
 local plugin_syntax = {
@@ -221,7 +221,6 @@ function M.setup()
   vim.api.nvim_set_var("terminal_color_15",         colors.white)
   vim.api.nvim_set_var("terminal_color_background", colors.background)
   vim.api.nvim_set_var("terminal_color_foreground", colors.white)
-
 end
 
 function M.get_colors()
