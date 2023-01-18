@@ -12,7 +12,8 @@ local colors = {
   grey            = "#585858",
   pastel          = "#D7AFAF",
   aqua            = "#87D7AF",
-  green           = "#AFAF87",
+  green           = "#95AB87",
+  -- green           = "#AFAF87",
   blue            = "#4B878E",
   red             = "#D75F5F",
   orange          = "#E8946A",
@@ -122,7 +123,7 @@ local plugin_syntax = {
   ["@function"]         = {fg = colors.green},
   ["@function.call"]    = {fg = colors.green},
   ["@function.builtin"] = {fg = colors.green},
-  ["@function.macro"]   = {fg = colors.pink},
+  ["@function.macro"]   = {fg = colors.orange},
   ["@method"]           = {fg = colors.green},
   ["@method.call"]      = {fg = colors.green},
   ["@keyword"]          = {fg = colors.orange},
@@ -131,7 +132,7 @@ local plugin_syntax = {
   ["@keyword.return"]   = {fg = colors.red},
   ["@constant"]         = {fg = colors.pastel},
   ["@constant.macro"]   = {fg = colors.orange},
-  ["@constant.builtin"] = {fg = colors.blue},
+  ["@constant.builtin"] = {fg = colors.purple},
   ["@comment"]          = {fg = colors.grey},
   ["@string"]           = {fg = colors.cyan},
   ["@string.regex"]     = {fg = colors.purple},
@@ -147,7 +148,7 @@ local plugin_syntax = {
   ["@define"]           = {fg = colors.blue},
   ["@include"]          = {fg = colors.blue},
   ["@debug"]            = {fg = colors.aqua},
-  ["@namespace"]        = {fg = colors.cyan},
+  ["@namespace"]        = {fg = colors.white},
   ["@tag"]              = {fg = colors.aqua},
   ["@tag.delimiter"]    = {fg = colors.aqua},
   ["@tag.attribute"]    = {fg = colors.aqua},
@@ -156,7 +157,7 @@ local plugin_syntax = {
   ["@punctuation.special"]   = {fg = colors.red},
   ["@type"]             = {fg = colors.yellow},
   ["@type.builtin"]     = {fg = colors.yellow},
-  ["@type.definition"]  = {fg = colors.blue},
+  ["@type.definition"]  = {fg = colors.aqua},
   ["@type.qualifier"]   = {fg = colors.red},
 
   -- Cmp
@@ -183,6 +184,7 @@ local plugin_syntax = {
   NvimTreeStatusLine   = {fg = colors.background, bg = colors.background},
   NvimTreeStatusLineNc = {fg = colors.background, bg = colors.background},
   NvimTreeIndentMarker = {fg = colors.visual},
+  NvimTreeWindowPicker = {fg = colors.white, bg = colors.blue}
 }
 
 function M.setup()
@@ -203,24 +205,6 @@ function M.setup()
     highlight(group, opts)
   end
 
-  vim.api.nvim_set_var("terminal_color_0",          colors.background)
-  vim.api.nvim_set_var("terminal_color_1",          colors.red)
-  vim.api.nvim_set_var("terminal_color_2",          colors.green)
-  vim.api.nvim_set_var("terminal_color_3",          colors.yellow)
-  vim.api.nvim_set_var("terminal_color_4",          colors.blue)
-  vim.api.nvim_set_var("terminal_color_5",          colors.purple)
-  vim.api.nvim_set_var("terminal_color_6",          colors.cyan)
-  vim.api.nvim_set_var("terminal_color_7",          colors.fg)
-  vim.api.nvim_set_var("terminal_color_8",          colors.grey)
-  vim.api.nvim_set_var("terminal_color_9",          colors.red)
-  vim.api.nvim_set_var("terminal_color_10",         colors.green)
-  vim.api.nvim_set_var("terminal_color_11",         colors.orange)
-  vim.api.nvim_set_var("terminal_color_12",         colors.blue)
-  vim.api.nvim_set_var("terminal_color_13",         colors.purple)
-  vim.api.nvim_set_var("terminal_color_14",         colors.cyan)
-  vim.api.nvim_set_var("terminal_color_15",         colors.white)
-  vim.api.nvim_set_var("terminal_color_background", colors.background)
-  vim.api.nvim_set_var("terminal_color_foreground", colors.white)
 end
 
 function M.get_colors()

@@ -61,10 +61,6 @@ fn main() {
         None => panic!("get method on key {} returned a invalid value!", key),
     };
 
-    println!("{:?}", out_of_the_map);
-    println!("{:?}", map);
-    println!("Counting words from now on! ");
-
     let mut map = HashMap::new();
     let new_text = "dumb phrase for testing";
     for word in new_text.split_whitespace() {

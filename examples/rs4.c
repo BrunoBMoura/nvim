@@ -75,9 +75,5 @@ int main() {
     RS4_cypher(input, strlen(input), key, strlen(key));
     printf("Inside [%s]!\n", __func__);
 
-    FOR_EACH(idx, input) {
-        printf("Test\n");
-    }
-
     return 0;
 }
