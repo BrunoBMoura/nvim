@@ -19,8 +19,6 @@
         _arr[_idx_2] = temp;            \
     } while(0);
 
-#define FOR_EACH(_var, _arr) for (int _var = 0; _var < sizeof(_arr)/sizeof(_arr[0]); _var++)
-
 #define MAX 256
 
 typedef unsigned char byte;
