@@ -47,7 +47,7 @@ local code_syntax = {
   Repeat       = {fg = colors.orange},
   Label        = {fg = colors.pastel},
   Operator     = {fg = colors.aqua,   bg = colors.background},
-  Exception    = {fg = colors.red,    bg = colors.background},
+  Exception    = {fg = colors.red},
 
   PreProc      = {fg = colors.purple, bg = colors.background},
   Include      = {fg = colors.blue,   bg = colors.background},
@@ -182,10 +182,10 @@ local plugin_syntax = {
   TreesitterContextLineNumber = {fg = colors.orange, bg = colors.brackground},
 
   -- NvimTree
-  NvimTreeStatusLine   = {fg = colors.background, bg = colors.background},
-  NvimTreeStatusLineNc = {fg = colors.background, bg = colors.background},
-  NvimTreeIndentMarker = {fg = colors.visual, bg = colors.brackground},
-  NvimTreeWindowPicker = {fg = colors.white, bg = colors.blue},
+  NvimTreeStatusLine       = {fg = colors.background, bg = colors.background},
+  NvimTreeStatusLineNc     = {fg = colors.background, bg = colors.background},
+  NvimTreeIndentMarker     = {fg = colors.visual, bg = colors.brackground},
+  NvimTreeWindowPicker     = {fg = colors.white, bg = colors.blue},
   NvimTreeOpenedFolderIcon = {fg = colors.purple},
   NvimTreeClosedFolderIcon = {fg = colors.purple},
 
@@ -195,6 +195,9 @@ local plugin_syntax = {
   DevIconCpp = {fg = colors.cyan},
   DevIconLua = {fg = colors.blue},
   DevIconRb  = {fg = colors.red},
+  DevIconTxt = {fg = colors.green},
+  DevIconMd  = {fg = colors.carbon},
+  DevIconH   = {fg = colors.purple}
 }
 
 function M.setup()
