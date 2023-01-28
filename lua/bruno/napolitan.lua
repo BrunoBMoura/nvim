@@ -54,7 +54,7 @@ local code_syntax = {
   PreCondit    = {fg = colors.red,    bg = colors.background},
   Macro        = {fg = colors.orange, bg = colors.background},
 
-  StorageClass = {fg = colors.pink,   bg = colors.background},
+  StorageClass = {fg = colors.pink},
   Type         = {fg = colors.sand, bg = colors.background},
   Structure    = {fg = colors.red,    bg = colors.background},
   Typedef      = {fg = colors.orange, bg = colors.background},
@@ -157,7 +157,7 @@ local plugin_syntax = {
   ["@punctuation.special"]   = {fg = colors.red, bg = colors.brackground},
   ["@type"]             = {fg = colors.sand,   bg = colors.brackground},
   ["@type.builtin"]     = {fg = colors.sand,   bg = colors.brackground},
-  ["@type.definition"]  = {fg = colors.aqua,     bg = colors.brackground},
+  ["@type.definition"]  = {fg = colors.red,     bg = colors.brackground},
   ["@type.qualifier"]   = {fg = colors.red,      bg = colors.brackground},
 
   -- Cmp
