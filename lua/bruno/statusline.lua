@@ -33,7 +33,6 @@ local modes = {
 function M.mode()
   local current_mode = vim.api.nvim_get_mode().mode
   local entry = modes[current_mode]
-
   return string.format("%s[%s]", entry.color, entry.text)
 end
 
@@ -48,7 +47,7 @@ function M.file_path()
     local has_devicons, devicons = pcall(require, "nvim-web-devicons")
     if has_devicons then
       local file_icon = devicons.get_icon(file_name)
-      icon = (file_icon ~= nil and "" .. file_icon) or ""
+      icon = file_icon ~= nil and "" .. file_icon or ""
     end
     file_path = string.format("[%s %s ]", file_name, icon)
   end
@@ -65,7 +64,6 @@ function M.file_metadata()
   local encoding = string.format("%s", vim.bo.fileencoding)
   local type = string.format("%s", vim.bo.filetype)
   local line_info = vim.bo.filetype ~= "alpha" and "%l/%L:%c" or ""
-
   return string.format(
     "%s[%s]%s[%s:%s]%s[%s]",
     modes["c"].color, branch,
@@ -75,9 +73,13 @@ function M.file_metadata()
 end
 
 function M.refresh()
-  return M.mode() .. "%#StatusLineFileName#" ..
-    M.file_path() .. "%#StatusLineFiller#"   .. "%=" ..
-    M.env_info()  .. "%#Number#"             ..
+  return M.mode()           ..
+    "%#StatusLineFileName#" ..
+    M.file_path()           ..
+    "%#StatusLineFiller#"   ..
+    "%="                    ..
+    M.env_info()            ..
+    "%#Number#"             ..
     M.file_metadata()
 end
 
@@ -86,5 +88,3 @@ function M.setup()
 end
 
 return M
-
-

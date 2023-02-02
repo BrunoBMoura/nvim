@@ -47,13 +47,13 @@ nnoremap("<C-Right>", ":vertical resize +2 <CR>")
 -- Plugin binds
 nnoremap("<leader>ff", ":Telescope find_files <CR>")
 nnoremap("<leader>fb", ":Telescope buffers <CR>")
-nnoremap("<leader>fw", function ()
+nnoremap("<leader>/", function ()
   require("telescope.builtin").grep_string({ search = vim.fn.input("Grep >")});
 end)
 
 nnoremap("<leader>lg", ":Telescope live_grep <CR>")
 nnoremap("<leader>hl", ":Telescope highlights <CR>")
-nnoremap("<leader>t", ":NvimTreeToggle<CR>")
+nnoremap("<leader>e", ":NvimTreeToggle<CR>")
 nnoremap("<leader>F", ":NvimTreeFindFile<CR>")
 nnoremap("<leader>R", ":NvimTreeRefresh<CR>")
 nnoremap("<leader>gb", ":Git blame <CR>")

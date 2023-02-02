@@ -3,41 +3,50 @@
 local M = {}
 
 function M.title(bufnr, is_selected)
-
+  -- Access current buffer information.
   local file = vim.fn.bufname(bufnr)
   local buftype = vim.fn.getbufvar(bufnr, "&buftype")
   local filetype = vim.fn.getbufvar(bufnr, "&filetype")
 
+  -- Set both tables with possible buffer and file types for its
+  -- respective return strings.
+  local buftypes = {
+    ['help'] = "Help:" .. vim.fn.fnamemodify(file, ":t:r"),
+    ['quickfix'] = "Quickfix",
+    ['terminal'] = vim.fn.fnamemodify(vim.env.SHELL, ":t")
+  }
+  local filetypes = {
+    ["git"] = "Git",
+    ["fugitive"] = "Fugitive",
+    ["TelescopePrompt"] = "Telescope"
+  }
+
+  -- Then, lazyly check those tables if buffer variables are empty.
   local title = ""
-  if buftype == 'help' then
-    title = "help:" .. vim.fn.fnamemodify(file, ":t:r")
-  elseif buftype == "quickfix" then
-    title = "quickfix"
-  elseif filetype == "TelescopePrompt" then
-    title = "Telescope"
-  elseif filetype == "git" then
-    title =  "Git"
-  elseif filetype == "fugitive" then
-    title = "Fugitive"
-  elseif buftype == "terminal" then
-    local _, mtch = string.match(file, "term:(.*):(%a+)")
-    title = mtch ~= nil and mtch or vim.fn.fnamemodify(vim.env.SHELL, ":t")
-  elseif file == "" then
+  if file == "" and buftype == "" and filetype == "" then
     title = "No_name"
   else
-    title = vim.fn.pathshorten(vim.fn.fnamemodify(file, ":p:~:t"))
+    title = buftypes[buftype]
+    if title == nil then
+      title = filetypes[filetype]
+      if title == nil then
+        title = vim.fn.pathshorten(vim.fn.fnamemodify(file, ":p:~:t"))
+      end
+    end
   end
 
-  local devicons = require("nvim-web-devicons")
-  local icon, _ = devicons.get_icon(file, vim.fn.expand('#'..bufnr..':e'))
-  if icon == nil then
-    icon = devicons.get_icon("txt")
+  -- Try to access the file icon if 'nvim-web-devicons' is installed.
+  local icon = ""
+  local has_devicons, devicons = pcall(require, "nvim-web-devicons")
+  if has_devicons then
+    local file_icon = devicons.get_icon(file, vim.fn.expand('#' .. bufnr .. ':e'))
+    icon = file_icon ~= nil and file_icon or icon
   end
 
-  if is_selected then
-    return string.format("%s %s %s %s", title, "%#String#", icon, "%#TabLineSel#")
-  end
-  return string.format("%s %s", title, icon)
+  -- And finally, ensure a proper highlighting if the current cell is selected.
+  return is_selected
+    and string.format("%s %s%s%s", title, "%#String#", icon, "%#TabLineSel#")
+    or string.format("%s %s", title, icon)
 end
 
 function M.modified(bufnr)
