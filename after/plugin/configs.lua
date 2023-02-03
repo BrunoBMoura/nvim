@@ -2,7 +2,8 @@ require("nvim-autopairs").setup()
 require("nvim-surround").setup()
 require("gitsigns").setup()
 
-vim.api.nvim_set_var('indentLine_char', '⎸')
+-- vim.api.nvim_set_var('indentLine_char', '⎸')
+require("indent_blankline").setup()
 
 require("nvim-treesitter.configs").setup({
   ensure_installed = {

@@ -18,7 +18,6 @@ return require("packer").startup(function()
   use "tpope/vim-fugitive"
   use "kylechui/nvim-surround"
   use 'b3nj5m1n/kommentary'
-  use "Yggdroot/indentLine"
   use "sindrets/diffview.nvim"
   use "lewis6991/gitsigns.nvim"
   use "windwp/nvim-autopairs"
@@ -29,6 +28,7 @@ return require("packer").startup(function()
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/nvim-cmp"
   use "L3MON4D3/LuaSnip"
+  use "lukas-reineke/indent-blankline.nvim"
 
   if packer_bootstrap then
     require("packer").sync()

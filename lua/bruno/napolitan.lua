@@ -154,11 +154,11 @@ local plugin_syntax = {
   ["@tag.attribute"]    = {fg = colors.aqua,   bg = colors.brackground},
   ["@punctuation.delimiter"] = {fg = colors.carbon, bg = colors.brackground},
   ["@punctuation.bracket"]   = {fg = colors.carbon, bg = colors.brackground},
-  ["@punctuation.special"]   = {fg = colors.red, bg = colors.brackground},
-  ["@type"]             = {fg = colors.sand,   bg = colors.brackground},
-  ["@type.builtin"]     = {fg = colors.sand,   bg = colors.brackground},
-  ["@type.definition"]  = {fg = colors.red,     bg = colors.brackground},
-  ["@type.qualifier"]   = {fg = colors.red,      bg = colors.brackground},
+  ["@punctuation.special"]   = {fg = colors.red,    bg = colors.brackground},
+  ["@type"]                  = {fg = colors.sand,   bg = colors.brackground},
+  ["@type.builtin"]          = {fg = colors.sand,   bg = colors.brackground},
+  ["@type.definition"]       = {fg = colors.red,    bg = colors.brackground},
+  ["@type.qualifier"]        = {fg = colors.red,    bg = colors.brackground},
 
   -- Cmp
   CmpItemMenuDefault = {fg = colors.red, bg = colors.black},
@@ -187,6 +187,9 @@ local plugin_syntax = {
   NvimTreeWindowPicker     = {fg = colors.white, bg = colors.blue},
   NvimTreeOpenedFolderIcon = {fg = colors.purple},
   NvimTreeClosedFolderIcon = {fg = colors.purple},
+
+  -- Indent-blank-line
+  IndentBlankLineChar      = {fg = colors.divisor},
 
   -- DevIcon
   DevIconPy  = {fg = colors.yellow},
