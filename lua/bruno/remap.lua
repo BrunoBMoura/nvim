@@ -45,8 +45,8 @@ nnoremap("<C-Left>", ":vertical resize -2 <CR>")
 nnoremap("<C-Right>", ":vertical resize +2 <CR>")
 
 -- Plugin binds
-nnoremap("<leader>ff", ":Telescope find_files <CR>")
-nnoremap("<leader>fb", ":Telescope buffers <CR>")
+nnoremap("<leader>f", ":Telescope find_files <CR>")
+nnoremap("<leader>b", ":Telescope buffers <CR>")
 nnoremap("<leader>/", function ()
   require("telescope.builtin").grep_string({ search = vim.fn.input("Grep >")});
 end)

@@ -188,6 +188,7 @@ local plugin_syntax = {
   NvimTreeOpenedFolderIcon = {fg = colors.purple},
   NvimTreeClosedFolderIcon = {fg = colors.purple},
 
+  -- DevIcon
   DevIconPy  = {fg = colors.yellow},
   DevIconRs  = {fg = colors.orange},
   DevIconC   = {fg = colors.blue},
