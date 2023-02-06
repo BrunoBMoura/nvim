@@ -1,6 +1,6 @@
 require("bruno.statusline").setup()
 require("bruno.tabline").setup()
-require("bruno.napolitan").setup()
+require("bruno.tropicalia").setup()
 
 local function set_hl_table(tbl)
   for group, opts in pairs(tbl) do
@@ -8,7 +8,7 @@ local function set_hl_table(tbl)
   end
 end
 
-local colors = require("bruno.napolitan").get_colors()
+local colors = require("bruno.tropicalia").get_colors()
 
 -- Definition required by statusline
 local mode_group_colors = {
