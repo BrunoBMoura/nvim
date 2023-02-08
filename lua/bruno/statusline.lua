@@ -60,7 +60,10 @@ function M.env_info()
 end
 
 function M.file_metadata()
-  local branch = vim.fn.FugitiveHead() == "" and "No_git" or vim.fn.FugitiveHead()
+  local branch = ""
+  if vim.fn.loaded_fugitive then
+    branch = vim.fn.FugitiveHead() == "" and "No_git" or vim.fn.FugitiveHead()
+  end
   local encoding = string.format("%s", vim.bo.fileencoding)
   local type = string.format("%s", vim.bo.filetype)
   local line_info = vim.bo.filetype ~= "alpha" and "%l/%L:%c" or ""

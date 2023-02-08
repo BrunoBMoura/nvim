@@ -33,7 +33,7 @@ local code_syntax = {
   Constant     = {fg = colors.pastel, bg = colors.background},
   String       = {fg = colors.cyan,   bg = colors.background},
   Character    = {fg = colors.cyan,   bg = colors.background},
-  Number       = {fg = colors.purple},
+  Number       = {fg = colors.blue},
   Float        = {fg = colors.purple},
   Boolean      = {fg = colors.purple},
 
@@ -90,7 +90,7 @@ local editor_syntax = {
   CursorLineNr = {fg = colors.orange, bg = colors.background},
   CursorLine   = {bg = colors.divisor},
   TabLineSel   = {fg = colors.orange, bg = colors.background},
-  TabLineFill  = {bg = colors.divisor},
+  TabLineFill  = {bg = colors.background},
   TabLine      = {bg = colors.divisor},
   Title        = {fg = colors.white, bg = colors.divisor},
   VertSplit    = {fg = colors.divisor, bg = colors.background},
@@ -189,7 +189,9 @@ local plugin_syntax = {
   NvimTreeClosedFolderIcon = {fg = colors.purple},
 
   -- Indent-blank-line
-  IndentBlankLineChar      = {fg = colors.divisor},
+  IndentBlankLineChar               = {fg = colors.divisor},
+  IndentBlankLineSpaceChar          = {fg = colors.divisor},
+  IndentBlankLineSpaceCharBlankLine = {fg = colors.divisor},
 
   -- DevIcon
   DevIconPy  = {fg = colors.yellow},
