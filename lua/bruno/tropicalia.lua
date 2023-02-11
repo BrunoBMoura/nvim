@@ -22,18 +22,16 @@ local colors = {
   pink            = "#DF7C7C",
   cyan            = "#84B2AC",
   black           = "#171717",
-  white           = "#DDD8B8",
-  dark_green      = "#1A1900",
-  dark_red        = "#420000",
-  dark_orange     = "#461100",
+  white           = "#DDD8B8"
 }
+
 
 local code_syntax = {
   Comment      = {fg = colors.grey,   bg = colors.background},
   Constant     = {fg = colors.pastel, bg = colors.background},
   String       = {fg = colors.cyan,   bg = colors.background},
   Character    = {fg = colors.cyan,   bg = colors.background},
-  Number       = {fg = colors.blue},
+  Number       = {fg = colors.purple},
   Float        = {fg = colors.purple},
   Boolean      = {fg = colors.purple},
 
@@ -77,7 +75,7 @@ local editor_syntax = {
   ErrorMsg     = {fg = colors.red, bg = colors.background},
   Search       = {fg = colors.red, bg = colors.background},
   IncSearch    = {fg = colors.red, bg = colors.background, reverse = true},
-  DiffText     = {fg = colors.yellow, bg = colors.dark_orange, bold = true},
+  DiffText     = {fg = colors.yellow, bg = colors.black, bold = true},
   SignColumn   = {fg = colors.orange, bg = colors.background},
   SpellBad     = {fg = colors.white, bg = colors.background, undercurl = true},
   SpellCap     = {fg = colors.white, bg = colors.background},
@@ -99,9 +97,9 @@ local editor_syntax = {
   LineNr       = {fg = colors.grey, bg = colors.background},
   Directory    = {fg = colors.green},
   FoldColumn   = {fg = colors.yellow, bg = colors.background},
-  DiffAdd      = {fg = colors.green, bg = colors.dark_green, bold = true},
-  DiffDelete   = {fg = colors.red, bg = colors.dark_red, bold = true},
-  DiffChange   = {fg = colors.yellow, bg = colors.dark_orange, bold = true},
+  DiffAdd      = {fg = colors.green, bg = colors.black, bold = true},
+  DiffDelete   = {fg = colors.red, bg = colors.black, bold = true},
+  DiffChange   = {fg = colors.yellow, bg = colors.black, bold = true},
   Folded       = {fg = colors.grey, bg = colors.background},
   WarningMsg   = {fg = colors.green, bg = colors.background},
 }
