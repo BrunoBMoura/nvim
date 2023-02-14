@@ -49,7 +49,7 @@ local code_syntax = {
   PreProc      = {fg = colors.purple, bg = colors.background},
   Include      = {fg = colors.blue,   bg = colors.background},
   Define       = {fg = colors.blue,   bg = colors.background},
-  PreCondit    = {fg = colors.red,    bg = colors.background},
+  PreCondit    = {fg = colors.blue,    bg = colors.background},
   Macro        = {fg = colors.orange, bg = colors.background},
 
   StorageClass = {fg = colors.pink},
@@ -142,7 +142,7 @@ local plugin_syntax = {
   ["@operator"]         = {fg = colors.aqua,   bg = colors.brackground},
   ["@property"]         = {fg = colors.pastel, bg = colors.brackground},
   ["@macro"]            = {fg = colors.orange, bg = colors.brackground},
-  ["@preproc"]          = {fg = colors.red,    bg = colors.brackground},
+  ["@preproc"]          = {fg = colors.blue,    bg = colors.brackground},
   ["@define"]           = {fg = colors.blue,   bg = colors.brackground},
   ["@include"]          = {fg = colors.blue,   bg = colors.brackground},
   ["@debug"]            = {fg = colors.aqua,   bg = colors.brackground},
@@ -155,7 +155,7 @@ local plugin_syntax = {
   ["@punctuation.special"]   = {fg = colors.red,    bg = colors.brackground},
   ["@type"]                  = {fg = colors.sand,   bg = colors.brackground},
   ["@type.builtin"]          = {fg = colors.sand,   bg = colors.brackground},
-  ["@type.definition"]       = {fg = colors.red,    bg = colors.brackground},
+  ["@type.definition"]       = {fg = colors.sand,    bg = colors.brackground},
   ["@type.qualifier"]        = {fg = colors.red,    bg = colors.brackground},
 
   -- Cmp

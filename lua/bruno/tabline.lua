@@ -11,13 +11,13 @@ function M.title(bufnr, is_selected)
   -- Set both tables with possible buffer and file types for its
   -- respective return strings.
   local buftypes = {
-    ['help'] = "Help:" .. vim.fn.fnamemodify(file, ":t:r"),
+    ['help']     = "Help:" .. vim.fn.fnamemodify(file, ":t:r"),
     ['quickfix'] = "Quickfix",
     ['terminal'] = vim.fn.fnamemodify(vim.env.SHELL, ":t")
   }
   local filetypes = {
-    ["git"] = "Git",
-    ["fugitive"] = "Fugitive",
+    ["git"]             = "Git",
+    ["fugitive"]        = "Fugitive",
     ["TelescopePrompt"] = "Telescope"
   }
 
