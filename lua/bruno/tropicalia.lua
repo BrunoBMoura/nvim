@@ -61,7 +61,7 @@ local code_syntax = {
   SpecialChar  = {fg = colors.purple,   bg = colors.background},
   Tag          = {fg = colors.yellow,   bg = colors.background},
   SpecialComment = {fg = colors.purple, bg = colors.background},
-  Delimiter    = {fg = colors.yellow,   bg = colors.background},
+  Delimiter    = {fg = colors.carbon,   bg = colors.background},
   Debug        = {fg = colors.red,      bg = colors.background},
 
   Underlined   = {fg = colors.red, bg = colors.background},
@@ -139,7 +139,7 @@ local plugin_syntax = {
   ["@constructor"]           = {fg = colors.blue,   bg = colors.brackground},
   ["@parameter"]             = {fg = colors.pastel, bg = colors.brackground},
   ["@field"]                 = {fg = colors.pastel, bg = colors.brackground},
-  ["@operator"]              = {fg = colors.white,   bg = colors.brackground},
+  ["@operator"]              = {fg = colors.carbon,   bg = colors.brackground},
   ["@property"]              = {fg = colors.pastel, bg = colors.brackground},
   ["@macro"]                 = {fg = colors.orange, bg = colors.brackground},
   ["@preproc"]               = {fg = colors.blue,    bg = colors.brackground},

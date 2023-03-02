@@ -4,11 +4,9 @@ import datetime
 class DataGenerator:
 
     def __init__(self, file_name):
-
         self.file_name = file_name
 
     def generate_random_data(self, data_size, randomize = True):
-
         # Generate a list with <data_size> elements.
         random_vet = [num for num in range(data_size)]
 
@@ -24,14 +22,12 @@ class DataGenerator:
                 file.write(string)
 
     def get_generated_data(self):
-
         return [int(line.split()[0]) for line in open(self.file_name, "r")]
 
 """ Any string """
 class Node:
 
     def __init__(self, key, parent = None):
-
         self.key = key
         self.parent = parent
         self.right = None
@@ -40,7 +36,6 @@ class Node:
         self.balancing_fact = 0
 
     def __str__(self):
-
         return str(self.key)
 
 class AVLTree:
@@ -50,7 +45,6 @@ class AVLTree:
         self.num_nodes = 0
 
     def add_node(self, key):
-
         node = Node(key)
         if self.root is None:
             self._insert_as_root(node)
@@ -63,7 +57,6 @@ class AVLTree:
     def remove_node(self, key):
 
         def _find_replacement(node):
-
             if node is None:
                 return -1000000
 
@@ -108,7 +101,6 @@ class AVLTree:
     def custom_print(self):
 
         def _print(node):
-
             if node is None:
                 return
 
@@ -123,7 +115,6 @@ class AVLTree:
         print("")
 
     def get_node_info(self, node):
-
         if node == self.root:
             print(f"- [node ({node})] is the root and has height = ({node.height}),", end = "")
             print(f" with a ltree of height ({node.left.height}) and root ", end = "")
@@ -133,7 +124,6 @@ class AVLTree:
             print(f"right as ({node.right}) with [h = {node.height}]")
 
     def _insert(self, node, new_node):
-
         # check right subtree
         if node.key < new_node.key:
             if node.right is None:
@@ -152,25 +142,21 @@ class AVLTree:
         self._check_for_rotation(node)
 
     def _insert_as_left(self, parent, child):
-
         child.parent = parent
         parent.left = child
         self._update_node_height(parent)
 
     def _insert_as_right(self, parent, child):
-
         child.parent = parent
         parent.right = child
         self._update_node_height(parent)
 
     def _insert_as_root(self, node):
-
         node.parent = None
         self.root = node
         self._update_node_height(self.root)
 
     def _update_node_height(self, node):
-
         left_h = self._get_node_height(node.left)
         right_h = self._get_node_height(node.right)
         node.height = max(left_h, right_h) + 1
@@ -178,7 +164,6 @@ class AVLTree:
         return (left_h, right_h)
 
     def _get_node_side(self, node):
-
         if node.parent is None:
             return "ROOT"
         elif node.parent.key > node.key:
@@ -189,7 +174,6 @@ class AVLTree:
     def _get_node_height(self, node):
 
         def _height(node):
-
             if node is None:
                 return 0
 
@@ -220,7 +204,6 @@ class AVLTree:
             self._left_rotation(node)
 
     def _right_rotation(self, node):
-
         pivot = node.left
         # align the possible right subtree of the pivot
         if pivot.right:
@@ -239,7 +222,6 @@ class AVLTree:
         self._insert_as_right(pivot, node)
 
     def _left_rotation(self, node):
-
         pivot = node.right
         # align the possible left subtree of the pivot
         if pivot.left:
@@ -260,7 +242,6 @@ class AVLTree:
     def _find_key(self, key, start_node = None):
 
         def _find(node, key):
-
             if node is None:
                 return None;
 
@@ -284,7 +265,6 @@ class AVLTree:
 def main():
 
     file_name = "random_data.txt"
-
     num_ele = 100000
     generator = DataGenerator(file_name)
     generator.generate_random_data(num_ele)

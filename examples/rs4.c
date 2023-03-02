@@ -24,7 +24,6 @@
 typedef unsigned char byte;
 
 typedef struct {
-    byte[MAX] stream;
     int valid_bytes;
     void *mem;
 } Compose_t;

@@ -1,5 +1,4 @@
 local M = {}
-
 local modes = {
   ["n"]   = {text = "Normal",         color = "%#StatusLineNormalColor#"},
   ["niI"] = {text = "Normal",         color = "%#StatusLineNormalColor#"},
