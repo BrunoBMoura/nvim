@@ -63,6 +63,8 @@ int main() {
 
     const byte *val = NULL;
 
+    Compose_t *compose;
+
     byte input[MAX] = {_256_zeros};
     byte key[MAX] = {_256_zeros};
 

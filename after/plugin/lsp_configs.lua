@@ -34,7 +34,7 @@ local lang_servers = {
   "bashls",
   "pyright",
   "rust_analyzer",
-  "sumneko_lua",
+  -- "sumneko_lua",
 }
 
 for _, name in pairs(lang_servers) do

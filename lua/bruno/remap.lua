@@ -53,6 +53,10 @@ nnoremap("<leader>/", function ()
   require("telescope.builtin").grep_string({ search = vim.fn.input("Grep >")});
 end)
 
+-- Lsp related
+nnoremap("<leader>lb", ":LspStart")
+nnoremap("<leader>le", ":LspStop")
+
 nnoremap("<leader>e", ":NvimTreeToggle<CR>")
 nnoremap("<leader>F", ":NvimTreeFindFile<CR>")
 nnoremap("<leader>R", ":NvimTreeRefresh<CR>")
