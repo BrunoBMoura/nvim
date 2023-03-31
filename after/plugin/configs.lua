@@ -29,7 +29,10 @@ require("treesitter-context").setup({
 
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
-  view = { adaptive_size = true },
+  view = {
+    adaptive_size = true,
+    side = "right"
+  },
   renderer = {
     add_trailing = true,
     group_empty = true,
