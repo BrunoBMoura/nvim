@@ -23,6 +23,7 @@ local colors = {
   pink            = "#DF7C7C",
   black           = "#171717",
   white           = "#DED3B1",
+  viridian        = "#618E82"
 }
 
 local code_syntax = {
@@ -131,7 +132,7 @@ local plugin_syntax = {
   ["@constant.macro"]        = {fg = colors.cyan,   bg = colors.brackground},
   ["@constant.builtin"]      = {fg = colors.purple, bg = colors.brackground},
   ["@comment"]               = {fg = colors.grey,   bg = colors.brackground},
-  ["@string"]                = {fg = colors.cyan, bg = colors.brackground},
+  ["@string"]                = {fg = colors.viridian, bg = colors.brackground},
   ["@string.regex"]          = {fg = colors.purple, bg = colors.brackground},
   ["@string.escape"]         = {fg = colors.purple, bg = colors.brackground},
   ["@string.special"]        = {fg = colors.purple, bg = colors.brackground},
