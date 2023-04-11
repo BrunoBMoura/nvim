@@ -54,9 +54,10 @@ function M.file_path()
   return file_path
 end
 
-function M.env_info()
+--[[ function M.env_info()
   return string.format("%s[%s]", modes["qf"].color, vim.fn.bufnr())
 end
+ ]]
 
 function M.file_metadata()
   local branch = ""
@@ -75,17 +76,45 @@ function M.file_metadata()
 end
 
 function M.refresh()
-  return M.mode()           ..
+  -- Return a string containing the line information with all of its
+  -- fields properly concatenated.
+  return
+    -- Vim mode.
+    M.mode() ..
+    -- Current file path.
     "%#StatusLineFileName#" ..
-    M.file_path()           ..
-    "%#StatusLineFiller#"   ..
-    "%="                    ..
-    M.env_info()            ..
-    "%#Number#"             ..
+    M.file_path() ..
+    -- Filler until right side.
+    "%#StatusLineFiller#" ..
+    "%=" ..
+    -- Current file metadata (git branch, file type and line numbers).
     M.file_metadata()
 end
 
-function M.setup()
+function M.setup(config)
+  -- Invert foreground and background colors.
+  if config.invert then
+    for idx, color in pairs(config.colors) do
+      local temp = color.fg
+      color.fg = color.bg
+      color.bg = temp
+    end
+  end
+
+  -- Set the custom highlight groups to the config arguments.
+  vim.api.nvim_set_hl(0, "StatusLineNormalColor",  config.colors.normal)
+  vim.api.nvim_set_hl(0, "StatusLineVisualColor",  config.colors.visual)
+  vim.api.nvim_set_hl(0, "StatusLineInsertColor",  config.colors.insert)
+  vim.api.nvim_set_hl(0, "StatusLineSelectColor",  config.colors.select)
+  vim.api.nvim_set_hl(0, "StatusLineReplaceColor", config.colors.replace)
+  vim.api.nvim_set_hl(0, "StatusLineQfColor",      config.colors.quickfix)
+  vim.api.nvim_set_hl(0, "StatusLineShellColor",   config.colors.shell)
+  vim.api.nvim_set_hl(0, "StatusLineTerminalColor", config.colors.terminal)
+  vim.api.nvim_set_hl(0, "StatusLineConfirmColor", config.colors.confirm)
+  vim.api.nvim_set_hl(0, "StatusLineFileName",     config.colors.file_name)
+  vim.api.nvim_set_hl(0, "StatusLineFiller",       config.colors.line_filler)
+
+  -- Finally, set the opt.statusline variable.
   vim.opt.statusline = "%!v:lua.require(\"bruno.statusline\").refresh()"
 end
 

@@ -17,6 +17,10 @@ nnoremap("<C-o>", "<C-w>o")
 nnoremap("<", ":tabp<CR>")
 nnoremap(">", ":tabn<CR>")
 
+-- Lazy movement
+nnoremap("J", "10jzz")
+nnoremap("K", "10kzz")
+
 -- Lazy saving/quitting
 nnoremap("<leader>w", ":w<CR>")
 nnoremap("<leader>q", ":q<CR>")
