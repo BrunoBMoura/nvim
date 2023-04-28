@@ -2,6 +2,15 @@
 
 local M = {}
 
+local info = {
+  colors = {
+    icon         = "%#TabLineIconColor#",
+    separator    = "%#TabLineSeparator#",
+    active_tab   = "%#TabLineActiveTab#",
+    inactive_tab = "%#TabLineInactiveTab#"
+  }
+}
+
 function M.title(bufnr, is_selected)
   -- Access current buffer information.
   local file = vim.fn.bufname(bufnr)
@@ -45,8 +54,10 @@ function M.title(bufnr, is_selected)
 
   -- And finally, ensure a proper highlighting if the current cell is selected.
   return is_selected
-    and string.format("%s %s%s%s", title, "%#String#", icon, "%#TabLineSel#")
-    or string.format("%s %s", title, icon)
+    -- and string.format("%s %s%s%s", title, "%#String#", icon, "%#TabLineSel#")
+    -- and string.format("%s %s%s%s", title, info.colors.title, icon, "%#TabLineSel#")
+    and string.format("%s %s%s %s", info.colors.active_tab, title, info.colors.icon, icon)
+    or string.format("%s%s %s", info.colors.inactive_tab, title, icon)
 end
 
 function M.modified(bufnr)
@@ -75,8 +86,17 @@ function M.cell(index)
     M.window_count(index) .. M.title(bufnr, is_selected) .. " " ..
     M.modified(bufnr) .. "%T"
 
-  local hl = is_selected and "%#TabLineSel#" or "%#TabLine#"
-  return string.format("%s[%s]", hl, cell)
+  if is_selected then
+    return string.format(
+      "%s[%s%s%s]",
+      info.colors.separator,
+      info.colors.active_tab,
+      cell,
+      info.colors.separator
+    )
+  else
+    return string.format("%s[%s]", info.colors.inactive_tab, cell)
+  end
 end
 
 function M.tabline()
@@ -86,12 +106,29 @@ function M.tabline()
   end
   line = line .. "%#TabLineFill#%="
   if vim.fn.tabpagenr("$") > 1 then
-      line = line .. "%#TabLine#%999XX"
+      -- line = line .. "%#TabLine#%999XX"
+      line = line .. info.colors.inactive_tab
   end
   return line
 end
 
-function M.setup()
+function M.setup(config)
+
+  if config.invert then
+    for idx, color in pairs(config.colors) do
+      local temp = color.fg
+      color.fg = color.bg
+      color.bg = temp
+    end
+  end
+
+  if config.colors then
+    vim.api.nvim_set_hl(0, "TabLineIconColor",   config.colors.icon)
+    vim.api.nvim_set_hl(0, "TabLineSeparator",   config.colors.separator)
+    vim.api.nvim_set_hl(0, "TabLineActiveTab",   config.colors.active_tab)
+    vim.api.nvim_set_hl(0, "TabLineInactiveTab", config.colors.inactive_tab)
+  end
+
   vim.opt.tabline = "%!v:lua.require(\"bruno.tabline\").tabline()"
 end
 

@@ -101,18 +101,32 @@ function M.setup(config)
     end
   end
 
-  -- Set the custom highlight groups to the config arguments.
-  vim.api.nvim_set_hl(0, "StatusLineNormalColor",  config.colors.normal)
-  vim.api.nvim_set_hl(0, "StatusLineVisualColor",  config.colors.visual)
-  vim.api.nvim_set_hl(0, "StatusLineInsertColor",  config.colors.insert)
-  vim.api.nvim_set_hl(0, "StatusLineSelectColor",  config.colors.select)
-  vim.api.nvim_set_hl(0, "StatusLineReplaceColor", config.colors.replace)
-  vim.api.nvim_set_hl(0, "StatusLineQfColor",      config.colors.quickfix)
-  vim.api.nvim_set_hl(0, "StatusLineShellColor",   config.colors.shell)
-  vim.api.nvim_set_hl(0, "StatusLineTerminalColor", config.colors.terminal)
-  vim.api.nvim_set_hl(0, "StatusLineConfirmColor", config.colors.confirm)
-  vim.api.nvim_set_hl(0, "StatusLineFileName",     config.colors.file_name)
-  vim.api.nvim_set_hl(0, "StatusLineFiller",       config.colors.line_filler)
+  if config.colors then
+    -- Set the custom highlight groups to the config arguments.
+    vim.api.nvim_set_hl(0, "StatusLineNormalColor",  config.colors.normal)
+    vim.api.nvim_set_hl(0, "StatusLineVisualColor",  config.colors.visual)
+    vim.api.nvim_set_hl(0, "StatusLineInsertColor",  config.colors.insert)
+    vim.api.nvim_set_hl(0, "StatusLineSelectColor",  config.colors.select)
+    vim.api.nvim_set_hl(0, "StatusLineReplaceColor", config.colors.replace)
+    vim.api.nvim_set_hl(0, "StatusLineQfColor",      config.colors.quickfix)
+    vim.api.nvim_set_hl(0, "StatusLineShellColor",   config.colors.shell)
+    vim.api.nvim_set_hl(0, "StatusLineTerminalColor", config.colors.terminal)
+    vim.api.nvim_set_hl(0, "StatusLineConfirmColor", config.colors.confirm)
+    vim.api.nvim_set_hl(0, "StatusLineFileName",     config.colors.file_name)
+    vim.api.nvim_set_hl(0, "StatusLineFiller",       config.colors.line_filler)
+  else
+    vim.api.nvim_set_hl(0, "StatusLineNormalColor",  {link = "Normal"})
+    vim.api.nvim_set_hl(0, "StatusLineVisualColor",  {link = "Normal"})
+    vim.api.nvim_set_hl(0, "StatusLineInsertColor",  {link = "Normal"})
+    vim.api.nvim_set_hl(0, "StatusLineSelectColor",  {link = "Normal"})
+    vim.api.nvim_set_hl(0, "StatusLineReplaceColor", {link = "Normal"})
+    vim.api.nvim_set_hl(0, "StatusLineQfColor",      {link = "Normal"})
+    vim.api.nvim_set_hl(0, "StatusLineShellColor",   {link = "Normal"})
+    vim.api.nvim_set_hl(0, "StatusLineTerminalColor",{link = "Normal"})
+    vim.api.nvim_set_hl(0, "StatusLineConfirmColor", {link = "Normal"})
+    vim.api.nvim_set_hl(0, "StatusLineFileName",     {link = "Normal"})
+    vim.api.nvim_set_hl(0, "StatusLineFiller",       {link = "Normal"})
+  end
 
   -- Finally, set the opt.statusline variable.
   vim.opt.statusline = "%!v:lua.require(\"bruno.statusline\").refresh()"

@@ -1,7 +1,17 @@
-require("bruno.tabline").setup()
-require("bruno.tropicalia").setup()
+scheme = require("bruno.tropicalia")
+scheme.setup()
+local pallet = scheme.pallet()
 
-local pallet = require("bruno.tropicalia").pallet()
+require("bruno.tabline").setup({
+  invert = false,
+  colors = {
+    separator    = {fg = pallet.yellow,   bg = pallet.night_sky, bold = false},
+    icon         = {fg = pallet.orange, bg = pallet.night_sky, bold = false},
+    active_tab   = {fg = pallet.yellow,   bg = pallet.night_sky, bold = false},
+    inactive_tab = {fg = pallet.white,    bg = pallet.rainy, bold = false}
+  }
+})
+
 require("bruno.statusline").setup({
   invert = false,
   colors = {
