@@ -4,9 +4,13 @@ local pallet = scheme.pallet()
 
 require("bruno.tabline").setup({
   invert = false,
+  tokens = {
+    file_changed = '[+]',
+    separators = {'[', ']'}
+  },
   colors = {
     separator    = {fg = pallet.yellow,   bg = pallet.night_sky, bold = false},
-    icon         = {fg = pallet.orange, bg = pallet.night_sky, bold = false},
+    icon         = {fg = pallet.blue,     bg = pallet.night_sky, bold = false},
     active_tab   = {fg = pallet.yellow,   bg = pallet.night_sky, bold = false},
     inactive_tab = {fg = pallet.white,    bg = pallet.rainy, bold = false}
   }
