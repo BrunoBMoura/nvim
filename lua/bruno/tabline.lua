@@ -1,13 +1,5 @@
 -- Shamelessly based on luatab https://github.com/alvarosevilla95/luatab.nvim
-
 local M = {}
-
-local highlights = {
-  icon         = "TabLineIconColor",
-  separator    = "TabLineSeparator",
-  active_tab   = "TabLineActiveTab",
-  inactive_tab = "TabLineInactiveTab"
-}
 
 local utils = {}
 
@@ -44,14 +36,23 @@ function utils.get_non_config_tokens()
   }
 end
 
-local info = {
-  tokens = {},
-  colors = {
-    icon         = utils.highlightfy(highlights.icon),
-    separator    = utils.highlightfy(highlights.separator),
-    active_tab   = utils.highlightfy(highlights.active_tab),
-    inactive_tab = utils.highlightfy(highlights.inactive_tab)
-  }
+-- Local information used for the final configuration.
+local info = {}
+
+info.tokens = {}
+
+info.highlights = {
+  icon         = "TabLineIconColor",
+  separator    = "TabLineSeparator",
+  active_tab   = "TabLineActiveTab",
+  inactive_tab = "TabLineInactiveTab"
+}
+
+info.colors = {
+  icon         = utils.highlightfy(info.highlights.icon),
+  separator    = utils.highlightfy(info.highlights.separator),
+  active_tab   = utils.highlightfy(info.highlights.active_tab),
+  inactive_tab = utils.highlightfy(info.highlights.inactive_tab)
 }
 
 function M.title(bufnr, is_selected)
@@ -180,9 +181,9 @@ function M.setup(config)
   end
 
   if config.colors then
-    utils.set_config_highlights(highlights, config.colors)
+    utils.set_config_highlights(info.highlights, config.colors)
   else
-    utils.set_non_config_highlights(highlights, "String")
+    utils.set_non_config_highlights(info.highlights, "String")
   end
 
   vim.opt.tabline = "%!v:lua.require(\"bruno.tabline\").tabline()"
