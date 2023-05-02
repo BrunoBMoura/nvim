@@ -4,20 +4,27 @@ local pallet = scheme.pallet()
 
 require("bruno.tabline").setup({
   invert = false,
+  style = {
+    'default'
+  },
   tokens = {
     file_changed = '[+]',
     separators = {'[', ']'}
   },
   colors = {
-    separator    = {fg = pallet.yellow,   bg = pallet.night_sky, bold = false},
-    icon         = {fg = pallet.blue,     bg = pallet.night_sky, bold = false},
-    active_tab   = {fg = pallet.yellow,   bg = pallet.night_sky, bold = false},
-    inactive_tab = {fg = pallet.white,    bg = pallet.rainy, bold = false}
+    icon         = {fg = pallet.purple,  bg = pallet.night_sky, bold = false},
+    separator    = {fg = pallet.orange,  bg = pallet.night_sky, bold = false},
+    active_tab   = {fg = pallet.orange,  bg = pallet.night_sky, bold = false},
+    inactive_tab = {fg = pallet.white,   bg = pallet.rainy, bold = false}
   }
 })
 
 require("bruno.statusline").setup({
   invert = false,
+  tokens = {
+    -- separators = {'[', ']'}
+    separators = {'|', '|'}
+  },
   colors = {
     normal      = {fg = pallet.orange, bg = pallet.night_sky, bold = true},
     visual      = {fg = pallet.red,    bg = pallet.night_sky, bold = true},

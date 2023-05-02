@@ -1,38 +1,89 @@
 local M = {}
-local modes = {
-  ["n"]   = {text = "Normal",         color = "%#StatusLineNormalColor#"},
-  ["niI"] = {text = "Normal",         color = "%#StatusLineNormalColor#"},
-  ["niR"] = {text = "Normal",         color = "%#StatusLineNormalColor#"},
-  ["niV"] = {text = "Normal",         color = "%#StatusLineNormalColor#"},
-  ["no"]  = {text = "Normal",         color = "%#StatusLineNormalColor#"},
-  ["i"]   = {text = "Insert",         color = "%#StatusLineInsertColor#"},
-  ["ic"]  = {text = "Insert",         color = "%#StatusLineInsertColor#"},
-  ["ix"]  = {text = "Insert",         color = "%#StatusLineInsertColor#"},
-  ["t"]   = {text = "Terminal",       color = "%#StatusLineTerminalColor#"},
-  ["nt"]  = {text = "Terminal",       color = "%#StatusLineTerminalColor#"},
-  ["v"]   = {text = "Visual",         color = "%#StatusLineVisualColor#"},
-  ["V"]   = {text = "Visual_line",    color = "%#StatusLineVisualColor#"},
-  ["Vs"]  = {text = "Visual_line",    color = "%#StatusLineVisualColor#"},
-  [""]  = {text = "Visual_block",   color = "%#StatusLineVisualColor#"},
-  ["R"]   = {text = "Replace",        color = "%#StatusLineReplaceColor#"},
-  ["Rv"]  = {text = "Visual_replace", color = "%#StatusLineReplaceColor#"},
-  ["s"]   = {text = "Select",         color = "%#StatusLineSelectColor#"},
-  ["S"]   = {text = "Select_line",    color = "%#StatusLineSelectColor#"},
-  [""]  = {text = "Select_block",   color = "%#StatusLineSelectColor#"},
-  ["c"]   = {text = "Command",        color = "%#StatusLineShellColor#"},
-  ["cv"]  = {text = "Vim_ex",         color = "%#StatusLineShellColor#"},
-  ["ce"]  = {text = "Ex",             color = "%#StatusLineShellColor#"},
-  ["r"]   = {text = "Prompt",         color = "%#StatusLineConfirmColor#"},
-  ["rm"]  = {text = "More",           color = "%#StatusLineConfirmColor#"},
-  ["r?"]  = {text = "Confirm",        color = "%#StatusLineConfirmColor#"},
-  ["!"]   = {text = "Shell",          color = "%#StatusLineShellColor#"},
-  ["qf"]  = {text = "Quickfix_list",  color = "%#StatusLineQfColor#"}
+
+local highlights = {
+    normal      = "StatusLineNormalColor",
+    visual      = "StatusLineVisualColor",
+    insert      = "StatusLineInsertColor",
+    select      = "StatusLineSelectColor",
+    replace     = "StatusLineReplaceColor",
+    quickfix    = "StatusLineQfColor",
+    shell       = "StatusLineShellColor",
+    terminal    = "StatusLineTerminalColor",
+    confirm     = "StatusLineConfirmColor",
+    file_name   = "StatusLineFileName",
+    line_filler = "StatusLineFiller"
+}
+
+local utils = {}
+
+-- Returns the @text surrounded by the separators in the @separators table.
+function utils.contour(text, separators)
+  return separators[1] .. text .. separators[#separators]
+end
+
+-- Transforms a highlight name into a useful highlight string.
+function utils.highlightfy(str)
+  return string.format("%s%s%s%s", '%', '#', str, '#')
+end
+
+-- Defines all of the highlight groups to their configuration values.
+function utils.set_config_highlights(highlights, colors)
+  for name, hl_string in pairs(highlights) do
+    vim.api.nvim_set_hl(0, hl_string, colors[name])
+  end
+end
+
+-- Defines all of the highlight groups to link the @default group when
+-- there is no configuration.
+function utils.set_non_config_highlights(highlights, default_group)
+  for name, hl_string in pairs(highlights) do
+    vim.api.nvim_set_hl(0, hl_string, {link = default_group})
+  end
+end
+
+-- Returns the default value of the tokens configuration entry.
+function utils.get_non_config_tokens()
+  return {
+      separators = {'', ''}
+  }
+end
+
+local info = {
+  modes = {
+    ["n"]   = {text = "Normal",         color = utils.highlightfy(highlights.normal)},
+    ["niI"] = {text = "Normal",         color = utils.highlightfy(highlights.normal)},
+    ["niR"] = {text = "Normal",         color = utils.highlightfy(highlights.normal)},
+    ["niV"] = {text = "Normal",         color = utils.highlightfy(highlights.normal)},
+    ["no"]  = {text = "Normal",         color = utils.highlightfy(highlights.normal)},
+    ["i"]   = {text = "Insert",         color = utils.highlightfy(highlights.insert)},
+    ["ic"]  = {text = "Insert",         color = utils.highlightfy(highlights.insert)},
+    ["ix"]  = {text = "Insert",         color = utils.highlightfy(highlights.insert)},
+    ["t"]   = {text = "Terminal",       color = utils.highlightfy(highlights.terminal)},
+    ["nt"]  = {text = "Terminal",       color = utils.highlightfy(highlights.terminal)},
+    ["v"]   = {text = "Visual",         color = utils.highlightfy(highlights.visual)},
+    ["V"]   = {text = "Visual_line",    color = utils.highlightfy(highlights.visual)},
+    ["Vs"]  = {text = "Visual_line",    color = utils.highlightfy(highlights.visual)},
+    [""]  = {text = "Visual_block",   color = utils.highlightfy(highlights.visual)},
+    ["R"]   = {text = "Replace",        color = utils.highlightfy(highlights.replace)},
+    ["Rv"]  = {text = "Visual_replace", color = utils.highlightfy(highlights.replace)},
+    ["s"]   = {text = "Select",         color = utils.highlightfy(highlights.select)},
+    ["S"]   = {text = "Select_line",    color = utils.highlightfy(highlights.select)},
+    [""]  = {text = "Select_block",   color = utils.highlightfy(highlights.select)},
+    ["c"]   = {text = "Command",        color = utils.highlightfy(highlights.shell)},
+    ["cv"]  = {text = "Vim_ex",         color = utils.highlightfy(highlights.shell)},
+    ["ce"]  = {text = "Ex",             color = utils.highlightfy(highlights.shell)},
+    ["!"]   = {text = "Shell",          color = utils.highlightfy(highlights.shell)},
+    ["r"]   = {text = "Prompt",         color = utils.highlightfy(highlights.confirm)},
+    ["rm"]  = {text = "More",           color = utils.highlightfy(highlights.confirm)},
+    ["r?"]  = {text = "Confirm",        color = utils.highlightfy(highlights.confirm)},
+    ["qf"]  = {text = "Quickfix_list",  color = utils.highlightfy(highlights.quickfix)}
+  }
 }
 
 function M.mode()
   local current_mode = vim.api.nvim_get_mode().mode
-  local entry = modes[current_mode]
-  return string.format("%s[%s]", entry.color, entry.text)
+  local entry = info.modes[current_mode]
+  return string.format("%s%s", entry.color, utils.contour(entry.text, info.tokens.separators))
 end
 
 function M.file_path()
@@ -48,16 +99,11 @@ function M.file_path()
       local file_icon = devicons.get_icon(file_name)
       icon = file_icon ~= nil and "" .. file_icon or ""
     end
-    file_path = string.format("[%s %s ]", file_name, icon)
+    file_path = utils.contour(string.format("%s %s ", file_name, icon), info.tokens.separators)
   end
 
   return file_path
 end
-
---[[ function M.env_info()
-  return string.format("%s[%s]", modes["qf"].color, vim.fn.bufnr())
-end
- ]]
 
 function M.file_metadata()
   local branch = ""
@@ -68,10 +114,10 @@ function M.file_metadata()
   local type = string.format("%s", vim.bo.filetype)
   local line_info = vim.bo.filetype ~= "alpha" and "%l/%L:%c" or ""
   return string.format(
-    "%s[%s]%s[%s:%s]%s[%s]",
-    modes["c"].color, branch,
-    modes["v"].color, encoding, type,
-    modes["t"].color, line_info
+    "%s%s%s%s%s%s",
+    info.modes["c"].color, utils.contour(branch, info.tokens.separators),
+    info.modes["v"].color, utils.contour(string.format("%s:%s", encoding, type), info.tokens.separators),
+    info.modes["t"].color, utils.contour(line_info, info.tokens.separators)
   )
 end
 
@@ -82,10 +128,10 @@ function M.refresh()
     -- Vim mode.
     M.mode() ..
     -- Current file path.
-    "%#StatusLineFileName#" ..
+    utils.highlightfy(highlights.file_name) ..
     M.file_path() ..
     -- Filler until right side.
-    "%#StatusLineFiller#" ..
+    utils.highlightfy(highlights.line_filler) ..
     "%=" ..
     -- Current file metadata (git branch, file type and line numbers).
     M.file_metadata()
@@ -101,31 +147,16 @@ function M.setup(config)
     end
   end
 
-  if config.colors then
-    -- Set the custom highlight groups to the config arguments.
-    vim.api.nvim_set_hl(0, "StatusLineNormalColor",  config.colors.normal)
-    vim.api.nvim_set_hl(0, "StatusLineVisualColor",  config.colors.visual)
-    vim.api.nvim_set_hl(0, "StatusLineInsertColor",  config.colors.insert)
-    vim.api.nvim_set_hl(0, "StatusLineSelectColor",  config.colors.select)
-    vim.api.nvim_set_hl(0, "StatusLineReplaceColor", config.colors.replace)
-    vim.api.nvim_set_hl(0, "StatusLineQfColor",      config.colors.quickfix)
-    vim.api.nvim_set_hl(0, "StatusLineShellColor",   config.colors.shell)
-    vim.api.nvim_set_hl(0, "StatusLineTerminalColor", config.colors.terminal)
-    vim.api.nvim_set_hl(0, "StatusLineConfirmColor", config.colors.confirm)
-    vim.api.nvim_set_hl(0, "StatusLineFileName",     config.colors.file_name)
-    vim.api.nvim_set_hl(0, "StatusLineFiller",       config.colors.line_filler)
+  if config.tokens then
+    info.tokens = config.tokens
   else
-    vim.api.nvim_set_hl(0, "StatusLineNormalColor",  {link = "Normal"})
-    vim.api.nvim_set_hl(0, "StatusLineVisualColor",  {link = "Normal"})
-    vim.api.nvim_set_hl(0, "StatusLineInsertColor",  {link = "Normal"})
-    vim.api.nvim_set_hl(0, "StatusLineSelectColor",  {link = "Normal"})
-    vim.api.nvim_set_hl(0, "StatusLineReplaceColor", {link = "Normal"})
-    vim.api.nvim_set_hl(0, "StatusLineQfColor",      {link = "Normal"})
-    vim.api.nvim_set_hl(0, "StatusLineShellColor",   {link = "Normal"})
-    vim.api.nvim_set_hl(0, "StatusLineTerminalColor",{link = "Normal"})
-    vim.api.nvim_set_hl(0, "StatusLineConfirmColor", {link = "Normal"})
-    vim.api.nvim_set_hl(0, "StatusLineFileName",     {link = "Normal"})
-    vim.api.nvim_set_hl(0, "StatusLineFiller",       {link = "Normal"})
+    info.tokens = utils.get_non_config_tokens()
+  end
+
+  if config.colors then
+    utils.set_config_highlights(highlights, config.colors)
+  else
+    utils.set_non_config_highlights(highlights, "Normal")
   end
 
   -- Finally, set the opt.statusline variable.

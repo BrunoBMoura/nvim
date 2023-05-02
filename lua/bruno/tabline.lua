@@ -2,13 +2,55 @@
 
 local M = {}
 
+local highlights = {
+  icon         = "TabLineIconColor",
+  separator    = "TabLineSeparator",
+  active_tab   = "TabLineActiveTab",
+  inactive_tab = "TabLineInactiveTab"
+}
+
+local utils = {}
+
+-- Returns the @text surrounded by the separators in the @separators table.
+function utils.contour(text, separators)
+  return separators[1] .. text .. separators[#separators]
+end
+
+-- Transforms a highlight name into a useful highlight string.
+function utils.highlightfy(str)
+  return string.format("%s%s%s%s", '%', '#', str, '#')
+end
+
+-- Defines all of the highlight groups to their configuration values.
+function utils.set_config_highlights(highlights, colors)
+  for name, hl_string in pairs(highlights) do
+    vim.api.nvim_set_hl(0, hl_string, colors[name])
+  end
+end
+
+-- Defines all of the highlight groups to link the @default group when
+-- there is no configuration.
+function utils.set_non_config_highlights(highlights, default_group)
+  for _, hl_string in pairs(highlights) do
+    vim.api.nvim_set_hl(0, hl_string, {link = default_group})
+  end
+end
+
+-- Returns the default value of the tokens configuration entry.
+function utils.get_non_config_tokens()
+  return {
+      file_changed = '+',
+      separators = {'', ''}
+  }
+end
+
 local info = {
   tokens = {},
   colors = {
-    icon         = "%#TabLineIconColor#",
-    separator    = "%#TabLineSeparator#",
-    active_tab   = "%#TabLineActiveTab#",
-    inactive_tab = "%#TabLineInactiveTab#"
+    icon         = utils.highlightfy(highlights.icon),
+    separator    = utils.highlightfy(highlights.separator),
+    active_tab   = utils.highlightfy(highlights.active_tab),
+    inactive_tab = utils.highlightfy(highlights.inactive_tab)
   }
 }
 
@@ -55,12 +97,11 @@ function M.title(bufnr, is_selected)
 
   -- And finally, ensure a proper highlighting if the current cell is selected.
   return is_selected
-    and string.format("%s %s%s %s", info.colors.active_tab, title, info.colors.icon, icon)
+    and string.format("%s%s%s %s", info.colors.active_tab, title, info.colors.icon, icon)
     or string.format("%s%s %s", info.colors.inactive_tab, title, icon)
 end
 
 function M.modified(bufnr)
-  -- return vim.fn.getbufvar(bufnr, "&modified") == 1 and "[+] " or ""
   return vim.fn.getbufvar(bufnr, "&modified") == 1 and string.format("%s ", info.tokens.file_changed) or ""
 end
 
@@ -81,30 +122,25 @@ function M.cell(index)
   local winnr = vim.fn.tabpagewinnr(index)
   local bufnr = buflist[winnr]
 
-  -- Concatenate all the data
-  local cell =  "%" .. index .. "T" .. " " ..
-    M.window_count(index) .. M.title(bufnr, is_selected) .. " " ..
-    M.modified(bufnr) .. "%T"
+  local cell = string.format(
+    "%s%s%s %s%s %s%s", "%", index, "T",
+    M.window_count(index), M.title(bufnr, is_selected), M.modified(bufnr), "%T"
+  )
 
   if is_selected then
-    print(info.tokens.separator)
     return string.format(
-      "%s%s%s%s%s%s",
+      "%s%s",
       info.colors.separator,
-      info.tokens.separators[1],
-      info.colors.active_tab,
-      cell,
-      info.colors.separator,
-      info.tokens.separators[#info.tokens.separators]
+      utils.contour(
+        string.format("%s%s%s", info.colors.active_tab, cell, info.colors.separator),
+        info.tokens.separators
+      )
     )
   else
-    -- return string.format("%s[%s]", info.colors.inactive_tab, cell)
     return string.format(
-      "%s%s%s%s",
+      "%s%s",
       info.colors.inactive_tab,
-      info.tokens.separators[1],
-      cell,
-      info.tokens.separators[#info.tokens.separators]
+      utils.contour(cell, info.tokens.separators)
     )
   end
 end
@@ -112,11 +148,10 @@ end
 function M.tabline()
   local line = ""
   for i = 1, vim.fn.tabpagenr("$"), 1 do
-      line = line .. M.cell(i)
+    line = line .. M.cell(i)
   end
   line = line .. "%#TabLineFill#%="
   if vim.fn.tabpagenr("$") > 1 then
-      -- line = line .. "%#TabLine#%999XX"
       line = line .. info.colors.inactive_tab
   end
   return line
@@ -134,18 +169,20 @@ function M.setup(config)
 
   if config.tokens then
     info.tokens = config.tokens
+  else
+    info.tokens = utils.get_non_config_tokens()
+  end
+
+  if config.style then
+    info.style = config.style
+  else
+    info.style = 'default'
   end
 
   if config.colors then
-    vim.api.nvim_set_hl(0, "TabLineIconColor",   config.colors.icon)
-    vim.api.nvim_set_hl(0, "TabLineSeparator",   config.colors.separator)
-    vim.api.nvim_set_hl(0, "TabLineActiveTab",   config.colors.active_tab)
-    vim.api.nvim_set_hl(0, "TabLineInactiveTab", config.colors.inactive_tab)
+    utils.set_config_highlights(highlights, config.colors)
   else
-    vim.api.nvim_set_hl(0, "TabLineIconColor",   {link = "Normal"})
-    vim.api.nvim_set_hl(0, "TabLineSeparator",   {link = "Normal"})
-    vim.api.nvim_set_hl(0, "TabLineActiveTab",   {link = "Normal"})
-    vim.api.nvim_set_hl(0, "TabLineInactiveTab", {link = "Normal"})
+    utils.set_non_config_highlights(highlights, "String")
   end
 
   vim.opt.tabline = "%!v:lua.require(\"bruno.tabline\").tabline()"
