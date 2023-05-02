@@ -4,12 +4,10 @@ local pallet = scheme.pallet()
 
 require("bruno.tabline").setup({
   invert = false,
-  style = {
-    'default'
-  },
+  style =  "surrounded",
   tokens = {
     file_changed = '[+]',
-    separators = {'[', ']'}
+    separators = {'|', ''}
   },
   colors = {
     icon         = {fg = pallet.purple,  bg = pallet.night_sky, bold = false},
@@ -22,7 +20,6 @@ require("bruno.tabline").setup({
 require("bruno.statusline").setup({
   invert = false,
   tokens = {
-    -- separators = {'[', ']'}
     separators = {'|', '|'}
   },
   colors = {

@@ -1,6 +1,8 @@
 -- Shamelessly based on luatab https://github.com/alvarosevilla95/luatab.nvim
 local M = {}
 
+M.style_functions = {}
+
 local utils = {}
 
 -- Returns the @text surrounded by the separators in the @separators table.
@@ -117,39 +119,42 @@ function M.window_count(index)
   return nwins > 1 and "(" .. nwins .. ") " or ""
 end
 
-function M.cell(index)
-  local is_selected = vim.fn.tabpagenr() == index
+function M.cell(index, is_selected)
   local buflist = vim.fn.tabpagebuflist(index)
   local winnr = vim.fn.tabpagewinnr(index)
   local bufnr = buflist[winnr]
 
-  local cell = string.format(
+  return string.format(
     "%s%s%s %s%s %s%s", "%", index, "T",
     M.window_count(index), M.title(bufnr, is_selected), M.modified(bufnr), "%T"
   )
+end
 
-  if is_selected then
-    return string.format(
-      "%s%s",
-      info.colors.separator,
-      utils.contour(
-        string.format("%s%s%s", info.colors.active_tab, cell, info.colors.separator),
-        info.tokens.separators
-      )
-    )
-  else
-    return string.format(
-      "%s%s",
-      info.colors.inactive_tab,
-      utils.contour(cell, info.tokens.separators)
-    )
-  end
+function M.eval_style(index, cell, is_selected)
+  local styles = {
+    ["surrounded"] = function(index, cell, is_selected)
+      if is_selected then
+        local text = string.format(
+          "%s%s%s", info.colors.active_tab, cell, info.colors.separator
+        )
+        local cell_content = utils.contour(text, info.tokens.separators)
+        return string.format("%s%s", info.colors.separator, cell_content)
+      else
+        cell_content = utils.contour(cell, info.tokens.separators)
+        return string.format("%s%s", info.colors.inactive_tab, cell_content)
+      end
+    end
+  }
+  return styles[info.style](index, cell, is_selected)
 end
 
 function M.tabline()
   local line = ""
-  for i = 1, vim.fn.tabpagenr("$"), 1 do
-    line = line .. M.cell(i)
+  for index = 1, vim.fn.tabpagenr("$"), 1 do
+    local is_selected = vim.fn.tabpagenr() == index
+    local cell = M.cell(index , is_selected)
+    cell = M.eval_style(index , cell, is_selected)
+    line = line .. cell
   end
   line = line .. "%#TabLineFill#%="
   if vim.fn.tabpagenr("$") > 1 then
@@ -177,7 +182,7 @@ function M.setup(config)
   if config.style then
     info.style = config.style
   else
-    info.style = 'default'
+    info.style = "surrounded"
   end
 
   if config.colors then
