@@ -1,9 +1,28 @@
-require("bruno.tabline").setup()
-require("bruno.tropicalia").setup()
+scheme = require("bruno.tropicalia")
+scheme.setup()
+local pallet = scheme.pallet()
 
-local pallet = require("bruno.tropicalia").pallet()
+require("bruno.tabline").setup({
+  invert = false,
+  style =  "surrounded",
+  tokens = {
+    file_changed = '[+]',
+    separators = {'|', ''},
+    sub_separators = {'[', ']'}
+  },
+  colors = {
+    icon         = {fg = pallet.purple,  bg = pallet.night_sky, bold = false},
+    separator    = {fg = pallet.orange,  bg = pallet.night_sky, bold = false},
+    active_tab   = {fg = pallet.orange,  bg = pallet.night_sky, bold = false},
+    inactive_tab = {fg = pallet.white,   bg = pallet.rainy, bold = false}
+  }
+})
+
 require("bruno.statusline").setup({
   invert = false,
+  tokens = {
+    separators = {'|', ''}
+  },
   colors = {
     normal      = {fg = pallet.orange, bg = pallet.night_sky, bold = true},
     visual      = {fg = pallet.red,    bg = pallet.night_sky, bold = true},

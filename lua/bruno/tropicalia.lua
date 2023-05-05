@@ -87,7 +87,7 @@ local editor_syntax = {
   CursorLineNr = {fg = colors.orange, bg = colors.night_sky},
   CursorLine   = {bg = colors.rainy},
   TabLineSel   = {fg = colors.orange, bg = colors.night_sky},
-  TabLineFill  = {bg = colors.night_sky},
+  TabLineFill  = {bg = colors.rainy},
   TabLine      = {bg = colors.rainy},
   Title        = {fg = colors.white,  bg = colors.rainy},
   VertSplit    = {fg = colors.rainy,  bg = colors.night_sky},
