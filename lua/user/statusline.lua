@@ -160,7 +160,7 @@ function M.setup(config)
   end
 
   -- Finally, set the opt.statusline variable.
-  vim.opt.statusline = "%!v:lua.require(\"bruno.statusline\").refresh()"
+  vim.opt.statusline = "%!v:lua.require(\"user.statusline\").refresh()"
 end
 
 return M

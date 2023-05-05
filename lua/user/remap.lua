@@ -1,6 +1,6 @@
-local nnoremap = require("bruno.keymap").nnoremap
-local vnoremap = require("bruno.keymap").vnoremap
-local tnoremap = require("bruno.keymap").tnoremap
+local nnoremap = require("user.keymap").nnoremap
+local vnoremap = require("user.keymap").vnoremap
+local tnoremap = require("user.keymap").tnoremap
 
 -- Refresh ctags
 nnoremap("<leader>c", ":! ctags -R . <CR>")

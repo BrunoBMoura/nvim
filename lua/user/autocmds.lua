@@ -1,10 +1,10 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
-local bruno_group = augroup("Bruno", {})
+local user_group = augroup("user", {})
 
 autocmd(
   "BufWritePre",
-  {group = bruno_group, pattern = "*", command = "%s/\\s\\+$//e"}
+  {group = user_group, pattern = "*", command = "%s/\\s\\+$//e"}
 )
 
 local lang_meta_op = {

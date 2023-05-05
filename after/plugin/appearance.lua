@@ -1,8 +1,8 @@
-scheme = require("bruno.tropicalia")
+scheme = require("user.tropicalia")
 scheme.setup()
 local pallet = scheme.pallet()
 
-require("bruno.tabline").setup({
+require("user.tabline").setup({
   invert = false,
   style =  "surrounded",
   tokens = {
@@ -18,7 +18,7 @@ require("bruno.tabline").setup({
   }
 })
 
-require("bruno.statusline").setup({
+require("user.statusline").setup({
   invert = false,
   tokens = {
     separators = {'|', ''}
