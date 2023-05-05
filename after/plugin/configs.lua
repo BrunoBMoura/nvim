@@ -7,8 +7,12 @@ require("nvim-treesitter.configs").setup({
   ensure_installed = {
     "c", "cpp", "lua", "rust", "python", "ruby", "vim", "comment"
   },
-  highlight = { enable = true },
-  indent = { enable = false }
+  highlight = {
+    enable = true
+  },
+  indent = {
+    enable = false
+  }
 })
 
 require("treesitter-context").setup({
@@ -40,7 +44,9 @@ require("nvim-tree").setup({
       enable = true,
     }
   },
-  filters = { dotfiles = true }
+  filters = {
+    dotfiles = true
+  }
 })
 
 require("diffview").setup({

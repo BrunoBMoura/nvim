@@ -1,5 +1,3 @@
-local M = {}
-
 local utils = {}
 
 -- Returns the @text surrounded by the separators in the @separators table.
@@ -34,10 +32,11 @@ function utils.get_non_config_tokens()
   }
 end
 
--- Local information used for the final configuration.
-local info = {}
+local M = {}
 
-info.highlights = {
+M._data = {}
+
+M._data.highlights = {
   normal      = "StatusLineNormalColor",
   visual      = "StatusLineVisualColor",
   insert      = "StatusLineInsertColor",
@@ -51,40 +50,40 @@ info.highlights = {
   line_filler = "StatusLineFiller"
 }
 
-info.modes = {
-  ["n"]   = {text = "Normal",         color = utils.highlightfy(info.highlights.normal)},
-  ["niI"] = {text = "Normal",         color = utils.highlightfy(info.highlights.normal)},
-  ["niR"] = {text = "Normal",         color = utils.highlightfy(info.highlights.normal)},
-  ["niV"] = {text = "Normal",         color = utils.highlightfy(info.highlights.normal)},
-  ["no"]  = {text = "Normal",         color = utils.highlightfy(info.highlights.normal)},
-  ["i"]   = {text = "Insert",         color = utils.highlightfy(info.highlights.insert)},
-  ["ic"]  = {text = "Insert",         color = utils.highlightfy(info.highlights.insert)},
-  ["ix"]  = {text = "Insert",         color = utils.highlightfy(info.highlights.insert)},
-  ["t"]   = {text = "Terminal",       color = utils.highlightfy(info.highlights.terminal)},
-  ["nt"]  = {text = "Terminal",       color = utils.highlightfy(info.highlights.terminal)},
-  ["v"]   = {text = "Visual",         color = utils.highlightfy(info.highlights.visual)},
-  ["V"]   = {text = "Visual_line",    color = utils.highlightfy(info.highlights.visual)},
-  ["Vs"]  = {text = "Visual_line",    color = utils.highlightfy(info.highlights.visual)},
-  [""]  = {text = "Visual_block",   color = utils.highlightfy(info.highlights.visual)},
-  ["R"]   = {text = "Replace",        color = utils.highlightfy(info.highlights.replace)},
-  ["Rv"]  = {text = "Visual_replace", color = utils.highlightfy(info.highlights.replace)},
-  ["s"]   = {text = "Select",         color = utils.highlightfy(info.highlights.select)},
-  ["S"]   = {text = "Select_line",    color = utils.highlightfy(info.highlights.select)},
-  [""]  = {text = "Select_block",   color = utils.highlightfy(info.highlights.select)},
-  ["c"]   = {text = "Command",        color = utils.highlightfy(info.highlights.shell)},
-  ["cv"]  = {text = "Vim_ex",         color = utils.highlightfy(info.highlights.shell)},
-  ["ce"]  = {text = "Ex",             color = utils.highlightfy(info.highlights.shell)},
-  ["!"]   = {text = "Shell",          color = utils.highlightfy(info.highlights.shell)},
-  ["r"]   = {text = "Prompt",         color = utils.highlightfy(info.highlights.confirm)},
-  ["rm"]  = {text = "More",           color = utils.highlightfy(info.highlights.confirm)},
-  ["r?"]  = {text = "Confirm",        color = utils.highlightfy(info.highlights.confirm)},
-  ["qf"]  = {text = "Quickfix_list",  color = utils.highlightfy(info.highlights.quickfix)}
+M._data.modes = {
+  ["n"]   = {text = "Normal",         color = utils.highlightfy(M._data.highlights.normal)},
+  ["niI"] = {text = "Normal",         color = utils.highlightfy(M._data.highlights.normal)},
+  ["niR"] = {text = "Normal",         color = utils.highlightfy(M._data.highlights.normal)},
+  ["niV"] = {text = "Normal",         color = utils.highlightfy(M._data.highlights.normal)},
+  ["no"]  = {text = "Normal",         color = utils.highlightfy(M._data.highlights.normal)},
+  ["i"]   = {text = "Insert",         color = utils.highlightfy(M._data.highlights.insert)},
+  ["ic"]  = {text = "Insert",         color = utils.highlightfy(M._data.highlights.insert)},
+  ["ix"]  = {text = "Insert",         color = utils.highlightfy(M._data.highlights.insert)},
+  ["t"]   = {text = "Terminal",       color = utils.highlightfy(M._data.highlights.terminal)},
+  ["nt"]  = {text = "Terminal",       color = utils.highlightfy(M._data.highlights.terminal)},
+  ["v"]   = {text = "Visual",         color = utils.highlightfy(M._data.highlights.visual)},
+  ["V"]   = {text = "Visual_line",    color = utils.highlightfy(M._data.highlights.visual)},
+  ["Vs"]  = {text = "Visual_line",    color = utils.highlightfy(M._data.highlights.visual)},
+  [""]  = {text = "Visual_block",   color = utils.highlightfy(M._data.highlights.visual)},
+  ["R"]   = {text = "Replace",        color = utils.highlightfy(M._data.highlights.replace)},
+  ["Rv"]  = {text = "Visual_replace", color = utils.highlightfy(M._data.highlights.replace)},
+  ["s"]   = {text = "Select",         color = utils.highlightfy(M._data.highlights.select)},
+  ["S"]   = {text = "Select_line",    color = utils.highlightfy(M._data.highlights.select)},
+  [""]  = {text = "Select_block",   color = utils.highlightfy(M._data.highlights.select)},
+  ["c"]   = {text = "Command",        color = utils.highlightfy(M._data.highlights.shell)},
+  ["cv"]  = {text = "Vim_ex",         color = utils.highlightfy(M._data.highlights.shell)},
+  ["ce"]  = {text = "Ex",             color = utils.highlightfy(M._data.highlights.shell)},
+  ["!"]   = {text = "Shell",          color = utils.highlightfy(M._data.highlights.shell)},
+  ["r"]   = {text = "Prompt",         color = utils.highlightfy(M._data.highlights.confirm)},
+  ["rm"]  = {text = "More",           color = utils.highlightfy(M._data.highlights.confirm)},
+  ["r?"]  = {text = "Confirm",        color = utils.highlightfy(M._data.highlights.confirm)},
+  ["qf"]  = {text = "Quickfix_list",  color = utils.highlightfy(M._data.highlights.quickfix)}
 }
 
 function M.mode()
   local current_mode = vim.api.nvim_get_mode().mode
-  local entry = info.modes[current_mode]
-  return string.format("%s%s", entry.color, utils.contour(entry.text, info.tokens.separators))
+  local entry = M._data.modes[current_mode]
+  return string.format("%s%s", entry.color, utils.contour(entry.text, M._data.tokens.separators))
 end
 
 function M.file_path()
@@ -93,14 +92,14 @@ function M.file_path()
   local file_name = vim.fn.expand("%") == "" and "No_file" or vim.fn.expand("%:T")
 
   if file_name == "No_file" then
-    file_path = utils.contour(file_name, info.tokens.separators)
+    file_path = utils.contour(file_name, M._data.tokens.separators)
   else
-    local has_devicons, devicons = pcall(require, "nvim-web-devicons")
-    if has_devicons then
+    local ok, devicons = pcall(require, "nvim-web-devicons")
+    if ok then
       local file_icon = devicons.get_icon(file_name)
       icon = file_icon ~= nil and "" .. file_icon or ""
     end
-    file_path = utils.contour(string.format("%s %s ", file_name, icon), info.tokens.separators)
+    file_path = utils.contour(string.format("%s %s ", file_name, icon), M._data.tokens.separators)
   end
 
   return file_path
@@ -116,23 +115,23 @@ function M.file_metadata()
   local line_info = vim.bo.filetype ~= "alpha" and "%l/%L:%c" or ""
   return string.format(
     "%s%s%s%s%s%s",
-    info.modes["c"].color, utils.contour(branch, info.tokens.separators),
-    info.modes["v"].color, utils.contour(string.format("%s:%s", encoding, type), info.tokens.separators),
-    info.modes["t"].color, utils.contour(line_info, info.tokens.separators)
+    M._data.modes["c"].color, utils.contour(branch, M._data.tokens.separators),
+    M._data.modes["v"].color, utils.contour(string.format("%s:%s", encoding, type), M._data.tokens.separators),
+    M._data.modes["t"].color, utils.contour(line_info, M._data.tokens.separators)
   )
 end
 
 function M.refresh()
-  -- Return a string containing the line information with all of its
+  -- Return a string containing the line M._data.mation with all of its
   -- fields properly concatenated.
   return
     -- Vim mode.
     M.mode() ..
     -- Current file path.
-    utils.highlightfy(info.highlights.file_name) ..
+    utils.highlightfy(M._data.highlights.file_name) ..
     M.file_path() ..
     -- Filler until right side.
-    utils.highlightfy(info.highlights.line_filler) ..
+    utils.highlightfy(M._data.highlights.line_filler) ..
     "%=" ..
     -- Current file metadata (git branch, file type and line numbers).
     M.file_metadata()
@@ -149,15 +148,15 @@ function M.setup(config)
   end
 
   if config.tokens then
-    info.tokens = config.tokens
+    M._data.tokens = config.tokens
   else
-    info.tokens = utils.get_non_config_tokens()
+    M._data.tokens = utils.get_non_config_tokens()
   end
 
   if config.colors then
-    utils.set_config_highlights(info.highlights, config.colors)
+    utils.set_config_highlights(M._data.highlights, config.colors)
   else
-    utils.set_non_config_highlights(info.highlights, "Normal")
+    utils.set_non_config_highlights(M._data.highlights, "Normal")
   end
 
   -- Finally, set the opt.statusline variable.

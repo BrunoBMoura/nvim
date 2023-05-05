@@ -1,8 +1,4 @@
 -- Shamelessly based on luatab https://github.com/alvarosevilla95/luatab.nvim
-local M = {}
-
-M.style_functions = {}
-
 local utils = {}
 
 -- Returns the @text surrounded by the separators in the @separators table.
@@ -33,28 +29,30 @@ end
 -- Returns the default value of the tokens configuration entry.
 function utils.get_non_config_tokens()
   return {
-      file_changed = '+',
-      separators = {'', ''}
+    file_changed = '+',
+    separators = {'', ''},
+    sub_separators = {'(', ')'}
   }
 end
 
--- Local information used for the final configuration.
-local info = {}
+local M = {}
 
-info.tokens = {}
+M._data = {}
 
-info.highlights = {
+M._data.tokens = {}
+
+M._data.highlights = {
   icon         = "TabLineIconColor",
   separator    = "TabLineSeparator",
   active_tab   = "TabLineActiveTab",
   inactive_tab = "TabLineInactiveTab"
 }
 
-info.colors = {
-  icon         = utils.highlightfy(info.highlights.icon),
-  separator    = utils.highlightfy(info.highlights.separator),
-  active_tab   = utils.highlightfy(info.highlights.active_tab),
-  inactive_tab = utils.highlightfy(info.highlights.inactive_tab)
+M._data.colors = {
+  icon         = utils.highlightfy(M._data.highlights.icon),
+  separator    = utils.highlightfy(M._data.highlights.separator),
+  active_tab   = utils.highlightfy(M._data.highlights.active_tab),
+  inactive_tab = utils.highlightfy(M._data.highlights.inactive_tab)
 }
 
 function M.title(bufnr, is_selected)
@@ -92,33 +90,33 @@ function M.title(bufnr, is_selected)
 
   -- Try to access the file icon if 'nvim-web-devicons' is installed.
   local icon = ""
-  local has_devicons, devicons = pcall(require, "nvim-web-devicons")
-  if has_devicons then
+  local ok, devicons = pcall(require, "nvim-web-devicons")
+  if ok then
     local file_icon = devicons.get_icon(file, vim.fn.expand('#' .. bufnr .. ':e'))
     icon = file_icon ~= nil and file_icon or icon
   end
 
   -- And finally, ensure a proper highlighting if the current cell is selected.
   return is_selected
-    and string.format("%s%s%s %s", info.colors.active_tab, title, info.colors.icon, icon)
-    or string.format("%s%s %s", info.colors.inactive_tab, title, icon)
+    and string.format("%s%s%s %s", M._data.colors.active_tab, title, M._data.colors.icon, icon)
+    or string.format("%s%s %s", M._data.colors.inactive_tab, title, icon)
 end
 
 function M.modified(bufnr)
-  return vim.fn.getbufvar(bufnr, "&modified") == 1 and string.format("%s ", info.tokens.file_changed) or ""
+  return vim.fn.getbufvar(bufnr, "&modified") == 1 and string.format("%s ", M._data.tokens.file_changed) or ""
 end
 
 function M.window_count(index)
   local nwins = 0
-  local success, wins = pcall(vim.api.nvim_tabpage_list_wins, index)
-  if success then
-    for _ in pairs(wins) do
-      nwins = nwins + 1
-    end
+  local ok, wins = pcall(vim.api.nvim_tabpage_list_wins, index)
+  if ok then
+    for _ in pairs(wins) do nwins = nwins + 1 end
   end
-  return nwins > 1 and "(" .. nwins .. ") " or ""
+  return nwins > 1 and string.format("%s ", utils.contour(nwins, M._data.tokens.sub_separators)) or ""
+  -- return nwins > 1 and "(" .. nwins .. ") " or ""
 end
 
+-- Builds a cell of the current index tabe.
 function M.cell(index, is_selected)
   local buflist = vim.fn.tabpagebuflist(index)
   local winnr = vim.fn.tabpagewinnr(index)
@@ -130,41 +128,44 @@ function M.cell(index, is_selected)
   )
 end
 
+-- Evaluates the configuration style.
 function M.eval_style(index, cell, is_selected)
   local styles = {
     ["surrounded"] = function(index, cell, is_selected)
       if is_selected then
-        local text = string.format(
-          "%s%s%s", info.colors.active_tab, cell, info.colors.separator
-        )
-        local cell_content = utils.contour(text, info.tokens.separators)
-        return string.format("%s%s", info.colors.separator, cell_content)
+        local text = string.format("%s%s%s", M._data.colors.active_tab, cell, M._data.colors.separator)
+        local cell_content = utils.contour(text, M._data.tokens.separators)
+        return string.format("%s%s", M._data.colors.separator, cell_content)
       else
-        cell_content = utils.contour(cell, info.tokens.separators)
-        return string.format("%s%s", info.colors.inactive_tab, cell_content)
+        cell_content = utils.contour(cell, M._data.tokens.separators)
+        return string.format("%s%s", M._data.colors.inactive_tab, cell_content)
       end
     end
   }
-  return styles[info.style](index, cell, is_selected)
+  return styles[M._data.style](index, cell, is_selected)
 end
 
+-- Builds the tabline to be written to the window.
 function M.tabline()
+  -- Start building the tabline.
   local line = ""
   for index = 1, vim.fn.tabpagenr("$"), 1 do
+    -- Check if the current cell is selected.
     local is_selected = vim.fn.tabpagenr() == index
+    -- Then, access its content.
     local cell = M.cell(index , is_selected)
+    -- Eval the current @style and add the cell to the tabline.
     cell = M.eval_style(index , cell, is_selected)
     line = line .. cell
   end
-  line = line .. "%#TabLineFill#%="
-  if vim.fn.tabpagenr("$") > 1 then
-      line = line .. info.colors.inactive_tab
-  end
-  return line
+  -- Finally, return the built line plus the @inactive_tab color for the rest
+  -- of the window.
+  return line .. M._data.colors.inactive_tab
 end
 
-function M.setup(config)
-  -- Invert foreground and background colors.
+-- Evaluates the @config parameters.
+function M.eval_config(config)
+  -- Lazy configuration parameter.
   if config.invert then
     for idx, color in pairs(config.colors) do
       local temp = color.fg
@@ -174,23 +175,26 @@ function M.setup(config)
   end
 
   if config.tokens then
-    info.tokens = config.tokens
+    M._data.tokens = config.tokens
   else
-    info.tokens = utils.get_non_config_tokens()
+    M._data.tokens = utils.get_non_config_tokens()
   end
 
   if config.style then
-    info.style = config.style
+    M._data.style = config.style
   else
-    info.style = "surrounded"
+    M._data.style = "surrounded"
   end
 
   if config.colors then
-    utils.set_config_highlights(info.highlights, config.colors)
+    utils.set_config_highlights(M._data.highlights, config.colors)
   else
-    utils.set_non_config_highlights(info.highlights, "String")
+    utils.set_non_config_highlights(M._data.highlights, "String")
   end
+end
 
+function M.setup(config)
+  M.eval_config(config)
   vim.opt.tabline = "%!v:lua.require(\"bruno.tabline\").tabline()"
 end
 

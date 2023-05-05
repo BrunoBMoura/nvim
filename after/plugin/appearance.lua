@@ -7,7 +7,8 @@ require("bruno.tabline").setup({
   style =  "surrounded",
   tokens = {
     file_changed = '[+]',
-    separators = {'|', ''}
+    separators = {'|', ''},
+    sub_separators = {'[', ']'}
   },
   colors = {
     icon         = {fg = pallet.purple,  bg = pallet.night_sky, bold = false},
@@ -20,7 +21,7 @@ require("bruno.tabline").setup({
 require("bruno.statusline").setup({
   invert = false,
   tokens = {
-    separators = {'|', '|'}
+    separators = {'|', ''}
   },
   colors = {
     normal      = {fg = pallet.orange, bg = pallet.night_sky, bold = true},
