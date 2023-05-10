@@ -92,14 +92,15 @@ function M.title(bufnr, is_selected)
   local icon = ""
   local ok, devicons = pcall(require, "nvim-web-devicons")
   if ok then
-    local file_icon = devicons.get_icon(file, vim.fn.expand('#' .. bufnr .. ':e'))
-    icon = file_icon ~= nil and file_icon or icon
+    local file_icon, icon_hl = devicons.get_icon(file, vim.fn.expand('#' .. bufnr .. ':e'))
+    -- If the file icon is defined, use it and highlight it as predefined.
+    icon = file_icon ~= nil and string.format("%s%s", utils.highlightfy(icon_hl), file_icon) or icon
   end
 
   -- And finally, ensure a proper highlighting if the current cell is selected.
   return is_selected
     and string.format("%s%s%s %s", M._data.colors.active_tab, title, M._data.colors.icon, icon)
-    or string.format("%s%s %s", M._data.colors.inactive_tab, title, icon)
+    or string.format("%s%s %s%s", M._data.colors.inactive_tab, title, icon, M._data.colors.inactive_tab)
 end
 
 function M.modified(bufnr)
@@ -113,7 +114,6 @@ function M.window_count(index)
     for _ in pairs(wins) do nwins = nwins + 1 end
   end
   return nwins > 1 and string.format("%s ", utils.contour(nwins, M._data.tokens.sub_separators)) or ""
-  -- return nwins > 1 and "(" .. nwins .. ") " or ""
 end
 
 -- Builds a cell of the current index tabe.

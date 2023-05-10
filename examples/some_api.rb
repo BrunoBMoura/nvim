@@ -19,4 +19,11 @@ class Dummy
     end
     self_hash
   end
+
+  def some_method
+    another_self_hash = {}
+    @elements.each_with_index do |obj, obj_idx|
+      (another_self_hash[obj] |= []) << obj_idx
+    end
+  end
 end

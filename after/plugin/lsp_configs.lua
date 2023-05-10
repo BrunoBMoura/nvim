@@ -28,6 +28,13 @@ cmp.setup({
     {name = "nvim_lsp"},
     {name = "luasnip"}
   },
+  window = {
+    completion = cmp.config.window.bordered({
+      border = "rounded",
+      winhighlight = "Normal:Normal,CursorLine:PmenuSel,Search:None,CmpItemKind:Type,CmpItemAbbrMatch:Identifier",
+      minwidth = 60,
+    }),
+  }
 })
 
 local lang_servers = {

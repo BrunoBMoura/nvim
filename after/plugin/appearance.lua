@@ -11,10 +11,10 @@ require("user.tabline").setup({
     sub_separators = {'[', ']'}
   },
   colors = {
-    icon         = {fg = pallet.purple,  bg = pallet.night_sky, bold = false},
-    separator    = {fg = pallet.orange,  bg = pallet.night_sky, bold = false},
-    active_tab   = {fg = pallet.orange,  bg = pallet.night_sky, bold = false},
-    inactive_tab = {fg = pallet.white,   bg = pallet.rainy, bold = false}
+    icon         = {fg = pallet.orange, bg = pallet.night_sky, bold = false},
+    separator    = {fg = pallet.orange, bg = pallet.night_sky, bold = true},
+    active_tab   = {fg = pallet.white,  bg = pallet.night_sky, bold = true},
+    inactive_tab = {fg = pallet.cloudy,  bg = pallet.night_sky, bold = false}
   }
 })
 
