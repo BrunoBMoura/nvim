@@ -11,7 +11,6 @@ nnoremap("<C-j>", "<C-w>j")
 nnoremap("<C-k>", "<C-w>k")
 nnoremap("<C-l>", "<C-w>l")
 nnoremap("<C-q>", "<C-w>q")
-nnoremap("<C-o>", "<C-w>o")
 
 -- Tab movement
 nnoremap("<", ":tabp<CR>")
@@ -55,6 +54,9 @@ nnoremap("<leader>ff", ":Telescope find_files <CR>")
 nnoremap("<leader>fb", ":Telescope buffers <CR>")
 nnoremap("<leader>/", function ()
   require("telescope.builtin").grep_string({ search = vim.fn.input("Grep >")});
+end)
+vnoremap("<leader>/", function ()
+  require("telescope.builtin").grep_string(vim.fn.getline("'<", "'>"));
 end)
 
 -- Lsp related
