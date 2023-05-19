@@ -15,6 +15,8 @@ nnoremap("<C-q>", "<C-w>q")
 -- Tab movement
 nnoremap("<", ":tabp<CR>")
 nnoremap(">", ":tabn<CR>")
+nnoremap("<S-l>", ":bnext<CR>")
+nnoremap("<S-h>", ":bprevious<CR>")
 
 -- Lazy movement
 nnoremap("<C-d>", "<C-d>zz")
@@ -23,7 +25,6 @@ nnoremap("<C-u>", "<C-u>zz")
 -- Lazy saving/quitting
 nnoremap("<leader>w", ":w<CR>")
 nnoremap("<leader>q", ":q<CR>")
-nnoremap("<leader>Q", ":q!<CR>")
 
 -- Overide shenanigans
 nnoremap("<leader>rw", "cw<C-r>0<C-c>")
