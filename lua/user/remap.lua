@@ -17,8 +17,8 @@ nnoremap("<", ":tabp<CR>")
 nnoremap(">", ":tabn<CR>")
 
 -- Lazy movement
-nnoremap("J", "10jzz")
-nnoremap("K", "10kzz")
+nnoremap("<C-d>", "<C-d>zz")
+nnoremap("<C-u>", "<C-u>zz")
 
 -- Lazy saving/quitting
 nnoremap("<leader>w", ":w<CR>")
@@ -32,6 +32,11 @@ vnoremap("p", '"_dP')
 -- Terminal split
 nnoremap("<leader>T", ":120vsplit term:// bash <CR>i")
 tnoremap("<leader><Esc>", "<C-\\><C-n>")
+
+-- Copy paste from outside/within vim; requires xclip
+vnoremap("<leader>y", [["+y]])
+nnoremap("<leader>y", [["+y]])
+nnoremap("<leader>Y", [["+Y]])
 
 -- Visual mode identation
 vnoremap("<Tab>",   ">gv")
@@ -70,3 +75,4 @@ nnoremap("<leader>gb", ":Git blame <CR>")
 nnoremap("<leader>do", ":DiffviewOpen <CR>")
 nnoremap("<leader>dh", ":DiffviewFileHistory <CR>")
 nnoremap("<leader>dt", ":diffthis <CR>")
+
