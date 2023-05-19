@@ -104,7 +104,8 @@ function M.title(bufnr, is_selected)
 end
 
 function M.modified(bufnr)
-  return vim.fn.getbufvar(bufnr, "&modified") == 1 and string.format("%s ", M._data.tokens.file_changed) or ""
+  local modified = vim.fn.getbufvar(bufnr, "&modified")
+  return modified == 1 and string.format("%s ", M._data.tokens.file_changed) or ""
 end
 
 function M.window_count(index)
@@ -124,7 +125,8 @@ function M.cell(index, is_selected)
 
   return string.format(
     "%s%s%s %s%s %s%s", "%", index, "T",
-    M.window_count(index), M.title(bufnr, is_selected), M.modified(bufnr), "%T"
+    -- M.window_count(index), M.title(bufnr, is_selected), M.modified(bufnr), "%T"
+    M.window_count(index), M.modified(bufnr), M.title(bufnr, is_selected), "%T"
   )
 end
 
@@ -165,15 +167,6 @@ end
 
 -- Evaluates the @config parameters.
 function M.eval_config(config)
-  -- Lazy configuration parameter.
-  if config.invert then
-    for idx, color in pairs(config.colors) do
-      local temp = color.fg
-      color.fg = color.bg
-      color.bg = temp
-    end
-  end
-
   if config.tokens then
     M._data.tokens = config.tokens
   else

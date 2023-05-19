@@ -60,8 +60,8 @@ vnoremap("<leader>/", function ()
 end)
 
 -- Lsp related
-nnoremap("<leader>lb", ":LspStart")
-nnoremap("<leader>le", ":LspStop")
+nnoremap("<leader>lb", ":LspStart<CR>")
+nnoremap("<leader>le", ":LspStop<CR>")
 
 nnoremap("<leader>e", ":NvimTreeToggle<CR>")
 nnoremap("<leader>F", ":NvimTreeFindFile<CR>")

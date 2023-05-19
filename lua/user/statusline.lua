@@ -137,16 +137,8 @@ function M.refresh()
     M.file_metadata()
 end
 
-function M.setup(config)
-  -- Invert foreground and background colors.
-  if config.invert then
-    for idx, color in pairs(config.colors) do
-      local temp = color.fg
-      color.fg = color.bg
-      color.bg = temp
-    end
-  end
-
+-- Evaluates the @config parameters.
+function M.eval_config(config)
   if config.tokens then
     M._data.tokens = config.tokens
   else
@@ -158,7 +150,10 @@ function M.setup(config)
   else
     utils.set_non_config_highlights(M._data.highlights, "Normal")
   end
+end
 
+function M.setup(config)
+  M.eval_config(config)
   -- Finally, set the opt.statusline variable.
   vim.opt.statusline = "%!v:lua.require(\"user.statusline\").refresh()"
 end

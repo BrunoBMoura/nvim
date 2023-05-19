@@ -3,7 +3,6 @@ scheme.setup()
 local pallet = scheme.pallet()
 
 require("user.tabline").setup({
-  invert = false,
   style =  "surrounded",
   tokens = {
     file_changed = '[+]',
@@ -19,7 +18,6 @@ require("user.tabline").setup({
 })
 
 require("user.statusline").setup({
-  invert = false,
   tokens = {
     separators = {'|', ''}
   },
