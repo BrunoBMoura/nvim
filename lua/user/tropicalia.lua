@@ -110,6 +110,7 @@ local meta_syntax = {
   -- Question     = {fg = colors.red, bg = colors.night_sky},
   -- StatusLineNc = {fg = colors.rainy, bg = colors.night_sky},
   -- WildMenu     = {fg = colors.cloudy, bg = colors.night_sky},
+  FloatBorder     = {fg = colors.jet}
 }
 
 local plugin_syntax = {
@@ -186,6 +187,9 @@ local plugin_syntax = {
   NvimTreeClosedFolderIcon = {fg = colors.green},
   NvimTreeNormalFloat      = {bg = colors.night_sky},
   NvimTreeEndOfBuffer      = {fg = colors.night_sky},
+
+  -- Telescope
+  TelescopeBorder          = {fg = colors.jet},
 
   -- Indent-blank-line
   IndentBlankLineChar               = {fg = colors.rainy},
