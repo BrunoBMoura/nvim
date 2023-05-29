@@ -184,6 +184,8 @@ local plugin_syntax = {
   NvimTreeWindowPicker     = {fg = colors.white,     bg = colors.blue},
   NvimTreeOpenedFolderIcon = {fg = colors.green},
   NvimTreeClosedFolderIcon = {fg = colors.green},
+  NvimTreeNormalFloat      = {bg = colors.night_sky},
+  NvimTreeEndOfBuffer      = {fg = colors.night_sky},
 
   -- Indent-blank-line
   IndentBlankLineChar               = {fg = colors.rainy},
