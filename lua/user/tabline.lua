@@ -99,8 +99,8 @@ function M.title(bufnr, is_selected)
 
   -- And finally, ensure a proper highlighting if the current cell is selected.
   return is_selected
-    and string.format("%s%s%s %s", M._data.colors.active_tab, title, M._data.colors.icon, icon)
-    or string.format("%s%s %s%s", M._data.colors.inactive_tab, title, icon, M._data.colors.inactive_tab)
+    and string.format("%s%s%s %s ", M._data.colors.active_tab, title, M._data.colors.icon, icon)
+    or string.format("%s%s %s%s ", M._data.colors.inactive_tab, title, icon, M._data.colors.inactive_tab)
 end
 
 function M.modified(bufnr)
