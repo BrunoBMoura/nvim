@@ -2,6 +2,20 @@
 
 namespace Simple {
 
+    class Animal {
+        public:
+            virtual void walk();
+            virtual void eat();
+            virtual void something_else();
+    };
+
+    class Dog : public Animal {
+        public:
+            void walk() { /**/ }
+            void eat() { /**/ }
+            void something_else() { /**/ }
+    };
+
     template <typename T>
     T comparison(T val1, T val2) {
         return val1 > val2 ? 0 : 1;
