@@ -1,11 +1,22 @@
 require("nvim-autopairs").setup()
 require("nvim-surround").setup()
-require("gitsigns").setup()
+require("gitsigns").setup({
+  preview_config = {
+    border = "rounded",
+    row = 1,
+    col = 0
+  }
+})
 require("indent_blankline").setup()
 
 require("nvim-treesitter.configs").setup({
   ensure_installed = {
-    "c", "cpp", "lua", "rust", "python", "ruby", "vim", "comment"
+    "c", "cpp", "lua",
+    "rust",
+    "python",
+    "ruby",
+    "vim",
+    "comment"
   },
   highlight = {
     enable = true
@@ -13,6 +24,20 @@ require("nvim-treesitter.configs").setup({
   indent = {
     enable = false
   }
+})
+
+require('telescope').setup({
+  defaults = {
+    layout_config = {
+      prompt_position = "bottom",
+    },
+  },
+  pickers = {
+    find_files = {
+      previewer = false,
+      results_title = false
+    }
+  },
 })
 
 require("treesitter-context").setup({

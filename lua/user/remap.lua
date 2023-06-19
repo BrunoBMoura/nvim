@@ -53,6 +53,10 @@ nnoremap("<C-Up>", ":resize +2 <CR>")
 nnoremap("<C-Left>", ":vertical resize -2 <CR>")
 nnoremap("<C-Right>", ":vertical resize +2 <CR>")
 
+-- Lsp related
+nnoremap("<leader>lb", ":LspStart<CR>")
+nnoremap("<leader>le", ":LspStop<CR>")
+
 -- Plugin binds
 nnoremap("<leader>lg", ":Telescope live_grep <CR>")
 nnoremap("<leader>hl", ":Telescope highlights <CR>")
@@ -65,15 +69,11 @@ vnoremap("<leader>/", function ()
   require("telescope.builtin").grep_string(vim.fn.getline("'<", "'>"));
 end)
 
--- Lsp related
-nnoremap("<leader>lb", ":LspStart<CR>")
-nnoremap("<leader>le", ":LspStop<CR>")
-
 nnoremap("<leader>e", ":NvimTreeToggle<CR>")
 nnoremap("<leader>F", ":NvimTreeFindFile<CR>")
 nnoremap("<leader>R", ":NvimTreeRefresh<CR>")
 nnoremap("<leader>gb", ":Git blame <CR>")
+nnoremap("<leader>gp", ":Gitsigns preview_hunk<CR>")
 nnoremap("<leader>do", ":DiffviewOpen <CR>")
 nnoremap("<leader>dh", ":DiffviewFileHistory <CR>")
 nnoremap("<leader>dt", ":diffthis <CR>")
-
