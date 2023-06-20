@@ -41,6 +41,7 @@ void main() {
 
     for (const auto &it : vet) {
         std::cout << *it << std::endl;
+        it.walk();
     }
 
     return;

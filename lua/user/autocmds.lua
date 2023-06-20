@@ -35,10 +35,4 @@ for lang, data in pairs(lang_meta_op) do
       {command = "nnoremap <leader><leader>e :vsplit <CR>:ter " .. data.exec .. " % <CR>", pattern = lang}
     )
   end
-  --[[ if data.cross_format then
-    autocmd(
-      "BufEnter",
-      {command = "setlocal syntax=" .. data.cross_format, pattern = lang}
-    )
-  end ]]
 end

@@ -25,5 +25,6 @@ class Dummy
     @elements.each_with_index do |obj, obj_idx|
       (another_self_hash[obj] |= []) << obj_idx
     end
+    @stuff << Stuff.new(&:call?)
   end
 end

@@ -13,19 +13,25 @@ require("kanagawa").setup({
     }
   },
   overrides = function(colors)
-    -- Basically turn the background darker, docrrect border colors and remove unnused italics
+    -- Basically turn the background darker, correct border colors, remove unused italics
+    -- and add some custom configurations
     return {
-      Normal                = { bg = colors.palette.dragonBlack2 },
-      NormalFloat           = { bg = "none" },
-      FloatTitle            = { bg = "none" },
-      FloatBorder           = { bg = "none", fg = colors.palette.dragonBlack4 },
-      WinSeparator          = { fg = colors.palette.dragonBlack4 },
-      Boolean               = { fg = colors.palette.dragonOrange, italic = false , bold = false },
-      ["@keyword"]          = { fg = colors.palette.dragonOrange, italic = false },
-      ["@keyword.operator"] = { fg = colors.palette.dragonRed, bold = false },
-      ["@constant.builtin"] = { fg = colors.palette.dragonYellow, italic = false },
-      IndentBlanklineChar   = { fg = colors.palette.dragonBlack4 },
-      TelescopeBorder       = { fg = colors.palette.dragonBlack4, bg = colors.palette.dragonBlack2 },
+      Normal                     = { bg = colors.palette.dragonBlack3 },
+      Boolean                    = { bold = false },
+      CursorLineNr               = { bold = false },
+      MatchParen                 = { bold = false },
+      NormalFloat                = { bg = "none" },
+      FloatTitle                 = { bg = "none" },
+      CursorLine                 = { bg = colors.palette.dragonBlack4 },
+      FloatBorder                = { bg = "none", fg = colors.palette.dragonBlack4 },
+      WinSeparator               = { fg = colors.palette.dragonBlack4 },
+      IndentBlanklineChar        = { fg = colors.palette.dragonBlack4 },
+      TelescopeBorder            = { fg = colors.palette.dragonBlack4, bg = colors.palette.dragonBlack3 },
+      ["@keyword.operator"]      = { fg = colors.palette.dragonRed, bold = false },
+      ["@constant.builtin"]      = { fg = colors.palette.dragonOrange, italic = false },
+      ["@punctuation.delimiter"] = { fg = colors.palette.dragonAsh, italic = false },
+      ["@label"]                 = { fg = colors.palette.dragonGray, italic = false },
+      ["@comment"]               = { fg = colors.palette.dragonBlack6, italic = false },
     }
   end
 })
@@ -43,7 +49,7 @@ require("user.tabline").setup({
   },
   colors = {
     icon         = { fg = kolors.palette.dragonOrange, bold = false },
-    separator    = { fg = kolors.palette.dragonOrange, bold = true },
+    separator    = { fg = kolors.palette.roninYellow,  bold = true },
     active_tab   = { fg = kolors.palette.fujiWhite,    bold = true },
     inactive_tab = { fg = kolors.palette.fujiGray,     bold = false }
   }
@@ -67,4 +73,3 @@ require("user.statusline").setup({
     line_filler = { fg = kolors.palette.dragonBlack4 },
   }
 })
-

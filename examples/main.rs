@@ -21,6 +21,16 @@ fn read_values<T: FromStr>() -> Result<Vec<T>, T::Err> {
         .collect()
 }
 
+impl Random {
+    pub fn another_random(mut args: impl Iterator<Item = String>) -> String {
+        Ok(
+            Config {
+                self, val2
+            }
+        )
+    }
+}
+
 fn main() {
     let lower: u32 = 0;
     let upper: u32 = 10;
