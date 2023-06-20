@@ -34,6 +34,7 @@ return require("packer").startup(function(use)
   use "hrsh7th/nvim-cmp"
   use "L3MON4D3/LuaSnip"
   use "lukas-reineke/indent-blankline.nvim"
+  use "rebelot/kanagawa.nvim"
 
   if packer_bootstrap then
     require("packer").sync()
