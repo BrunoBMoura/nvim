@@ -13,7 +13,7 @@ class Dummy
       example3: 'example'
     }
     @elements.each_with_index do |obj, obj_idx|
-      next unless obj.is_a?(Dummy)
+      next unless obj.is_a? Dummy
 
       obj.to_hash.each { |key, val| self_hash["#{key}_dummy_#{obj_idx}".to_sym] = val }
     end
