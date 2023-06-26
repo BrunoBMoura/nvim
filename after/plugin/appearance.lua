@@ -1,4 +1,15 @@
-require("kanagawa").setup({
+local tabline_colors = {}
+local statusline_colors = {}
+local kolors = nil
+
+local kanagawa_status, kanagawa = pcall(require, "kanagawa")
+if not kanagawa_status then
+  goto no_colorscheme_loaded
+end
+
+kanagawa.setup({
+  -- Remove bold and/or italic tokens and remove background from
+  -- from ui edges.
   keywordStyle   = { italic = false, bold = false },
   statementStyle = { italic = false, bold = false },
   commentStyle   = { italic = false, bold = false },
@@ -38,8 +49,32 @@ require("kanagawa").setup({
 })
 
 require("kanagawa").load("dragon")
+kolors = require("kanagawa.colors").setup()
 
-local kolors = require("kanagawa.colors").setup()
+-- Both tabline and statusline colors are only defined if a colorscheme is loaded,
+-- in this case, kanagawa.
+tabline_colors = {
+  icon         = { fg = kolors.palette.dragonOrange, bold = false },
+  separator    = { fg = kolors.palette.roninYellow,  bold = true },
+  active_tab   = { fg = kolors.palette.fujiWhite,    bold = true },
+  inactive_tab = { fg = kolors.palette.fujiGray,     bold = false }
+}
+
+statusline_colors = {
+  normal      = { fg = kolors.palette.dragonOrange, bold = true },
+  visual      = { fg = kolors.palette.dragonRed,    bold = true },
+  insert      = { fg = kolors.palette.dragonGreen,  bold = true },
+  select      = { fg = kolors.palette.dragonViolet, bold = true },
+  replace     = { fg = kolors.palette.dragonYellow, bold = true },
+  quickfix    = { fg = kolors.palette.dragonAsh,    bold = true },
+  shell       = { fg = kolors.palette.dragonAqua,   bold = true },
+  terminal    = { fg = kolors.palette.dragonBlue,   bold = true },
+  confirm     = { fg = kolors.palette.dragonPink,   bold = true },
+  file_name   = { fg = kolors.palette.dragonAsh,    bold = true },
+  line_filler = { fg = kolors.palette.dragonBlack4 },
+}
+
+::no_colorscheme_loaded::
 
 require("user.tabline").setup({
   style =  "surrounded",
@@ -48,29 +83,12 @@ require("user.tabline").setup({
     separators = { '|', '' },
     sub_separators = { '[', ']' }
   },
-  colors = {
-    icon         = { fg = kolors.palette.dragonOrange, bold = false },
-    separator    = { fg = kolors.palette.roninYellow,  bold = true },
-    active_tab   = { fg = kolors.palette.fujiWhite,    bold = true },
-    inactive_tab = { fg = kolors.palette.fujiGray,     bold = false }
-  }
+  colors = tabline_colors
 })
 
 require("user.statusline").setup({
   tokens = {
     separators = { '|', '' }
   },
-  colors = {
-    normal      = { fg = kolors.palette.dragonOrange, bold = true },
-    visual      = { fg = kolors.palette.dragonRed,    bold = true },
-    insert      = { fg = kolors.palette.dragonGreen,  bold = true },
-    select      = { fg = kolors.palette.dragonViolet, bold = true },
-    replace     = { fg = kolors.palette.dragonYellow, bold = true },
-    quickfix    = { fg = kolors.palette.dragonAsh,    bold = true },
-    shell       = { fg = kolors.palette.dragonAqua,   bold = true },
-    terminal    = { fg = kolors.palette.dragonBlue,   bold = true },
-    confirm     = { fg = kolors.palette.dragonPink,   bold = true },
-    file_name   = { fg = kolors.palette.dragonAsh,    bold = true },
-    line_filler = { fg = kolors.palette.dragonBlack4 },
-  }
+  colors = statusline_colors
 })

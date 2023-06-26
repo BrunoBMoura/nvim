@@ -1,4 +1,7 @@
-local cmp = require("cmp")
+local cmp_status, cmp = pcall(require, "cmp")
+if not cmp_status then
+  return
+end
 
 cmp.setup({
   snippet = {
@@ -6,9 +9,10 @@ cmp.setup({
       require("luasnip").lsp_expand(args.body)
     end,
   },
+  -- Default behavioural usage and bindings whenever selecting cmp options.
   mapping = cmp.mapping.preset.insert({
     ["<C-Space>"] = cmp.mapping.complete(),
-    ["<Enter>"] = cmp.mapping.confirm({behavior = cmp.ConfirmBehavior.Replace, select = true}),
+    ["<Enter>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -28,6 +32,7 @@ cmp.setup({
     {name = "nvim_lsp"},
     {name = "luasnip"}
   },
+  -- Window configuration, purealy display related.
   window = {
     completion = cmp.config.window.bordered({
       border = "rounded",
@@ -35,58 +40,83 @@ cmp.setup({
       minwidth = 60,
     }),
   },
-  completion = {
+  --[[ completion = {
     autocomplete = false
   },
   experimental = {
     ghost_text = false
-  }
+  } ]]
 })
 
-local lang_servers = {
+-- Set the default border width as well as its type
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or "rounded"
+  opts.max_width = opts.max_width or 100
+  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+
+
+local mason_status, mason = pcall(require, "mason")
+if not mason_status then
+  return
+end
+
+-- Configure mason to download the defined language servers.
+mason.setup({
+  ui = { border = "rounded" },
+  max_concurrent_installers = 4
+})
+
+-- Define the desired servers to be installed.
+local servers = {
   "bashls",
   "pyright",
   "rust_analyzer",
-  -- "sumneko_lua",
-  -- "lua_ls",
+  "lua_ls"
 }
 
-for _, name in pairs(lang_servers) do
-  local found, server = require("nvim-lsp-installer").get_server(name)
-  if found and not server:is_installed() then
-    print("Installing [" .. name .. "]")
-    server:install()
-  end
+local mason_lsp, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not mason_lsp then
+  return
 end
 
-local setup_server = {
-  sumneko_lua = function(opts)
-    opts.settings = {
-      Lua = {
-        diagnostics = {
-          globals = {
-            "vim", "use"
+mason_lspconfig.setup({
+  ensure_installed = servers
+})
+
+-- Custom definition of on_attach function
+local custom_on_attach = function(_, _)
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+  vim.keymap.set("n", "gr", vim.lsp.buf.rename, {})
+end
+
+local lspconfig_status, lspconfig = pcall(require, "lspconfig")
+if not lspconfig_status then
+  return
+end
+
+-- Servers individual configuration; if there are any options besides
+-- the default ones it should be extended as part of the @opts table.
+for _, server in pairs(servers) do
+  local opts = {
+    on_attach = custom_on_attach,
+    capabilities = require("cmp_nvim_lsp").default_capabilities()
+  }
+  if server == "lua_ls" then
+    local lua_ls_opts = {
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { "vim", "use" }
           }
         }
       }
     }
-  end,
-}
-
-require("nvim-lsp-installer").on_server_ready(function(server)
-  local opts = {
-    on_attach = function(_, bufnr)
-      vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-      local opts = {buffer = bufnr}
-      vim.keymap.set("n", "<Leader>h", vim.lsp.buf.hover, opts)
-      vim.keymap.set("n", "<Leader>i", vim.lsp.buf.definition, opts)
-      vim.keymap.set("n", "<Leader>r", vim.lsp.buf.rename, opts)
-    end,
-    capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-  }
-  if setup_server[server.name] then
-    setup_server[server.name](opts)
+    opts = vim.tbl_deep_extend("force", lua_ls_opts, opts)
   end
 
-  server:setup(opts)
-end)
+  lspconfig[server].setup(opts)
+end

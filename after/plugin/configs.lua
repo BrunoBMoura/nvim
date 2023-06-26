@@ -1,7 +1,26 @@
-require("indent_blankline").setup()
-require("nvim-autopairs").setup()
-require("nvim-surround").setup()
-require("gitsigns").setup({
+local ib_status, indent_blankline = pcall(require, "indent_blankline")
+if not ib_status then
+  return
+end
+indent_blankline .setup()
+
+local na_status, nvim_autopairs = pcall(require, "nvim-autopairs")
+if not na_status then
+  return
+end
+nvim_autopairs.setup()
+
+local ns_status, nvim_surround = pcall(require, "nvim-surround")
+if not ns_status then
+  return
+end
+nvim_surround.setup()
+
+local gs_status, gitsigns = pcall(require, "gitsigns")
+if not gs_status then
+  return
+end
+gitsigns.setup({
   preview_config = {
     border = "rounded",
     row = 1,
@@ -9,13 +28,31 @@ require("gitsigns").setup({
   }
 })
 
-require("nvim-treesitter.configs").setup({
+local dv_status, diffview = pcall(require, "diffview")
+if not dv_status then
+  return
+end
+diffview.setup({
+  view = {
+    merge_tool = {
+      layout = "diff3_vertical",
+      disable_diagnostics = true,
+    }
+  }
+})
+
+local ts_status, nvim_treesitter_configs = pcall(require, "nvim-treesitter.configs")
+if not ts_status then
+  return
+end
+nvim_treesitter_configs.setup({
   ensure_installed = {
-    "c", "cpp", "lua",
+    "c",
+    "cpp",
+    "lua",
     "rust",
     "python",
     "ruby",
-    "vim",
     "comment"
   },
   highlight = {
@@ -40,7 +77,11 @@ require('telescope').setup({
   },
 })
 
-require("treesitter-context").setup({
+local tsctx_status, treesitter_context = pcall(require, "treesitter-context")
+if not tsctx_status then
+  return
+end
+treesitter_context.setup({
   enable = true,
   max_lines = 0,
   trim_scope = "outer",
@@ -56,11 +97,16 @@ require("treesitter-context").setup({
   mode = "cursor"
 })
 
--- Local nvim-tree floating window ratios.
-local height_ratio = 0.8
-local width_ratio = 0.8
+local nt_status, nvim_tree = pcall(require, "nvim-tree")
+if not nt_status then
+  return
+end
 
-require("nvim-tree").setup({
+-- Local nvim-tree floating window ratios.
+local HEIGHT_RATIO = 0.8
+local WIDTH_RATIO = 0.8
+
+nvim_tree.setup({
   sort_by = "case_sensitive",
   view = {
     float = {
@@ -68,8 +114,8 @@ require("nvim-tree").setup({
       open_win_config = function()
         local screen_w = vim.opt.columns:get()
         local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
-        local window_w = screen_w * width_ratio
-        local window_h = screen_h * height_ratio
+        local window_w = screen_w * WIDTH_RATIO
+        local window_h = screen_h * HEIGHT_RATIO
         local window_w_int = math.floor(window_w)
         local window_h_int = math.floor(window_h)
         local center_x = (screen_w - window_w) / 2
@@ -97,11 +143,3 @@ require("nvim-tree").setup({
   }
 })
 
-require("diffview").setup({
-  view = {
-    merge_tool = {
-      layout = "diff3_vertical",
-      disable_diagnostics = true,
-    }
-  }
-})

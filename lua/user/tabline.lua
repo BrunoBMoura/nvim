@@ -139,7 +139,7 @@ function M.eval_style(index, cell, is_selected)
         local cell_content = utils.contour(text, M._data.tokens.separators)
         return string.format("%s%s", M._data.colors.separator, cell_content)
       else
-        cell_content = utils.contour(cell, M._data.tokens.separators)
+        local cell_content = utils.contour(cell, M._data.tokens.separators)
         return string.format("%s%s", M._data.colors.inactive_tab, cell_content)
       end
     end

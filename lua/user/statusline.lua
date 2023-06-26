@@ -20,7 +20,7 @@ end
 -- Defines all of the highlight groups to link the @default group when
 -- there is no configuration.
 function utils.set_non_config_highlights(highlights, default_group)
-  for name, hl_string in pairs(highlights) do
+  for _, hl_string in pairs(highlights) do
     vim.api.nvim_set_hl(0, hl_string, {link = default_group})
   end
 end
