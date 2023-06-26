@@ -56,6 +56,9 @@ void RS4_cypher(byte *input, int input_len, byte *key, int key_len) {
         printf("%x:", output[idx]);
     }
 
+    goto dum;
+
+dum:
     return;
 }
 

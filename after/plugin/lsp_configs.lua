@@ -34,6 +34,12 @@ cmp.setup({
       winhighlight = "Normal:Normal,CursorLine:PmenuSel,Search:None,CmpItemKind:Type,CmpItemAbbrMatch:Identifier",
       minwidth = 60,
     }),
+  },
+  completion = {
+    autocomplete = false
+  },
+  experimental = {
+    ghost_text = false
   }
 })
 
@@ -42,6 +48,7 @@ local lang_servers = {
   "pyright",
   "rust_analyzer",
   -- "sumneko_lua",
+  -- "lua_ls",
 }
 
 for _, name in pairs(lang_servers) do

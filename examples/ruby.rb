@@ -12,12 +12,17 @@ class Dummy
       example2: 'example',
       example3: 'example'
     }
+
     @elements.each_with_index do |obj, obj_idx|
       next unless obj.is_a? Dummy
 
       obj.to_hash.each { |key, val| self_hash["#{key}_dummy_#{obj_idx}".to_sym] = val }
     end
     self_hash
+  end
+
+  def a
+    p Time.now
   end
 
   def some_method

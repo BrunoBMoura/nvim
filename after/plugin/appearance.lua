@@ -27,10 +27,11 @@ require("kanagawa").setup({
       WinSeparator               = { fg = colors.palette.dragonBlack4 },
       IndentBlanklineChar        = { fg = colors.palette.dragonBlack4 },
       TelescopeBorder            = { fg = colors.palette.dragonBlack4, bg = colors.palette.dragonBlack3 },
+      NvimTreeIndentMarker       = { fg = colors.palette.dragonBlack6 },
       ["@string.escape"]         = { bold = false },
       ["@keyword.operator"]      = { fg = colors.palette.dragonRed, bold = false },
       ["@constant.builtin"]      = { fg = colors.palette.dragonOrange, italic = false },
-      ["@label"]                 = { fg = colors.palette.dragonGray, italic = false },
+      ["@label"]                 = { fg = colors.palette.dragonPink, italic = false },
       ["@comment"]               = { fg = colors.palette.dragonBlack6, italic = false }
     }
   end
