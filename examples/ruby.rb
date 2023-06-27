@@ -21,8 +21,12 @@ class Dummy
     self_hash
   end
 
-  def a
-    p Time.now
+  def self.time_this
+    return unless block_given?
+
+    start_time = Time.now
+    yield
+    Time.now - start_time
   end
 
   def some_method

@@ -28,7 +28,6 @@ local configs = {
   laststatus     = 3,
   showtabline    = 3,
   list           = true,
-  pumblend       = 1,
   fillchars      = {
     stl = "―", fold = "۰", diff = "·"
   },

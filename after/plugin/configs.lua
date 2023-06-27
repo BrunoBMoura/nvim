@@ -1,25 +1,31 @@
+
+
 local ib_status, indent_blankline = pcall(require, "indent_blankline")
 if not ib_status then
   return
 end
+
 indent_blankline .setup()
 
 local na_status, nvim_autopairs = pcall(require, "nvim-autopairs")
 if not na_status then
   return
 end
+
 nvim_autopairs.setup()
 
 local ns_status, nvim_surround = pcall(require, "nvim-surround")
 if not ns_status then
   return
 end
+
 nvim_surround.setup()
 
 local gs_status, gitsigns = pcall(require, "gitsigns")
 if not gs_status then
   return
 end
+
 gitsigns.setup({
   preview_config = {
     border = "rounded",
@@ -32,6 +38,7 @@ local dv_status, diffview = pcall(require, "diffview")
 if not dv_status then
   return
 end
+
 diffview.setup({
   view = {
     merge_tool = {
@@ -45,6 +52,7 @@ local ts_status, nvim_treesitter_configs = pcall(require, "nvim-treesitter.confi
 if not ts_status then
   return
 end
+
 nvim_treesitter_configs.setup({
   ensure_installed = {
     "c",
@@ -81,6 +89,7 @@ local tsctx_status, treesitter_context = pcall(require, "treesitter-context")
 if not tsctx_status then
   return
 end
+
 treesitter_context.setup({
   enable = true,
   max_lines = 0,
@@ -109,6 +118,8 @@ local WIDTH_RATIO = 0.8
 nvim_tree.setup({
   sort_by = "case_sensitive",
   view = {
+    -- Set the positioning of nvim-tree floating window to be centered
+    -- to the screens display.
     float = {
       enable = true,
       open_win_config = function()
@@ -142,4 +153,3 @@ nvim_tree.setup({
     dotfiles = true
   }
 })
-

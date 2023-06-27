@@ -16,38 +16,53 @@ end
 local packer_bootstrap = ensure_packer()
 
 return require("packer").startup(function(use)
+  -- Packer package manager.
   use "wbthomason/packer.nvim"
+  -- Git binds.
   use "tpope/vim-fugitive"
+  -- Better automatic surrounding.
   use "kylechui/nvim-surround"
+  -- Better commenting written in lua.
   use 'b3nj5m1n/kommentary'
+  -- Automatically set pairs of tokens.
   use "windwp/nvim-autopairs"
+  -- Display identation levels.
   use "lukas-reineke/indent-blankline.nvim"
+  -- Enhanced file diff display.
   use "sindrets/diffview.nvim"
+  -- Git related signs on status column.
   use "lewis6991/gitsigns.nvim"
+  -- Kanagawa colorscheme.
   use "rebelot/kanagawa.nvim"
+  -- Copilot client.
   use "github/copilot.vim"
+  -- Treesitter, bor better code highlighting.
   use {
     "nvim-treesitter/nvim-treesitter",
     "nvim-treesitter/nvim-treesitter-context"
   }
+  -- Fuzzy finder and displayer.
   use {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope.nvim"
   }
+  -- File explorer.
   use {
     "kyazdani42/nvim-tree.lua",
     "kyazdani42/nvim-web-devicons"
   }
+  -- Simple LSP configuration.
   use {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig"
   }
+  -- Completion and snip engine.
   use {
+    "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/nvim-cmp"
+    "L3MON4D3/LuaSnip"
   }
-  use "L3MON4D3/LuaSnip"
 
   if packer_bootstrap then
     require("packer").sync()

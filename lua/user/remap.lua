@@ -53,27 +53,33 @@ nnoremap("<C-Up>", ":resize +2 <CR>")
 nnoremap("<C-Left>", ":vertical resize -2 <CR>")
 nnoremap("<C-Right>", ":vertical resize +2 <CR>")
 
--- Lsp related
-nnoremap("<leader>lb", ":LspStart<CR>")
-nnoremap("<leader>le", ":LspStop<CR>")
-
--- Plugin binds
+-- Plugin binds --
+-- Overall file, grep and buffers explorers.
 nnoremap("<leader>lg", ":Telescope live_grep <CR>")
 nnoremap("<leader>hl", ":Telescope highlights <CR>")
 nnoremap("<leader>ff", ":Telescope find_files <CR>")
 nnoremap("<leader>fb", ":Telescope buffers <CR>")
 nnoremap("<leader>/", function ()
-  require("telescope.builtin").grep_string({ search = vim.fn.input("Grep >")});
+  require("telescope.builtin").grep_string({
+    search = vim.fn.input("Grep >")
+  });
 end)
 vnoremap("<leader>/", function ()
-  require("telescope.builtin").grep_string(vim.fn.getline("'<", "'>"));
+  require("telescope.builtin").grep_string(
+  -- Same as above, but searching selected text in visual mode.
+    vim.fn.getline("'<", "'>")
+  );
 end)
 
+-- File tree related.
 nnoremap("<leader>e", ":NvimTreeToggle<CR>")
 nnoremap("<leader>F", ":NvimTreeFindFile<CR>")
 nnoremap("<leader>R", ":NvimTreeRefresh<CR>")
-nnoremap("<leader>gb", ":Git blame <CR>")
-nnoremap("<leader>gp", ":Gitsigns preview_hunk<CR>")
+
+-- All versioning related.
+nnoremap("<A-b>", ":Git blame <CR>")
+nnoremap("<A-e>", ":Gitsigns preview_hunk<CR>")
+nnoremap("<A-n>", ":Gitsigns next_hunk<CR>")
+nnoremap("<A-p>", ":Gitsigns prev_hunk<CR>")
 nnoremap("<leader>do", ":DiffviewOpen <CR>")
 nnoremap("<leader>dh", ":DiffviewFileHistory <CR>")
-nnoremap("<leader>dt", ":diffthis <CR>")

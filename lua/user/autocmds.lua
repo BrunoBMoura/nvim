@@ -8,12 +8,11 @@ autocmd(
 )
 
 local lang_meta_op = {
-  c      = {format = "clang-format"},
-  rust   = {format = "rustfmt", build = "cargo build", exec = "cargo run"},
-  ruby   = {small_indent = true},
-  lua    = {small_indent = true},
-  python = {exec = "python"},
-  text   = {cross_format = "ruby"}
+  c      = { format = "clang-format"},
+  rust   = { format = "rustfmt", build = "cargo build", exec = "cargo run"},
+  ruby   = { small_indent = true, exec = "ruby" },
+  lua    = { small_indent = true, exec = "lua" },
+  python = { exec = "python" }
 }
 
 for lang, data in pairs(lang_meta_op) do

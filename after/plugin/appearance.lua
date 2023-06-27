@@ -66,7 +66,7 @@ statusline_colors = {
   insert      = { fg = kolors.palette.dragonGreen,  bold = true },
   select      = { fg = kolors.palette.dragonViolet, bold = true },
   replace     = { fg = kolors.palette.dragonYellow, bold = true },
-  quickfix    = { fg = kolors.palette.dragonAsh,    bold = true },
+  quickfix    = { fg = kolors.palette.dragonOrange, bold = true },
   shell       = { fg = kolors.palette.dragonAqua,   bold = true },
   terminal    = { fg = kolors.palette.dragonBlue,   bold = true },
   confirm     = { fg = kolors.palette.dragonPink,   bold = true },
