@@ -1,5 +1,5 @@
-local tabline_colors = {}
-local statusline_colors = {}
+local tabline_colors = nil
+local statusline_colors = nil
 local kolors = nil
 
 local kanagawa_status, kanagawa = pcall(require, "kanagawa")
@@ -71,7 +71,7 @@ statusline_colors = {
   terminal    = { fg = kolors.palette.dragonBlue,   bold = true },
   confirm     = { fg = kolors.palette.dragonPink,   bold = true },
   file_name   = { fg = kolors.palette.dragonAsh,    bold = true },
-  line_filler = { fg = kolors.palette.dragonBlack4 },
+  line_filler = { fg = kolors.palette.dragonBlack4 }
 }
 
 ::no_colorscheme_loaded::

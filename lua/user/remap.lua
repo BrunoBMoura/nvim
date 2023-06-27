@@ -78,8 +78,8 @@ nnoremap("<leader>R", ":NvimTreeRefresh<CR>")
 
 -- All versioning related.
 nnoremap("<A-b>", ":Git blame <CR>")
-nnoremap("<A-e>", ":Gitsigns preview_hunk<CR>")
-nnoremap("<A-n>", ":Gitsigns next_hunk<CR>")
-nnoremap("<A-p>", ":Gitsigns prev_hunk<CR>")
+nnoremap("<A-p>", ":Gitsigns preview_hunk<CR>")
+nnoremap("<A-d>", ":Gitsigns next_hunk<CR>")
+nnoremap("<A-u>", ":Gitsigns prev_hunk<CR>")
 nnoremap("<leader>do", ":DiffviewOpen <CR>")
 nnoremap("<leader>dh", ":DiffviewFileHistory <CR>")
