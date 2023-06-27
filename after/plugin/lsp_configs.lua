@@ -12,21 +12,10 @@ cmp.setup({
   -- Default behavioural usage and bindings whenever selecting cmp options.
   mapping = cmp.mapping.preset.insert({
     ["<C-Space>"] = cmp.mapping.complete(),
-    ["<Enter>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
+    ["<Enter>"] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true
+    }),
   }),
   sources = {
     {name = "nvim_lsp"},
@@ -40,12 +29,9 @@ cmp.setup({
       minwidth = 60,
     }),
   },
-  --[[ completion = {
-    autocomplete = false
-  },
   experimental = {
     ghost_text = false
-  } ]]
+  }
 })
 
 -- Set the default border width as well as its type
@@ -105,6 +91,7 @@ for _, server in pairs(servers) do
     on_attach = custom_on_attach,
     capabilities = require("cmp_nvim_lsp").default_capabilities()
   }
+
   if server == "lua_ls" then
     local lua_ls_opts = {
       settings = {
@@ -120,3 +107,10 @@ for _, server in pairs(servers) do
 
   lspconfig[server].setup(opts)
 end
+
+local copilot_status, copilot = pcall(require, "copilot")
+if not copilot_status then
+  return
+end
+
+copilot.setup()

@@ -36,6 +36,7 @@ return require("packer").startup(function(use)
   use "rebelot/kanagawa.nvim"
   -- Copilot client.
   use "github/copilot.vim"
+  -- use "zbirenbaum/copilot.vim"
   -- Treesitter, bor better code highlighting.
   use {
     "nvim-treesitter/nvim-treesitter",
