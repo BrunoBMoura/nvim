@@ -1,7 +1,6 @@
 local nnoremap = require("user.keymap").nnoremap
 local vnoremap = require("user.keymap").vnoremap
 local tnoremap = require("user.keymap").tnoremap
-local inoremap = require("user.keymap").inoremap
 
 -- Refresh ctags
 nnoremap("<leader>c", ":! ctags -R . <CR>")
@@ -32,7 +31,7 @@ nnoremap("<leader>rw", "cw<C-r>0<C-c>")
 vnoremap("p", '"_dP')
 
 -- Terminal split
-nnoremap("<leader>T", ":120vsplit term:// bash <CR>i")
+nnoremap("<leader>T", ":130vsplit term:// bash <CR>i")
 tnoremap("<leader><Esc>", "<C-\\><C-n>")
 
 -- Copy paste from outside/within vim; requires xclip
@@ -41,7 +40,7 @@ nnoremap("<leader>y", [["+y]])
 nnoremap("<leader>Y", [["+Y]])
 
 -- Visual mode identation
-vnoremap("<Tab>",   ">gv")
+vnoremap("<Tab>", ">gv")
 vnoremap("<S-Tab>", "<gv")
 
 -- Visual mode line movement
@@ -54,18 +53,25 @@ nnoremap("<C-Up>", ":resize +2 <CR>")
 nnoremap("<C-Left>", ":vertical resize -2 <CR>")
 nnoremap("<C-Right>", ":vertical resize +2 <CR>")
 
--- Plugin binds --
+--        _             _         _     _           _
+--  _ __ | |_   _  __ _(_)_ __   | |__ (_)_ __   __| |___
+-- | '_ \| | | | |/ _` | | '_ \  | '_ \| | '_ \ / _` / __|
+-- | |_) | | |_| | (_| | | | | | | |_) | | | | | (_| \__ \
+-- | .__/|_|\__,_|\__, |_|_| |_| |_.__/|_|_| |_|\__,_|___/
+-- |_|            |___/
+
 -- Overall file, grep and buffers explorers.
 nnoremap("<leader>lg", ":Telescope live_grep <CR>")
-nnoremap("<leader>hl", ":Telescope highlights <CR>")
+nnoremap("<leader>fh", ":Telescope highlights <CR>")
 nnoremap("<leader>ff", ":Telescope find_files <CR>")
 nnoremap("<leader>fb", ":Telescope buffers <CR>")
-nnoremap("<leader>/", function ()
+nnoremap("<leader>/", function()
   require("telescope.builtin").grep_string({
+    -- Grep for the word under the cursor.
     search = vim.fn.input("Grep >")
   });
 end)
-vnoremap("<leader>/", function ()
+vnoremap("<leader>/", function()
   require("telescope.builtin").grep_string(
   -- Same as above, but searching selected text in visual mode.
     vim.fn.getline("'<", "'>")
@@ -77,10 +83,15 @@ nnoremap("<leader>e", ":NvimTreeToggle<CR>")
 nnoremap("<leader>F", ":NvimTreeFindFile<CR>")
 nnoremap("<leader>R", ":NvimTreeRefresh<CR>")
 
--- All versioning related.
-nnoremap("<A-b>", ":Git blame <CR>")
+-- Git related.
+nnoremap("<leader>gb", ":Git blame <CR>")
+nnoremap("<leader>gl", ":vertical Git log --graph <CR>")
+
+-- Git hunk navigation.
 nnoremap("<A-p>", ":Gitsigns preview_hunk<CR>")
-nnoremap("<A-d>", ":Gitsigns next_hunk<CR>")
-nnoremap("<A-u>", ":Gitsigns prev_hunk<CR>")
+nnoremap("<A-j>", ":Gitsigns next_hunk<CR>")
+nnoremap("<A-k>", ":Gitsigns prev_hunk<CR>")
+
+-- Diffview related.
 nnoremap("<leader>do", ":DiffviewOpen <CR>")
 nnoremap("<leader>dh", ":DiffviewFileHistory <CR>")

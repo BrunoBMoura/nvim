@@ -1,5 +1,5 @@
-# Neovim Configuration
+# Neovim
 
-## Dependencies
+## Dependencies tracking
 
-git, ttf-jetbrains-mono, nerd-fonts, npm and tree-sitter
+ctags, git, ttf-jetbrains-mono, nerd-fonts, npm and tree-sitter
