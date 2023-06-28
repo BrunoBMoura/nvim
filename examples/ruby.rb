@@ -22,7 +22,7 @@ class Dummy
   end
 
   def self.time_this
-    return unless block_given?
+    raise "No block given for function #{__method__}!" unless block_given?
 
     start_time = Time.now
     yield
@@ -35,5 +35,14 @@ class Dummy
       (another_self_hash[obj] |= []) << obj_idx
     end
     @stuff << Stuff.new(&:call?)
+  end
+
+  describe Dummy do
+    context "Do NOT believe this text" do
+      it "Nor in this one" do
+        dummy = Dummy.new
+        expect(message).to eq Dummy.class
+      end
+    end
   end
 end
