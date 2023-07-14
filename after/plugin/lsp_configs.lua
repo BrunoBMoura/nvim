@@ -60,7 +60,8 @@ local servers = {
   "bashls",
   "pyright",
   "rust_analyzer",
-  "lua_ls"
+  "lua_ls",
+  -- "clangd"
 }
 
 local mason_lsp, mason_lspconfig = pcall(require, "mason-lspconfig")

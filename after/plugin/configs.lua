@@ -1,5 +1,3 @@
-
-
 local ib_status, indent_blankline = pcall(require, "indent_blankline")
 if not ib_status then
   return
@@ -150,6 +148,6 @@ nvim_tree.setup({
     }
   },
   filters = {
-    dotfiles = true
+    -- dotfiles = true
   }
 })

@@ -88,9 +88,13 @@ function M.mode(override)
 end
 
 function M.file_path()
+  local relative_path = function()
+    return vim.fn.fnamemodify(vim.fn.expand("%"), ":~:.")
+  end
+
   local file_path = ""
   local icon = " "
-  local file_name = vim.fn.expand("%") == "" and "No_file" or vim.fn.expand("%:T")
+  local file_name = vim.fn.expand("%") == "" and "No_file" or relative_path()
 
   if file_name == "No_file" then
     file_path = utils.contour(file_name, M._data.tokens.separators)

@@ -39,7 +39,3 @@ local configs = {
 for key, val in pairs(configs) do
   vim.opt[key] = val
 end
-
--- write a function that sums two numbers
--- and returns the results of the sum
-
