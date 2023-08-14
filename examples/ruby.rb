@@ -30,11 +30,14 @@ class Dummy
   end
 
   def some_method
-    another_self_hash = {}
-    @elements.each_with_index do |obj, obj_idx|
-      (another_self_hash[obj] |= []) << obj_idx
+    total_time = time_this do
+      another_self_hash = {}
+      @elements.each_with_index do |obj, obj_idx|
+        (another_self_hash[obj] |= []) << obj_idx
+      end
+      @stuff << Stuff.new(&:call?)
+      super
     end
-    @stuff << Stuff.new(&:call?)
   end
 
   describe Dummy do

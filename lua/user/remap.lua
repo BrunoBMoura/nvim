@@ -88,9 +88,9 @@ nnoremap("<leader>gb", ":Git blame <CR>")
 nnoremap("<leader>gl", ":vertical Git log --graph <CR>")
 
 -- Git hunk navigation.
-nnoremap("<A-p>", ":Gitsigns preview_hunk<CR>")
-nnoremap("<A-j>", ":Gitsigns next_hunk<CR>")
-nnoremap("<A-k>", ":Gitsigns prev_hunk<CR>")
+nnoremap("<leader>gs", ":Gitsigns preview_hunk<CR>")
+nnoremap("<leader>gn", ":Gitsigns next_hunk<CR>")
+nnoremap("<leader>gp", ":Gitsigns prev_hunk<CR>")
 
 -- Diffview related.
 nnoremap("<leader>do", ":DiffviewOpen <CR>")

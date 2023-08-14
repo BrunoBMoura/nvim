@@ -3,7 +3,7 @@ if not ib_status then
   return
 end
 
-indent_blankline .setup()
+indent_blankline.setup()
 
 local na_status, nvim_autopairs = pcall(require, "nvim-autopairs")
 if not na_status then
