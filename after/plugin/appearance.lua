@@ -70,7 +70,7 @@ statusline_colors = {
   shell       = { fg = kolors.palette.dragonAqua,   bold = true },
   terminal    = { fg = kolors.palette.dragonBlue,   bold = true },
   confirm     = { fg = kolors.palette.dragonPink,   bold = true },
-  file_name   = { fg = kolors.palette.dragonBlack6,    bold = true },
+  file_name   = { fg = kolors.palette.dragonBlack6, bold = true },
   line_filler = { fg = kolors.palette.dragonBlack4 }
 }
 

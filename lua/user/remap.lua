@@ -21,6 +21,7 @@ nnoremap("<S-h>", ":bprevious<CR>")
 -- Lazy movement
 nnoremap("<C-d>", "<C-d>zz")
 nnoremap("<C-u>", "<C-u>zz")
+nnoremap("<S-u>", "<C-r>")
 
 -- Lazy saving/quitting
 nnoremap("<leader>w", ":w<CR>")

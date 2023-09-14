@@ -11,9 +11,9 @@ namespace Simple {
 
     class Dog : public Animal {
         public:
-            void walk() { /**/ }
-            void eat() { /**/ }
-            void something_else() { /**/ }
+            void walk() {}
+            void eat() {}
+            void something_else() {}
     };
 
     template <typename T>
@@ -43,6 +43,10 @@ void main() {
         std::cout << *it << std::endl;
         it.walk();
     }
+
+    std::vector<std::string> another_vet = {
+        "Any", "String", "Here", "Will", "Work"
+    };
 
     return;
 }
