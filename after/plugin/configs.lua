@@ -149,5 +149,8 @@ nvim_tree.setup({
   },
   filters = {
     -- dotfiles = true
+  },
+  git = {
+    ignore = false
   }
 })
