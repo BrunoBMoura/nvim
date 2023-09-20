@@ -41,8 +41,6 @@ kanagawa.setup({
       NvimTreeIndentMarker       = { fg = colors.palette.dragonBlack6 },
       ["@string.escape"]         = { bold = false },
       ["@keyword.operator"]      = { fg = colors.palette.dragonRed, bold = false },
-      ["@constant.builtin"]      = { fg = colors.palette.dragonOrange, italic = false },
-      ["@label"]                 = { fg = colors.palette.dragonOrange, italic = false },
       ["@comment"]               = { fg = colors.palette.dragonBlack6, italic = false }
     }
   end

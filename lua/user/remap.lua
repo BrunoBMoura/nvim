@@ -54,6 +54,9 @@ nnoremap("<C-Up>", ":resize +2 <CR>")
 nnoremap("<C-Left>", ":vertical resize -2 <CR>")
 nnoremap("<C-Right>", ":vertical resize +2 <CR>")
 
+
+nnoremap("<C-a>", "ggVG")
+
 --        _             _         _     _           _
 --  _ __ | |_   _  __ _(_)_ __   | |__ (_)_ __   __| |___
 -- | '_ \| | | | |/ _` | | '_ \  | '_ \| | '_ \ / _` / __|
@@ -87,6 +90,7 @@ nnoremap("<leader>R", ":NvimTreeRefresh<CR>")
 -- Git related.
 nnoremap("<leader>gb", ":Git blame <CR>")
 nnoremap("<leader>gl", ":vertical Git log --graph <CR>")
+nnoremap("<leader>gf", ":Git log --oneline -- %<CR>")
 
 -- Git hunk navigation.
 nnoremap("<leader>gs", ":Gitsigns preview_hunk<CR>")
