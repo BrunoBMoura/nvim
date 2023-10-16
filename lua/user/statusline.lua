@@ -146,12 +146,10 @@ function M.refresh()
   -- Return a string containing the line M._data information with all of its
   -- fields properly concatenated;
   local is_list = M.is_list()
+  local mode = is_list and M.mode("qf") or M.mode()
+  local path = is_list and "" or M.file_path()
   return string.format(
-    "%s%s%s%s",
-    is_list and M.mode("qf") or M.mode(),
-    is_list and "" or M.file_path(),
-    M.highlighted_line_filler(),
-    M.file_metadata()
+    "%s%s%s%s", mode, path, M.highlighted_line_filler(), M.file_metadata()
   )
 end
 

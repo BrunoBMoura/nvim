@@ -33,7 +33,7 @@ local configs = {
   },
   listchars      = {
     tab = "»·", trail = "·", eol = "¬"
-  }
+  },
 }
 
 for key, val in pairs(configs) do

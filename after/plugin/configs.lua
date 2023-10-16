@@ -1,9 +1,14 @@
-local ib_status, indent_blankline = pcall(require, "indent_blankline")
+local ib_status, indent_blankline = pcall(require, "ibl")
 if not ib_status then
   return
 end
 
-indent_blankline.setup()
+indent_blankline.setup({
+  -- whitespace = { highlight = { "Whitespace", "NonText" } },
+  -- indent = { char = "|" },
+  -- indent = { char =  "▏" },
+  scope = { exclude = { language = { "lua", "c", "cpp", "rust", "ruby", "python" } } },
+})
 
 local na_status, nvim_autopairs = pcall(require, "nvim-autopairs")
 if not na_status then

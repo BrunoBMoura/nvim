@@ -57,6 +57,7 @@ fn main() {
     ];
 
     let mut map: HashMap<_, _> = keys.into_iter().zip(vals.into_iter()).collect();
+
     println!("{:?}", map);
 
     let new_key = 5;

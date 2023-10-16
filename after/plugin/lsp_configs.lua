@@ -97,7 +97,7 @@ for _, server in pairs(servers) do
       settings = {
         Lua = {
           diagnostics = {
-            globals = { "vim", "use" }
+            globals = { "vim", "use", "awesome", "client" }
           }
         }
       }

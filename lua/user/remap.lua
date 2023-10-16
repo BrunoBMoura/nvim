@@ -54,7 +54,7 @@ nnoremap("<C-Up>", ":resize +2 <CR>")
 nnoremap("<C-Left>", ":vertical resize -2 <CR>")
 nnoremap("<C-Right>", ":vertical resize +2 <CR>")
 
-
+-- Select all text on the buffer
 nnoremap("<C-a>", "ggVG")
 
 --        _             _         _     _           _
