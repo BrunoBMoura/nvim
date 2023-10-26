@@ -4,9 +4,7 @@ if not ib_status then
 end
 
 indent_blankline.setup({
-  -- whitespace = { highlight = { "Whitespace", "NonText" } },
-  -- indent = { char = "|" },
-  -- indent = { char =  "▏" },
+  indent = { char = "|" },
   scope = { exclude = { language = { "lua", "c", "cpp", "rust", "ruby", "python" } } },
 })
 
@@ -79,6 +77,7 @@ require('telescope').setup({
     layout_config = {
       prompt_position = "bottom",
     },
+    -- file_ignore_patterns = {},
   },
   pickers = {
     find_files = {

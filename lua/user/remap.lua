@@ -67,7 +67,11 @@ nnoremap("<C-a>", "ggVG")
 -- Overall file, grep and buffers explorers.
 nnoremap("<leader>lg", ":Telescope live_grep <CR>")
 nnoremap("<leader>fh", ":Telescope highlights <CR>")
-nnoremap("<leader>ff", ":Telescope find_files <CR>")
+nnoremap("<leader>ff", function()
+  require("telescope.builtin").find_files({
+    no_ignore = true
+  })
+end)
 nnoremap("<leader>fb", ":Telescope buffers <CR>")
 nnoremap("<leader>/", function()
   require("telescope.builtin").grep_string({
