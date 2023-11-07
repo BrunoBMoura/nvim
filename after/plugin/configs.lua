@@ -4,8 +4,12 @@ if not ib_status then
 end
 
 indent_blankline.setup({
-  indent = { char = "▏" },
-  scope = { exclude = { language = { "lua", "c", "cpp", "rust", "ruby", "python" } } },
+  indent = { char = "▎" },
+  scope = {
+    exclude = {
+      language = { "lua", "c", "cpp", "rust", "ruby", "python" }
+    }
+  },
 })
 
 local na_status, nvim_autopairs = pcall(require, "nvim-autopairs")

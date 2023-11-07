@@ -37,7 +37,7 @@ kanagawa.setup({
       FloatBorder                = { bg = "none", fg = colors.palette.dragonBlack4 },
       WinSeparator               = { fg = colors.palette.dragonBlack4 },
       TelescopeBorder            = { fg = colors.palette.dragonBlack4, bg = colors.palette.dragonBlack3 },
-      IndentBlanklineChar        = { fg = colors.palette.dragonAsh },
+      IblIndent                  = { fg = colors.palette.dragonBlack4 },
       NvimTreeIndentMarker       = { fg = colors.palette.dragonBlack6 },
       ["@label"]                 = { fg = colors.palette.dragonYellow },
       ["@string.escape"]         = { bold = false },
