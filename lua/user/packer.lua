@@ -32,8 +32,11 @@ return require("packer").startup(function(use)
   use "sindrets/diffview.nvim"
   -- Git related signs on status column.
   use "lewis6991/gitsigns.nvim"
-  -- Kanagawa colorscheme.
-  use "rebelot/kanagawa.nvim"
+  -- Colorschemes.
+  use {
+    "rebelot/kanagawa.nvim",
+    "marko-cerovac/material.nvim"
+  }
   -- Copilot client.
   use "github/copilot.vim"
   -- use "zbirenbaum/copilot.vim"
