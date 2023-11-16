@@ -95,6 +95,10 @@ nnoremap("<leader>gf", ":Git log --oneline -- %<CR>")
 
 -- Git hunk navigation.
 nnoremap("<leader>gs", ":Gitsigns preview_hunk<CR>")
+
+
+
+
 nnoremap("<leader>gn", ":Gitsigns next_hunk<CR>")
 nnoremap("<leader>gp", ":Gitsigns prev_hunk<CR>")
 
