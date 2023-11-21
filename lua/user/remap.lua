@@ -89,16 +89,10 @@ nnoremap("<leader>F", ":NvimTreeFindFile<CR>")
 nnoremap("<leader>R", ":NvimTreeRefresh<CR>")
 
 -- Git related.
-nnoremap("<leader>gb", ":Git blame <CR>")
-nnoremap("<leader>gl", ":vertical Git log --graph <CR>")
-nnoremap("<leader>gf", ":Git log --oneline -- %<CR>")
+nnoremap("<leader>gb", ":Gitsigns blame_line<CR>")
 
 -- Git hunk navigation.
 nnoremap("<leader>gs", ":Gitsigns preview_hunk<CR>")
-
-
-
-
 nnoremap("<leader>gn", ":Gitsigns next_hunk<CR>")
 nnoremap("<leader>gp", ":Gitsigns prev_hunk<CR>")
 

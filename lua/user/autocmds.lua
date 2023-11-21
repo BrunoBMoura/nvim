@@ -25,8 +25,12 @@ for lang, data in pairs(lang_meta_op) do
   end
   if data.small_indent ~= nil then
     autocmd("FileType", {
-      command = "setlocal shiftwidth=2 tabstop=2",
-      pattern = lang
+      pattern = lang,
+      callback = function()
+        vim.opt_local.listchars:append({ leadmultispace = "▎ " })
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.tabstop = 2
+      end
     })
   end
   if data.exec then

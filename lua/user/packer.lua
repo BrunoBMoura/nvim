@@ -26,8 +26,6 @@ return require("packer").startup(function(use)
   use 'b3nj5m1n/kommentary'
   -- Automatically set pairs of tokens.
   use "windwp/nvim-autopairs"
-  -- Display identation levels.
-  use "lukas-reineke/indent-blankline.nvim"
   -- Enhanced file diff display.
   use "sindrets/diffview.nvim"
   -- Git related signs on status column.
