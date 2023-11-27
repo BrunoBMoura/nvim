@@ -1,8 +1,12 @@
 local tabline_colors = nil
 local statusline_colors = nil
 
--- local colorscheme = require("user.custom_schemes.kanagawa")
-local colorscheme = require("user.custom_schemes.material")
+local palettes = {
+  kanagawa = "user.custom_schemes.kanagawa",
+  material = "user.custom_schemes.material",
+}
+
+local colorscheme = require(palettes.kanagawa)
 tabline_colors = colorscheme.tabline_colors
 statusline_colors = colorscheme.statusline_colors
 

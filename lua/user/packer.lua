@@ -20,6 +20,7 @@ return require("packer").startup(function(use)
   use "wbthomason/packer.nvim"
   -- Git binds.
   use "tpope/vim-fugitive"
+  use "FabijanZulj/blame.nvim"
   -- Better automatic surrounding.
   use "kylechui/nvim-surround"
   -- Better commenting written in lua.

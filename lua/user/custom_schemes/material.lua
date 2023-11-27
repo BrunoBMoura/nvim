@@ -12,16 +12,17 @@ material.setup({
   },
   custom_highlights = {
     TelescopeBorder            = { fg = colors.syntax.comments },
-    ["@keyword"]               = { fg = colors.main.purple},
-    ["@label"]                 = { fg = colors.main.paleblue},
-    ["@punctuation"]           = { fg = colors.main.gray},
-    ["@punctuation.delimiter"] = { fg = colors.main.gray},
+    ["@keyword"]               = { fg = colors.main.purple },
+    ["@label"]                 = { fg = colors.main.paleblue },
+    ["@punctuation"]           = { fg = colors.main.gray },
+    ["@punctuation.delimiter"] = { fg = colors.main.gray },
     ["@type"]                  = { fg = colors.main.orange },
     NvimTreeIndentMarker       = { fg = colors.syntax.comments },
     MatchParen                 = { fg = colors.main.orange, bold = false },
     Macro                      = { fg = colors.main.cyan },
-    String                     = { fg = colors.main.darkgreen},
-    Operator                   = { fg = colors.main.darkred},
+    String                     = { fg = colors.main.darkgreen },
+    Operator                   = { fg = colors.main.darkred },
+    -- Identifier                 = { fg = colors.main.purple},
   },
   custom_colors = function(colors)
     colors.main.orange = colors.main.darkorange

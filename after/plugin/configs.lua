@@ -1,9 +1,9 @@
-local na_status, nvim_autopairs = pcall(require, "nvim-autopairs")
+--[[ local na_status, nvim_autopairs = pcall(require, "nvim-autopairs")
 if not na_status then
   return
 end
 
-nvim_autopairs.setup()
+nvim_autopairs.setup() ]]
 
 local ns_status, nvim_surround = pcall(require, "nvim-surround")
 if not ns_status then
@@ -91,7 +91,6 @@ treesitter_context.setup({
       "class",
       "function",
       "method",
-      "module",
     },
   },
   zindex = 20,

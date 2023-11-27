@@ -89,7 +89,7 @@ nnoremap("<leader>F", ":NvimTreeFindFile<CR>")
 nnoremap("<leader>R", ":NvimTreeRefresh<CR>")
 
 -- Git related.
-nnoremap("<leader>gb", ":Gitsigns blame_line<CR>")
+nnoremap("<leader>gb", ":ToggleBlame virtual<CR>")
 
 -- Git hunk navigation.
 nnoremap("<leader>gs", ":Gitsigns preview_hunk<CR>")
@@ -98,4 +98,4 @@ nnoremap("<leader>gp", ":Gitsigns prev_hunk<CR>")
 
 -- Diffview related.
 nnoremap("<leader>do", ":DiffviewOpen <CR>")
-nnoremap("<leader>dh", ":DiffviewFileHistory <CR>")
+nnoremap("<leader>dh", ":DiffviewFileHistory <CR> :resize -2 <CR>")
