@@ -18,28 +18,29 @@ local packer_bootstrap = ensure_packer()
 return require("packer").startup(function(use)
   -- Packer package manager.
   use "wbthomason/packer.nvim"
-  -- Git binds.
-  use "tpope/vim-fugitive"
-  use "FabijanZulj/blame.nvim"
-  -- Better automatic surrounding.
-  use "kylechui/nvim-surround"
-  -- Better commenting written in lua.
-  use 'b3nj5m1n/kommentary'
-  -- Automatically set pairs of tokens.
-  use "windwp/nvim-autopairs"
-  -- Enhanced file diff display.
-  use "sindrets/diffview.nvim"
-  -- Git related signs on status column.
-  use "lewis6991/gitsigns.nvim"
+  -- General quality of life.
+  use {
+    -- Automatic pairs.
+    "windwp/nvim-autopairs",
+    -- Better automatic surrounding.
+    "kylechui/nvim-surround",
+    -- Better commenting written in lua.
+    "b3nj5m1n/kommentary",
+    -- Copilot client.
+    "github/copilot.vim"
+  }
+  -- Git stuff and diff display.
+  use {
+    "tpope/vim-fugitive",
+    "sindrets/diffview.nvim",
+    "lewis6991/gitsigns.nvim"
+  }
   -- Colorschemes.
   use {
     "rebelot/kanagawa.nvim",
-    "marko-cerovac/material.nvim"
+    "marko-cerovac/material.nvim",
   }
-  -- Copilot client.
-  use "github/copilot.vim"
-  -- use "zbirenbaum/copilot.vim"
-  -- Treesitter, bor better code highlighting.
+  -- Treesitter.
   use {
     "nvim-treesitter/nvim-treesitter",
     "nvim-treesitter/nvim-treesitter-context"

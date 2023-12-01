@@ -89,7 +89,7 @@ nnoremap("<leader>F", ":NvimTreeFindFile<CR>")
 nnoremap("<leader>R", ":NvimTreeRefresh<CR>")
 
 -- Git related.
-nnoremap("<leader>gb", ":ToggleBlame virtual<CR>")
+nnoremap("<leader>gb", ":Git blame<CR>")
 
 -- Git hunk navigation.
 nnoremap("<leader>gs", ":Gitsigns preview_hunk<CR>")

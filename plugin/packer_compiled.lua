@@ -79,11 +79,6 @@ _G.packer_plugins = {
     path = "/home/bruno/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
-  ["blame.nvim"] = {
-    loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/blame.nvim",
-    url = "https://github.com/FabijanZulj/blame.nvim"
-  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/home/bruno/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
