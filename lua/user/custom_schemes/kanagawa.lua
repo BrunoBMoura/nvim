@@ -35,6 +35,8 @@ kanagawa.setup({
       TelescopeBorder            = { fg = colors.palette.dragonBlack4, bg = colors.palette.dragonBlack3 },
       IblIndent                  = { fg = colors.palette.dragonBlack4 },
       NvimTreeIndentMarker       = { fg = colors.palette.dragonBlack6 },
+      -- ["@variable.builtin"]      = { fg = colors.palette.dragonGray2 },
+      ["@symbol"]                = { fg = colors.palette.dragonGray2 },
       ["@label"]                 = { fg = colors.palette.dragonYellow },
       ["@string.escape"]         = { bold = false },
       ["@keyword.operator"]      = { fg = colors.palette.dragonRed, bold = false },
