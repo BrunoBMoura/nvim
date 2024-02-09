@@ -1,6 +1,7 @@
 local nnoremap = require("user.keymap").nnoremap
 local vnoremap = require("user.keymap").vnoremap
 local tnoremap = require("user.keymap").tnoremap
+local inoremap = require("user.keymap").inoremap
 
 -- Refresh ctags
 nnoremap("<leader>c", ":! ctags -R . <CR>")
@@ -99,3 +100,18 @@ nnoremap("<leader>gp", ":Gitsigns prev_hunk<CR>")
 -- Diffview related.
 nnoremap("<leader>do", ":DiffviewOpen <CR>")
 nnoremap("<leader>dh", ":DiffviewFileHistory <CR> :resize -2 <CR>")
+
+-- Snippets related.
+inoremap("<C-j>", function()
+  local ls = require("luasnip")
+  if ls.expand_or_jumpable() then
+     ls.expand_or_jump()
+  end
+end)
+
+inoremap("<C-k>", function()
+  local ls = require("luasnip")
+  if ls.jumpable(-1) then
+     ls.jump(-1)
+  end
+end)

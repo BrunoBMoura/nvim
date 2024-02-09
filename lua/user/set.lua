@@ -1,4 +1,7 @@
 vim.g.mapleader = " "
+-- Vim stuff when handling latex related files; simply easier to just set it
+-- to always be latex
+vim.g.tex_flavor = "latex"
 
 local configs = {
   tabstop        = 4,
