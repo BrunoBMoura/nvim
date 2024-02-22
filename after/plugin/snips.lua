@@ -27,8 +27,19 @@ local tex = {
   s("item", fmt([[\item \textbf{{\emph{{{}}}}} ]], {i(1)})),
 }
 
+local c = {
+  s("struct", fmt(
+    [[
+    /* {} definition. */
+    typedef struct {{
+      {}
+    }} {};
+    ]], {rep(1), i(0), i(1)})
+  ),
+}
+
 local custom_snips = {
-  tex = tex, lua = {}, c = {}, ruby = {},
+  tex = tex, c = c, lua = {}, ruby = {},
 }
 
 for filetype, snips in pairs(custom_snips) do

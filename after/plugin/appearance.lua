@@ -11,7 +11,7 @@ tabline_colors = colorscheme.tabline_colors
 statusline_colors = colorscheme.statusline_colors
 
 require("user.tabline").setup({
-  style =  "surrounded",
+  style  = "surrounded",
   tokens = {
     file_changed = '[+]',
     separators = { '|', '' },
@@ -22,7 +22,7 @@ require("user.tabline").setup({
 
 require("user.statusline").setup({
   tokens = {
-    separators = { '|', '' }
+    separators = { ' ', ' ' }
   },
   colors = statusline_colors
 })

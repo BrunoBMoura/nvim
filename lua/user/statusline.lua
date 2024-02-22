@@ -47,7 +47,10 @@ M._data.highlights = {
   terminal    = "StatusLineTerminalColor",
   confirm     = "StatusLineConfirmColor",
   file_name   = "StatusLineFileName",
-  line_filler = "StatusLineFiller"
+  line_filler = "StatusLineFiller",
+  versioning  = "StatusLineVersioning",
+  file_type   = "StatusLineFileType",
+  line_number = "StatusLineLineNumber"
 }
 
 M._data.modes = {
@@ -77,7 +80,10 @@ M._data.modes = {
   ["r"]   = { text = "Prompt",         color = utils.highlightfy(M._data.highlights.confirm) },
   ["rm"]  = { text = "More",           color = utils.highlightfy(M._data.highlights.confirm) },
   ["r?"]  = { text = "Confirm",        color = utils.highlightfy(M._data.highlights.confirm) },
-  ["qf"]  = { text = "Quickfix_list",  color = utils.highlightfy(M._data.highlights.quickfix) }
+  ["qf"]  = { text = "Quickfix_list",  color = utils.highlightfy(M._data.highlights.quickfix) },
+  ["_g"]  = { text = "_None",          color = utils.highlightfy(M._data.highlights.versioning) },
+  ["_t"]  = { text = "_None",          color = utils.highlightfy(M._data.highlights.file_type) },
+  ["_l"]  = { text = "_None",          color = utils.highlightfy(M._data.highlights.line_number) },
 }
 
 -- Access the current mode if the @override argument is nil.
@@ -110,6 +116,9 @@ function M.file_path()
   return string.format(
     "%s%s", utils.highlightfy(M._data.highlights.file_name), file_path
   )
+  --[[ return string.format(
+    "%s%s%s", utils.highlightfy(M._data.highlights.file_name), "%=", file_path
+  ) ]]
 end
 
 function M.file_metadata()
@@ -122,9 +131,9 @@ function M.file_metadata()
   local line_info = vim.bo.filetype ~= "alpha" and "%l/%L:%c" or ""
   return string.format(
     "%s%s%s%s%s%s",
-    M._data.modes["c"].color, utils.contour(branch, M._data.tokens.separators),
-    M._data.modes["v"].color, utils.contour(string.format("%s:%s", encoding, type), M._data.tokens.separators),
-    M._data.modes["t"].color, utils.contour(line_info, M._data.tokens.separators)
+    M._data.modes["_g"].color, utils.contour(branch, M._data.tokens.separators),
+    M._data.modes["_t"].color, utils.contour(string.format("%s:%s", encoding, type), M._data.tokens.separators),
+    M._data.modes["_l"].color, utils.contour(line_info, M._data.tokens.separators)
   )
 end
 
@@ -149,7 +158,7 @@ function M.refresh()
   local mode = is_list and M.mode("qf") or M.mode()
   local path = is_list and "" or M.file_path()
   return string.format(
-    "%s%s%s%s", mode, path, M.highlighted_line_filler(), M.file_metadata()
+    "%s%s%s%s%s", mode, M.highlighted_line_filler(), path, M.highlighted_line_filler(), M.file_metadata()
   )
 end
 

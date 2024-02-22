@@ -57,18 +57,24 @@ local tabline_colors = {
   inactive_tab = { fg = kolors.palette.fujiGray,     bold = false }
 }
 
+local custom_bg = kolors.palette.fujiGray
+local custom_fg = kolors.palette.dragonBlack4
+
 local statusline_colors = {
   normal      = { fg = kolors.palette.dragonOrange, bold = true },
   visual      = { fg = kolors.palette.dragonRed,    bold = true },
-  insert      = { fg = kolors.palette.dragonGreen,  bold = true },
+  insert      = { fg = custom_fg, bg = custom_bg,   bold = true },
   select      = { fg = kolors.palette.dragonViolet, bold = true },
   replace     = { fg = kolors.palette.dragonYellow, bold = true },
   quickfix    = { fg = kolors.palette.dragonOrange, bold = true },
   shell       = { fg = kolors.palette.dragonAqua,   bold = true },
   terminal    = { fg = kolors.palette.dragonBlue,   bold = true },
   confirm     = { fg = kolors.palette.dragonPink,   bold = true },
-  file_name   = { fg = kolors.palette.dragonBlack6, bold = true },
-  line_filler = { fg = kolors.palette.dragonBlack4 }
+  file_name   = { fg = custom_fg,                   bg = custom_bg },
+  line_filler = { fg = kolors.palette.fujiGray,     bg = custom_bg },
+  versioning  = { bg = kolors.palette.dragonAqua,   fg = custom_fg },
+  file_type   = { bg = kolors.palette.dragonRed,    fg = custom_fg },
+  line_number = { bg = kolors.palette.dragonViolet, fg = custom_fg }
 }
 
 return {
