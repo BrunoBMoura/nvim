@@ -1,5 +1,11 @@
 local utils = {}
 
+-- Returns a string a format string with @occurrences matches.
+function utils.format_for(occurrences)
+  local match = "%s"
+  return string.rep(match, occurrences)
+end
+
 -- Returns the @text surrounded by the separators in the @separators table.
 function utils.contour(text, separators)
   return separators[1] .. text .. separators[#separators]
@@ -7,7 +13,7 @@ end
 
 -- Transforms a highlight name into a useful highlight string.
 function utils.highlightfy(str)
-  return string.format("%s%s%s%s", '%', '#', str, '#')
+  return string.format(utils.format_for(4), '%', '#', str, '#')
 end
 
 -- Defines all of the highlight groups to their configuration values.
@@ -90,7 +96,7 @@ M._data.modes = {
 function M.mode(override)
   local current_mode = vim.api.nvim_get_mode().mode
   local entry = override == nil and M._data.modes[current_mode] or M._data.modes[override]
-  return string.format("%s%s", entry.color, utils.contour(entry.text, M._data.tokens.separators))
+  return string.format(utils.format_for(2), entry.color, utils.contour(entry.text, M._data.tokens.separators))
 end
 
 function M.file_path()
@@ -114,11 +120,8 @@ function M.file_path()
   end
 
   return string.format(
-    "%s%s", utils.highlightfy(M._data.highlights.file_name), file_path
+    utils.format_for(2), utils.highlightfy(M._data.highlights.file_name), file_path
   )
-  --[[ return string.format(
-    "%s%s%s", utils.highlightfy(M._data.highlights.file_name), "%=", file_path
-  ) ]]
 end
 
 function M.file_metadata()
@@ -130,7 +133,7 @@ function M.file_metadata()
   local type = string.format("%s", vim.bo.filetype)
   local line_info = vim.bo.filetype ~= "alpha" and "%l/%L:%c" or ""
   return string.format(
-    "%s%s%s%s%s%s",
+    utils.format_for(6),
     M._data.modes["_g"].color, utils.contour(branch, M._data.tokens.separators),
     M._data.modes["_t"].color, utils.contour(string.format("%s:%s", encoding, type), M._data.tokens.separators),
     M._data.modes["_l"].color, utils.contour(line_info, M._data.tokens.separators)
@@ -140,7 +143,7 @@ end
 -- Simple wrapper to highlight the line filler on statusline.
 function M.highlighted_line_filler()
   return string.format(
-    "%s%s", utils.highlightfy(M._data.highlights.line_filler), "%="
+    utils.format_for(2), utils.highlightfy(M._data.highlights.line_filler), "%="
   )
 end
 
@@ -158,7 +161,12 @@ function M.refresh()
   local mode = is_list and M.mode("qf") or M.mode()
   local path = is_list and "" or M.file_path()
   return string.format(
-    "%s%s%s%s%s", mode, M.highlighted_line_filler(), path, M.highlighted_line_filler(), M.file_metadata()
+    utils.format_for(5),
+    mode,
+    M.highlighted_line_filler(),
+    path,
+    M.highlighted_line_filler(),
+    M.file_metadata()
   )
 end
 

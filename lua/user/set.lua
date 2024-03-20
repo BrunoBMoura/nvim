@@ -35,8 +35,9 @@ local configs = {
     stl = "―", fold = "۰", diff = "·"
   },
   listchars      = {
-    tab = "»·", trail = "·", eol = "¬", --leadmultispace = "▎   ",
-    leadmultispace = "▏   "
+    tab = "»·", trail = "·", eol = "¬",
+    -- leadmultispace = "▏   "
+    leadmultispace = "│   "
   },
 }
 

@@ -36,7 +36,7 @@ kanagawa.setup({
       IblIndent                  = { fg = colors.palette.dragonBlack4 },
       NvimTreeIndentMarker       = { fg = colors.palette.dragonBlack6 },
       Type                       = { fg = colors.palette.waveAqua2 },
-      -- ["@variable.builtin"]      = { fg = colors.palette.dragonGray2 },
+      ["@variable.builtin"]      = { italic = false },
       ["@symbol"]                = { fg = colors.palette.dragonGray2 },
       ["@label"]                 = { fg = colors.palette.dragonYellow },
       ["@string.escape"]         = { bold = false },

@@ -18,7 +18,7 @@ local lang_meta_op = {
 
 for lang, data in pairs(lang_meta_op) do
   if data.format ~= nil then
-    autocmd( "FileType", {
+    autocmd("FileType", {
       command = "nnoremap <leader><leader>f :!" .. data.format .. " % <CR>",
       pattern = lang
     })
@@ -27,7 +27,7 @@ for lang, data in pairs(lang_meta_op) do
     autocmd("FileType", {
       pattern = lang,
       callback = function()
-        vim.opt_local.listchars:append({ leadmultispace = "▏ "})
+        vim.opt_local.listchars:append({ leadmultispace = "│ "})
         vim.opt_local.shiftwidth = 2
         vim.opt_local.tabstop = 2
       end
