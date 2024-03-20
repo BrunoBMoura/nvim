@@ -1,18 +1,18 @@
 -- Shamelessly based on luatab https://github.com/alvarosevilla95/luatab.nvim
-local utils = {}
+local helpers = {}
 
 -- Returns the @text surrounded by the separators in the @separators table.
-function utils.contour(text, separators)
+function helpers.contour(text, separators)
   return separators[1] .. text .. separators[#separators]
 end
 
 -- Transforms a highlight name into a useful highlight string.
-function utils.highlightfy(str)
+function helpers.highlightfy(str)
   return string.format("%s%s%s%s", '%', '#', str, '#')
 end
 
 -- Defines all of the highlight groups to their configuration values.
-function utils.set_config_highlights(highlights, colors)
+function helpers.set_config_highlights(highlights, colors)
   for name, hl_string in pairs(highlights) do
     vim.api.nvim_set_hl(0, hl_string, colors[name])
   end
@@ -20,14 +20,14 @@ end
 
 -- Defines all of the highlight groups to link the @default group when
 -- there is no configuration.
-function utils.set_non_config_highlights(highlights, default_group)
+function helpers.set_non_config_highlights(highlights, default_group)
   for _, hl_string in pairs(highlights) do
     vim.api.nvim_set_hl(0, hl_string, {link = default_group})
   end
 end
 
 -- Returns the default value of the tokens configuration entry.
-function utils.get_non_config_tokens()
+function helpers.get_non_config_tokens()
   return {
     file_changed = '+',
     separators = {'', ''},
@@ -49,10 +49,10 @@ M._data.highlights = {
 }
 
 M._data.colors = {
-  icon         = utils.highlightfy(M._data.highlights.icon),
-  separator    = utils.highlightfy(M._data.highlights.separator),
-  active_tab   = utils.highlightfy(M._data.highlights.active_tab),
-  inactive_tab = utils.highlightfy(M._data.highlights.inactive_tab)
+  icon         = helpers.highlightfy(M._data.highlights.icon),
+  separator    = helpers.highlightfy(M._data.highlights.separator),
+  active_tab   = helpers.highlightfy(M._data.highlights.active_tab),
+  inactive_tab = helpers.highlightfy(M._data.highlights.inactive_tab)
 }
 
 function M.title(bufnr, is_selected)
@@ -94,7 +94,7 @@ function M.title(bufnr, is_selected)
   if ok then
     local file_icon, icon_hl = devicons.get_icon(file, vim.fn.expand('#' .. bufnr .. ':e'))
     -- If the file icon is defined, use it and highlight it as predefined.
-    icon = file_icon ~= nil and string.format("%s%s", utils.highlightfy(icon_hl), file_icon) or icon
+    icon = file_icon ~= nil and string.format("%s%s", helpers.highlightfy(icon_hl), file_icon) or icon
   end
 
   -- And finally, ensure a proper highlighting if the current cell is selected.
@@ -114,7 +114,7 @@ function M.window_count(index)
   if ok then
     for _ in pairs(wins) do nwins = nwins + 1 end
   end
-  return nwins > 1 and string.format("%s ", utils.contour(nwins, M._data.tokens.sub_separators)) or ""
+  return nwins > 1 and string.format("%s ", helpers.contour(nwins, M._data.tokens.sub_separators)) or ""
 end
 
 -- Builds a cell of the current index tabe.
@@ -136,10 +136,10 @@ function M.eval_style(index, cell, is_selected)
     ["surrounded"] = function(index, cell, is_selected)
       if is_selected then
         local text = string.format("%s%s%s", M._data.colors.active_tab, cell, M._data.colors.separator)
-        local cell_content = utils.contour(text, M._data.tokens.separators)
+        local cell_content = helpers.contour(text, M._data.tokens.separators)
         return string.format("%s%s", M._data.colors.separator, cell_content)
       else
-        local cell_content = utils.contour(cell, M._data.tokens.separators)
+        local cell_content = helpers.contour(cell, M._data.tokens.separators)
         return string.format("%s%s", M._data.colors.inactive_tab, cell_content)
       end
     end
@@ -170,7 +170,7 @@ function M.eval_config(config)
   if config.tokens then
     M._data.tokens = config.tokens
   else
-    M._data.tokens = utils.get_non_config_tokens()
+    M._data.tokens = helpers.get_non_config_tokens()
   end
 
   if config.style then
@@ -180,9 +180,9 @@ function M.eval_config(config)
   end
 
   if config.colors then
-    utils.set_config_highlights(M._data.highlights, config.colors)
+    helpers.set_config_highlights(M._data.highlights, config.colors)
   else
-    utils.set_non_config_highlights(M._data.highlights, "String")
+    helpers.set_non_config_highlights(M._data.highlights, "String")
   end
 end
 
