@@ -98,7 +98,8 @@ function M.title(bufnr, is_selected)
   -- Try to access the file icon if 'nvim-web-devicons' is installed.
   local icon = ""
   if M._required.devicons then
-    local file_icon, icon_hl = M._required.devicons.get_icon(file, vim.fn.expand('#' .. bufnr .. ':e'))
+    local opts = vim.fn.expand("#" .. bufnr .. ":e")
+    local file_icon, icon_hl = M._required.devicons.get_icon(file, opts)
     -- If the file icon is defined, use it and highlight it as predefined.
     if file_icon then
       icon = helpers.format_table({ helpers.highlightfy(icon_hl), file_icon })
@@ -106,23 +107,30 @@ function M.title(bufnr, is_selected)
   end
 
   -- And finally, ensure a proper highlighting if the current cell is selected.
-  return is_selected
-    and helpers.format_table({M._data.colors.active_tab, title, M._data.colors.icon, " ",  icon, " "})
-    or helpers.format_table({M._data.colors.inactive_tab, title, " ", icon, M._data.colors.inactive_tab, " "})
+  local cell_title = is_selected
+    and { M._data.colors.active_tab, title, M._data.colors.icon, " ",  icon, " " }
+    or { M._data.colors.inactive_tab, title, " ", icon, M._data.colors.inactive_tab, " " }
+
+  return helpers.format_table(cell_title)
 end
 
 function M.modified(bufnr)
-  local modified = vim.fn.getbufvar(bufnr, "&modified")
-  return modified == 1 and string.format("%s ", M._data.tokens.file_changed) or ""
+  local modified = vim.fn.getbufvar(bufnr, "&modified") == 1 and true or false
+  return modified and M._data.tokens.file_changed .. " " or ""
 end
 
 function M.window_count(index)
   local nwins = 0
   local ok, wins = pcall(vim.api.nvim_tabpage_list_wins, index)
   if ok then
-    for _ in pairs(wins) do nwins = nwins + 1 end
+    for _ in pairs(wins) do
+      nwins = nwins + 1
+    end
   end
-  return nwins > 1 and string.format("%s ", helpers.contour(nwins, M._data.tokens.sub_separators)) or ""
+  -- Correctly format the window count.
+  return nwins == 1 and "" or helpers.format_table({
+    helpers.contour(nwins, M._data.tokens.sub_separators), " "
+  })
 end
 
 -- Builds a cell of the current index tabe.
@@ -131,11 +139,11 @@ function M.cell(index, is_selected)
   local winnr = vim.fn.tabpagewinnr(index)
   local bufnr = buflist[winnr]
 
-  return string.format(
-    "%s%s%s %s%s %s%s", "%", index, "T",
-    -- M.window_count(index), M.title(bufnr, is_selected), M.modified(bufnr), "%T"
-    M.window_count(index), M.modified(bufnr), M.title(bufnr, is_selected), "%T"
-  )
+  return helpers.format_table({
+    "%", index, "T", " ",
+    M.window_count(index), M.modified(bufnr), " ",
+    M.title(bufnr, is_selected), "%T"
+  })
 end
 
 -- Evaluates the configuration style.
@@ -143,12 +151,16 @@ function M.eval_style(index, cell, is_selected)
   local styles = {
     ["surrounded"] = function(index, cell, is_selected)
       if is_selected then
-        local text = string.format("%s%s%s", M._data.colors.active_tab, cell, M._data.colors.separator)
+        local text = helpers.format({
+          M._data.colors.active_tab, cell, M._data.colors.separator
+        })
         local cell_content = helpers.contour(text, M._data.tokens.separators)
-        return string.format("%s%s", M._data.colors.separator, cell_content)
+        return helpers.format({
+          M._data.colors.separator, cell_content
+        })
       else
         local cell_content = helpers.contour(cell, M._data.tokens.separators)
-        return string.format("%s%s", M._data.colors.inactive_tab, cell_content)
+        return helpers.format({ M._data.colors.inactive_tab, cell_content })
       end
     end
   }
