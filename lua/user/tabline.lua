@@ -1,6 +1,15 @@
 -- Shamelessly based on luatab https://github.com/alvarosevilla95/luatab.nvim
 local helpers = {}
 
+-- Concatenates all of the values in the @table into a single string.
+function helpers.format_table(table)
+  local str = ""
+  for _, value in pairs(table) do
+    str = str .. value
+  end
+  return str
+end
+
 -- Returns the @text surrounded by the separators in the @separators table.
 function helpers.contour(text, separators)
   return separators[1] .. text .. separators[#separators]
@@ -8,7 +17,7 @@ end
 
 -- Transforms a highlight name into a useful highlight string.
 function helpers.highlightfy(str)
-  return string.format("%s%s%s%s", '%', '#', str, '#')
+  return helpers.format_table({ '%', '#', str, '#' })
 end
 
 -- Defines all of the highlight groups to their configuration values.
@@ -22,7 +31,7 @@ end
 -- there is no configuration.
 function helpers.set_non_config_highlights(highlights, default_group)
   for _, hl_string in pairs(highlights) do
-    vim.api.nvim_set_hl(0, hl_string, {link = default_group})
+    vim.api.nvim_set_hl(0, hl_string, { link = default_group })
   end
 end
 
@@ -77,30 +86,29 @@ function M.title(bufnr, is_selected)
   -- Then, lazyly check those tables if buffer variables are empty.
   local title = ""
   if file == "" and buftype == "" and filetype == "" then
-    title = "No_name"
-  else
+    title = "No_file"
+  elseif buftypes[buftype] then
     title = buftypes[buftype]
-    if title == nil then
-      title = filetypes[filetype]
-      if title == nil then
-        title = vim.fn.pathshorten(vim.fn.fnamemodify(file, ":p:~:t"))
-      end
-    end
+  elseif filetypes[filetype] then
+    title = filetypes[filetype]
+  else
+    title = vim.fn.pathshorten(vim.fn.fnamemodify(file, ":p:~:t"))
   end
 
   -- Try to access the file icon if 'nvim-web-devicons' is installed.
   local icon = ""
-  local ok, devicons = pcall(require, "nvim-web-devicons")
-  if ok then
-    local file_icon, icon_hl = devicons.get_icon(file, vim.fn.expand('#' .. bufnr .. ':e'))
+  if M._required.devicons then
+    local file_icon, icon_hl = M._required.devicons.get_icon(file, vim.fn.expand('#' .. bufnr .. ':e'))
     -- If the file icon is defined, use it and highlight it as predefined.
-    icon = file_icon ~= nil and string.format("%s%s", helpers.highlightfy(icon_hl), file_icon) or icon
+    if file_icon then
+      icon = helpers.format_table({ helpers.highlightfy(icon_hl), file_icon })
+    end
   end
 
   -- And finally, ensure a proper highlighting if the current cell is selected.
   return is_selected
-    and string.format("%s%s%s %s ", M._data.colors.active_tab, title, M._data.colors.icon, icon)
-    or string.format("%s%s %s%s ", M._data.colors.inactive_tab, title, icon, M._data.colors.inactive_tab)
+    and helpers.format_table({M._data.colors.active_tab, title, M._data.colors.icon, " ",  icon, " "})
+    or helpers.format_table({M._data.colors.inactive_tab, title, " ", icon, M._data.colors.inactive_tab, " "})
 end
 
 function M.modified(bufnr)
@@ -183,6 +191,13 @@ function M.eval_config(config)
     helpers.set_config_highlights(M._data.highlights, config.colors)
   else
     helpers.set_non_config_highlights(M._data.highlights, "String")
+  end
+
+  M._required = {}
+
+  local ok, devicons = pcall(require, "nvim-web-devicons")
+  if ok then
+    M._required.devicons = devicons
   end
 end
 

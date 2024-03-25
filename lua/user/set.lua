@@ -36,7 +36,6 @@ local configs = {
   },
   listchars      = {
     tab = "»·", trail = "·", eol = "¬",
-    -- leadmultispace = "▏   "
     leadmultispace = "│   "
   },
 }

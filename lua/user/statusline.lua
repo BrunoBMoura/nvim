@@ -30,7 +30,7 @@ end
 -- there is no configuration.
 function helpers.set_non_config_highlights(highlights, default_group)
   for _, hl_string in pairs(highlights) do
-    vim.api.nvim_set_hl(0, hl_string, {link = default_group})
+    vim.api.nvim_set_hl(0, hl_string, { link = default_group })
   end
 end
 
@@ -98,7 +98,7 @@ M._data.modes = {
 -- Access the current mode if the @override argument is nil.
 function M.mode(override)
   local current_mode = vim.api.nvim_get_mode().mode
-  local entry = override == nil and M._data.modes[current_mode] or M._data.modes[override]
+  local entry = override and M._data.modes[override] or M._data.modes[current_mode]
   return helpers.format_table({
     entry.color, helpers.contour(entry.text, M._data.tokens.separators)
   })
@@ -116,7 +116,7 @@ function M.file_path()
   end
   -- Finally, reformat the file path and return it.
   file_path = helpers.contour(
-    string.format("%s %s ", file_path, icon),
+    helpers.format_table({ file_path, " ", icon, " " }),
     M._data.tokens.separators
   )
 
@@ -131,13 +131,13 @@ function M.file_metadata()
   if vim.fn.loaded_fugitive then
     branch = vim.fn.FugitiveHead() == "" and "No_git" or vim.fn.FugitiveHead()
   end
-  local encoding = string.format("%s", vim.bo.fileencoding)
-  local type = string.format("%s", vim.bo.filetype)
+  local encoding = vim.bo.fileencoding
+  local type = vim.bo.filetype
   local line_info = vim.bo.filetype ~= "alpha" and "%l/%L:%c" or ""
 
   return helpers.format_table({
     M._data.modes["_g"].color, helpers.contour(branch, M._data.tokens.separators),
-    M._data.modes["_t"].color, helpers.contour(string.format("%s:%s", encoding, type), M._data.tokens.separators),
+    M._data.modes["_t"].color, helpers.contour(helpers.format_table({ encoding, ":", type }), M._data.tokens.separators),
     M._data.modes["_l"].color, helpers.contour(line_info, M._data.tokens.separators)
   })
 end
@@ -151,17 +151,25 @@ end
 
 -- Checks wether the current opened view is a list.
 function M.is_list()
-  local file_type = string.format("%s", vim.bo.filetype)
-  return file_type == "qf" and true or false
+  return vim.bo.filetype == "qf" and true or false
+end
+
+-- Returns the number of elements in the quickfix list.
+function M.list_info()
+  local num_elements = vim.fn.len(vim.fn.getqflist())
+  local message = helpers.format_table({ "with (", num_elements, ") elements" })
+  return helpers.format_table({
+    helpers.highlightfy(M._data.highlights.file_name), message
+  })
 end
 
 -- Called upon statusline updates.
 function M.refresh()
   -- Return a string containing the line M._data information with all of its
-  -- fields properly concatenated;
+  -- fields properly concatenated.
   local is_list = M.is_list()
   local mode = is_list and M.mode("qf") or M.mode()
-  local path = is_list and "" or M.file_path()
+  local path = is_list and M.list_info() or M.file_path()
 
   return helpers.format_table({
     mode,

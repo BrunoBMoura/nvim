@@ -36,8 +36,6 @@ material.setup({
   end
 })
 
-vim.cmd("colorscheme material")
-
 local tabline_colors = {
   icon         = { fg = colors.main.orange,     bold = false },
   separator    = { fg = colors.main.yellow,     bold = true },
@@ -45,20 +43,24 @@ local tabline_colors = {
   inactive_tab = { fg = colors.syntax.comments, bold = false }
 }
 
---  opa
 local statusline_colors = {
   normal      = { fg = colors.main.orange,     bold = true },
   visual      = { fg = colors.main.red,        bold = true },
-  insert      = { fg = colors.main.darkgreen,  bold = true },
+  insert      = { fg = colors.main.darkgreen,  bg = colors.syntax.comments,  bold = true },
   select      = { fg = colors.main.purple,     bold = true },
   replace     = { fg = colors.main.yellow,     bold = true },
   quickfix    = { fg = colors.main.orange,     bold = true },
   shell       = { fg = colors.main.green,      bold = true },
   terminal    = { fg = colors.main.blue,       bold = true },
   confirm     = { fg = colors.main.cyan,       bold = true },
-  file_name   = { fg = colors.syntax.comments, bold = true },
-  line_filler = { fg = colors.syntax.comments, bold = false },
+  file_name   = { bg = colors.syntax.comments, bold = true },
+  line_filler = { bg = colors.syntax.comments, fg = colors.syntax.comments, bold = false},
+  versioning  = { bg = colors.main.green,      fg = colors.syntax.comments, bold = false},
+  file_type   = { bg = colors.main.red,        fg = colors.syntax.comments, bold = false},
+  line_number = { bg = colors.main.purple,     fg = colors.syntax.comments, bold = false}
 }
+
+vim.cmd("colorscheme material")
 
 return {
   tabline_colors = tabline_colors,
