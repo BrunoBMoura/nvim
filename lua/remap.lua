@@ -1,7 +1,7 @@
-local nnoremap = require("user.keymap").nnoremap
-local vnoremap = require("user.keymap").vnoremap
-local tnoremap = require("user.keymap").tnoremap
-local inoremap = require("user.keymap").inoremap
+local nnoremap = require("keymap").nnoremap
+local vnoremap = require("keymap").vnoremap
+local tnoremap = require("keymap").tnoremap
+local inoremap = require("keymap").inoremap
 
 -- Refresh ctags
 nnoremap("<leader>c", ":! ctags -R . <CR>")
@@ -63,7 +63,7 @@ nnoremap("<C-Right>", ":vertical resize +2 <CR>")
 -- |_|            |___/
 
 -- Overall file, grep and buffers explorers.
-nnoremap("<leader>lg", ":Telescope live_grep <CR>")
+--[[ nnoremap("<leader>lg", ":Telescope live_grep <CR>")
 nnoremap("<leader>fh", ":Telescope highlights <CR>")
 nnoremap("<leader>ff", function()
   require("telescope.builtin").find_files({
@@ -82,7 +82,7 @@ vnoremap("<leader>/", function()
   -- Same as above, but searching selected text in visual mode.
     vim.fn.getline("'<", "'>")
   );
-end)
+end) ]]
 
 -- File tree related.
 nnoremap("<leader>e", ":NvimTreeToggle<CR>")
@@ -101,7 +101,7 @@ nnoremap("<leader>gp", ":Gitsigns prev_hunk<CR>")
 nnoremap("<leader>do", ":DiffviewOpen <CR>")
 nnoremap("<leader>dh", ":DiffviewFileHistory <CR> :resize -2 <CR>")
 
--- Snippets related.
+--[[ -- Snippets related.
 inoremap("<C-j>", function()
   local ls = require("luasnip")
   if ls.expand_or_jumpable() then
@@ -114,4 +114,4 @@ inoremap("<C-k>", function()
   if ls.jumpable(-1) then
      ls.jump(-1)
   end
-end)
+end) ]]
