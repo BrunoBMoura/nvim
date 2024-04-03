@@ -39,7 +39,6 @@ return require("packer").startup(function(use)
   use {
     "rebelot/kanagawa.nvim",
     "marko-cerovac/material.nvim",
-    "navarasu/onedark.nvim" -- FIX: missing config
   }
   -- Treesitter.
   use {

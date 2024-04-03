@@ -151,16 +151,18 @@ function M.eval_style(index, cell, is_selected)
   local styles = {
     ["surrounded"] = function(index, cell, is_selected)
       if is_selected then
-        local text = helpers.format({
+        local text = helpers.format_table({
           M._data.colors.active_tab, cell, M._data.colors.separator
         })
-        local cell_content = helpers.contour(text, M._data.tokens.separators)
-        return helpers.format({
-          M._data.colors.separator, cell_content
+        return helpers.format_table({
+          M._data.colors.separator,
+          helpers.contour(text, M._data.tokens.separators)
         })
       else
-        local cell_content = helpers.contour(cell, M._data.tokens.separators)
-        return helpers.format({ M._data.colors.inactive_tab, cell_content })
+        return helpers.format_table({
+          M._data.colors.inactive_tab,
+          helpers.contour(cell, M._data.tokens.separators)
+        })
       end
     end
   }

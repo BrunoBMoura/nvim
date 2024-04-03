@@ -9,11 +9,10 @@ autocmd("BufWritePre", {
 })
 
 local lang_meta_op = {
-  c      = { format = "clang-format -i"},
-  rust   = { format = "rustfmt", build = "cargo build", exec = "cargo run"},
-  ruby   = { small_indent = true, exec = "ruby" },
-  lua    = { small_indent = true, exec = "lua" },
-  python = { exec = "python" }
+  c      = { format = "clang-format -i" },
+  rust   = { format = "rustfmt", build = "cargo build" },
+  ruby   = { small_indent = true },
+  lua    = { small_indent = true },
 }
 
 for lang, data in pairs(lang_meta_op) do
@@ -31,12 +30,6 @@ for lang, data in pairs(lang_meta_op) do
         vim.opt_local.shiftwidth = 2
         vim.opt_local.tabstop = 2
       end
-    })
-  end
-  if data.exec then
-    autocmd("FileType", {
-      command = "nnoremap <leader><leader>e :vsplit <CR>:ter " .. data.exec .. " % <CR>",
-      pattern = lang
     })
   end
 end
