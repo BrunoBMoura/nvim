@@ -1,8 +1,6 @@
 require("autocmds")
 require("remap")
 require("set")
-require("statusline")
-require("tabline")
 
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim" -- path where its going to be installed
 
@@ -20,3 +18,5 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("plugins")
+
+-- require("appearance")

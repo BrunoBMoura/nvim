@@ -1,5 +1,8 @@
 local plugins = {
   {
+    lazy = true, "nvim-lua/plenary.nvim"
+  },
+  {
     "nvim-treesitter/nvim-treesitter",
     build = "TSUpdate",
     lazy = false,
@@ -94,7 +97,7 @@ local plugins = {
       })
     end
   },
-  --[[ {
+  {
     "sindrets/diffview.nvim",
     config = function()
       require("diffview").setup({
@@ -106,11 +109,11 @@ local plugins = {
         }
       })
     end
-  }, ]]
-  { "nvim-lua/plenary.nvim" },
+  },
   {
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
+    cmd = "Telescope",
     config = function()
       require("telescope").setup({
         defaults = {
@@ -126,32 +129,33 @@ local plugins = {
       })
     end,
     keys = function()
-      --[[ vim.api.nvim_set_keymap("n", "<leader>ff", function()
+      local default_opts = { noremap = true, silent = true }
+      vim.keymap.set("n", "<leader>ff", function()
         require("telescope.builtin").find_files({
           no_ignore = true
         })
       end,
-      { noremap = true, silent = true })
+      default_opts)
 
-      vim.api.nvim_set_keymap("n", "<leader>/", function()
+      vim.keymap.set("n", "<leader>/", function()
         require("telescope.builtin").grep_string({
           -- Grep for the word under the cursor.
           search = vim.fn.input("Grep >")
         })
       end,
-      { noremap = true, silent = true })
+      default_opts)
 
-      vim.api.nvim_set_keymap("n", "<leader>/", function()
+      vim.keymap.set("n", "<leader>/", function()
         require("telescope.builtin").grep_string(
         -- Same as above, but searching selected text in visual mode.
           vim.fn.getline("'<", "'>")
         )
       end,
-      { noremap = true, silent = true })
+      default_opts)
 
-      vim.api.nvim_set_keymap("n", "<leader>fb", ":Telescope buffers <CR>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<leader>fb", ":Telescope buffers <CR>", default_opts)
 
-      vim.api.nvim_set_keymap("n", "<leader>lg", ":Telescope live_grep <CR>", { noremap = true, silent = true }) ]]
+      vim.api.nvim_set_keymap("n", "<leader>lg", ":Telescope live_grep <CR>", default_opts)
     end
   },
 }
