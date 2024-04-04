@@ -1,4 +1,4 @@
-vim.g.mapleader = " "
+vim.g.mapleader = USER.leader_key
 -- Vim stuff when handling latex related files; simply easier to just set it
 -- to always be latex
 vim.g.tex_flavor = "latex"
@@ -36,7 +36,7 @@ local configs = {
   },
   listchars      = {
     tab = "»·", trail = "·", eol = "¬",
-    leadmultispace = "│   "
+    leadmultispace = USER.ident_marker(4)
   },
 }
 

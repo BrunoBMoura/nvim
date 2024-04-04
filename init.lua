@@ -1,3 +1,4 @@
+require("user")
 require("autocmds")
 require("remap")
 require("set")
