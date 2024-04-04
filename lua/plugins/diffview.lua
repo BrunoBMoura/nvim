@@ -1,5 +1,6 @@
 return {
   "sindrets/diffview.nvim",
+  lazy = false,
   config = function()
     require("diffview").setup({
       view = {
@@ -9,5 +10,10 @@ return {
         }
       }
     })
+  end,
+  keys = function()
+    local default_opts = { noremap = true, silent = true }
+    vim.api.nvim_set_keymap("n", "<leader>do", ":DiffviewOpen <CR>", default_opts)
+    vim.api.nvim_set_keymap("n", "<leader>dh", ":DiffviewFileHistory <CR> :resize -2 <CR>", default_opts)
   end
 }
