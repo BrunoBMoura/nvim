@@ -217,7 +217,7 @@ end
 
 function M.setup(config)
   M.eval_config(config)
-  vim.opt.tabline = "%!v:lua.require(\"user.tabline\").tabline()"
+  vim.opt.tabline = "%!v:lua.require(\"appearance.tabline\").tabline()"
 end
 
 return M

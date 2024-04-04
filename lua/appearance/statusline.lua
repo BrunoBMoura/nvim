@@ -208,7 +208,7 @@ function M.setup(config)
   -- Disable the creation of an automatic quickfixlist due to custom treatments.
   vim.g.qf_disable_statusline = true
   -- And finally, set the statusline to use the here defined procedures.
-  vim.opt.statusline = "%!v:lua.require(\"user.statusline\").refresh()"
+  vim.opt.statusline = "%!v:lua.require(\"appearance.statusline\").refresh()"
 end
 
 return M

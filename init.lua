@@ -19,4 +19,4 @@ vim.opt.rtp:prepend(lazypath)
 
 require("plugins")
 
--- require("appearance")
+require("appearance")

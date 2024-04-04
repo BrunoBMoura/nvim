@@ -1,7 +1,9 @@
 local plugins = {
-  {
-    lazy = true, "nvim-lua/plenary.nvim"
-  },
+  { lazy = true, "nvim-lua/plenary.nvim" },
+  { "tpope/vim-fugitive" },
+  { "b3nj5m1n/kommentary" },
+  { "kyazdani42/nvim-web-devicons" },
+  { "github/copilot.vim" },
   {
     "nvim-treesitter/nvim-treesitter",
     build = "TSUpdate",
@@ -16,16 +18,29 @@ local plugins = {
     end
   },
   {
-    "folke/tokyonight.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
+    "nvim-treesitter/nvim-treesitter-context",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
-      -- load the colorscheme here
-      vim.cmd([[colorscheme tokyonight]])
-    end,
+      require("treesitter-context").setup({
+        enable = true,
+        max_lines = 0,
+        trim_scope = "outer",
+        patterns = {
+          default = {
+            "class",
+            "function",
+            "method",
+          },
+        },
+        zindex = 20,
+        mode = "cursor"
+      })
+    end
   },
+  { lazy = false, "rebelot/kanagawa.nvim" },
   {
     "kyazdani42/nvim-tree.lua",
+    dependencies = { "kyazdani42/nvim-web-devicons" },
     lazy = false,
     config = function()
       local HEIGHT_RATIO = 0.8
@@ -73,9 +88,10 @@ local plugins = {
       })
     end,
     keys = function()
-      vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<CR>",   { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>F", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>R", ":NvimTreeRefresh<CR>",  { noremap = true, silent = true })
+      local default_opts = { noremap = true, silent = true }
+      vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<CR>",   default_opts)
+      vim.api.nvim_set_keymap("n", "<leader>F", ":NvimTreeFindFile<CR>", default_opts)
+      vim.api.nvim_set_keymap("n", "<leader>R", ":NvimTreeRefresh<CR>",  default_opts)
     end
   },
   {
@@ -84,7 +100,6 @@ local plugins = {
       require("nvim-surround").setup()
     end
   },
-  { "b3nj5m1n/kommentary" },
   {
    "lewis6991/gitsigns.nvim",
     config = function()
@@ -130,31 +145,27 @@ local plugins = {
     end,
     keys = function()
       local default_opts = { noremap = true, silent = true }
+      -- Default file fuzzy finder .
       vim.keymap.set("n", "<leader>ff", function()
         require("telescope.builtin").find_files({
           no_ignore = true
         })
-      end,
-      default_opts)
-
+      end, default_opts)
+      -- Grep for the word under the cursor.
       vim.keymap.set("n", "<leader>/", function()
         require("telescope.builtin").grep_string({
-          -- Grep for the word under the cursor.
           search = vim.fn.input("Grep >")
         })
-      end,
-      default_opts)
-
+      end, default_opts)
+      -- Same as above, but searching selected text in visual mode.
       vim.keymap.set("n", "<leader>/", function()
         require("telescope.builtin").grep_string(
-        -- Same as above, but searching selected text in visual mode.
           vim.fn.getline("'<", "'>")
         )
-      end,
-      default_opts)
-
+      end, default_opts)
+      -- Buffer searching.
       vim.api.nvim_set_keymap("n", "<leader>fb", ":Telescope buffers <CR>", default_opts)
-
+      -- Default live grep.
       vim.api.nvim_set_keymap("n", "<leader>lg", ":Telescope live_grep <CR>", default_opts)
     end
   },
