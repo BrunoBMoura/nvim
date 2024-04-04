@@ -85,21 +85,21 @@ vnoremap("<leader>/", function()
 end) ]]
 
 -- File tree related.
-nnoremap("<leader>e", ":NvimTreeToggle<CR>")
+--[[ nnoremap("<leader>e", ":NvimTreeToggle<CR>")
 nnoremap("<leader>F", ":NvimTreeFindFile<CR>")
-nnoremap("<leader>R", ":NvimTreeRefresh<CR>")
+nnoremap("<leader>R", ":NvimTreeRefresh<CR>") ]]
 
 -- Git related.
 nnoremap("<leader>gb", ":Git blame<CR>")
 
 -- Git hunk navigation.
-nnoremap("<leader>gs", ":Gitsigns preview_hunk<CR>")
+--[[ nnoremap("<leader>gs", ":Gitsigns preview_hunk<CR>")
 nnoremap("<leader>gn", ":Gitsigns next_hunk<CR>")
-nnoremap("<leader>gp", ":Gitsigns prev_hunk<CR>")
+nnoremap("<leader>gp", ":Gitsigns prev_hunk<CR>") ]]
 
 -- Diffview related.
-nnoremap("<leader>do", ":DiffviewOpen <CR>")
-nnoremap("<leader>dh", ":DiffviewFileHistory <CR> :resize -2 <CR>")
+--[[ nnoremap("<leader>do", ":DiffviewOpen <CR>")
+nnoremap("<leader>dh", ":DiffviewFileHistory <CR> :resize -2 <CR>") ]]
 
 --[[ -- Snippets related.
 inoremap("<C-j>", function()

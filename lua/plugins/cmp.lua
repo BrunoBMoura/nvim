@@ -25,7 +25,7 @@ return {
         { name = "nvim_lsp" },
         { name = "luasnip" }
       },
-      -- Window configuration, purealy display related.
+      -- Window configuration, purely display related.
       window = {
         completion = cmp.config.window.bordered({
           border = "rounded",
