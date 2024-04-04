@@ -12,7 +12,7 @@ return {
         end,
         capabilities = require("cmp_nvim_lsp").default_capabilities()
       }
-      if USER.lsp_settings[server] then
+      if USER.lsp.settings[server] then
         opts = vim.tbl_deep_extend("force", USER.lsp.settings[server], opts)
       end
       lspconfig[server].setup(opts)
