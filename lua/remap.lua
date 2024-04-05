@@ -1,117 +1,53 @@
-local nnoremap = require("keymap").nnoremap
-local vnoremap = require("keymap").vnoremap
-local tnoremap = require("keymap").tnoremap
-local inoremap = require("keymap").inoremap
+local default_opts = { noremap = false, silent = true }
 
 -- Refresh ctags
-nnoremap("<leader>c", ":! ctags -R . <CR>")
+vim.keymap.set("n","<leader>c", ":! ctags -R . <CR>", default_opts)
 
 -- Split movement
-nnoremap("<C-h>", "<C-w>h")
-nnoremap("<C-j>", "<C-w>j")
-nnoremap("<C-k>", "<C-w>k")
-nnoremap("<C-l>", "<C-w>l")
-nnoremap("<C-q>", "<C-w>q")
+vim.keymap.set("n", "<C-h>", "<C-w>h", default_opts)
+vim.keymap.set("n", "<C-j>", "<C-w>j", default_opts)
+vim.keymap.set("n", "<C-k>", "<C-w>k", default_opts)
+vim.keymap.set("n", "<C-l>", "<C-w>l", default_opts)
+vim.keymap.set("n", "<C-q>", "<C-w>q", default_opts)
 
 -- Tab movement
-nnoremap("<", ":tabp<CR>")
-nnoremap(">", ":tabn<CR>")
-nnoremap("<S-l>", ":bnext<CR>")
-nnoremap("<S-h>", ":bprevious<CR>")
+vim.keymap.set("n", "<", ":tabp<CR>", default_opts)
+vim.keymap.set("n", ">", ":tabn<CR>", default_opts)
+vim.keymap.set("n", "<S-l>", ":bnext<CR>", default_opts)
+vim.keymap.set("n", "<S-h>", ":bprevious<CR>", default_opts)
 
 -- Lazy movement
-nnoremap("<C-d>", "<C-d>zz")
-nnoremap("<C-u>", "<C-u>zz")
-nnoremap("<S-u>", "<C-r>")
+vim.keymap.set("n", "<C-d>", "<C-d>zz", default_opts)
+vim.keymap.set("n", "<C-u>", "<C-u>zz", default_opts)
+vim.keymap.set("n", "<S-u>", "<C-r>", default_opts)
 
 -- Lazy saving/quitting
-nnoremap("<leader>w", ":w<CR>")
-nnoremap("<leader>q", ":q<CR>")
+vim.keymap.set("n", "<leader>w", ":w<CR>", default_opts)
+vim.keymap.set("n", "<leader>q", ":q<CR>", default_opts)
 
 -- Overide shenanigans
-nnoremap("<leader>rw", "cw<C-r>0<C-c>")
-vnoremap("p", '"_dP')
+vim.keymap.set("n", "<leader>rw", "cw<C-r>0<C-c>", default_opts)
+vim.keymap.set("v", "p", '"_dP', default_opts)
 
 -- Terminal split
-nnoremap("<leader>T", ":130vsplit term:// bash <CR>i")
-tnoremap("<leader><Esc>", "<C-\\><C-n>")
+vim.keymap.set("n", "<leader>T", ":130vsplit term:// bash <CR>i", default_opts)
+vim.keymap.set("t", "<leader><Esc>", "<C-\\><C-n>", default_opts)
 
 -- Copy paste from outside/within vim; requires xclip
-vnoremap("<leader>y", [["+y]])
-nnoremap("<leader>y", [["+y]])
-nnoremap("<leader>Y", [["+Y]])
+vim.keymap.set("v", "<leader>y", [["+y]], default_opts)
+vim.keymap.set("n", "<leader>y", [["+y]], default_opts)
+vim.keymap.set("n", "<leader>Y", [["+Y]], default_opts)
 
 -- Visual mode identation
-vnoremap("<Tab>", ">gv")
-vnoremap("<S-Tab>", "<gv")
+vim.keymap.set("v","<Tab>", ">gv", default_opts)
+vim.keymap.set("v","<S-Tab>", "<gv", default_opts)
 
 -- Visual mode line movement
-vnoremap("J", ":m '>+1'<CR>gv=gv")
-vnoremap("K", ":m '<-2'<CR>gv=gv")
+vim.keymap.set("v","J", ":m '>+1'<CR>gv=gv", default_opts)
+vim.keymap.set("v","K", ":m '<-2'<CR>gv=gv", default_opts)
 
 -- Split/window resizing
-nnoremap("<C-Down>", ":resize -2 <CR>")
-nnoremap("<C-Up>", ":resize +2 <CR>")
-nnoremap("<C-Left>", ":vertical resize -2 <CR>")
-nnoremap("<C-Right>", ":vertical resize +2 <CR>")
-
---        _             _         _     _           _
---  _ __ | |_   _  __ _(_)_ __   | |__ (_)_ __   __| |___
--- | '_ \| | | | |/ _` | | '_ \  | '_ \| | '_ \ / _` / __|
--- | |_) | | |_| | (_| | | | | | | |_) | | | | | (_| \__ \
--- | .__/|_|\__,_|\__, |_|_| |_| |_.__/|_|_| |_|\__,_|___/
--- |_|            |___/
-
--- Overall file, grep and buffers explorers.
---[[ nnoremap("<leader>lg", ":Telescope live_grep <CR>")
-nnoremap("<leader>fh", ":Telescope highlights <CR>")
-nnoremap("<leader>ff", function()
-  require("telescope.builtin").find_files({
-    no_ignore = true
-  })
-end)
-nnoremap("<leader>fb", ":Telescope buffers <CR>")
-nnoremap("<leader>/", function()
-  require("telescope.builtin").grep_string({
-    -- Grep for the word under the cursor.
-    search = vim.fn.input("Grep >")
-  });
-end)
-vnoremap("<leader>/", function()
-  require("telescope.builtin").grep_string(
-  -- Same as above, but searching selected text in visual mode.
-    vim.fn.getline("'<", "'>")
-  );
-end) ]]
-
--- File tree related.
---[[ nnoremap("<leader>e", ":NvimTreeToggle<CR>")
-nnoremap("<leader>F", ":NvimTreeFindFile<CR>")
-nnoremap("<leader>R", ":NvimTreeRefresh<CR>") ]]
-
--- Git related.
-nnoremap("<leader>gb", ":Git blame<CR>")
-
--- Git hunk navigation.
---[[ nnoremap("<leader>gs", ":Gitsigns preview_hunk<CR>")
-nnoremap("<leader>gn", ":Gitsigns next_hunk<CR>")
-nnoremap("<leader>gp", ":Gitsigns prev_hunk<CR>") ]]
-
--- Diffview related.
---[[ nnoremap("<leader>do", ":DiffviewOpen <CR>")
-nnoremap("<leader>dh", ":DiffviewFileHistory <CR> :resize -2 <CR>") ]]
-
---[[ -- Snippets related.
-inoremap("<C-j>", function()
-  local ls = require("luasnip")
-  if ls.expand_or_jumpable() then
-     ls.expand_or_jump()
-  end
-end)
-
-inoremap("<C-k>", function()
-  local ls = require("luasnip")
-  if ls.jumpable(-1) then
-     ls.jump(-1)
-  end
-end) ]]
+vim.keymap.set("n","<C-Down>", ":resize -2 <CR>", default_opts)
+vim.keymap.set("n","<C-Up>", ":resize +2 <CR>", default_opts)
+vim.keymap.set("n","<C-Left>", ":vertical resize -2 <CR>", default_opts)
+vim.keymap.set("n","<C-Right>", ":vertical resize +2 <CR>", default_opts)
