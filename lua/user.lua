@@ -3,11 +3,7 @@ USER = {
   leader_key = " ",
   lsp = {
     servers = {
-      "bashls",
-      "pyright",
-      "rust_analyzer",
-      "lua_ls",
-      -- "clangd"
+      "bashls", "pyright", "rust_analyzer", "lua_ls", -- "clangd"
     },
     settings = {
       lua_ls = {
@@ -19,6 +15,11 @@ USER = {
           }
         }
       }
+    }
+  },
+  treesitter = {
+    parsers = {
+      "c", "lua", "vimdoc"
     }
   },
   ident_marker = function(indent_size)
