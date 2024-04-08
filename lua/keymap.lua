@@ -24,9 +24,12 @@ map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 map("n", "<S-u>", "<C-r>")
 
+-- Quickfix movement
+map("n", "J", ":cnext<CR>")
+map("n", "K", ":cprev<CR>")
+
 -- Lazy saving/quitting
 map("n", "<leader>w", ":w<CR>")
-map("n", "<leader>q", ":q<CR>")
 
 -- Overide shenanigans
 map("n", "<leader>rw", "cw<C-r>0<C-c>")

@@ -6,9 +6,9 @@ return {
     for _, server in pairs(USER.lsp.servers) do
       local opts = {
         on_attach = function(_, _)
-          vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+          vim.keymap.set("n", ";", vim.lsp.buf.hover, {})
           vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-          vim.keymap.set("n", "gr", vim.lsp.buf.rename, {})
+          vim.keymap.set("n", "rn", vim.lsp.buf.rename, {})
         end,
         capabilities = require("cmp_nvim_lsp").default_capabilities()
       }
