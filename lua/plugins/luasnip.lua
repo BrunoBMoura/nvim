@@ -4,7 +4,6 @@ return {
     local ls = require("luasnip")
     local s = ls.snippet
     local i = ls.insert_node
-    local f = ls.function_node
     local extras = require("luasnip.extras")
     local fmt = require("luasnip.extras.fmt").fmt
     local rep = extras.rep
@@ -27,22 +26,6 @@ return {
       s("item", fmt([[\item \textbf{{\emph{{{}}}}} ]], {i(1)})),
     }
 
-    local callbacks = {
-      c = {
-        title_format = function(args, _, _)
-          local arg_text = args[1][1]
-          local line = {
-            init_chars = 10,
-            end_chars = 2,
-            total = 79,
-            arg_len = string.len(arg_text)
-          }
-          local num_spaces = line.total - line.arg_len - line.init_chars - line.end_chars
-          return arg_text .. string.rep(" ", num_spaces)
-        end
-      }
-    }
-
     local c = {
       s("struct", fmt(
         [[
@@ -52,23 +35,6 @@ return {
         }} {};
         ]], {
           rep(1), i(0), i(1)
-        })
-      ),
-      s("func", fmt(
-        [[
-        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-        /*  Name: {}*/
-        /*                                                                           */
-        /*  Purpose:                                                                 */
-        /*                                                                           */
-        /*                                                                           */
-        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-        void {}(void) {{
-            {}
-            return;
-        }} /* End of {}() */
-        ]], {
-          f(callbacks.c.title_format, {1}), i(1), i(0), rep(1)
         })
       )
     }
@@ -80,5 +46,21 @@ return {
     for filetype, snips in pairs(custom_snips) do
       ls.add_snippets(filetype, snips)
     end
+  end,
+  keys = function()
+    local default_opts = { noremap = true, silent = true }
+    local ls = require("luasnip")
+    -- Jump to the next snippet.
+    vim.keymap.set("i", "<C-j>", function()
+      if ls.expand_or_jumpable() then
+        ls.expand_or_jump()
+      end
+    end, default_opts)
+    -- Jump to the previous snippet.
+    vim.keymap.set("i", "<C-k>", function()
+      if ls.jumpable(-1) then
+        ls.jump(-1)
+      end
+    end, default_opts)
   end
 }

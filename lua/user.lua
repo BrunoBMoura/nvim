@@ -19,7 +19,7 @@ USER = {
   },
   treesitter = {
     parsers = {
-      "c", "lua", "vimdoc", "ruby", "python", "bash", "json", "yaml"
+      "c", "cpp", "lua", "vimdoc", "ruby", "python", "bash", "json", "yaml"
     }
   },
   ident_marker = function(indent_size)
