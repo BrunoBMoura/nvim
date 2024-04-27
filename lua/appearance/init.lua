@@ -4,9 +4,10 @@ local statusline_colors = nil
 local palettes = {
   kanagawa = "appearance.custom_schemes.kanagawa",
   material = "appearance.custom_schemes.material",
+  catppuccin = "appearance.custom_schemes.catppuccin",
 }
 
-local colorscheme = require(palettes.kanagawa)
+local colorscheme = require(palettes.catppuccin)
 tabline_colors = colorscheme.tabline_colors
 statusline_colors = colorscheme.statusline_colors
 

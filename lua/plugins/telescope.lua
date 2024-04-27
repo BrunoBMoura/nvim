@@ -31,7 +31,7 @@ return {
       })
     end, default_opts)
     -- Same as above, but searching selected text in visual mode.
-    vim.keymap.set("n", "<leader>/", function()
+    vim.keymap.set("v", "<leader>/", function()
       require("telescope.builtin").grep_string(
         vim.fn.getline("'<", "'>")
       )
