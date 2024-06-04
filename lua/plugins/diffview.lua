@@ -14,6 +14,6 @@ return {
   keys = function()
     local default_opts = { noremap = true, silent = true }
     vim.api.nvim_set_keymap("n", "<leader>do", ":DiffviewOpen <CR>", default_opts)
-    vim.api.nvim_set_keymap("n", "<leader>dh", ":DiffviewFileHistory <CR> :resize -2 <CR>", default_opts)
+    vim.api.nvim_set_keymap("n", "<leader>dh", ":DiffviewFileHistory <CR> :resize -4 <CR>", default_opts)
   end
 }

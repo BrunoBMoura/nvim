@@ -7,7 +7,7 @@ local palettes = {
   catppuccin = "appearance.custom_schemes.catppuccin",
 }
 
-local colorscheme = require(palettes.catppuccin)
+local colorscheme = require(palettes.kanagawa)
 tabline_colors = colorscheme.tabline_colors
 statusline_colors = colorscheme.statusline_colors
 

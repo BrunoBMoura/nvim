@@ -19,7 +19,7 @@ return {
   keys = function()
     local default_opts = { noremap = true, silent = true }
     -- Default file fuzzy finder .
-    vim.keymap.set("n", "<leader>ff", function()
+    vim.keymap.set("n", "<leader>sf", function()
       require("telescope.builtin").find_files({
         no_ignore = true
       })
@@ -37,8 +37,8 @@ return {
       )
     end, default_opts)
     -- Buffer searching.
-    vim.api.nvim_set_keymap("n", "<leader>fb", ":Telescope buffers <CR>", default_opts)
+    vim.api.nvim_set_keymap("n", "<leader>sb", ":Telescope buffers <CR>", default_opts)
     -- Default live grep.
-    vim.api.nvim_set_keymap("n", "<leader>lg", ":Telescope live_grep <CR>", default_opts)
+    vim.api.nvim_set_keymap("n", "<leader>sg", ":Telescope live_grep <CR>", default_opts)
   end
 }

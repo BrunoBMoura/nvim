@@ -4,8 +4,9 @@ return {
   config = function()
     require("treesitter-context").setup({
       enable = true,
-      max_lines = 0,
-      trim_scope = "outer",
+      max_lines = 1,
+      multiline_threshold = 1,
+      trim_scope = "inner",
       patterns = {
         default = {
           "class",

@@ -49,7 +49,7 @@ catpuccin.setup({
       TelescopeBorder      = { fg = scheme.surface2, bg = scheme.base },
       FloatBorder          = { fg = scheme.surface2, bg = scheme.base },
       NvimTreeNormal       = { fg = scheme.text,     bg = scheme.base },
-      NvimTreeIndentMarker = { fg = scheme.text,     bg = scheme.base },
+      NvimTreeIndentMarker = { fg = scheme.surface2, bg = scheme.base },
       NvimTreeNormalFloat  = { fg = scheme.text,     bg = scheme.base },
       NvimTreeEndOfBuffer  = { fg = scheme.base },
       NvimTreeStatusLine   = { fg = scheme.text,     bg = scheme.base },
