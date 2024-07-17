@@ -5,6 +5,7 @@ local palettes = {
   kanagawa = "appearance.custom_schemes.kanagawa",
   material = "appearance.custom_schemes.material",
   catppuccin = "appearance.custom_schemes.catppuccin",
+  nordic = "appearance.custom_schemes.nordic",
 }
 
 local colorscheme = require(palettes.kanagawa)

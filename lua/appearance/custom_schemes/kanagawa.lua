@@ -22,25 +22,32 @@ kanagawa.setup({
   overrides = function(colors)
     -- Basically turn the background darker, correct border colors, remove unused italics
     -- and add some custom configurations
+    local main_color = colors.palette.dragonRed
     return {
-      Normal                     = { bg = colors.palette.dragonBlack3 },
-      Boolean                    = { bold = false },
       CursorLineNr               = { bold = false },
       MatchParen                 = { bold = false },
       NormalFloat                = { bg = "none" },
       FloatTitle                 = { bg = "none" },
+      Keyword                    = { fg = main_color },
+      Normal                     = { bg = colors.palette.dragonBlack3 },
+      Boolean                    = { bold = false, fg = colors.palette.dragonPink },
       CursorLine                 = { bg = colors.palette.dragonBlack4 },
+      Constant                   = { fg = colors.palette.dragonPink },
       FloatBorder                = { bg = "none", fg = colors.palette.dragonBlack4 },
       WinSeparator               = { fg = colors.palette.dragonBlack4 },
       TelescopeBorder            = { fg = colors.palette.dragonBlack4, bg = colors.palette.dragonBlack3 },
       IblIndent                  = { fg = colors.palette.dragonBlack4 },
       NvimTreeIndentMarker       = { fg = colors.palette.dragonBlack6 },
-      Type                       = { fg = colors.palette.waveAqua2 },
+      -- Type                       = { fg = colors.palette.dragonOrange },
+      -- Type                       = { link = "Special" },
+      -- Function                   = { fg = colors.palette.dragonAqua },
       ["@variable.builtin"]      = { italic = false },
-      ["@symbol"]                = { fg = colors.palette.dragonGray2 },
       ["@label"]                 = { fg = colors.palette.dragonYellow },
+      ["@variable.parameter"]    = { fg = colors.palette.dragonGray2 },
+      ["@symbol"]                = { fg = colors.palette.dragonGray2 },
       ["@string.escape"]         = { bold = false },
-      ["@keyword.operator"]      = { fg = colors.palette.dragonRed, bold = false },
+      ["@keyword.operator"]      = { fg = main_color, bold = false },
+      ["@keyword.return"]        = { fg = main_color, bold = false },
       ["@comment"]               = { fg = colors.palette.dragonBlack6, italic = false }
     }
   end
