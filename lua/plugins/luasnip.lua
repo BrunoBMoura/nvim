@@ -58,7 +58,7 @@ return {
     }
 
     local custom_snips = {
-      tex = tex, c = c, lua = {}, ruby = {},
+      tex = tex, c = c, lua = {}, ruby = {}, cpp = c
     }
 
     for filetype, snips in pairs(custom_snips) do
