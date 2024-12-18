@@ -33,6 +33,7 @@ kanagawa.setup({
       Boolean                    = { bold = false, fg = colors.palette.dragonPink },
       CursorLine                 = { bg = colors.palette.dragonBlack4 },
       Constant                   = { fg = colors.palette.dragonPink },
+      -- Type                       = { fg = colors.palette.fujiWhite },
       FloatBorder                = { bg = "none", fg = colors.palette.dragonBlack4 },
       WinSeparator               = { fg = colors.palette.dragonBlack4 },
       TelescopeBorder            = { fg = colors.palette.dragonBlack4, bg = colors.palette.dragonBlack3 },

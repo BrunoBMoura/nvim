@@ -1,4 +1,4 @@
- -- User configuration data.
+-- User configuration data.
 USER = {
   leader_key = " ",
   lsp = {

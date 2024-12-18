@@ -35,9 +35,10 @@ map("n", "<leader>w", ":w<CR>")
 map("n", "<leader>rw", "cw<C-r>0<C-c>")
 map("v", "p", '"_dP')
 
--- Terminal split
-map("n", "<leader>T", ":130vsplit term:// bash <CR>i")
-map("t", "<leader><Esc>", "<C-\\><C-n>")
+-- Terminal shenanigans
+map("t", "<Esc><Esc>", "<C-\\><C-n>")
+map("n", "<leader>t", ":FloatingTerminal <CR>i")
+map("t", "<leader>t", "<C-\\><C-n>:FloatingTerminal <CR>")
 
 -- Copy paste from outside/within vim; requires xclip
 map("v", "<leader>y", [["+y]])
