@@ -2,10 +2,19 @@ local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 local user_group = augroup("user", {})
 
+-- Remove empty spaces at the end of lines
 autocmd("BufWritePre", {
   group = user_group,
   pattern = "*",
   command = "%s/\\s\\+$//e"
+})
+
+-- Set each terminal buffer as unlisted
+autocmd("TermOpen", {
+  group = user_group,
+  callback = function()
+    vim.api.nvim_set_option_value('bl', false, { buf = 0 })
+  end,
 })
 
 local lang_meta_op = {

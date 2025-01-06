@@ -37,8 +37,7 @@ map("v", "p", '"_dP')
 
 -- Terminal shenanigans
 map("t", "<Esc><Esc>", "<C-\\><C-n>")
-map("n", "<leader>t", ":FloatingTerminal <CR>i")
-map("t", "<leader>t", "<C-\\><C-n>:FloatingTerminal <CR>")
+map({ "n", "t" }, "<leader>t", ":FloatingTerminal <CR>")
 
 -- Copy paste from outside/within vim; requires xclip
 map("v", "<leader>y", [["+y]])

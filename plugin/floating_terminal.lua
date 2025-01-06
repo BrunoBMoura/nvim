@@ -10,9 +10,18 @@ local function floating_window(opts)
   opts = opts or {}
   local width = opts.width or math.floor(vim.o.columns * 0.8)
   local height = opts.height or math.floor(vim.o.lines * 0.8)
-
   local col = math.floor((vim.o.columns - width) / 2)
   local row = math.floor((vim.o.lines - height) / 2)
+
+  local win_config = {
+    relative = "editor",
+    style = "minimal",
+    border = "rounded",
+    row = row,
+    col = col,
+    width = width,
+    height = height,
+  }
 
   local buf = nil
   if vim.api.nvim_buf_is_valid(opts.buf) then
@@ -20,16 +29,6 @@ local function floating_window(opts)
   else
     buf = vim.api.nvim_create_buf(false, true)
   end
-
-  local win_config = {
-    relative = "editor",
-    width = width,
-    height = height,
-    row = row,
-    col = col,
-    style = "minimal",
-    border = "rounded"
-  }
 
   local win = vim.api.nvim_open_win(buf, true, win_config)
 
