@@ -34,7 +34,7 @@ local plastlin = {
   crust     = "#1f2223",
 }
 
-scheme = plastlin
+-- scheme = plastlin
 
 catpuccin.setup({
   flavour = "mocha",

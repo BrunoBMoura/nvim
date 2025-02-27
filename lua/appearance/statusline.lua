@@ -125,20 +125,37 @@ function M.file_path()
   })
 end
 
--- Access the current file metadata, including git branch, encoding and type.
+-- Access the current file metadata; encoding and type.
 function M.file_metadata()
-  local branch = ""
-  if vim.fn.loaded_fugitive then
-    branch = vim.fn.FugitiveHead() == "" and "No_git" or vim.fn.FugitiveHead()
-  end
   local encoding = vim.bo.fileencoding
   local type = vim.bo.filetype
   local line_info = vim.bo.filetype ~= "alpha" and "%l/%L:%c" or ""
 
   return helpers.format_table({
-    M._data.modes["_g"].color, helpers.contour(branch, M._data.tokens.separators),
     M._data.modes["_t"].color, helpers.contour(helpers.format_table({ encoding, ":", type }), M._data.tokens.separators),
     M._data.modes["_l"].color, helpers.contour(line_info, M._data.tokens.separators)
+  })
+end
+
+-- Access the current git branch.
+function M.git_info()
+  local icon = " "
+  local branch = ""
+  if vim.fn.loaded_fugitive then
+    branch = vim.fn.FugitiveHead() == "" and "No_git" or vim.fn.FugitiveHead()
+  end
+
+  branch = helpers.format_table({ branch, " ", icon})
+
+  -- Access the current file changes; stored in a buffer-local variable.
+  local changes = vim.b.git_changes or ""
+  if changes ~= "" then
+    changes = helpers.contour(changes, { '(', ') ' })
+  end
+
+  return helpers.format_table({
+    M._data.modes["_g"].color, helpers.contour(branch, M._data.tokens.separators),
+    changes
   })
 end
 
@@ -176,6 +193,7 @@ function M.refresh()
     M.highlighted_line_filler(),
     path,
     M.highlighted_line_filler(),
+    M.git_info(),
     M.file_metadata()
   })
 end
@@ -202,11 +220,55 @@ function M.eval_config(config)
   end
 end
 
+function M.metadata_setup()
+  local function update_git_changes()
+    local buf = vim.api.nvim_get_current_buf()
+    local filepath = vim.fn.expand('%:p') -- Get full path of the current file
+
+    if vim.fn.empty(filepath) == 1 then
+      vim.b.git_changes = "" -- Clear git info if no file
+      return
+    end
+
+    -- Run git diff to get additions and deletions
+    local result = vim.fn.systemlist("git diff --numstat -- " .. vim.fn.shellescape(filepath))
+
+    if #result == 0 then
+      vim.b.git_changes = "" -- No changes
+      return
+    end
+
+    -- Extract additions and deletions
+    local additions, deletions = result[1]:match("(%d+)%s+(%d+)")
+    local formated = ""
+
+    if additions then
+      formated = formated .. "+" .. additions
+    end
+
+    if deletions then
+      formated = formated .. " ~" .. deletions
+    end
+
+    -- Store in buffer-local variable
+    vim.b.git_changes = formated
+  end
+
+  vim.api.nvim_create_autocmd({"BufEnter", "BufWritePost", "TextChanged"}, {
+    pattern = "*",
+    callback = update_git_changes,
+  })
+end
+
 -- Sets up the statusline with the given @config, containing the tokens and colors.
 function M.setup(config)
+
+  M.metadata_setup()
+
   M.eval_config(config)
   -- Disable the creation of an automatic quickfixlist due to custom treatments.
   vim.g.qf_disable_statusline = true
+
   -- And finally, set the statusline to use the here defined procedures.
   vim.opt.statusline = "%!v:lua.require(\"appearance.statusline\").refresh()"
 end
