@@ -22,7 +22,7 @@ USER = {
       "c", "cpp", "lua", "vimdoc", "ruby", "python", "bash", "json", "yaml"
     }
   },
-  ident_marker = function(indent_size)
+  indent_marker = function(indent_size)
     local char = "│"
     local spaces = string.rep(" ", indent_size - 1)
     return char .. spaces

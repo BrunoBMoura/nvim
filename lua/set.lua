@@ -36,7 +36,7 @@ local configs = {
   },
   listchars      = {
     tab = "»·", trail = "·", eol = "¬",
-    leadmultispace = USER.ident_marker(4)
+    leadmultispace = USER.indent_marker(4)
   },
 }
 
