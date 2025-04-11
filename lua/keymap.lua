@@ -3,8 +3,8 @@ local function map(mode, key, command, opts)
   vim.keymap.set(mode, key, command, opts)
 end
 
--- Refresh ctags
-map("n", "<leader>c", ":! ctags -R . <CR>")
+-- General utils
+map("n", "<leader>i", "i<CR><Esc><S-o>")
 
 -- Split movement
 map("n", "<C-h>", "<C-w>h")
