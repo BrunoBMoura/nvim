@@ -30,8 +30,6 @@ return {
 
         table.insert(new_virt_text, {suffix, 'MoreMsg'})
         return new_virt_text
-      end,
-      keys = function()
       end
     })
   end

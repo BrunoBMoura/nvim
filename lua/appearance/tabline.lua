@@ -51,14 +51,12 @@ M._data = {}
 M._data.tokens = {}
 
 M._data.highlights = {
-  icon         = "TabLineIconColor",
   separator    = "TabLineSeparator",
   active_tab   = "TabLineActiveTab",
   inactive_tab = "TabLineInactiveTab"
 }
 
 M._data.colors = {
-  icon         = helpers.highlightfy(M._data.highlights.icon),
   separator    = helpers.highlightfy(M._data.highlights.separator),
   active_tab   = helpers.highlightfy(M._data.highlights.active_tab),
   inactive_tab = helpers.highlightfy(M._data.highlights.inactive_tab)
@@ -95,21 +93,10 @@ function M.title(bufnr, is_selected)
     title = vim.fn.pathshorten(vim.fn.fnamemodify(file, ":p:~:t"))
   end
 
-  -- Try to access the file icon if 'nvim-web-devicons' is installed.
-  local icon = ""
-  if M._required.devicons then
-    local opts = vim.fn.expand("#" .. bufnr .. ":e")
-    local file_icon, icon_hl = M._required.devicons.get_icon(file, opts)
-    -- If the file icon is defined, use it and highlight it as predefined.
-    if file_icon then
-      icon = helpers.format_table({ helpers.highlightfy(icon_hl), file_icon })
-    end
-  end
-
   -- And finally, ensure a proper highlighting if the current cell is selected.
   local cell_title = is_selected
-    and { M._data.colors.active_tab, title, M._data.colors.icon, " ",  icon, " " }
-    or { M._data.colors.inactive_tab, title, " ", icon, M._data.colors.inactive_tab, " " }
+    and { M._data.colors.active_tab, title, " " }
+    or { M._data.colors.inactive_tab, title, M._data.colors.inactive_tab, " " }
 
   return helpers.format_table(cell_title)
 end
@@ -205,13 +192,6 @@ function M.eval_config(config)
     helpers.set_config_highlights(M._data.highlights, config.colors)
   else
     helpers.set_non_config_highlights(M._data.highlights, "String")
-  end
-
-  M._required = {}
-
-  local ok, devicons = pcall(require, "nvim-web-devicons")
-  if ok then
-    M._required.devicons = devicons
   end
 end
 
