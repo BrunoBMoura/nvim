@@ -39,6 +39,9 @@ map("v", "p", '"_dP')
 map("t", "<Esc><Esc>", "<C-\\><C-n>")
 map({ "n", "t" }, "<leader>t", ":FloatingTerminal <CR>")
 
+-- Alignment
+map( "v" , "<leader>a", ":AlignLineEnds <CR>")
+
 -- Copy paste from outside/within vim; requires xclip
 map("v", "<leader>y", [["+y]])
 map("n", "<leader>y", [["+y]])
