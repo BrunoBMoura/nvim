@@ -93,6 +93,11 @@ function M.title(bufnr, is_selected)
     title = vim.fn.pathshorten(vim.fn.fnamemodify(file, ":p:~:t"))
   end
 
+  -- Add the file icon.
+  --[[ if M._required.devicons then
+    title = string.format("%s %s", title, M._required.devicons.get_icon(file, filetype, { default = true }))
+  end ]]
+
   -- And finally, ensure a proper highlighting if the current cell is selected.
   local cell_title = is_selected
     and { M._data.colors.active_tab, title, " " }
@@ -128,8 +133,9 @@ function M.cell(index, is_selected)
 
   return helpers.format_table({
     "%", index, "T", " ",
-    M.window_count(index), M.modified(bufnr), " ",
-    M.title(bufnr, is_selected), "%T"
+    M.window_count(index),
+    M.title(bufnr, is_selected), "%T",
+    M.modified(bufnr),
   })
 end
 
@@ -188,10 +194,17 @@ function M.eval_config(config)
     M._data.style = "surrounded"
   end
 
+  M._required = {}
+
   if config.colors then
     helpers.set_config_highlights(M._data.highlights, config.colors)
   else
     helpers.set_non_config_highlights(M._data.highlights, "String")
+  end
+
+  local ok, devicons = pcall(require, "nvim-web-devicons")
+  if ok then
+    M._required.devicons = devicons
   end
 end
 

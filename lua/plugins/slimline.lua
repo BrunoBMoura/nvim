@@ -22,9 +22,9 @@ return {
       mode = {
         verbose = true,
         hl = {
-          normal  = 'Statement',
+          normal  = 'Boolean',
           visual  = 'Keyword',
-          insert  = 'Boolean',
+          insert  = 'Statement',
           replace = 'Statement',
           command = 'Identifier',
           other   = 'Label',

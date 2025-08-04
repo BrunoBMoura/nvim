@@ -9,7 +9,7 @@ local palettes = {
 
 local colorscheme = require(palettes.kanagawa)
 tabline_colors = colorscheme.tabline_colors
-statusline_colors = colorscheme.statusline_colors
+_statusline_colors = colorscheme.statusline_colors
 
 require("appearance.tabline").setup({
   style  = "surrounded",
@@ -20,10 +20,3 @@ require("appearance.tabline").setup({
   },
   colors = tabline_colors
 })
-
---[[ require("appearance.statusline").setup({
-  tokens = {
-    separators = { ' ', ' ' }
-  },
-  colors = statusline_colors
-}) ]]
