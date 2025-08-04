@@ -21,9 +21,9 @@ require("appearance.tabline").setup({
   colors = tabline_colors
 })
 
-require("appearance.statusline").setup({
+--[[ require("appearance.statusline").setup({
   tokens = {
     separators = { ' ', ' ' }
   },
   colors = statusline_colors
-})
+}) ]]

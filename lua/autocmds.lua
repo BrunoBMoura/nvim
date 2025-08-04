@@ -9,6 +9,14 @@ autocmd("BufWritePre", {
   command = "%s/\\s\\+$//e"
 })
 
+-- Avoid reaplying evals on statusline whenever opening quickfix list
+autocmd("FileType", {
+  pattern = "qf",
+  callback = function()
+    vim.opt_local.statusline = ''
+  end,
+})
+
 -- Set each terminal buffer as unlisted
 autocmd("TermOpen", {
   group = user_group,

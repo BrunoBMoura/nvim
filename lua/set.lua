@@ -37,7 +37,10 @@ local configs = {
   showtabline    = 3,
   list           = true,
   fillchars      = {
-    stl = "―", fold = "۰", diff = "·"
+    -- stl = "―",
+    -- stl = '─',
+    fold = "۰",
+    diff = "·"
   },
   listchars      = {
     tab = "»·", trail = "·", eol = "¬",
