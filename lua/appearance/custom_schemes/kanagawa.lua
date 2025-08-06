@@ -49,9 +49,9 @@ local kolors = require("kanagawa.colors").setup()
 -- Both tabline and statusline colors are only defined if a colorscheme is loaded,
 -- in this case, kanagawa.
 local tabline_colors = {
-  separator    = { fg = kolors.palette.roninYellow,  bold = true },
-  active_tab   = { fg = kolors.palette.fujiWhite,    bold = true },
-  inactive_tab = { fg = kolors.palette.fujiGray,     bold = false }
+  separator    = { fg = kolors.palette.roninYellow, bold = true },
+  active_tab   = { fg = kolors.palette.dragonWhite, bold = true },
+  inactive_tab = { fg = kolors.palette.fujiGray,    bold = false }
 }
 
 local statusline_colors = {

@@ -57,8 +57,42 @@ return {
       ),
     }
 
+    local ruby = {
+      s("module", fmt(
+        [[
+        # {} module.
+        module {}
+          {}
+        end
+        ]], {
+          rep(1), i(1, "ModuleName"), i(0)
+        })
+      ),
+      s("class", fmt(
+        [[
+        # {} class definition.
+        class {}
+          def initialize({})
+            {}
+          end
+        end
+        ]], {
+          rep(1), i(1, "ClassName"), i(2, "args"), i(0)
+        })
+      ),
+      s("each", fmt(
+        [[
+        each do |{}|
+          {}
+        end
+        ]], {
+          i(1, "item"), i(0)
+        })
+      ),
+    }
+
     local custom_snips = {
-      tex = tex, c = c, lua = {}, ruby = {}, cpp = c
+      tex = tex, c = c, lua = {}, ruby = ruby, cpp = c
     }
 
     for filetype, snips in pairs(custom_snips) do

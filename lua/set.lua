@@ -4,9 +4,9 @@ vim.g.mapleader = USER.leader_key
 vim.g.tex_flavor = "latex"
 
 local configs = {
-  tabstop        = 4,
-  softtabstop    = 4,
-  shiftwidth     = 4,
+  tabstop        = USER.indent_size,
+  softtabstop    = USER.indent_size,
+  shiftwidth     = USER.indent_size,
   expandtab      = true,
   smartindent    = true,
   autoindent     = true,
@@ -24,7 +24,6 @@ local configs = {
   smartcase      = true,
   incsearch      = true,
   scrolloff      = 12,
-  -- foldcolumn     = "1",
   foldlevel      = 99,
   foldlevelstart = 99,
   foldenable     = true,
@@ -37,14 +36,12 @@ local configs = {
   showtabline    = 3,
   list           = true,
   fillchars      = {
-    -- stl = "―",
-    -- stl = '─',
     fold = "۰",
     diff = "·"
   },
   listchars      = {
     tab = "»·", trail = "·", eol = "¬",
-    leadmultispace = USER.indent_marker(4)
+    leadmultispace = USER.indent_marker(USER.indent_size),
   },
 }
 
