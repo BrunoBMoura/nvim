@@ -22,7 +22,6 @@ map("n", "<S-h>", ":bprevious<CR>")
 -- Lazy movement
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
-map("n", "<S-u>", "<C-r>")
 
 -- Quickfix movement
 map("n", "J", ":cnext<CR>")

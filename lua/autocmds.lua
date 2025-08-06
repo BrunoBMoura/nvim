@@ -28,8 +28,8 @@ autocmd("TermOpen", {
 local lang_meta_op = {
   c      = { format = "clang-format -i" },
   rust   = { format = "rustfmt", build = "cargo build" },
-  ruby   = { small_indent = true },
-  lua    = { small_indent = true },
+  ruby   = { small_indent = USER.indent_size / 2 },
+  lua    = { small_indent = USER.indent_size / 2 },
 }
 
 for lang, data in pairs(lang_meta_op) do
@@ -43,9 +43,9 @@ for lang, data in pairs(lang_meta_op) do
     autocmd("FileType", {
       pattern = lang,
       callback = function()
-        vim.opt_local.listchars:append({ leadmultispace = USER.indent_marker(2) })
-        vim.opt_local.shiftwidth = 2
-        vim.opt_local.tabstop = 2
+        vim.opt_local.listchars:append({ leadmultispace = USER.indent_marker(data.small_indent) })
+        vim.opt_local.shiftwidth = data.small_indent
+        vim.opt_local.tabstop = data.small_indent
       end
     })
   end
